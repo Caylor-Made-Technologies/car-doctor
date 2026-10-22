@@ -765,3 +765,172 @@ body[data-tab="vehicle"] .vehicle-card { display: none; }
 .drive-now.sev-low { border-left-color: #2fbf71; }
 .drive-now.sev-medium, .drive-now.sev-high { border-left-color: #f5b83d; }
 .drive-now.sev-critical { border-left-color: #e5484d; }
+
+/* ---------- Polish: smoother, flashier motion ---------- */
+/* Shimmering brand name and a heartbeat logo */
+.brand-name {
+  background: linear-gradient(100deg, var(--text-strong) 38%, var(--accent-text) 50%, var(--text-strong) 62%);
+  background-size: 260% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: text-shine 7s ease-in-out 1s infinite;
+}
+@keyframes text-shine { 0%, 55% { background-position: 100% 0; } 85%, 100% { background-position: 0 0; } }
+.brand-icon { animation: brand-beat 2.6s ease-in-out infinite; }
+@keyframes brand-beat {
+  0%, 30%, 100% { transform: scale(1); }
+  8% { transform: scale(1.14); box-shadow: 0 0 0 1px var(--border-strong), 0 0 26px rgba(61, 139, 255, 0.6); }
+  16% { transform: scale(0.98); }
+  22% { transform: scale(1.08); }
+}
+/* A light that sweeps along the bottom of the header */
+.topbar::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--accent-text), transparent) no-repeat;
+  background-size: 40% 100%; opacity: 0.7;
+  animation: scan 6s linear infinite;
+}
+@keyframes scan { from { background-position: -60% 0; } to { background-position: 160% 0; } }
+
+/* Tab changes glide in with a soft blur */
+.tab-panel.enter-right, .tab-panel.enter-left { animation-duration: 0.45s; }
+@keyframes enter-right { from { opacity: 0; transform: translateX(28px) scale(0.985); filter: blur(4px); } }
+@keyframes enter-left { from { opacity: 0; transform: translateX(-28px) scale(0.985); filter: blur(4px); } }
+
+/* Chat bubbles spring in from their own side */
+.msg.bot:not(.result) { animation: bubble-left 0.6s var(--spring) both; transform-origin: bottom left; }
+.msg.user {
+  animation: bubble-right 0.6s var(--spring) both; transform-origin: bottom right;
+  background: linear-gradient(135deg, #1b63eb, #1249c4); box-shadow: var(--glow);
+}
+@keyframes bubble-left { from { opacity: 0; transform: translate(-18px, 10px) scale(0.85); } }
+@keyframes bubble-right { from { opacity: 0; transform: translate(18px, 10px) scale(0.85); } }
+.typing span { background: var(--accent-text); animation-name: blink-hop; }
+@keyframes blink-hop { 0%, 80%, 100% { opacity: 0.3; transform: translateY(0) scale(0.85); } 40% { opacity: 1; transform: translateY(-5px) scale(1.1); } }
+
+/* Buttons: gradient fill, a passing shine, and a ripple where you tap */
+.btn, .chip, .tile, .option, .zone, .light-tile, .send-btn, .call, .help-btn { position: relative; overflow: hidden; isolation: isolate; }
+.btn.primary, .send-btn { background: linear-gradient(135deg, #1b63eb, #1249c4); }
+.btn.primary::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.28) 50%, transparent 65%);
+  transform: translateX(-120%); animation: shine 5s ease-in-out 1.5s infinite;
+}
+@keyframes shine { 0%, 72% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+.ripple {
+  position: absolute; border-radius: 50%; pointer-events: none; z-index: -1;
+  background: currentColor; opacity: 0.22; transform: scale(0);
+  animation: ripple 0.6s var(--ease) forwards;
+}
+@keyframes ripple { to { transform: scale(1); opacity: 0; } }
+@media (hover: hover) {
+  .tile:hover, .option:hover, .light-tile:hover, .chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+  .btn.primary:hover, .send-btn:hover { box-shadow: 0 0 26px rgba(61, 139, 255, 0.55); }
+}
+.send-btn.ready { animation: ready-ring 1.8s ease-out infinite; }
+@keyframes ready-ring { 0% { box-shadow: 0 0 0 0 rgba(61, 139, 255, 0.55); } 100% { box-shadow: 0 0 0 12px rgba(61, 139, 255, 0); } }
+.send-btn.whoosh .icon { animation: whoosh 0.55s var(--ease); }
+@keyframes whoosh {
+  40% { transform: translate(18px, -18px) scale(0.6); opacity: 0; }
+  41% { transform: translate(-14px, 14px) scale(0.6); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+/* Tile emojis wiggle in with their tile */
+.tiles .tile-emoji { animation: emoji-in 0.8s var(--spring) backwards; animation-delay: inherit; }
+@keyframes emoji-in { 0% { transform: scale(0.2) rotate(-25deg); } 60% { transform: scale(1.25) rotate(8deg); } 100% { transform: none; } }
+
+/* Results: a glow sweeps the card and the details rise in one after another */
+.msg.result .result-card { animation: result-glow 1.6s var(--ease) 0.15s both; }
+@keyframes result-glow {
+  0% { box-shadow: var(--shadow); }
+  30% { box-shadow: 0 0 0 2px var(--accent), 0 0 40px rgba(61, 139, 255, 0.5); }
+  100% { box-shadow: var(--shadow); }
+}
+.msg.result .result-main > * { animation: rise 0.5s var(--ease) both; }
+.msg.result .result-main > :nth-child(2) { animation-delay: 0.06s; }
+.msg.result .result-main > :nth-child(3) { animation-delay: 0.12s; }
+.msg.result .result-main > :nth-child(4) { animation-delay: 0.18s; }
+.msg.result .result-main > :nth-child(5) { animation-delay: 0.24s; }
+.msg.result .result-main > :nth-child(6) { animation-delay: 0.3s; }
+.msg.result .result-main > :nth-child(n+7) { animation-delay: 0.36s; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+.stop-banner { animation: alarm 1.4s ease-in-out 0.4s 3; }
+@keyframes alarm { 50% { background: #a81c13; box-shadow: inset 0 0 22px rgba(255, 255, 255, 0.18); } }
+.gauge-fill {
+  background: linear-gradient(90deg, var(--accent), var(--accent-text), var(--accent));
+  background-size: 200% 100%; animation: shimmer 2.4s linear infinite;
+}
+
+/* Sheets spring up over a blurred backdrop */
+.sheet[open] { animation: sheet-spring 0.5s cubic-bezier(0.2, 1.15, 0.35, 1); }
+@keyframes sheet-spring { from { transform: translateY(100%); } }
+.sheet[open]::backdrop { animation: fade-in 0.3s ease; -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+@keyframes fade-in { from { opacity: 0; } }
+
+/* Sparks around the "That was it" check mark */
+.spark {
+  position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px; border-radius: 2px;
+  background: var(--accent-text); animation: spark 0.85s var(--ease) forwards;
+}
+.spark.s1 { background: var(--safe); border-radius: 50%; }
+.spark.s2 { background: #ffc94d; }
+@keyframes spark { to { transform: translate(var(--dx), var(--dy)) rotate(200deg) scale(0.2); opacity: 0; } }
+
+/* ---------- Surprises (extras.js) ---------- */
+:root, [data-theme="dark"] { --love: #ff7aac; }
+[data-theme="light"] { --love: #c41d63; }
+.love {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 77, 141, 0.38), rgba(11, 15, 20, 0.78));
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  animation: fade-in 0.35s ease both;
+}
+.love.closing { animation: fade-out 0.35s ease forwards; }
+@keyframes fade-out { to { opacity: 0; } }
+.love-hearts { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.fly-heart {
+  position: absolute; bottom: -60px; line-height: 1; opacity: 0;
+  filter: drop-shadow(0 0 8px rgba(255, 77, 141, 0.65));
+  animation: heart-fly 4s cubic-bezier(0.3, 0.6, 0.4, 1) forwards;
+}
+@keyframes heart-fly {
+  0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translate(calc(var(--drift) * -0.5), -55vh) scale(1.1) rotate(var(--spin)); }
+  85% { opacity: 1; }
+  100% { transform: translate(var(--drift), -115vh) scale(0.9) rotate(calc(var(--spin) * -1)); opacity: 0; }
+}
+.beat-heart {
+  position: absolute; line-height: 1; translate: -50% -50%;
+  filter: drop-shadow(0 0 10px rgba(255, 77, 141, 0.7));
+  animation: fade-in 0.5s ease both, heart-beat 1s ease-in-out infinite;
+}
+@keyframes heart-beat { 0%, 60%, 100% { scale: 1; } 15% { scale: 1.35; } 30% { scale: 0.95; } 45% { scale: 1.2; } }
+.love-card {
+  position: relative; z-index: 1; width: 100%; max-width: 320px; padding: 28px 22px 22px; text-align: center;
+  background: var(--surface); border: 1px solid rgba(255, 105, 160, 0.55); border-radius: 26px;
+  box-shadow: 0 0 0 5px rgba(255, 77, 141, 0.16), 0 20px 60px rgba(255, 77, 141, 0.4);
+  animation: love-pop 0.7s var(--spring) both;
+}
+@keyframes love-pop { from { opacity: 0; transform: scale(0.5) translateY(30px); } }
+.love-big { display: inline-block; font-size: 64px; line-height: 1; animation: heart-beat 1s ease-in-out 0.6s infinite; }
+.love-text {
+  margin: 14px 0 20px; font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; line-height: 1.2;
+  color: var(--love); text-shadow: 0 0 18px rgba(255, 77, 141, 0.35);
+}
+.btn.primary.love-btn { width: 100%; background: linear-gradient(135deg, #d02a66, #a8174f); box-shadow: 0 0 18px rgba(255, 77, 141, 0.45); }
+.toast {
+  position: fixed; left: 50%; bottom: calc(var(--safe-bottom) + 140px); z-index: 60; translate: -50% 0;
+  width: max-content; max-width: min(92vw, 420px); padding: 12px 16px; border-radius: 16px;
+  font-weight: 600; color: var(--text-strong); background: var(--surface-2);
+  border: 1px solid var(--border-strong); box-shadow: var(--shadow-lift);
+  animation: toast-in 0.55s var(--spring) both;
+}
+.toast.out { animation: toast-out 0.4s ease forwards; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(24px) scale(0.9); } }
+@keyframes toast-out { to { opacity: 0; transform: translateY(12px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple, .spark, .btn.primary::after, .topbar::after { display: none; }
+  .brand-name { animation: none; background-position: 100% 0; }
+}

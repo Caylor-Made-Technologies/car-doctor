@@ -781,12 +781,47 @@ function buzz(ms = 12) {
   try { if (navigator.vibrate && !REDUCED_MOTION.matches) navigator.vibrate(ms); } catch (err) { /* not supported */ }
 }
 
-// A check mark that pops in after "That was it".
+// A check mark that pops in after "That was it", with a burst of sparks.
 function celebrate(card) {
   buzz(30);
   const pop = el("div", { class: "pop", "aria-hidden": "true" }, "✓");
   card.append(pop);
+  if (!REDUCED_MOTION.matches) {
+    for (let i = 0; i < 18; i++) {
+      const angle = (i / 18) * Math.PI * 2 + Math.random() * 0.3;
+      const dist = 70 + Math.random() * 60;
+      const spark = el("span", { class: "spark s" + (i % 3) });
+      spark.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
+      spark.style.setProperty("--dy", `${Math.sin(angle) * dist}px`);
+      pop.append(spark);
+    }
+  }
   setTimeout(() => pop.remove(), 1200);
+}
+
+// Tap ripples on buttons and a little "whoosh" on the send button.
+function setupMotion() {
+  const targets = ".btn, .chip, .tile, .option, .zone, .light-tile, .send-btn, .call, .help-btn";
+  document.addEventListener("pointerdown", (e) => {
+    if (REDUCED_MOTION.matches) return;
+    const target = e.target.closest(targets);
+    if (!target || target.disabled) return;
+    const box = target.getBoundingClientRect();
+    const size = Math.max(box.width, box.height) * 2.2;
+    const ripple = el("span", { class: "ripple", "aria-hidden": "true" });
+    ripple.style.width = ripple.style.height = size + "px";
+    ripple.style.left = e.clientX - box.left - size / 2 + "px";
+    ripple.style.top = e.clientY - box.top - size / 2 + "px";
+    target.append(ripple);
+    setTimeout(() => ripple.remove(), 650);
+  }, { passive: true });
+
+  document.getElementById("composer").addEventListener("submit", () => {
+    const btn = document.getElementById("sendBtn");
+    btn.classList.remove("whoosh");
+    void btn.offsetWidth;
+    btn.classList.add("whoosh");
+  });
 }
 
 // Called from app.js once the data files are loaded.

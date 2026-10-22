@@ -1178,7 +1178,7 @@ function wireUp() {
   input.addEventListener("input", () => sendButton.classList.toggle("ready", Boolean(input.value.trim())));
   document.getElementById("composer").addEventListener("submit", (e) => {
     e.preventDefault();
-    sendMessage(input.value);
+    if (!surprise(input.value)) sendMessage(input.value);
     input.value = "";
     sendButton.classList.remove("ready");
   });
@@ -1198,6 +1198,10 @@ function wireUp() {
   document.getElementById("profileForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const f = e.target.elements;
+    if (surprise(`${f.year.value} ${f.make.value} ${f.model.value}`)) {
+      renderProfile(); // a surprise, not a vehicle: put the saved one back
+      return;
+    }
     save(KEYS.profile, {
       year: f.year.value.trim(),
       make: f.make.value.trim(),
@@ -1209,6 +1213,7 @@ function wireUp() {
     document.getElementById("logForm").elements.mileage.value = load(KEYS.profile, {}).mileage || "";
     const note = document.getElementById("profileSaved");
     note.textContent = "Saved ✓";
+    yearSurprise(f.year.value.trim());
     setTimeout(() => { note.textContent = ""; }, 2500);
   });
 
@@ -1256,6 +1261,7 @@ async function init() {
   applyTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
   buildCircuits();
   wireUp();
+  setupMotion();
   watchConnection();
   renderProfile();
   renderLog();
