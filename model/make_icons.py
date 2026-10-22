@@ -1,4 +1,4 @@
-"""Draws the app icons: an orange heartbeat line on a dark background.
+"""Draws the app icons: a brand-blue heartbeat line on the Caylor Made navy.
 
 Run once (or after changing the design):  python model/make_icons.py
 """
@@ -7,8 +7,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 OUT = Path(__file__).resolve().parent.parent / "app" / "icons"
-BG = (18, 20, 24)
-ORANGE = (255, 138, 31)
+BG = (11, 15, 20)
+BLUE = (61, 139, 255)
 
 # Heartbeat points on a 0-1 grid: flat, small bump, big spike, dip, flat.
 POINTS = [(0.12, 0.55), (0.32, 0.55), (0.38, 0.47), (0.44, 0.55), (0.50, 0.55),
@@ -22,10 +22,10 @@ def draw(size):
     d = ImageDraw.Draw(img)
     pts = [(x * big, y * big) for x, y in POINTS]
     width = int(big * 0.055)
-    d.line(pts, fill=ORANGE, width=width, joint="curve")
+    d.line(pts, fill=BLUE, width=width, joint="curve")
     r = width / 2
     for x, y in (pts[0], pts[-1]):  # round line ends
-        d.ellipse([x - r, y - r, x + r, y + r], fill=ORANGE)
+        d.ellipse([x - r, y - r, x + r, y + r], fill=BLUE)
     return img.resize((size, size), Image.LANCZOS)
 
 
