@@ -1,4 +1,48 @@
 {
+ "C0035": {
+  "title": "Left front wheel speed sensor (common GM meaning)",
+  "causes": [
+   "Failed wheel speed sensor",
+   "Damaged sensor wire or connector",
+   "Rusty or cracked tone ring",
+   "Worn wheel bearing (sensor built in on some vehicles)",
+   "C-code meanings vary by make; confirm for your vehicle"
+  ],
+  "related": "abs_sensor_problem"
+ },
+ "C0040": {
+  "title": "Right front wheel speed sensor (common GM meaning)",
+  "causes": [
+   "Failed wheel speed sensor",
+   "Damaged sensor wire or connector",
+   "Rusty or cracked tone ring",
+   "Worn wheel bearing (sensor built in on some vehicles)",
+   "C-code meanings vary by make; confirm for your vehicle"
+  ],
+  "related": "abs_sensor_problem"
+ },
+ "C0045": {
+  "title": "Left rear wheel speed sensor (common GM meaning)",
+  "causes": [
+   "Failed wheel speed sensor",
+   "Damaged sensor wire or connector",
+   "Rusty or cracked tone ring",
+   "Worn wheel bearing (sensor built in on some vehicles)",
+   "C-code meanings vary by make; confirm for your vehicle"
+  ],
+  "related": "abs_sensor_problem"
+ },
+ "C0050": {
+  "title": "Right rear wheel speed sensor (common GM meaning)",
+  "causes": [
+   "Failed wheel speed sensor",
+   "Damaged sensor wire or connector",
+   "Rusty or cracked tone ring",
+   "Worn wheel bearing (sensor built in on some vehicles)",
+   "C-code meanings vary by make; confirm for your vehicle"
+  ],
+  "related": "abs_sensor_problem"
+ },
  "P0008": {
   "title": "Engine position system performance (bank 1)",
   "causes": [
@@ -582,6 +626,15 @@
   ],
   "related": "evap_leak"
  },
+ "P0480": {
+  "title": "Cooling fan relay circuit",
+  "causes": [
+   "Failed cooling fan relay",
+   "Bad cooling fan motor",
+   "Wiring problem"
+  ],
+  "related": "overheating"
+ },
  "P0496": {
   "title": "EVAP flow during non-purge condition",
   "causes": [
@@ -597,7 +650,7 @@
    "Damaged wiring",
    "Tire size change not programmed"
   ],
-  "related": "transmission_problem"
+  "related": "abs_sensor_problem"
  },
  "P0505": {
   "title": "Idle air control system malfunction",
@@ -653,6 +706,14 @@
    "Bad ground"
   ],
   "related": "bad_alternator"
+ },
+ "P0573": {
+  "title": "Cruise control / brake switch circuit",
+  "causes": [
+   "Failed brake light switch",
+   "Wiring problem"
+  ],
+  "related": "electrical_ground_problem"
  },
  "P0601": {
   "title": "Internal control module memory checksum error",

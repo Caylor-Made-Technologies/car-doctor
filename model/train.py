@@ -26,6 +26,9 @@ from sklearn.naive_bayes import MultinomialNB
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "symptoms.csv"
+# Never trained on. Written separately, in everyday "how a parent would say
+# it" wording, to estimate real-world accuracy more honestly.
+HOLDOUT_FILE = ROOT / "data" / "holdout.csv"
 MODEL_FILE = ROOT / "app" / "model.json"
 
 ALPHAS = [0.05, 0.1, 0.3, 0.5, 1.0]  # smoothing values to try
@@ -106,16 +109,20 @@ for canonical, variants in SYNONYM_GROUPS.items():
 
 
 def stem(word):
-    """Very light stemming: chop common endings so 'leaking' ~ 'leak'.
+    """Very light stemming: chop common endings so 'leaking' ~ 'leak'
+    and 'rattling' ~ 'rattle'.
 
     Only used for words that are NOT in the synonym table.
     """
     if word.endswith("ing") and len(word) > 5:
-        return word[:-3]
-    if word.endswith("ed") and len(word) > 4:
-        return word[:-2]
-    if word.endswith("s") and len(word) > 3 and not word.endswith("ss"):
-        return word[:-1]
+        word = word[:-3]
+    elif word.endswith("ed") and len(word) > 4:
+        word = word[:-2]
+    elif word.endswith("s") and len(word) > 3 and not word.endswith("ss"):
+        word = word[:-1]
+    # Drop a final "e" so "rattle"/"rattling" and "drive"/"driving" match.
+    if word.endswith("e") and len(word) > 4:
+        word = word[:-1]
     return word
 
 
@@ -142,10 +149,10 @@ def tokenize(text):
 # Training
 # ---------------------------------------------------------------------------
 
-def load_data():
-    """Read the CSV into two lists: texts and labels."""
+def load_data(path=DATA_FILE):
+    """Read a CSV into two lists: texts and labels."""
     texts, labels = [], []
-    with open(DATA_FILE, newline="", encoding="utf-8") as f:
+    with open(path, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             texts.append(row["text"].strip())
             labels.append(row["label"].strip())
@@ -223,6 +230,14 @@ def main():
     size_kb = MODEL_FILE.stat().st_size / 1024
     print(f"Wrote {MODEL_FILE.relative_to(ROOT)} "
           f"({len(vec.vocabulary_)} features, {size_kb:.0f} KB)\n")
+
+    # Held-out check: sentences the model has never seen in any form.
+    if HOLDOUT_FILE.exists():
+        h_texts, h_labels = load_data(HOLDOUT_FILE)
+        probs = model.predict_proba(vec.transform(h_texts))
+        h1 = top_k_correct(probs, model.classes_, h_labels, 1) / len(h_labels)
+        h3 = top_k_correct(probs, model.classes_, h_labels, 3) / len(h_labels)
+        print(f"Held-out everyday sentences ({len(h_labels)}): top-1 {h1:.1%}, top-3 {h3:.1%}\n")
 
     samples = [
         "clicks when i turn the key and nothing happens",

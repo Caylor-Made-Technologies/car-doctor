@@ -1093,3 +1093,454 @@ bad_alternator,lights get dimmer as i drive
 bad_alternator,lights pulse with the engine running alternator
 electrical_ground_problem,dash goes black over bumps
 electrical_ground_problem,headlights dim with turn signal
+sticking_brake_caliper,burning smell from one wheel after driving
+sticking_brake_caliper,one wheel is way hotter than the others
+sticking_brake_caliper,pulls to the right and the right front wheel smells hot
+sticking_brake_caliper,brake dragging on one side
+sticking_brake_caliper,one rim covered in brake dust and the rest are clean
+sticking_brake_caliper,smoke coming from one wheel after the drive home
+sticking_brake_caliper,feels like the brakes are on a little all the time
+sticking_brake_caliper,truck feels like its being held back and a wheel smells burnt
+sticking_brake_caliper,caliper sticking and the wheel is smoking
+sticking_brake_caliper,hot brake smell from the front left and it pulls left
+sticking_brake_caliper,coasts to a stop way too fast like a brake is stuck
+sticking_brake_caliper,wheel too hot to touch after a short drive
+sticking_brake_caliper,pulls to one side even when not braking and smells like burning brakes
+sticking_brake_caliper,brake pad worn on only one wheel
+sticking_brake_caliper,gas mileage dropped and one wheel gets really hot
+sticking_brake_caliper,burnt brake smell and a squeal from one wheel
+sticking_brake_caliper,rear wheel hot and smoking after driving
+sticking_brake_caliper,one brake wont release
+sticking_brake_caliper,dragging brake and a burning smell
+sticking_brake_caliper,heat coming off one wheel and pulls
+sticking_brake_caliper,the wheel smells like it is on fire after a drive
+sticking_brake_caliper,brake stays on after i let off the pedal on one side
+sticking_brake_caliper,stuck caliper pulling right
+sticking_brake_caliper,one tire smoking from the brake
+sticking_brake_caliper,pulls hard to one side when i brake and a wheel gets hot
+sticking_brake_caliper,slide pins seized and pad dragging
+sticking_brake_caliper,drags and feels sluggish with a hot wheel
+sticking_brake_caliper,smoky burning smell near the front tire
+bad_motor_mounts,clunk when i put it in drive or reverse
+bad_motor_mounts,engine jumps when i shift into gear
+bad_motor_mounts,big thump when shifting from park to drive and reverse
+bad_motor_mounts,vibrates a lot at stop lights in drive but smooth in neutral
+bad_motor_mounts,engine rocks a lot when revving
+bad_motor_mounts,motor mount broken
+bad_motor_mounts,clunk when i hit the gas and when i let off
+bad_motor_mounts,whole cab shakes at idle in gear
+bad_motor_mounts,thud from the engine bay when accelerating
+bad_motor_mounts,cracked rubber engine mount
+bad_motor_mounts,engine moves a lot when someone revs it
+bad_motor_mounts,steering wheel buzzes at idle in drive and stops in park
+bad_motor_mounts,banging under the hood when shifting
+bad_motor_mounts,heavy vibration through the seat at stop signs
+bad_motor_mounts,transmission mount worn and clunks
+bad_motor_mounts,jerk and clunk when taking off from a stop engine mount
+bad_motor_mounts,engine lurches when i shift
+bad_motor_mounts,shakes at idle in drive engine mount
+bad_motor_mounts,thump when the transmission engages
+bad_motor_mounts,engine twists hard when i accelerate
+bad_motor_mounts,loud clunk going into reverse engine moves
+bad_motor_mounts,vibration at idle that goes away in neutral
+bad_motor_mounts,engine bay knock on acceleration and deceleration
+bad_motor_mounts,mounts collapsed engine sitting crooked
+bad_motor_mounts,lurching thump every time i shift
+bad_motor_mounts,clunk shifting into drive feels like engine moves
+blower_motor_problem,fan only works on high
+blower_motor_problem,heater fan only blows on the highest setting
+blower_motor_problem,no air coming out of the vents at all
+blower_motor_problem,ac fan doesnt work on low or medium
+blower_motor_problem,blower motor squealing behind the glove box
+blower_motor_problem,fan stopped working heat and ac
+blower_motor_problem,vents not blowing anything
+blower_motor_problem,only the max fan speed works
+blower_motor_problem,rattling from behind the glovebox when the fan is on
+blower_motor_problem,blower resistor bad
+blower_motor_problem,weak airflow from all the vents
+blower_motor_problem,the fan knob does nothing until i turn it all the way up
+blower_motor_problem,blower makes a clicking noise and stops
+blower_motor_problem,fan works sometimes and sometimes not
+blower_motor_problem,no air from vents but i can hear the ac running
+blower_motor_problem,defrost has no air blowing
+blower_motor_problem,blower fan dead
+blower_motor_problem,fan speeds 1 2 and 3 dont work only 4
+blower_motor_problem,hear leaves rattling in the fan
+blower_motor_problem,heater fan squeaks on low speed
+blower_motor_problem,air barely comes out even on high
+blower_motor_problem,climate fan wont turn on
+blower_motor_problem,tapping the blower motor makes it start
+blower_motor_problem,fan stuck on one speed
+blower_motor_problem,fan only blows on max
+blower_motor_problem,can not defrost the windshield because no air comes out
+clutch_problem,engine revs but car doesnt speed up stick shift
+clutch_problem,clutch slipping in high gears
+clutch_problem,grinding when i shift gears manual
+clutch_problem,clutch pedal goes to the floor and stays there
+clutch_problem,cant get it into gear manual transmission
+clutch_problem,burning smell after driving up a hill in my stick shift
+clutch_problem,clutch engages really high at the top of the pedal
+clutch_problem,clutch pedal feels soft and spongy
+clutch_problem,squeal when i press the clutch pedal
+clutch_problem,manual transmission grinds going into second
+clutch_problem,clutch smells burnt
+clutch_problem,rpms jump when i give it gas in fourth gear stick
+clutch_problem,clutch chatter when taking off
+clutch_problem,shudder when letting the clutch out
+clutch_problem,clutch pedal sticks to the floor
+clutch_problem,noise when the clutch pedal is up goes away when pressed
+clutch_problem,hard to shift into reverse stick shift
+clutch_problem,clutch slips when towing
+clutch_problem,manual car grinds and wont go in gear
+clutch_problem,clutch fluid leaking
+clutch_problem,stick shift slipping going uphill
+clutch_problem,clutch wont disengage
+clutch_problem,throwout bearing noise
+clutch_problem,clutch feels different and grabs at the top
+clutch_problem,burnt toast smell from my manual car
+clutch_problem,gears grind with the clutch all the way down
+low_tire_pressure,tire pressure light came on
+low_tire_pressure,tire looks low
+low_tire_pressure,keep having to put air in one tire
+low_tire_pressure,tpms light on in the morning
+low_tire_pressure,nail in my tire
+low_tire_pressure,slow leak in the rear tire
+low_tire_pressure,one tire flatter than the others
+low_tire_pressure,low tire warning on the dash
+low_tire_pressure,tire light on when its cold then goes off
+low_tire_pressure,flat tire
+low_tire_pressure,tire keeps losing air every few days
+low_tire_pressure,tire pressure warning and pulls a little right
+low_tire_pressure,screw in the tread
+low_tire_pressure,horseshoe light with an exclamation point
+low_tire_pressure,tire going soft
+low_tire_pressure,valve stem leaking air
+low_tire_pressure,the tire light blinks then stays on
+low_tire_pressure,low air in my tires
+low_tire_pressure,tire looks squished at the bottom
+low_tire_pressure,tire pressure sensor fault
+low_tire_pressure,hissing from a tire
+low_tire_pressure,tire light keeps coming back after i fill it
+low_tire_pressure,rim leaking air around the tire
+low_tire_pressure,steering heavy and a tire looks low
+low_tire_pressure,tpms warning
+low_tire_pressure,need air in tires light
+abs_sensor_problem,abs light on
+abs_sensor_problem,abs and traction control lights came on
+abs_sensor_problem,abs warning light and traction light
+abs_sensor_problem,wheel speed sensor bad
+abs_sensor_problem,abs light came on after hitting a pothole
+abs_sensor_problem,abs light comes and goes
+abs_sensor_problem,traction control light stays on
+abs_sensor_problem,abs light and speedometer acting weird
+abs_sensor_problem,abs pump buzzing at slow stops on dry road
+abs_sensor_problem,abs kicks in when stopping slowly
+abs_sensor_problem,abs code wheel speed sensor
+abs_sensor_problem,stabilitrak light on
+abs_sensor_problem,service stability system message
+abs_sensor_problem,anti lock brake light
+abs_sensor_problem,abs and brake light on together but brakes feel fine
+abs_sensor_problem,traction control light and check engine light
+abs_sensor_problem,abs light after new brakes
+abs_sensor_problem,abs light on and the brakes pulse at low speed
+abs_sensor_problem,c0035 wheel speed sensor
+abs_sensor_problem,esc light and abs light
+abs_sensor_problem,abs sensor wire damaged
+abs_sensor_problem,traction light flickers when driving straight
+abs_sensor_problem,abs light came on in the rain
+abs_sensor_problem,brakes grab and abs chatters at low speed
+abs_sensor_problem,abs fault message
+abs_sensor_problem,the abs light wont turn off
+key_ignition_problem,key wont turn in the ignition
+key_ignition_problem,key not detected message
+key_ignition_problem,push button start says no key
+key_ignition_problem,steering wheel locked and key wont turn
+key_ignition_problem,key fob not working
+key_ignition_problem,remote only works right next to the car
+key_ignition_problem,key stuck in the ignition
+key_ignition_problem,security light flashing and it wont start
+key_ignition_problem,engine shut off when i bumped the key
+key_ignition_problem,key turns but nothing happens and the anti theft light blinks
+key_ignition_problem,ignition switch worn
+key_ignition_problem,have to jiggle the key to start it
+key_ignition_problem,spare key works but my main key doesnt
+key_ignition_problem,press the start button and nothing no key detected
+key_ignition_problem,key fob battery low message
+key_ignition_problem,cant get the key out
+key_ignition_problem,dash flickers when i touch the keychain
+key_ignition_problem,key wont go all the way in
+key_ignition_problem,immobilizer light on and no start
+key_ignition_problem,car doesnt recognize my key
+key_ignition_problem,key wont turn to start position
+key_ignition_problem,steering lock stuck
+key_ignition_problem,stalls when hitting bumps and the key moves
+key_ignition_problem,keyless start not working
+key_ignition_problem,fob doesnt unlock the doors
+key_ignition_problem,smart key not found
+heater_core_problem,sweet smell inside the car with the heat on
+heater_core_problem,windows fog up with a greasy film
+heater_core_problem,wet carpet on the passenger side
+heater_core_problem,antifreeze smell in the cab
+heater_core_problem,windshield fogs on the inside and wont clear
+heater_core_problem,heater core leaking
+heater_core_problem,coolant dripping inside under the dash
+heater_core_problem,smells like syrup inside when the heat is on
+heater_core_problem,oily fog on the inside of the windshield
+heater_core_problem,passenger floor is soaked and smells sweet
+heater_core_problem,steam from the vents with the heater on
+heater_core_problem,losing coolant and the inside smells sweet
+heater_core_problem,defroster makes the windows foggier
+heater_core_problem,sticky film on the inside glass
+heater_core_problem,sweet smell from the vents
+heater_core_problem,green stain on the passenger carpet
+heater_core_problem,heater smells like antifreeze
+heater_core_problem,foggy windows and coolant low
+heater_core_problem,wet floor and sweet smell
+heater_core_problem,windshield gets a haze inside every time i use the heat
+heater_core_problem,cabin smells like maple syrup
+heater_core_problem,heater core clogged no heat but engine is warm
+heater_core_problem,heat blows cold but temp gauge normal and coolant full
+heater_core_problem,damp carpet and fogged windows in the winter
+dead_battery,battery is old and the radio resets
+dead_battery,power windows slow with the engine off and slow start
+dead_battery,lights dimmer than usual and slow crank
+dead_battery,wont start after sitting in the cold overnight
+dead_battery,car is dead after leaving the dome light on
+dead_battery,click click click battery
+bad_starter,starts sometimes and just clicks other times
+bad_starter,grinding sound when the starter engages
+bad_starter,smoke from under the truck when trying to start
+bad_starter,one click every time i turn the key
+bad_alternator,new battery keeps dying alternator
+bad_alternator,headlights brighter when revving
+bad_alternator,burning rubber smell and battery light
+bad_alternator,whining that rises with engine speed and dim lights
+worn_brake_pads,squeal that stops when i press the brake harder
+worn_brake_pads,takes a little longer to stop and squeaks
+worn_brake_pads,lots of dark dust on the front wheels and squeal
+warped_rotors,shake started after new pads
+warped_rotors,shakes when stopping downhill
+brake_fluid_leak,brake light on and pedal spongy
+brake_fluid_leak,wet spot by a wheel and pedal soft
+bad_wheel_bearing,airplane hum louder with speed
+bad_wheel_bearing,hum changes when curving and abs light came on
+worn_serpentine_belt,squeal in the rain at startup
+worn_serpentine_belt,belt has cracks and squeals
+engine_misfire,loss of power uphill and engine shakes
+engine_misfire,worse gas mileage and shaking at stop lights
+dirty_maf_sensor,hesitates when pressing the gas and bad mileage
+vacuum_leak,idle high and brake pedal hard
+fuel_delivery_problem,starts with a full tank but not when low
+fuel_delivery_problem,takes a long time to start and sputters on the highway
+overheating,temp needle climbing and sweet smell
+thermostat_stuck_open,takes forever to warm up and lukewarm heat
+transmission_problem,delay shifting into drive and hard shifts
+transmission_problem,engine revs and doesnt speed up automatic transmission
+worn_cv_axle,vibration when accelerating and grease on the wheel
+worn_u_joint,squeak matching the wheels at low speed
+tire_balance,shake started after new tires
+alignment_problem,pulls after hitting a curb
+exhaust_leak,rumble louder than normal and exhaust smell
+oil_leak_low_oil,spots where i park and burning smell
+power_steering_problem,groan when parking and fluid near the front
+ac_problem,cool but not cold air
+ac_problem,ac cold on the highway warm at stop lights
+electrical_ground_problem,problems come and go over bumps
+worn_suspension,floaty ride and nose dives
+timing_chain_problem,rattle at startup getting longer
+head_gasket_failure,coolant keeps disappearing and white smoke
+catalytic_converter_problem,feels choked going uphill
+evap_leak,light came on after getting gas and cap doesnt click
+clutch_problem,clutch slipping engine revs but i dont go faster manual
+clutch_problem,stick shift revs up and doesnt pull
+clutch_problem,clutch smells burnt after hills
+clutch_problem,burning smell from my stick shift car after traffic
+clutch_problem,clutch pedal soft and goes to the floor
+clutch_problem,clutch fluid low and pedal spongy
+clutch_problem,clutch chatters and shudders when taking off
+clutch_problem,manual transmission shudder when releasing the clutch
+clutch_problem,grinding into gears with the clutch pressed
+clutch_problem,hard to shift into gear manual clutch
+clutch_problem,clutch pedal squeaks
+clutch_problem,noise when pressing the clutch throwout bearing
+clutch_problem,clutch grabs at the very top of the pedal
+clutch_problem,clutch worn out slipping
+clutch_problem,manual slips in 5th gear going up hills
+clutch_problem,clutch slips when towing a trailer manual
+clutch_problem,smell like burnt toast from the clutch
+clutch_problem,stick shift wont go into reverse grinds
+clutch_problem,clutch pedal stuck down
+clutch_problem,clutch problem stick shift
+clutch_problem,rpm flare in my manual when accelerating clutch
+clutch_problem,clutch hydraulic leak and soft pedal
+bad_motor_mounts,engine rocks when revving motor mount
+bad_motor_mounts,clunk on and off the gas engine mount
+bad_motor_mounts,engine jumps shifting into gear mount
+bad_motor_mounts,thump from the engine shifting park to drive mounts
+bad_motor_mounts,vibration through the seat at stop signs in drive
+bad_motor_mounts,banging from the engine when shifting
+bad_motor_mounts,engine lurches shifting gears motor mount
+bad_motor_mounts,smooth in neutral but shakes in drive at idle
+bad_motor_mounts,transmission mount clunk
+bad_motor_mounts,thump when the transmission engages mount
+bad_motor_mounts,steering wheel buzzes at idle in drive
+bad_motor_mounts,engine twists and clunks when accelerating
+bad_motor_mounts,motor mounts worn engine moves
+bad_motor_mounts,clunk from the engine when hitting the gas
+bad_motor_mounts,engine shakes the whole cab at idle in drive
+bad_motor_mounts,broken engine mount clunk
+bad_motor_mounts,engine moves and thumps when shifting
+sticking_brake_caliper,brakes feel on all the time one wheel
+sticking_brake_caliper,burnt brake smell from one wheel and squeal
+sticking_brake_caliper,one wheel hot after driving caliper
+sticking_brake_caliper,brake wont release on one wheel
+sticking_brake_caliper,one rim has all the brake dust
+sticking_brake_caliper,hot wheel and pulls to that side caliper
+sticking_brake_caliper,slows down too fast when coasting brake dragging
+sticking_brake_caliper,uneven brake pad wear one side caliper
+sticking_brake_caliper,mileage dropped and a wheel is hot caliper dragging
+sticking_brake_caliper,stuck caliper pulls
+sticking_brake_caliper,seized caliper slide pins
+sticking_brake_caliper,one wheel smells burnt and hot
+sticking_brake_caliper,hot rim after driving and burning smell
+sticking_brake_caliper,brake caliper sticking
+key_ignition_problem,anti theft light blinks and wont start
+key_ignition_problem,security light flashing no start key
+key_ignition_problem,remote fob only works up close battery
+key_ignition_problem,jiggle the key to get it to start
+key_ignition_problem,key stuck cant take the key out
+key_ignition_problem,steering lock wont release key
+key_ignition_problem,immobilizer wont let it start
+key_ignition_problem,ignition switch bad
+key_ignition_problem,dash flickers when the key is touched
+key_ignition_problem,key wont turn steering locked
+key_ignition_problem,key not recognized
+key_ignition_problem,push to start doesnt detect key
+key_ignition_problem,key fob dead
+key_ignition_problem,worn key wont turn ignition
+blower_motor_problem,fan knob does nothing except on high
+blower_motor_problem,blower fan works sometimes
+blower_motor_problem,blower clicks and stops
+blower_motor_problem,tap the blower motor to start the fan
+blower_motor_problem,fan for heat and ac stopped
+blower_motor_problem,nothing blowing out of the vents fan
+blower_motor_problem,climate fan dead
+blower_motor_problem,weak air from the vents fan
+blower_motor_problem,blower motor fan not working
+blower_motor_problem,fan wont blow on low
+blower_motor_problem,blower fan noise behind the glove box
+blower_motor_problem,fan only on high setting
+low_tire_pressure,tpms light on cold mornings
+low_tire_pressure,tpms warning light tire
+low_tire_pressure,one tire flatter tire
+low_tire_pressure,flat tire need air
+low_tire_pressure,tire pressure warning pulls slightly
+low_tire_pressure,screw in my tire
+low_tire_pressure,tire light horseshoe exclamation
+low_tire_pressure,tire getting soft losing air
+low_tire_pressure,tire low on air
+low_tire_pressure,low tire pressure light
+low_tire_pressure,tire leaking air slowly
+low_tire_pressure,tire looks low and the light is on
+heater_core_problem,losing coolant and sweet smell inside the cab
+heater_core_problem,heater cold but engine warm and coolant full heater core
+heater_core_problem,defroster fogs the windows
+heater_core_problem,antifreeze smell inside the cab
+heater_core_problem,coolant dripping inside the cab under the dash
+heater_core_problem,steam from the vents heater
+heater_core_problem,heater core plugged no heat
+heater_core_problem,sweet smell inside and fogged windshield
+heater_core_problem,heater core leak wet floor
+heater_core_problem,greasy fog inside the windshield
+abs_sensor_problem,traction light flickers
+abs_sensor_problem,stabilitrak light
+abs_sensor_problem,service stability system
+abs_sensor_problem,abs pump buzzing at slow stops
+abs_sensor_problem,abs light stays on
+abs_sensor_problem,abs and traction lights
+abs_sensor_problem,abs light wheel sensor
+worn_u_joint,driveshaft clunk taking off u joint
+worn_u_joint,clunk shifting into drive from the driveshaft under the middle
+worn_u_joint,chirping squeak at tire speed u joint
+worn_u_joint,squeak under the truck at low speed driveshaft
+worn_u_joint,thud underneath taking off driveshaft
+dead_battery,jumped it and it died again next day old battery
+dead_battery,battery dies after sitting a few days old battery
+dead_battery,dim dash lights and clicks battery weak
+dead_battery,clicking no crank cold morning battery
+dead_battery,slow struggling crank battery dying
+thermostat_stuck_open,lukewarm heater and low temp needle
+thermostat_stuck_open,no heat after 20 minutes and temp gauge low
+thermostat_stuck_open,temp needle stays at the bottom
+transmission_problem,delay into drive then slams automatic transmission
+transmission_problem,automatic wont go into gear
+transmission_problem,automatic transmission slips into second
+transmission_problem,engine revs and the truck doesnt go automatic
+catalytic_converter_problem,converter rattling like rocks
+catalytic_converter_problem,choked and weak uphill exhaust restricted
+sticking_brake_caliper,only one wheel has a worn brake pad
+sticking_brake_caliper,mileage dropped one wheel hot dragging brake
+sticking_brake_caliper,heat coming off one wheel
+sticking_brake_caliper,brake stays on one side after letting off
+sticking_brake_caliper,one wheel way hotter than the rest
+sticking_brake_caliper,feels like a brake is on a little all the time
+sticking_brake_caliper,pulls right and the right wheel smells hot
+sticking_brake_caliper,brake dust only on one rim
+sticking_brake_caliper,dragging brake one wheel hot smell
+sticking_brake_caliper,hot wheel burning brake smell pulling
+worn_u_joint,squeak like a bird chirp matching tire speed u joint
+worn_u_joint,clunk on and off the gas from the driveshaft
+worn_u_joint,thud from the driveshaft taking off from a stop
+worn_u_joint,u joint clunk shifting drive reverse
+worn_u_joint,driveshaft clunk shifting from park
+worn_u_joint,low speed squeak from the driveshaft
+worn_u_joint,squeak matches wheel speed driveshaft u joint
+bad_motor_mounts,engine thump shifting park drive reverse motor mount
+bad_motor_mounts,shakes at stop lights in drive but fine in neutral mount
+bad_motor_mounts,engine bay knock accelerating and letting off mount
+bad_motor_mounts,engine twists when accelerating mount
+bad_motor_mounts,banging under the hood shifting motor mount
+bad_motor_mounts,engine clunk when i hit the gas and let off
+clutch_problem,clutch fluid leaking soft clutch pedal
+clutch_problem,clutch hydraulic leak
+clutch_problem,clutch pedal spongy fluid low
+clutch_problem,stick shift hard to get into gear
+clutch_problem,manual hard to shift into reverse
+clutch_problem,stick shift revs but doesnt go faster clutch
+transmission_problem,automatic transmission jerks when shifting
+transmission_problem,engine revs high truck doesnt go transmission
+transmission_problem,transmission fluid burnt and dark
+transmission_problem,red fluid under the middle transmission leak
+transmission_problem,automatic transmission wont go into gear
+transmission_problem,torque converter shudder like rumble strips
+transmission_problem,transmission shudder at 45 mph
+ac_problem,ac quit working no cold air
+ac_problem,ac water dripping inside under the dash
+ac_problem,fan blows but ac not cold
+ac_problem,ac clicking behind the dash changing temperature
+tire_balance,shake after getting new tires balanced
+tire_balance,shake comes and goes at certain speeds tires
+tire_balance,highway shake at certain speeds
+abs_sensor_problem,abs and brake light on brakes fine
+abs_sensor_problem,abs light wont go off
+abs_sensor_problem,traction control and abs light
+exhaust_leak,ticking passenger side when cold exhaust
+exhaust_leak,tick faster with rpm cold mornings exhaust manifold
+exhaust_leak,exhaust smell inside the truck
+power_steering_problem,whine louder as i turn the steering wheel
+power_steering_problem,groaning turning while parking power steering
+power_steering_problem,heavy stiff steering power steering
+overheating,overheating and heater blows cold
+overheating,losing coolant overheating radiator
+blower_motor_problem,vents blowing nothing fan
+blower_motor_problem,blower fan clicks and quits
+bad_alternator,lights dimmer and dimmer while driving
+bad_alternator,dash dims and radio cuts out driving at night alternator
+dead_battery,started after jumping it battery
+dead_battery,fast clicking wont start battery
+dead_battery,dim dome light nothing happens battery dead
+bad_starter,dead silence turning the key bright lights starter
+bad_starter,starter solenoid one click
+bad_starter,smoke from the starter when trying to start
+catalytic_converter_problem,loses power at high speed converter clogged
+electrical_ground_problem,electrical problems over bumps flicker

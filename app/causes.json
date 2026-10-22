@@ -12,6 +12,12 @@
       "Clean and tighten both terminals; white or green crust adds resistance. GM side-post bolts loosen and corrode often.",
       "Have it load tested free at a parts store; most batteries last 3 to 5 years.",
       "If it keeps dying, check for parasitic draw: under 50 mA with everything off (wait 30+ minutes for modules to sleep)."
+    ],
+    "signs": [
+      "Lights and radio are dimmer than usual",
+      "It started slower on cold mornings for a while",
+      "The battery is 3 to 5 years old or more",
+      "Power windows move slowly with the engine off"
     ]
   },
   "bad_starter": {
@@ -27,6 +33,12 @@
       "Single loud click with bright lights points to the starter solenoid or worn starter motor.",
       "Check the small trigger wire at the starter gets 12V while someone holds the key in START.",
       "GM trucks: the starter sits near the exhaust; heat soak can cause no-crank when hot. Check the main cable and ground strap to the block."
+    ],
+    "signs": [
+      "Sometimes it starts and sometimes it just clicks",
+      "Tapping under the vehicle near the starter gets it to start",
+      "A grinding sound when you turn the key",
+      "Smell of burning or smoke from under the vehicle after trying to start"
     ]
   },
   "bad_alternator": {
@@ -42,6 +54,12 @@
       "Turn on headlights, blower and rear defrost: voltage should stay above 13.2V at idle.",
       "Check the serpentine belt is tight and not slipping on the alternator pulley.",
       "Inspect the big output wire and fusible link at the alternator for corrosion or a loose nut."
+    ],
+    "signs": [
+      "A new battery keeps dying",
+      "Headlights get brighter when you rev the engine",
+      "A whining sound that rises with the engine",
+      "A burning rubber or hot wire smell"
     ]
   },
   "worn_brake_pads": {
@@ -57,6 +75,12 @@
       "Grinding means the backing plate is on the rotor; replace pads and check rotors right away.",
       "Check rotor thickness against the minimum stamped on the rotor.",
       "Heavy 2500HD trucks and big tires wear pads faster; use a severe-duty or ceramic HD pad."
+    ],
+    "signs": [
+      "A high squeal that stops when you press the brake harder",
+      "Takes a little longer to stop",
+      "Lots of dark dust on the front wheels",
+      "The brake pedal goes a bit lower than before"
     ]
   },
   "warped_rotors": {
@@ -72,6 +96,12 @@
       "Measure rotor runout with a dial indicator: over about 0.002 in. (0.05 mm) causes pulsing.",
       "Check for blue heat spots or hard glazed patches on the rotor face.",
       "Torque lug nuts in a star pattern to spec (GM 2500HD: 140 ft-lb); uneven impact-gun torque warps rotors."
+    ],
+    "signs": [
+      "Shaking only when you brake",
+      "The brake pedal pulses under your foot",
+      "Worse when stopping from highway speed or going downhill",
+      "Started after new pads or hard braking"
     ]
   },
   "brake_fluid_leak": {
@@ -87,6 +117,12 @@
       "Look for wet spots inside each wheel, at the calipers, and along the steel lines. GM steel brake lines rust through, especially above the fuel tank and frame rail.",
       "Pedal that slowly sinks to the floor while held at a stop points to a leak or a bad master cylinder.",
       "Do not drive. Have it towed or repaired in place."
+    ],
+    "signs": [
+      "Brake pedal feels soft or spongy",
+      "Brake warning light on the dash",
+      "Wet spot near a wheel",
+      "You have to pump the brakes"
     ]
   },
   "bad_wheel_bearing": {
@@ -102,6 +138,12 @@
       "Jack the wheel up, grab at 12 and 6 o'clock and rock it: any play or clunk means a worn bearing.",
       "Spin the wheel by hand and feel the coil spring or strut for roughness.",
       "GM 4WD hubs are a bolt-in unit; an ABS light can come on when the hub's sensor fails too. Lifts and big tires wear them faster."
+    ],
+    "signs": [
+      "A hum like an airplane that gets louder with speed",
+      "Noise changes when you curve one way",
+      "ABS light can come on",
+      "Steering feels a little loose"
     ]
   },
   "worn_serpentine_belt": {
@@ -117,6 +159,12 @@
       "Watch the tensioner arm with the engine running; it shouldn't bounce or flutter.",
       "Spin each pulley by hand with the belt off: any wobble or rough noise is a bad idler or tensioner.",
       "6.0L Vortec: check the routing sticker under the hood before removing it. Belt life is about 60,000 to 100,000 miles."
+    ],
+    "signs": [
+      "Squeal at startup or in rain",
+      "Squeal when the A/C turns on",
+      "Cracks you can see on the belt",
+      "Battery or steering problems if it slips"
     ]
   },
   "engine_misfire": {
@@ -132,6 +180,12 @@
       "Swap the coil from the misfiring cylinder to another one; if the misfire follows the coil, replace the coil.",
       "Pull plugs and check gap and condition. 6.0L Vortec spec is 0.040 in. Replace plug wires if they're burnt on the exhaust manifold.",
       "If plugs and coils are fine, do a compression test (healthy cylinders within about 10% of each other)."
+    ],
+    "signs": [
+      "Shaking at stop lights",
+      "Check engine light, sometimes flashing",
+      "Loss of power going uphill",
+      "Worse gas mileage"
     ]
   },
   "dirty_maf_sensor": {
@@ -147,6 +201,12 @@
       "Clean the sensor wire with MAF cleaner only (no touching, no other sprays) and let it dry fully.",
       "Check the air filter and that the intake tube clamps are tight with no cracks after the sensor.",
       "With a scan tool, MAF reading at warm idle on a 6.0L is roughly 5 to 8 g/s and should climb smoothly with RPM."
+    ],
+    "signs": [
+      "Hesitates or stumbles when you press the gas",
+      "Stalls right after starting",
+      "Worse gas mileage",
+      "Idle goes up and down"
     ]
   },
   "vacuum_leak": {
@@ -162,6 +222,12 @@
       "Spray carb cleaner or use a smoke test around gaskets; an idle change shows the leak.",
       "Check long term fuel trims: over +10% at idle that drops at higher RPM points to a vacuum leak.",
       "6.0L Vortec: check the PCV hoses, intake manifold gaskets, and the brake booster check valve grommet."
+    ],
+    "signs": [
+      "Idles high or rough",
+      "A hissing sound at idle",
+      "Check engine light for 'lean'",
+      "Brake pedal feels harder than usual"
     ]
   },
   "fuel_delivery_problem": {
@@ -177,6 +243,12 @@
       "Test fuel pressure at the rail Schrader valve: GM Vortec trucks want about 55 to 62 psi, holding steady under load.",
       "Replace the inline fuel filter on the frame rail if it's old; it's a cheap first step on these trucks.",
       "Check the fuel pump relay and fuse. A tap on the tank while cranking that makes it start points to a dying pump."
+    ],
+    "signs": [
+      "Takes a long time to start",
+      "Loses power going uphill or towing",
+      "Sputters at highway speed",
+      "Starts fine with a full tank but not a low one"
     ]
   },
   "overheating": {
@@ -192,6 +264,12 @@
       "Check coolant level in the reservoir and radiator, and look for leaks at hoses, water pump weep hole and radiator.",
       "Make sure the cooling fan clutch engages: a hot engine should make the fan roar and be hard to spin (engine OFF).",
       "Look for bubbles in the coolant or milky oil, which points to a head gasket. Normal 6.0L temp is about 195 to 220°F."
+    ],
+    "signs": [
+      "Temperature needle climbing toward hot",
+      "Steam from under the hood",
+      "Sweet smell",
+      "Heater blowing cold while the engine is hot"
     ]
   },
   "thermostat_stuck_open": {
@@ -207,6 +285,12 @@
       "Look for code P0128 (coolant temp below thermostat temp).",
       "Feel the upper radiator hose early in warm-up: if it warms right away with the engine cold, the thermostat is open.",
       "A thermostat is a cheap part; replace the gasket with it and bleed air from the system after."
+    ],
+    "signs": [
+      "Heater only blows lukewarm",
+      "Temperature needle stays low",
+      "Worse gas mileage in winter",
+      "Takes forever to warm up"
     ]
   },
   "transmission_problem": {
@@ -222,6 +306,12 @@
       "Read codes: P0700 range and P0894 (slipping) are common. Low fluid often causes the slipping.",
       "4L80E/4L60E: a slip between 1st and 2nd or flare on the 2-3 shift is common; a fluid and filter service is the first step.",
       "Bigger tires on a lifted truck add load; check the speedometer is recalibrated so the shift points are right."
+    ],
+    "signs": [
+      "Engine revs but you don't speed up",
+      "Hard or late shifts",
+      "A delay when you shift into drive",
+      "Red fluid under the middle of the vehicle"
     ]
   },
   "worn_cv_axle": {
@@ -237,6 +327,12 @@
       "Look at the rubber boots for tears and grease slung on the inside of the wheel and frame.",
       "Lifted 4WD trucks run the CV axles at a steeper angle, which wears boots and joints faster.",
       "A clunk on acceleration can be a worn inner joint; check for in-and-out play."
+    ],
+    "signs": [
+      "Clicking when turning in a parking lot",
+      "Grease slung inside the front wheel",
+      "Clunk when you speed up",
+      "Vibration when accelerating"
     ]
   },
   "worn_u_joint": {
@@ -252,6 +348,12 @@
       "Look for rust dust around the bearing caps, a sign the needle bearings are dry.",
       "Lifted trucks change the driveshaft angles, so U-joints wear much faster. Grease the zerk fittings if yours have them.",
       "Don't wait: a failed U-joint can drop the driveshaft at speed."
+    ],
+    "signs": [
+      "Clunk when shifting into drive or reverse",
+      "Squeak at low speed that matches the wheels",
+      "Vibration that grows with speed",
+      "Rust dust near the driveshaft joints"
     ]
   },
   "tire_balance": {
@@ -267,6 +369,12 @@
       "Look for a missing wheel weight, a bulge in the sidewall, or a mud-packed inner rim.",
       "Big off-road tires on a lifted truck often need a road-force balance to ride smooth.",
       "Check for a separated belt: run your hand over the tread for lumps or a wavy spot."
+    ],
+    "signs": [
+      "Steering wheel shakes at 55 to 70 mph",
+      "Smooths out above or below that speed",
+      "Started after new tires or hitting a curb",
+      "Uneven tire wear"
     ]
   },
   "alignment_problem": {
@@ -282,6 +390,12 @@
       "Look at tire wear: the inside or outside edge worn faster means camber or toe is off.",
       "After a lift, aligning is a must. Lifts change toe and camber, and worn tie rods or idler arms on GM trucks can't hold it.",
       "Check for a crooked steering wheel when driving straight on a flat road."
+    ],
+    "signs": [
+      "Pulls to one side on a flat road",
+      "Steering wheel sits crooked",
+      "Tires wear on one edge",
+      "Started after a pothole or curb"
     ]
   },
   "exhaust_leak": {
@@ -297,6 +411,12 @@
       "Listen under the truck for a puff or tick at each joint and the flex pipe; the leak often gets louder under load.",
       "A leak before the O2 sensor can cause false lean codes.",
       "If you smell exhaust in the cab, drive with windows open and get it fixed fast: carbon monoxide is deadly."
+    ],
+    "signs": [
+      "Louder than normal, like a rumble",
+      "Ticking when cold",
+      "Exhaust smell inside",
+      "Black soot near a pipe joint"
     ]
   },
   "oil_leak_low_oil": {
@@ -312,6 +432,12 @@
       "Find the leak: clean the area and check common spots like the valve covers, oil pan gasket, rear main seal and oil filter.",
       "6.0L Vortec: the oil pressure sensor behind the intake and the oil cooler lines leak often. Oil pressure about 40 to 60 psi at highway speed.",
       "A burning oil smell after driving usually means oil dripping onto the exhaust manifold."
+    ],
+    "signs": [
+      "Brown or black spots where you park",
+      "Burning oil smell after driving",
+      "Oil light flickers at stops",
+      "Blue smoke from the tailpipe"
     ]
   },
   "power_steering_problem": {
@@ -327,6 +453,12 @@
       "A whine that rises as you turn the wheel points to the pump or low fluid.",
       "Look for leaks at the hose fittings and the steering gear box on the frame.",
       "Big tires on a lifted truck strain the pump and the steering box; check the box mounting bolts and frame for cracks."
+    ],
+    "signs": [
+      "Whine when turning",
+      "Steering heavy at low speed",
+      "Red or clear fluid near the front",
+      "Groan when parking"
     ]
   },
   "ac_problem": {
@@ -342,6 +474,12 @@
       "Check the A/C fuse and relay; the clutch needs 12V to engage.",
       "Low side pressure about 25 to 45 psi and high side 150 to 250 psi on a warm day is normal; low readings mean a leak.",
       "GM trucks: a clicking behind the dash is a blend door actuator; it can cause warm air on one side."
+    ],
+    "signs": [
+      "Air is cool but not cold",
+      "Cold on the highway, warm at stop lights",
+      "A/C works then stops",
+      "Clicking or loud noise when the A/C turns on"
     ]
   },
   "electrical_ground_problem": {
@@ -357,6 +495,12 @@
       "Do a voltage drop test: under 0.2V between the battery negative and the engine block while cranking.",
       "GM trucks of this era have known instrument cluster stepper motor failures that make gauges stick or jump.",
       "Look for chafed wires where the harness rubs on the frame, especially after a lift."
+    ],
+    "signs": [
+      "Lights flicker",
+      "Gauges jump or drop",
+      "Random warning lights",
+      "Problems come and go with bumps"
     ]
   },
   "worn_suspension": {
@@ -372,6 +516,12 @@
       "Jack up the front and rock each wheel at 9 and 3 o'clock to check tie rods, and at 12 and 6 for ball joints.",
       "GM 2500HD idler arm and pitman arm wear out often and cause loose steering; a lift makes it worse.",
       "Check torsion bar adjusters and sway bar links and bushings for clunks over bumps."
+    ],
+    "signs": [
+      "Clunks over bumps",
+      "Bouncy or floaty ride",
+      "Nose dives when braking",
+      "Uneven tire wear"
     ]
   },
   "timing_chain_problem": {
@@ -387,6 +537,12 @@
       "Read codes: P0008, P0009, P0016, P0017 (cam/crank correlation) point to stretch.",
       "Check oil level and condition; low or old oil makes chains and tensioners wear faster.",
       "A shop can check cam timing with a scan tool (cam/crank correlation values) before opening the engine."
+    ],
+    "signs": [
+      "Rattle for a few seconds at startup",
+      "Check engine light",
+      "Rough running",
+      "Rattle gets longer over time"
     ]
   },
   "head_gasket_failure": {
@@ -402,6 +558,12 @@
       "Pull the dipstick and check under the oil cap: milky, light brown sludge means coolant in the oil.",
       "Coolant level keeps dropping with no outside leak, or bubbles in the coolant tank while running.",
       "A shop can do a cooling system pressure test, a combustion leak (block) test, and a compression or leak-down test."
+    ],
+    "signs": [
+      "White smoke that smells sweet",
+      "Coolant keeps disappearing",
+      "Milky oil or oil cap",
+      "Overheating"
     ]
   },
   "catalytic_converter_problem": {
@@ -417,6 +579,12 @@
       "Rotten egg (sulfur) smell from the exhaust, or a rattle under the vehicle from the converter's insides breaking up.",
       "Loss of power going uphill and a glowing red-hot converter mean it's clogged.",
       "A shop can test exhaust back pressure or temperature before and after the converter."
+    ],
+    "signs": [
+      "Rotten egg smell",
+      "Check engine light after a misfire",
+      "Feels choked or weak going uphill",
+      "Rattle under the middle of the vehicle"
     ]
   },
   "evap_leak": {
@@ -432,6 +600,180 @@
       "Read codes: P0455 (large leak), P0442/P0456 (small), P0446 (vent), P0496 (purge valve).",
       "Smell for raw gas near the tank or filler neck after filling up.",
       "A shop can smoke-test the EVAP system to find small hose leaks."
+    ],
+    "signs": [
+      "Light came on right after getting gas",
+      "Gas cap doesn't click",
+      "Gas smell near the tank",
+      "Pump clicks off early when filling"
+    ]
+  },
+  "sticking_brake_caliper": {
+    "name": "Sticking brake caliper",
+    "severity": "high",
+    "diy": "Medium",
+    "plain": "One brake isn't letting go all the way, so it keeps rubbing. That wheel gets very hot and can smell like burning.",
+    "drive": "Only a short, gentle trip to a shop. A dragging brake overheats and can make the brakes fade.",
+    "todo": "Ask a shop to check the brakes on the wheel that's hot or smelly. Often it's a caliper slide pin or the caliper itself.",
+    "summary": "A caliper piston or its slide pins are seized, so the pad keeps pressure on the rotor. Common on older vehicles and in salty areas.",
+    "checks": [
+      "After a drive, carefully hold your hand near each wheel (don't touch): one much hotter than the others is the sticking one.",
+      "Look for much more brake dust on one wheel than the others.",
+      "Pulling to one side while driving or braking, and a burning smell from one corner.",
+      "A shop checks the slide pins (should move freely with grease) and that the piston retracts."
+    ],
+    "signs": [
+      "One wheel is much hotter than the others",
+      "Burning smell from one corner",
+      "Pulls to one side",
+      "Much more brake dust on one wheel"
+    ]
+  },
+  "bad_motor_mounts": {
+    "name": "Worn engine or transmission mounts",
+    "severity": "medium",
+    "diy": "Medium",
+    "plain": "Rubber mounts hold the engine in place. When they wear out, the engine rocks, so you feel thumps when shifting and extra shaking at stops.",
+    "drive": "Yes, but get it checked. A badly broken mount can let the engine move too far and damage hoses or wires.",
+    "todo": "Ask a shop to check the motor mounts. Tell them about the clunk when shifting into drive or reverse.",
+    "summary": "Engine and transmission mounts are rubber blocks that crack and collapse with age, letting the engine move and transmit vibration.",
+    "checks": [
+      "Have someone watch the engine (hood open, parking brake on, foot on the brake) while you shift between drive and reverse: a big jump means a bad mount.",
+      "Look for cracked or separated rubber on the mounts.",
+      "Vibration through the seat and steering wheel at idle in drive that smooths out in neutral.",
+      "A clunk when you step on the gas or let off quickly."
+    ],
+    "signs": [
+      "Thump when shifting into drive or reverse",
+      "Extra vibration at stop lights",
+      "Clunk when you hit the gas",
+      "Engine visibly jumps when shifting"
+    ]
+  },
+  "blower_motor_problem": {
+    "name": "Heater / A/C fan problem",
+    "severity": "low",
+    "diy": "Easy",
+    "plain": "The fan that pushes air out of the vents is failing. Most often the fan only works on the highest setting, or not at all.",
+    "drive": "Yes. It only affects comfort, but you need it to defrost the windshield, so fix it before winter or rain.",
+    "todo": "If it only works on high, the 'blower motor resistor' is bad: a cheap part that's often easy to swap. If nothing works, check the fuse first.",
+    "summary": "The blower motor resistor (or control module) fails, so lower speeds stop working; a worn blower motor squeals or stops.",
+    "checks": [
+      "Fan only works on the highest setting: the blower resistor is the usual cause.",
+      "No fan at all: check the blower fuse, then the motor (sometimes a tap on the motor makes it run).",
+      "A squeal, rattle or ticking from behind the glove box with the fan on: leaves in the fan or a worn motor.",
+      "Weak airflow on every setting: check the cabin air filter."
+    ],
+    "signs": [
+      "Fan only works on high",
+      "No air from the vents",
+      "Noise from behind the glove box",
+      "Weak airflow"
+    ]
+  },
+  "clutch_problem": {
+    "name": "Clutch problem (stick shift)",
+    "severity": "medium",
+    "diy": "Shop",
+    "plain": "On a manual (stick shift) vehicle, the clutch connects the engine to the wheels. When it wears out, the engine revs but the vehicle doesn't speed up, or gears grind.",
+    "drive": "Short trips if it still moves. If it slips badly or won't go into gear, it can leave you stranded.",
+    "todo": "Ask a shop to check the clutch. Tell them if it slips, grinds, or the pedal feels different.",
+    "summary": "A worn clutch disc slips; a failing hydraulic master or slave cylinder causes a soft pedal and grinding; a bad throwout bearing makes noise when the pedal is up or down.",
+    "checks": [
+      "Slipping test: in a high gear at low speed, press the gas firmly. If RPM jumps but speed doesn't, the clutch is slipping.",
+      "Check the clutch fluid (often shares the brake fluid reservoir) for low level or leaks.",
+      "Pedal feels soft, sticks to the floor, or engages very high: hydraulic problem.",
+      "A burning smell (like burnt toast) after hills or traffic means it's slipping."
+    ],
+    "signs": [
+      "Engine revs but you don't speed up (stick shift)",
+      "Grinding when shifting gears",
+      "Pedal feels soft or sticks",
+      "Burning smell after hills"
+    ]
+  },
+  "low_tire_pressure": {
+    "name": "Low tire pressure or slow leak",
+    "severity": "medium",
+    "diy": "Easy",
+    "plain": "One or more tires are low on air, often from a nail or a slow leak. The tire light comes on and the vehicle may pull slightly.",
+    "drive": "Yes, slowly, to the nearest air pump. Driving on a very low tire can ruin it and is unsafe.",
+    "todo": "Check all tires (the right number is on a sticker inside the driver's door) and add air. If one keeps losing air, a tire shop can plug or patch it, often cheaply.",
+    "summary": "Tires lose about 1 psi a month and more in cold weather; nails, bad valve stems, and rusty rims cause slow leaks.",
+    "checks": [
+      "Check pressure with a gauge when tires are cold; match the door sticker, not the number on the tire.",
+      "Look for nails or screws; spray soapy water on the tread and valve stem and watch for bubbles.",
+      "Tire light comes on in cold mornings and goes off later: tires are just a little low; add air.",
+      "A tire light that flashes for a minute then stays on means a tire pressure sensor problem, not low air."
+    ],
+    "signs": [
+      "Tire light on, especially on cold mornings",
+      "A tire looks flatter than the others",
+      "Pulls slightly to one side",
+      "Steering feels heavier"
+    ]
+  },
+  "abs_sensor_problem": {
+    "name": "ABS / wheel speed sensor problem",
+    "severity": "medium",
+    "diy": "Medium",
+    "plain": "A sensor at one wheel tells the brakes how fast that wheel spins. When it fails, the ABS and traction lights come on.",
+    "drive": "Yes. Your normal brakes still work, but the anti-lock brakes are off, so brake gently on slick roads.",
+    "todo": "Get the ABS code read (many parts stores can't read ABS codes; a shop can). Often it's one wheel speed sensor or its wire.",
+    "summary": "A wheel speed sensor, its wiring, or a rusty tone ring fails. Often tied to a wheel bearing on vehicles where the sensor is built into the hub.",
+    "checks": [
+      "ABS and traction control lights on together is the classic sign.",
+      "A shop reads the ABS code to see which wheel; check that wheel's sensor wire for damage.",
+      "Speedometer acting erratic can come from the same sensors on some vehicles.",
+      "If the brake light is also on, check the brake fluid level too."
+    ],
+    "signs": [
+      "ABS light on",
+      "Traction control light on too",
+      "Speedometer acting strange",
+      "Brakes feel normal otherwise"
+    ]
+  },
+  "key_ignition_problem": {
+    "name": "Key, key fob or ignition switch problem",
+    "severity": "medium",
+    "diy": "Easy",
+    "plain": "The vehicle doesn't recognize the key, or the key won't turn. Very often it's just a dead key fob battery or a locked steering wheel.",
+    "drive": "If it starts, yes. A failing ignition switch can stall the engine, so get it checked if it ever shuts off while driving.",
+    "todo": "Try these first: wiggle the steering wheel while turning the key, try your spare key, and replace the key fob battery (a few dollars).",
+    "summary": "Push-button cars can't detect a fob with a dead battery; worn keys or ignition cylinders won't turn; a bad ignition switch can cut power.",
+    "checks": [
+      "Key won't turn: turn the steering wheel left and right while turning the key (the steering lock is on).",
+      "Push-button start with 'key not detected': hold the fob right against the start button while pressing it, then replace the fob battery.",
+      "Try the spare key. If the spare works, the first key is the problem.",
+      "Dash lights flicker or the engine cuts off when you bump the key: the ignition switch is worn."
+    ],
+    "signs": [
+      "Key won't turn",
+      "'Key not detected' message",
+      "Remote buttons work only up close",
+      "Dash flickers when you bump the key"
+    ]
+  },
+  "heater_core_problem": {
+    "name": "Leaking heater core",
+    "severity": "medium",
+    "diy": "Shop",
+    "plain": "A small radiator behind the dashboard heats the cab. When it leaks, the windows fog up, it smells sweet inside, and the floor can get wet.",
+    "drive": "Short trips, yes. But watch the temperature gauge, because it's losing coolant, and the fog on the windows can block your view.",
+    "todo": "Ask a shop to pressure test the cooling system. Tell them about the sweet smell inside and the foggy windows.",
+    "summary": "The heater core leaks coolant into the cab, often from old coolant. Replacing it can mean removing the dashboard.",
+    "checks": [
+      "A sweet, syrupy smell inside the cab with the heat on.",
+      "A greasy film on the inside of the windshield that's hard to wipe off.",
+      "Wet or damp carpet on the passenger side floor.",
+      "Coolant level dropping with no puddle under the vehicle."
+    ],
+    "signs": [
+      "Sweet smell inside",
+      "Windows fog up with a greasy film",
+      "Wet carpet on the passenger side",
+      "Losing coolant with no puddle"
     ]
   }
 }

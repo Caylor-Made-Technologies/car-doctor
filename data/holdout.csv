@@ -1,0 +1,75 @@
+label,text
+dead_battery,my car wont start this morning and everything is really dim
+dead_battery,it just goes click click click real fast
+bad_starter,the lights all work fine but when i turn it i just hear one clunk
+bad_alternator,the little battery picture lit up on my dash while i was driving to work
+bad_alternator,i put in a brand new battery last month and its already dead again
+worn_brake_pads,my brakes are making a terrible screeching sound
+worn_brake_pads,it sounds like metal scraping when i stop at red lights
+warped_rotors,the steering wheel wiggles when i slow down on the freeway
+brake_fluid_leak,my brake pedal feels mushy and goes down too far
+bad_wheel_bearing,theres a loud hum from my tire that gets worse the faster i drive
+worn_serpentine_belt,it squeals really loud for a minute when i first start it
+engine_misfire,the car is shaking and the engine light is blinking
+dirty_maf_sensor,when i press the gas it kind of stutters before it goes
+vacuum_leak,i can hear a hissing sound from under the hood when its idling
+fuel_delivery_problem,it turns over and over but wont actually start
+overheating,the temperature needle is all the way up to H
+thermostat_stuck_open,my heat never gets hot it just blows kind of warm
+transmission_problem,it feels like it slips when it changes gears
+transmission_problem,the engine gets loud but the car doesnt go faster and its an automatic
+worn_cv_axle,it makes a clicking sound when i turn into parking spots
+worn_u_joint,theres a clunk under the truck when i put it in drive and a squeak when rolling slow
+tire_balance,the car shakes once i get over 60
+alignment_problem,i have to hold the wheel crooked to go straight
+exhaust_leak,my car got really loud like a motorcycle all of a sudden
+oil_leak_low_oil,theres a dark spot on my driveway under the engine
+power_steering_problem,its really hard to turn the wheel when parking and it whines
+ac_problem,the air conditioner only blows warm air now
+electrical_ground_problem,my dashboard lights keep flickering on and off
+worn_suspension,it clunks every time i go over a speed bump
+timing_chain_problem,when i start it in the morning it rattles for a couple seconds
+head_gasket_failure,white smoke keeps coming out the back and i keep adding coolant
+catalytic_converter_problem,it smells like rotten eggs when i drive
+evap_leak,my check engine light came on right after i filled up with gas
+sticking_brake_caliper,one of my wheels smells like burning and is super hot
+bad_motor_mounts,the whole car jerks with a thump when i shift into reverse
+blower_motor_problem,the fan only blows when i turn it all the way up
+clutch_problem,my stick shift car revs up but doesnt really go and smells burnt
+low_tire_pressure,the tire light with the exclamation point came on
+abs_sensor_problem,my abs light and traction light both came on
+key_ignition_problem,my key wont turn in the ignition at all
+heater_core_problem,my windows keep fogging up and it smells sweet inside the car
+dead_battery,i left my lights on and now it wont start
+bad_starter,i have to hit the starter with a hammer to get it going
+bad_alternator,my headlights get dim when im stopped and bright when i rev it
+worn_brake_pads,brakes squeak when i come to a stop
+bad_wheel_bearing,a growling noise from the front that changes when i turn
+engine_misfire,it runs rough and shakes when i am stopped
+overheating,steam is coming out from under the hood
+transmission_problem,it takes a long time to go into drive
+tire_balance,my steering wheel vibrates on the highway
+alignment_problem,the car keeps drifting to the left
+oil_leak_low_oil,the oil light keeps flickering when i stop
+power_steering_problem,steering wheel whines when i turn it
+ac_problem,the ac isnt cold anymore
+worn_suspension,the car bounces a lot after bumps
+head_gasket_failure,the oil looks milky on the dipstick
+evap_leak,my gas cap doesnt click and the engine light is on
+low_tire_pressure,one of my tires looks flat
+key_ignition_problem,my push to start says key not detected
+heater_core_problem,the passenger floor is wet and smells sweet
+blower_motor_problem,no air comes out of my vents
+sticking_brake_caliper,my car pulls to one side and that wheel is really hot
+bad_motor_mounts,my car shakes a lot at red lights but not in park
+clutch_problem,it grinds when i try to shift gears in my manual
+abs_sensor_problem,the abs light came on and wont go off
+catalytic_converter_problem,my car feels like it cant breathe going uphill and smells like eggs
+fuel_delivery_problem,it sputters and loses power on the highway
+dirty_maf_sensor,it hesitates when i take off from a stop
+vacuum_leak,idle is too high and theres a hiss
+worn_cv_axle,clicking from the front wheel on sharp turns
+exhaust_leak,ticking sound when its cold that goes away
+thermostat_stuck_open,the temp gauge never goes up to the middle
+timing_chain_problem,rattling noise right when i start it then it stops
+electrical_ground_problem,my gauges jump around and the radio cuts out

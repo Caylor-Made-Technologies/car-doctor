@@ -22,10 +22,12 @@
   <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
+  <script src="sounds.js" defer></script>
   <script src="features.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div id="circuits" class="circuits" aria-hidden="true"></div>
 
   <!-- Icon sprite: drawn once, reused with <use>. All icons are decorative. -->
   <svg class="sprite" aria-hidden="true" focusable="false">
@@ -232,6 +234,7 @@
 
   <nav aria-label="Sections">
   <div class="tabbar" role="tablist" aria-label="Sections">
+    <span class="tab-indicator" aria-hidden="true"></span>
     <button role="tab" id="tabbtn-chat" data-tab="chat" aria-controls="tab-chat" aria-selected="true">
       <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Chat</span>
     </button>

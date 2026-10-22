@@ -83,11 +83,14 @@ for (const [canonical, variants] of Object.entries(SYNONYM_GROUPS)) {
   for (const variant of variants) SYNONYMS.set(variant, canonical);
 }
 
-// Very light stemming: chop common endings so "leaking" ~ "leak".
+// Very light stemming: chop common endings so "leaking" ~ "leak" and
+// "rattling" ~ "rattle".
 function stem(word) {
-  if (word.endsWith("ing") && word.length > 5) return word.slice(0, -3);
-  if (word.endsWith("ed") && word.length > 4) return word.slice(0, -2);
-  if (word.endsWith("s") && word.length > 3 && !word.endsWith("ss")) return word.slice(0, -1);
+  if (word.endsWith("ing") && word.length > 5) word = word.slice(0, -3);
+  else if (word.endsWith("ed") && word.length > 4) word = word.slice(0, -2);
+  else if (word.endsWith("s") && word.length > 3 && !word.endsWith("ss")) word = word.slice(0, -1);
+  // Drop a final "e" so "rattle"/"rattling" and "drive"/"driving" match.
+  if (word.endsWith("e") && word.length > 4) word = word.slice(0, -1);
   return word;
 }
 
@@ -158,6 +161,7 @@ const KEYS = {
   training: "cardoctor.training",
   theme: "cardoctor.theme",
   reminders: "cardoctor.reminders",
+  pending: "cardoctor.lastGuess",
 };
 
 function load(key, fallback) {
@@ -336,6 +340,7 @@ function showTab(name, { focus = false } = {}) {
     }
   }
   currentTab = name;
+  if (typeof moveTabIndicator === "function") moveTabIndicator();
   document.getElementById("composer").hidden = name !== "chat";
   const main = document.getElementById("main");
   main.scrollTop = 0;
@@ -358,7 +363,7 @@ const DETAILS = [
   { text: "Only when cold", keys: ["cold"] },
 ];
 
-const session = { messages: [], resultNode: null, done: false, busy: false };
+const session = { messages: [], shown: [], resultNode: null, done: false, busy: false, asked: new Set(), last: null };
 
 function sessionText() {
   return session.messages.join(" ");
@@ -396,8 +401,15 @@ function vehicleName() {
 function welcome() {
   document.getElementById("chat").replaceChildren();
   session.messages = [];
+  session.shown = [];
   session.resultNode = null;
   session.done = false;
+  session.asked = new Set();
+  session.last = null;
+  stopSound();
+  // "Welcome back! Last time I guessed ... Did I get it right?"
+  const checkIn = checkInBubble();
+  if (checkIn) addMsg("bot", checkIn);
   const name = vehicleName();
   const hello = addMsg("bot",
     el("p", { class: "lead" }, name ? `What's going on with your ${name}?` : "What's going on with your vehicle?"),
@@ -413,7 +425,7 @@ function welcome() {
     addMsg("bot", el("p", {}, el("strong", {}, "Heads up: "), `${r.title} is ${reminderStatus(r).text.toLowerCase()}.`),
       chipRow(["Open reminders"], () => showTab("reminders")));
   }
-  scrollChat(hello); // start at the top of the greeting, not the bottom
+  scrollChat(checkIn ? checkIn.parentElement : hello); // start at the top, not the bottom
 }
 
 // Shows the "thinking" dots, then removes them.
@@ -425,14 +437,35 @@ async function thinking(ms) {
   dots.remove();
 }
 
-async function sendMessage(text) {
+// Extra weight on top of the model's own scores:
+//   +3 for a cause tied to a trouble code you typed,
+//   a little for problems your vehicle is known for,
+//   a little for problems you've confirmed before with similar words.
+function computeBoosts() {
+  const boosts = vehicleBoosts();
+  for (const code of findCodes(sessionText())) {
+    const info = CODES[code];
+    if (info && info.related) boosts[info.related] = (boosts[info.related] || 0) + 3;
+  }
+  for (const [label, extra] of Object.entries(personalMatch(sessionText()).boosts)) {
+    boosts[label] = (boosts[label] || 0) + extra;
+  }
+  return boosts;
+}
+
+// `shown` is what appears in the chat bubble when it differs from the words
+// sent to the model (e.g. a picked option or a quick-question answer).
+async function sendMessage(text, shown) {
   text = text.trim();
   if (!text || !MODEL || session.busy) return;
   session.busy = true;
-  addMsg("user", text);
+  addMsg("user", shown || text);
   session.messages.push(text);
+  session.shown.push(shown || text);
 
+  document.body.classList.add("thinking"); // circuits light up while it "thinks"
   await thinking(650);
+  document.body.classList.remove("thinking");
 
   // Explain any codes in this message.
   const newCodes = findCodes(text);
@@ -443,25 +476,30 @@ async function sendMessage(text) {
     }));
   }
 
-  // Every code mentioned so far adds +3 to its related cause, and problems
-  // your vehicle is known for get a small extra weight.
-  const boosts = vehicleBoosts();
-  for (const code of findCodes(sessionText())) {
-    const info = CODES[code];
-    if (info && info.related) boosts[info.related] = (boosts[info.related] || 0) + 3;
-  }
-
   // Check the new message on its own: earlier messages shouldn't hide that
   // the model understood nothing in this one.
   const understood = predict(text).recognized > 0 || newCodes.some((code) => CODES[code]);
   if (!understood) {
     session.messages.pop(); // don't keep text the model can't use
+    session.shown.pop();
     addMsg("bot", el("p", {}, "I didn't catch any symptoms there. What do you hear, feel or smell, and when does it happen?"),
       el("p", { class: "fineprint" }, "For example: \"squeal when I start it on cold mornings\"."));
     session.busy = false;
     return;
   }
-  showResults(predict(sessionText(), boosts));
+  showResults(predict(sessionText(), computeBoosts()));
+  session.busy = false;
+}
+
+// A quick-question answer. "No / not sure" answers add no words; we just
+// re-score so the next question (if any) can show.
+async function answerQuestion(label, words) {
+  if (words) { sendMessage(words, label); return; }
+  if (session.busy) return;
+  session.busy = true;
+  addMsg("user", label);
+  await thinking(400);
+  showResults(predict(sessionText(), computeBoosts()));
   session.busy = false;
 }
 
@@ -521,9 +559,15 @@ function showResults(result) {
     el("h2", { class: "result-title" }, cause.name),
     el("div", { class: "badges" }, severityBadge(cause.severity), el("span", { class: "pill" }, DIY[cause.diy] || cause.diy)),
     dial(best.prob),
+    CAUSE_SOUND[best.label] ? el("div", { class: "sound-row" }, soundButton(CAUSE_SOUND[best.label]),
+      el("span", { class: "fineprint" }, "Hear roughly what it sounds like")) : null,
+    seenBefore(best.label),
     knownOnVehicle(best.label),
     plainBlock(cause, seen),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
+    cause.signs ? el("details", { class: "more-checks signs" },
+      el("summary", {}, "Other signs of this"),
+      el("ul", { class: "checks" }, ...cause.signs.map((x) => el("li", {}, explain(x, seen))))) : null,
     el("details", { class: "more-checks" },
       el("summary", {}, `For DIYers: ${cause.checks.length} things to check`),
       el("p", { class: "summary" }, explain(cause.summary, seen)),
@@ -548,10 +592,14 @@ function showResults(result) {
         el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, explain(x, altSeen)))))));
   }
 
-  // Unsure, or the description is too short to trust? Ask for more detail
-  // with chips the user hasn't already covered.
+  // Unsure, or the description is too short to trust? Ask one simple
+  // question that separates the top guesses. If none fits, fall back to
+  // "when does it happen?" chips the user hasn't covered yet.
   const usefulWords = new Set(tokenize(sessionText()).filter((t) => !t.includes("_") && MODEL.vocab[t] !== undefined));
-  if (best.prob < 0.6 || usefulWords.size < 2) {
+  const question = pickQuestion(top, usefulWords.size);
+  if (question) {
+    card.append(questionBlock(question));
+  } else if (best.prob < 0.6 || usefulWords.size < 2) {
     const said = new Set(tokenize(sessionText()));
     const missing = DETAILS.filter((d) => !d.keys.some((k) => said.has(k))).map((d) => d.text);
     card.append(el("div", { class: "followup" },
@@ -566,23 +614,27 @@ function showResults(result) {
 
   addMsg("result", card);
   session.resultNode = card;
+  session.last = best.label;
+  rememberGuess(best.label); // so we can check in next time
+  flashCircuits();
 }
 
-function addTraining(label) {
+function addTraining(label, text = sessionText()) {
   const list = load(KEYS.training, []);
-  list.push({ label, text: sessionText() });
+  list.push({ label, text, date: localDate() });
   save(KEYS.training, list);
   renderTraining();
 }
 
 function confirmCause(label, card) {
   celebrate(card);
+  clearGuess();
   addTraining(label);
   session.done = true;
   const profile = load(KEYS.profile, {});
   addLogEntry({ date: localDate(), mileage: profile.mileage || "", note: `${lookupCause(label).name}: ${sessionText()}` });
   card.querySelector(".actions").remove();
-  addMsg("bot", el("p", {}, "Saved to your repair log and training examples. Thanks, that helps the model learn."),
+  addMsg("bot", el("p", {}, "Yay! 🎉 Saved to your repair log, and I'll remember it for next time."),
     chipRow(["New problem", "Open my log"], (pick) => (pick === "New problem" ? welcome() : showTab("log"))));
 }
 
@@ -596,6 +648,7 @@ function pickOther(card) {
   const saveBtn = el("button", { class: "btn primary", type: "button", onclick: () => {
     if (!select.value) { select.focus(); return; }
     addTraining(select.value);
+    clearGuess();
     session.done = true;
     actions.remove();
     addMsg("bot", el("p", {}, `Got it: ${CAUSES[select.value].name}. Saved as a training example.`),
@@ -1036,10 +1089,13 @@ function wireUp() {
   });
 
   const input = document.getElementById("msgInput");
+  const sendButton = document.getElementById("sendBtn");
+  input.addEventListener("input", () => sendButton.classList.toggle("ready", Boolean(input.value.trim())));
   document.getElementById("composer").addEventListener("submit", (e) => {
     e.preventDefault();
     sendMessage(input.value);
     input.value = "";
+    sendButton.classList.remove("ready");
   });
 
   const codeInput = document.getElementById("codeInput");
@@ -1112,6 +1168,7 @@ function wireUp() {
 
 async function init() {
   applyTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
+  buildCircuits();
   wireUp();
   renderProfile();
   renderLog();

@@ -165,43 +165,53 @@ function setupLookup() {
 // Each option is [button label, words sent to the model].
 // Words starting with "__" show a friendly answer instead of diagnosing.
 const PICKER = [
-  { id: "noise", emoji: "🔊", label: "A noise", q: "What does it sound like?", where: true, options: [
-    ["Grinding", "grinding noise"], ["Squealing", "squealing noise"], ["Clicking", "clicking noise"],
-    ["Humming / growling", "humming noise"], ["Ticking", "ticking noise"], ["Clunking", "clunk"],
-    ["Rattling", "rattle"], ["Whining", "whining noise"], ["Hissing", "hissing noise"]] },
+  { id: "noise", emoji: "🔊", label: "A noise", q: "What does it sound like? Tap 🔊 to hear examples.", where: true, options: [
+    ["Grinding", "grinding noise", "grind"], ["Squealing", "squealing noise", "squeal"], ["Clicking", "clicking noise", "cv_click"],
+    ["Humming / growling", "humming noise", "hum"], ["Ticking", "ticking noise", "tick"], ["Clunking", "clunk", "clunk"],
+    ["Rattling", "rattle", "rattle"], ["Whining", "whining noise", "whine"], ["Hissing", "hissing noise", "hiss"]] },
   { id: "shake", emoji: "📳", label: "Shaking", q: "What shakes?", where: false, options: [
     ["Steering wheel", "steering wheel shakes"], ["Whole vehicle", "whole truck shakes vibration"],
-    ["Brake pedal pulses", "brake pedal pulses"], ["Engine at idle", "engine shakes at idle rough"]] },
+    ["Brake pedal pulses", "brake pedal pulses"], ["Engine, at a stop", "shakes at idle in drive rough"]] },
   { id: "smell", emoji: "👃", label: "A smell", q: "What does it smell like?", where: false, options: [
-    ["Burning oil", "burning oil smell"], ["Sweet, like syrup", "sweet smell coolant leak"],
+    ["Burning oil", "burning oil smell"], ["Sweet, like syrup", "sweet smell coolant"],
     ["Rotten eggs", "rotten egg smell"], ["Gasoline", "gas smell near the tank"],
-    ["Exhaust inside", "exhaust smell in the cab"], ["Burning electrical", "burning electrical smell battery light"],
-    ["Musty vents", "musty smell from the ac vents"]] },
+    ["Exhaust inside", "exhaust smell in the cab"], ["Burning, from one wheel", "burning smell from one wheel hot"],
+    ["Burnt toast (stick shift)", "burnt smell clutch manual"], ["Musty vents", "musty smell from the ac vents"]] },
   { id: "light", emoji: "💡", label: "Warning light", q: "Which light is on?", where: false, options: [
-    ["Check engine (flashing)", "check engine light flashing misfire"], ["Check engine (steady)", "check engine light on runs fine gas cap"],
+    ["Check engine (flashing)", "check engine light flashing misfire"], ["Check engine (steady)", "check engine light on"],
     ["Battery", "battery light on while driving"], ["Oil", "oil light on low oil pressure"],
     ["Temperature", "temperature light on running hot"], ["Brake", "brake warning light"],
-    ["ABS", "abs light on wheel"]] },
-  { id: "nostart", emoji: "🔑", label: "Won't start", q: "What happens when you turn the key?", where: false, options: [
-    ["Fast clicking", "clicks fast wont start dim lights"], ["One loud click", "one click no crank lights bright"],
-    ["Cranks, won't start", "cranks but wont start"], ["Cranks slowly", "slow crank"],
-    ["Nothing at all", "nothing happens no lights dead"]] },
+    ["ABS / traction", "abs light and traction light on"], ["Tire pressure", "tire pressure light on"]] },
+  { id: "nostart", emoji: "🔑", label: "Won't start", q: "What happens when you turn the key or press Start? Tap 🔊 to compare.", where: false, options: [
+    ["Fast clicking", "clicks fast wont start dim lights", "fast_click"], ["One loud click", "one click no crank lights bright", "one_click"],
+    ["Cranks, won't catch", "cranks but wont start", "crank"], ["Cranks slowly", "slow crank", "slow_crank"],
+    ["Key won't turn / not detected", "key wont turn key not detected"], ["Nothing at all", "nothing happens no lights dead"]] },
   { id: "leak", emoji: "💧", label: "A leak", q: "What color is the fluid?", where: false, options: [
     ["Brown or black", "oil leak brown drip under the engine"], ["Red", "red fluid leaking"],
     ["Green, orange or pink", "coolant leak green sweet smell"], ["Clear and slippery", "clear slippery fluid leaking near the wheel brake"],
-    ["Clear water, front", "__ac_water"], ["Blue", "__washer"]] },
+    ["Wet carpet inside", "wet carpet passenger side sweet smell"], ["Clear water, front", "__ac_water"], ["Blue", "__washer"]] },
   { id: "hot", emoji: "🌡️", label: "Running hot", q: "What's happening?", where: false, options: [
     ["Gauge in the red", "temperature gauge in the red"], ["Steam from the hood", "steam from under the hood"],
-    ["Losing coolant", "losing coolant"], ["White smoke, milky oil", "white smoke milky oil"],
-    ["Heater blows cold", "heater blows cold"]] },
+    ["Losing coolant", "losing coolant"], ["White smoke, milky oil", "white smoke milky oil"]] },
+  { id: "air", emoji: "🌬️", label: "Heat & A/C", q: "What's the heat or A/C doing?", where: false, options: [
+    ["A/C blows warm", "ac blows warm air"], ["Fan only works on high", "fan only works on high"],
+    ["No air from the vents", "no air from the vents"], ["Heat is weak", "heater blows lukewarm temp gauge low"],
+    ["Windows fog, sweet smell", "windows fog sweet smell inside"]] },
+  { id: "rough", emoji: "⚡", label: "Runs rough", q: "What's the engine doing?", where: false, options: [
+    ["Shakes at idle", "rough idle shaking"], ["Stalls", "stalls"], ["Hesitates when I press the gas", "hesitates when accelerating"],
+    ["No power uphill", "loses power uphill"], ["Revs but won't go faster", "engine revs but doesnt go faster"]] },
   { id: "brakes", emoji: "🛑", label: "Brakes", q: "What do the brakes do?", where: false, options: [
-    ["Squeal", "squealing when braking"], ["Grind", "grinding when braking"],
+    ["Squeal", "squealing when braking", "squeal"], ["Grind", "grinding when braking", "grind"],
     ["Pedal pulses", "brake pedal pulses when stopping"], ["Soft or sinking pedal", "brake pedal soft sinks to the floor"],
-    ["Pulls to one side", "pulls when braking"]] },
-  { id: "steer", emoji: "🛞", label: "Steering", q: "What's the steering doing?", where: false, options: [
+    ["Pulls to one side", "pulls when braking one wheel hot"]] },
+  { id: "tires", emoji: "🛞", label: "Tires", q: "What's going on with the tires?", where: false, options: [
+    ["Tire light on", "tire pressure light on"], ["One looks low", "tire looks low"],
+    ["Wearing on one edge", "tires wearing on the edge"], ["Bulge on the side", "bulge on the side of the tire shakes"],
+    ["Shakes at highway speed", "shakes at highway speed tires"]] },
+  { id: "steer", emoji: "🧭", label: "Steering", q: "What's the steering doing?", where: false, options: [
     ["Pulls to one side", "pulls to one side alignment"], ["Hard to turn", "steering hard to turn"],
-    ["Loose / wanders", "steering loose sloppy wanders"], ["Clicks when turning", "clicking when turning"],
-    ["Whines when turning", "whine when turning the wheel"]] },
+    ["Loose / wanders", "steering loose sloppy wanders"], ["Clicks when turning", "clicking when turning", "cv_click"],
+    ["Whines when turning", "whine when turning the wheel", "whine"]] },
 ];
 
 // "Where is it coming from?" Tap a spot on the vehicle.
@@ -245,17 +255,23 @@ function openPicker(cat) {
 
   const stepWhat = () => {
     box.replaceChildren(header(1, cat.q),
-      el("div", { class: "options" }, ...cat.options.map(([label, words]) =>
-        el("button", { class: "option", type: "button", onclick: () => {
+      // With example sounds, use one wide column so labels and speakers fit.
+      el("div", { class: cat.options.some((o) => o[2]) ? "options list" : "options" }, ...cat.options.map(([label, words, sound]) => {
+        const choose = el("button", { class: "option", type: "button", onclick: () => {
           buzz();
+          stopSound();
           if (words.startsWith("__")) {
             box.replaceChildren(header(steps, cat.q), el("p", { class: "friendly" }, "💙 " + FRIENDLY[words]),
               chipRow(["New problem"], welcome));
             return;
           }
           state.words = [words];
+          state.label = label;
           cat.where ? stepWhere() : stepWhen();
-        } }, label))));
+        } }, label);
+        // Options with an example sound get a little speaker next to them.
+        return sound ? el("div", { class: "option-wrap" }, choose, soundButton(sound, { label: false })) : choose;
+      })));
     scrollChat(box.parentElement);
   };
 
@@ -275,7 +291,7 @@ function openPicker(cat) {
     const go = el("button", { class: "btn primary", type: "button", onclick: () => {
       const text = [...state.words, state.zone, ...state.when].filter(Boolean).join(" ");
       box.closest(".msg").remove();
-      sendMessage(text);
+      sendMessage(text, `${cat.emoji} ${[state.label, ZONES.find((z) => z[2] === state.zone)?.[1].toLowerCase(), ...WHEN.filter((w) => state.when.has(w[1])).map((w) => w[0].toLowerCase())].filter(Boolean).join(", ")}`);
     } }, "Diagnose it");
     box.replaceChildren(header(steps, "When does it happen? Pick any that fit."),
       el("div", { class: "options" }, ...WHEN.map(([label, words]) => {
@@ -518,6 +534,7 @@ function celebrate(card) {
 // Called from app.js once the data files are loaded.
 function initFeatures(vehicles) {
   VEHICLES = vehicles;
+  window.addEventListener("resize", moveTabIndicator);
   fillMakeModelLists(document.querySelector("#profileForm [name=make]"), document.getElementById("makeList"), document.getElementById("modelList"));
   setupLookup();
   renderMyIssues();
@@ -528,4 +545,290 @@ function initFeatures(vehicles) {
     // Tap outside the sheet to close it.
     sheet.addEventListener("click", (e) => { if (e.target === sheet) sheet.close(); });
   }
+}
+
+// ===========================================================================
+// 7. Smart follow-up questions
+// When two or three problems look alike, ask ONE simple question that tells
+// them apart. Everyday questions anyone can answer: no tools, no jargon.
+// "about" = the problems this question helps separate.
+// "always" questions are asked whenever the top guess is in "about", unless
+// the description already contains one of the "skipIf" words.
+// Each option is [what the person taps, words added to the description].
+// Empty words = "no / not sure": nothing is added, we just move on.
+// ===========================================================================
+
+const QUESTIONS = [
+  { id: "start_sound", q: "What happens when you turn the key (or press Start)?",
+    about: ["dead_battery", "bad_starter", "fuel_delivery_problem", "key_ignition_problem"],
+    options: [["Fast clicking", "fast clicking wont start"], ["One loud click", "one click no crank"],
+      ["Engine turns over but won't catch", "cranks but wont start"], ["Nothing, or the key won't turn", "key wont turn not detected"]] },
+  { id: "dash_lights", q: "When you try to start it, what do the dashboard lights do?",
+    about: ["dead_battery", "bad_starter", "fuel_delivery_problem", "electrical_ground_problem", "key_ignition_problem"],
+    options: [["Stay bright", "lights stay bright"], ["Go dim or flicker", "lights dim flicker"],
+      ["Don't come on at all", "no lights at all dead"], ["Not sure", ""]] },
+  { id: "battery_light", q: "Did a battery-shaped light come on while you were driving?",
+    about: ["bad_alternator", "dead_battery", "worn_serpentine_belt", "electrical_ground_problem"],
+    options: [["Yes, while driving", "battery light on while driving"], ["No, it died while parked", "died while parked sitting"], ["Not sure", ""]] },
+  { id: "pedal_feel", q: "How does the brake pedal feel?",
+    about: ["worn_brake_pads", "warped_rotors", "brake_fluid_leak", "sticking_brake_caliper", "abs_sensor_problem"],
+    options: [["Normal", "brake pedal normal"], ["It pulses or shakes", "brake pedal pulses"],
+      ["Soft, or sinks down", "brake pedal soft sinks"], ["Normal, but it pulls to one side", "pulls to one side one wheel hot"]] },
+  { id: "speed_or_rev", q: "Does it change with how fast you're going, or when you rev the engine while parked?",
+    about: ["bad_wheel_bearing", "tire_balance", "worn_u_joint", "power_steering_problem", "worn_serpentine_belt", "bad_alternator", "exhaust_leak", "transmission_problem"],
+    options: [["Faster driving = louder", "louder with speed"], ["Revving while parked = louder", "louder when revving the engine rpm"],
+      ["Only when turning", "when turning"], ["Not sure", ""]] },
+  { id: "turn_sound", q: "When you turn the steering wheel, what do you hear?",
+    about: ["worn_cv_axle", "power_steering_problem", "bad_wheel_bearing", "worn_suspension"],
+    options: [["Clicking", "clicking when turning"], ["Whining or groaning", "whine when turning the wheel"],
+      ["A hum that changes", "hum changes when turning"], ["A clunk", "clunk when turning"]] },
+  { id: "temp_needle", q: "Where is the temperature needle on your dash?",
+    about: ["overheating", "thermostat_stuck_open", "head_gasket_failure", "heater_core_problem"],
+    options: [["High, near H or red", "temperature gauge high red"], ["Low, never warms up", "temp gauge stays low"],
+      ["In the middle, normal", "temp gauge normal"]] },
+  { id: "smoke", q: "Any smoke from the tailpipe?",
+    about: ["head_gasket_failure", "overheating", "oil_leak_low_oil", "catalytic_converter_problem", "engine_misfire"],
+    options: [["White, smells sweet", "white smoke sweet smell"], ["Blue-gray", "blue smoke burning oil"],
+      ["Black", "black smoke"], ["No smoke", ""]] },
+  { id: "engine_light", q: "Is the check engine light on?",
+    about: ["engine_misfire", "dirty_maf_sensor", "vacuum_leak", "fuel_delivery_problem", "evap_leak", "catalytic_converter_problem", "timing_chain_problem", "bad_motor_mounts"],
+    options: [["Yes, flashing", "check engine light flashing"], ["Yes, steady", "check engine light on"], ["No", ""]] },
+  { id: "rough_when", q: "When is it worst?",
+    about: ["engine_misfire", "dirty_maf_sensor", "vacuum_leak", "fuel_delivery_problem", "bad_motor_mounts"],
+    options: [["Sitting still at idle", "at idle"], ["When I press the gas", "when accelerating hesitates"],
+      ["Highway or going uphill", "highway uphill loses power"]] },
+  { id: "shake_when", q: "When do you feel the shaking?",
+    about: ["tire_balance", "warped_rotors", "worn_suspension", "worn_u_joint", "bad_motor_mounts", "engine_misfire", "bad_wheel_bearing"],
+    options: [["Only when braking", "shakes when braking"], ["At a certain speed", "shakes at highway speed"],
+      ["Stopped at a light", "shakes at idle in drive"], ["Over bumps", "over bumps"]] },
+  { id: "startup_length", q: "How long does the noise last after you start it?",
+    about: ["timing_chain_problem", "worn_serpentine_belt", "exhaust_leak", "bad_starter"],
+    options: [["Just a few seconds", "rattle few seconds at startup"], ["Until the engine warms up", "until warm when cold"],
+      ["A squeal that fades", "squeal at startup belt"], ["The whole time", ""]] },
+  { id: "clunk_when", q: "When does the clunk happen?",
+    about: ["worn_u_joint", "bad_motor_mounts", "worn_suspension", "transmission_problem", "worn_cv_axle"],
+    options: [["Shifting into drive or reverse", "clunk shifting into drive reverse"], ["Over bumps", "clunk over bumps"],
+      ["When I step on the gas", "clunk when accelerating"], ["When turning", "clunk when turning"]] },
+  { id: "manual", q: "Do you drive a stick shift (with a clutch pedal)?",
+    about: ["clutch_problem", "transmission_problem"],
+    // The model can't guess this, so always ask unless they already said.
+    always: true, skipIf: ["manual", "stick", "clutch", "automatic"],
+    options: [["Yes, stick shift", "manual stick shift clutch"], ["No, automatic", "automatic transmission"]] },
+  { id: "vent_air", q: "Is air coming out of the vents?",
+    about: ["ac_problem", "blower_motor_problem", "heater_core_problem", "thermostat_stuck_open"],
+    options: [["Yes, but it's not cold", "air blowing but ac not cold"], ["Only on the highest fan setting", "fan only works on high"],
+      ["Barely or none", "no air from vents"], ["Yes, but the heat is weak", "heat lukewarm"]] },
+  { id: "after_gas", q: "Did the light come on right after you got gas?",
+    about: ["evap_leak", "catalytic_converter_problem", "engine_misfire"],
+    options: [["Yes", "after getting gas cap"], ["No", ""]] },
+  { id: "leak_color", q: "What color is the drip?",
+    about: ["oil_leak_low_oil", "transmission_problem", "power_steering_problem", "brake_fluid_leak", "overheating", "heater_core_problem"],
+    options: [["Brown or black", "oil leak brown"], ["Red", "red fluid leak"], ["Green, orange or pink", "coolant leak green"],
+      ["Clear and slippery", "clear slippery brake fluid"]] },
+  { id: "pull_check", q: "Look at your tires and wheels. Anything stand out?",
+    about: ["alignment_problem", "low_tire_pressure", "sticking_brake_caliper", "tire_balance"],
+    options: [["One tire looks low", "tire looks low"], ["One wheel is hot or smells burnt", "one wheel hot burning smell"],
+      ["Nope, they look fine", "pulls after pothole alignment"]] },
+];
+
+const MAX_QUESTIONS = 3; // per problem, so it never feels like a quiz
+
+// Picks the best question for the current top guesses, or null.
+function pickQuestion(top, usefulWords) {
+  if (session.asked.size >= MAX_QUESTIONS) return null;
+  const best = top[0];
+  const second = top[1];
+  const unsure = best.prob < 0.75 || (second && second.prob > 0.12) || usefulWords < 2;
+  const labels = top.map((g) => g.label);
+  const said = new Set(tokenize(sessionText()));
+  for (const q of QUESTIONS) {
+    if (q.always && !session.asked.has(q.id) && q.about.includes(best.label) && !q.skipIf.some((w) => said.has(w))) return q;
+  }
+  let pick = null;
+  let score = 0;
+  for (const q of QUESTIONS) {
+    if (!unsure) break;
+    if (session.asked.has(q.id) || q.always) continue;
+    const hits = labels.filter((l) => q.about.includes(l)).length;
+    // Must touch the top guess and at least one other, to tell them apart.
+    if (!q.about.includes(best.label) || hits < 2) continue;
+    if (hits > score) { score = hits; pick = q; }
+  }
+  return pick;
+}
+
+function questionBlock(q) {
+  const block = el("div", { class: "followup quick-q" },
+    el("p", { class: "eyebrow" }, "Quick question"),
+    el("p", { class: "quick-q-text" }, q.q));
+  block.append(el("div", { class: "options" }, ...q.options.map(([label, words]) =>
+    el("button", { class: "option", type: "button", onclick: () => {
+      buzz();
+      session.asked.add(q.id);
+      block.remove();
+      answerQuestion(label, words);
+    } }, label))));
+  return block;
+}
+
+// ===========================================================================
+// 8. Personal touch: check in about the last answer, and remember fixes
+// ===========================================================================
+
+// Saved when we show a result, so next visit we can ask how it went.
+function rememberGuess(label) {
+  const old = load(KEYS.pending, {});
+  save(KEYS.pending, {
+    label,
+    text: sessionText(),          // the words the model used (for teaching)
+    said: session.shown[0] || "", // what the person actually typed or tapped first
+    at: Date.now(),
+    asks: old.label === label ? old.asks || 0 : 0,
+  });
+}
+
+function clearGuess() {
+  forget(KEYS.pending);
+}
+
+// "Hey, welcome back! Last time I thought ... Did I get it right?"
+// Only after at least 30 minutes, and at most twice per guess.
+function checkInBubble() {
+  const p = load(KEYS.pending, null);
+  if (!p || !p.label || !CAUSES[p.label] || Date.now() - p.at < 30 * 60000 || (p.asks || 0) >= 2) return null;
+  const name = CAUSES[p.label].name.toLowerCase();
+  const words = p.said || p.text;
+  const said = words.length > 60 ? words.slice(0, 57) + "…" : words;
+  const box = el("div", { class: "checkin" });
+  const done = (...children) => box.replaceChildren(...children);
+  box.append(
+    el("p", { class: "lead" }, "Welcome back! 👋"),
+    el("p", {}, "Last time you said “", el("em", {}, said), "” and I guessed ", el("strong", {}, name), ". Did I get it right?"),
+    el("div", { class: "options three" },
+      el("button", { class: "option yes", type: "button", onclick: () => {
+        celebrate(box);
+        addTraining(p.label, p.text);
+        const profile = load(KEYS.profile, {});
+        addLogEntry({ date: localDate(), mileage: profile.mileage || "", note: `${CAUSES[p.label].name} (confirmed): ${p.text}` });
+        clearGuess();
+        done(el("p", {}, "Yay! 🎉 Thanks for telling me. I'll remember that, and I added it to your repair log."));
+      } }, "👍 Spot on"),
+      el("button", { class: "option", type: "button", onclick: () => {
+        const select = el("select", { class: "input", "aria-label": "What was it really?" },
+          el("option", { value: "" }, "What was it really?"),
+          ...Object.entries(CAUSES).sort((a, b) => a[1].name.localeCompare(b[1].name))
+            .map(([key, c]) => el("option", { value: key }, c.name)));
+        done(el("p", {}, "Thanks for being honest! What was it really?"), select,
+          el("div", { class: "btn-row" },
+            el("button", { class: "btn primary", type: "button", onclick: () => {
+              if (!select.value) { select.focus(); return; }
+              addTraining(select.value, p.text);
+              clearGuess();
+              done(el("p", {}, `Got it: ${CAUSES[select.value].name}. I'll do better next time. 💪`));
+            } }, "Save"),
+            el("button", { class: "btn", type: "button", onclick: () => {
+              clearGuess();
+              done(el("p", {}, "No worries. Hope it gets sorted out soon!"));
+            } }, "Still don't know")));
+        select.focus();
+      } }, "👎 Not quite"),
+      el("button", { class: "option", type: "button", onclick: () => {
+        save(KEYS.pending, { ...p, at: Date.now(), asks: (p.asks || 0) + 1 });
+        done(el("p", {}, "No problem! I'll check back later. 🙂"));
+      } }, "🤷 Not sure yet")),
+    el("button", { class: "linklike", type: "button", onclick: () => { clearGuess(); box.closest(".msg").remove(); } }, "Don't ask about this one"));
+  return box;
+}
+
+// Personal memory: if this sounds like a problem you confirmed before,
+// lean toward it (word overlap with your past answers, max +1.5).
+function personalMatch(text) {
+  const words = new Set(tokenize(text).filter((t) => !t.includes("_")));
+  if (!words.size) return { boosts: {}, best: null };
+  const boosts = {};
+  let best = null;
+  for (const ex of load(KEYS.training, [])) {
+    const theirs = new Set(tokenize(ex.text || "").filter((t) => !t.includes("_")));
+    if (!theirs.size) continue;
+    let shared = 0;
+    for (const w of words) if (theirs.has(w)) shared++;
+    const similarity = shared / (words.size + theirs.size - shared);
+    if (similarity < 0.3) continue;
+    boosts[ex.label] = Math.max(boosts[ex.label] || 0, 1.5 * similarity);
+    if (!best || similarity > best.similarity) best = { ...ex, similarity };
+  }
+  return { boosts, best };
+}
+
+function seenBefore(label) {
+  const { best } = personalMatch(sessionText());
+  if (!best || best.label !== label) return null;
+  return el("div", { class: "seen-before" },
+    el("span", { "aria-hidden": "true" }, "💙"),
+    el("span", {}, best.date ? `This sounds like the ${CAUSES[label].name.toLowerCase()} you had on ${prettyDate(best.date)}.` : `This sounds like a ${CAUSES[label].name.toLowerCase()} you've had before.`));
+}
+
+// ===========================================================================
+// 9. Glowing circuits (decoration) and the sliding tab highlight
+// ===========================================================================
+
+// Draws faint circuit traces behind the app with little lights running along
+// some of them. Same style as the Caylor Made Technologies website.
+function buildCircuits() {
+  const NS = "http://www.w3.org/2000/svg";
+  const W = 400, H = 860;
+  let seed = 11;
+  const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const snap = (n) => Math.round(n / 8) * 8;
+  const svg = document.createElementNS(NS, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  const add = (parent, tag, attrs) => {
+    const node = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+    parent.append(node);
+    return node;
+  };
+  const traces = add(svg, "g", { class: "traces" });
+  const pulses = add(svg, "g", { class: "pulses" });
+  for (let i = 0; i < 16; i++) {
+    const left = i % 2 === 0;
+    const dir = left ? 1 : -1;
+    const y0 = snap(30 + rand() * (H - 60));
+    const x0 = left ? -10 : W + 10;
+    const x1 = x0 + dir * snap(40 + rand() * 110);
+    const jog = snap(16 + rand() * 50) * (rand() > 0.5 ? 1 : -1);
+    const x2 = x1 + dir * Math.abs(jog);
+    const x3 = x2 + dir * snap(30 + rand() * 90);
+    const d = `M${x0} ${y0} H${x1} L${x2} ${y0 + jog} H${x3}`;
+    add(traces, "path", { d });
+    add(traces, "circle", { cx: x3, cy: y0 + jog, r: 3 });
+    if (i % 2 === 0) {
+      const p = add(pulses, "path", { d, pathLength: "100", class: "pulse p" + (i % 6) });
+      p.style.animationDelay = `${(rand() * 6).toFixed(2)}s`;
+    }
+  }
+  document.getElementById("circuits").append(svg);
+}
+
+// A quick brighten when a diagnosis appears.
+function flashCircuits() {
+  const layer = document.getElementById("circuits");
+  if (!layer || REDUCED_MOTION.matches) return;
+  layer.classList.remove("flash");
+  void layer.offsetWidth;
+  layer.classList.add("flash");
+  setTimeout(() => layer.classList.remove("flash"), 1100);
+}
+
+// Moves the glowing pill under the active tab.
+function moveTabIndicator() {
+  const active = document.querySelector('.tabbar button[aria-selected="true"]');
+  const pill = document.querySelector(".tab-indicator");
+  if (!active || !pill) return;
+  const width = 52;
+  pill.style.width = width + "px";
+  pill.style.transform = `translateX(${active.offsetLeft + (active.offsetWidth - width) / 2}px)`;
 }

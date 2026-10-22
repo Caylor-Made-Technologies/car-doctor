@@ -30,6 +30,8 @@ SAMPLES = [
     "Squealing from the belt on cold mornings, it's loud!",
     "misfire code P0300 and rough running at idle",
     "AC blows warm and the compressor isn't kicking on",
+    "Rattling noise while driving over bumps, something weird",
+    "My fan only works on high and the windows fog up",
 ]
 
 failures = []

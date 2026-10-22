@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" fill="none" stroke="#3d8bff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-  <!-- Decorative circuit traces (Caylor Made Technologies style) -->
-  <path d="M362 18H300L284 34H220"/><circle cx="220" cy="34" r="2.5" fill="#3d8bff"/>
-  <path d="M362 46H322L306 62H262"/><circle cx="262" cy="62" r="2.5" fill="#3d8bff"/>
-  <path d="M362 78H330L314 94H246L234 106H190"/><circle cx="190" cy="106" r="2.5" fill="#3d8bff"/>
-  <path d="M300 -2V10L312 22"/><circle cx="312" cy="22" r="2" fill="#3d8bff"/>
-  <path d="M244 -2V8L232 20H200"/><circle cx="200" cy="20" r="2" fill="#3d8bff"/>
-</svg>
