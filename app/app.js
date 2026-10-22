@@ -1342,6 +1342,7 @@ async function init() {
   buildCircuits();
   wireUp();
   setupMotion();
+  setupSurprises();
   watchConnection();
   renderProfile();
   renderLog();

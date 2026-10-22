@@ -1,7 +1,8 @@
 /* Car Doctor: hidden surprises.
  *
- *   - Type "Bella Rodriguez" in the chat, or as the vehicle make/model:
- *     hearts fly and pulse around the screen with a little note.
+ *   - Type "Bella Rodriguez" in the chat, or in the vehicle Make and/or
+ *     Model boxes (no need to tap Save): hearts fly and pulse around the
+ *     screen with a little note.
  *   - A few vehicle years get a fun one-liner when saved.
  *
  * Uses el(), buzz() and REDUCED_MOTION from app.js / features.js.
@@ -77,6 +78,17 @@ function showLove() {
   document.addEventListener("keydown", onKey);
   document.body.append(overlay);
   close.focus({ preventScroll: true });
+}
+
+// Make and Model boxes: show it as soon as the name is typed, then put the
+// saved vehicle back so the name never gets saved as a car.
+function setupSurprises() {
+  const form = document.getElementById("profileForm");
+  const check = () => {
+    if (surprise(`${form.make.value} ${form.model.value}`)) renderProfile();
+  };
+  form.make.addEventListener("input", check);
+  form.model.addEventListener("input", check);
 }
 
 // Fun lines for a few vehicle years (shown after saving).
