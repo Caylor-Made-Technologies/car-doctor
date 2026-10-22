@@ -164,14 +164,22 @@ const KEYS = {
   pending: "cardoctor.lastGuess",
 };
 
+// Reads saved data. If it's missing, damaged, or the wrong shape (say, from
+// an older version), the fallback is used so the app never breaks.
 function load(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
+    if (!raw) return fallback;
+    const value = JSON.parse(raw);
+    if (Array.isArray(fallback)) return Array.isArray(value) ? value.filter((x) => x && typeof x === "object") : fallback;
+    if (fallback && typeof fallback === "object") return value && typeof value === "object" && !Array.isArray(value) ? value : fallback;
+    return value;
   } catch (err) {
     return fallback;
   }
 }
+
+const MAX_SAVED = 1000; // newest entries kept, so storage never fills up
 
 function save(key, value) {
   try {
@@ -514,7 +522,7 @@ function gauge(prob) {
 }
 
 function lookupCause(label) {
-  return CAUSES[label] || { name: label, severity: "medium", diy: "Shop", summary: "", checks: [] };
+  return Object.hasOwn(CAUSES, label) ? CAUSES[label] : { name: String(label), severity: "medium", diy: "Shop", summary: "", checks: [] };
 }
 
 // "What's going on" and "Can I drive it?" in everyday words.
@@ -622,7 +630,7 @@ function showResults(result) {
 function addTraining(label, text = sessionText()) {
   const list = load(KEYS.training, []);
   list.push({ label, text, date: localDate() });
-  save(KEYS.training, list);
+  save(KEYS.training, list.slice(-MAX_SAVED));
   renderTraining();
 }
 
@@ -769,7 +777,7 @@ function renderProfile() {
 function addLogEntry(entry) {
   const log = load(KEYS.log, []);
   log.push({ id: Date.now() + "-" + Math.random().toString(36).slice(2, 7), ...entry });
-  save(KEYS.log, log);
+  save(KEYS.log, log.slice(-MAX_SAVED));
   renderLog();
 }
 

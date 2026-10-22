@@ -1,7 +1,7 @@
 // Car Doctor service worker: network first, cache fallback, so you get
 // updates when online and the app still works offline.
 // Bump VERSION whenever app files change so old caches get cleared.
-const VERSION = "v7";
+const VERSION = "v8";
 const CACHE = "car-doctor-" + VERSION;
 const FILES = [
   "./",
@@ -45,11 +45,14 @@ self.addEventListener("fetch", (event) => {
   // real text/calendar file makes the phone offer to add it to Calendar.
   if (url.pathname.endsWith("/event.ics")) {
     const ics = url.searchParams.get("d") || "";
-    if (!ics.startsWith("BEGIN:VCALENDAR")) {
+    // Only ever a calendar file the app built: right start, sane size.
+    if (!ics.startsWith("BEGIN:VCALENDAR") || ics.length > 10000) {
       event.respondWith(new Response("Not a calendar file", { status: 400 }));
       return;
     }
-    event.respondWith(new Response(ics, { headers: { "Content-Type": "text/calendar; charset=utf-8" } }));
+    event.respondWith(new Response(ics, {
+      headers: { "Content-Type": "text/calendar; charset=utf-8", "X-Content-Type-Options": "nosniff" },
+    }));
     return;
   }
 

@@ -695,7 +695,7 @@ function clearGuess() {
 // Only after at least 30 minutes, and at most twice per guess.
 function checkInBubble() {
   const p = load(KEYS.pending, null);
-  if (!p || !p.label || !CAUSES[p.label] || Date.now() - p.at < 30 * 60000 || (p.asks || 0) >= 2) return null;
+  if (!p || !Object.hasOwn(CAUSES, p.label) || typeof p.text !== "string" || !(Date.now() - p.at >= 30 * 60000) || (p.asks || 0) >= 2) return null;
   const name = CAUSES[p.label].name.toLowerCase();
   const words = p.said || p.text;
   const said = words.length > 60 ? words.slice(0, 57) + "…" : words;
@@ -748,7 +748,8 @@ function personalMatch(text) {
   const boosts = {};
   let best = null;
   for (const ex of load(KEYS.training, [])) {
-    const theirs = new Set(tokenize(ex.text || "").filter((t) => !t.includes("_")));
+    if (typeof ex.text !== "string" || !Object.hasOwn(CAUSES, ex.label)) continue;
+    const theirs = new Set(tokenize(ex.text).filter((t) => !t.includes("_")));
     if (!theirs.size) continue;
     let shared = 0;
     for (const w of words) if (theirs.has(w)) shared++;
@@ -762,7 +763,7 @@ function personalMatch(text) {
 
 function seenBefore(label) {
   const { best } = personalMatch(sessionText());
-  if (!best || best.label !== label) return null;
+  if (!best || best.label !== label || !Object.hasOwn(CAUSES, label)) return null;
   return el("div", { class: "seen-before" },
     el("span", { "aria-hidden": "true" }, "💙"),
     el("span", {}, best.date ? `This sounds like the ${CAUSES[label].name.toLowerCase()} you had on ${prettyDate(best.date)}.` : `This sounds like a ${CAUSES[label].name.toLowerCase()} you've had before.`));
