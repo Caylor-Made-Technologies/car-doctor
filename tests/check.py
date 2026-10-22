@@ -177,6 +177,22 @@ def main():
             check(result["top3"] == py_top3,
                   f"top-3 match: {sample!r} -> {', '.join(py_top3)}")
 
+        # 6. Quick questions: few of them, and they help.
+        result = subprocess.run(["node", str(ROOT / "tests" / "questions.js")], capture_output=True, text=True)
+        check(result.returncode == 0, f"tests/questions.js runs {result.stderr.strip()[:300]}")
+        if result.returncode == 0:
+            q = json.loads(result.stdout)
+            full, vague = q["full"], q["vague"]
+            print(f"      quick questions: full sentences {full['before']}% -> {full['after']}% "
+                  f"(avg {full['avgQuestions']} asked); vague {vague['before']}% -> {vague['after']}% "
+                  f"(avg {vague['avgQuestions']} asked)")
+            check(max(full["maxQuestions"], vague["maxQuestions"]) <= q["maxAllowed"],
+                  f"never more than {q['maxAllowed']} quick questions")
+            check(full["after"] >= full["before"] and vague["after"] >= vague["before"],
+                  "quick questions never lower held-out accuracy")
+            check(full["after"] >= 95, f"held-out top-1 after questions is 95%+ ({full['after']}%)")
+            check(not q["deadAnswers"], f"every answer adds words the model knows {q['deadAnswers'] or ''}")
+
     print()
     if failures:
         print(f"{len(failures)} check(s) failed")

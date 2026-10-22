@@ -385,72 +385,72 @@ function setupLookup() {
 const PICKER = [
   { id: "noise", emoji: "🔊", label: "A noise", q: "What does it sound like? Tap 🔊 to hear examples.", where: true, options: [
     ["Grinding", "grinding noise", "grind"], ["Squealing", "squealing noise", "squeal"], ["Clicking", "clicking noise", "cv_click"],
-    ["Humming / growling", "humming noise", "hum"], ["Ticking", "ticking noise", "tick"], ["Clunking", "clunk", "clunk"],
+    ["Humming or growling", "humming noise", "hum"], ["Ticking", "ticking noise", "tick"], ["Clunking", "clunk", "clunk"],
     ["Rattling", "rattle", "rattle"], ["Whining", "whining noise", "whine"], ["Hissing", "hissing noise", "hiss"],
-    ["Deep knocking", "deep knocking from inside the engine"], ["Whistle or siren", "whistle siren noise when accelerating turbo"]] },
+    ["Deep knocking", "deep knocking from inside the engine"], ["Whistling", "whistle siren noise when accelerating turbo"]] },
   { id: "shake", emoji: "📳", label: "Shaking", q: "What shakes?", where: false, options: [
     ["Steering wheel", "steering wheel shakes"], ["Whole vehicle", "whole truck shakes vibration"],
-    ["Brake pedal pulses", "brake pedal pulses"], ["Engine, at a stop", "shakes at idle in drive rough"],
-    ["Like rumble strips, 30 to 50 mph", "shudder like rumble strips on light gas"], ["Violent, after a bump", "violent shake after a bump death wobble"],
-    ["Judders pulling away", "judder when pulling away from a stop"]] },
+    ["Brake pedal", "brake pedal pulses"], ["The car, while stopped", "shakes at idle in drive rough"],
+    ["Feels like rumble strips", "shudder like rumble strips on light gas"], ["Wild shaking after a bump", "violent shake after a bump death wobble"],
+    ["Jerks when pulling away", "judder when pulling away from a stop"]] },
   { id: "smell", emoji: "👃", label: "A smell", q: "What does it smell like?", where: false, options: [
     ["Burning oil", "burning oil smell"], ["Sweet, like syrup", "sweet smell coolant"],
     ["Rotten eggs", "rotten egg smell"], ["Gasoline", "gas smell near the tank"],
-    ["Exhaust inside", "exhaust smell in the cab"], ["Burning, from one wheel", "burning smell from one wheel hot"],
-    ["Burnt toast (stick shift)", "burnt smell clutch manual"], ["Musty vents", "musty smell from the ac vents"]] },
+    ["Exhaust, inside the car", "exhaust smell in the cab"], ["Burning, near one wheel", "burning smell from one wheel hot"],
+    ["Burnt, like toast (stick shift)", "burnt smell clutch manual"], ["Musty, from the vents", "musty smell from the ac vents"]] },
   { id: "light", emoji: "💡", label: "Warning light", q: "Which light is on?", where: false, options: [
-    ["Check engine (flashing)", "check engine light flashing misfire"], ["Check engine (steady)", "check engine light on"],
+    ["Engine light, blinking", "check engine light flashing misfire"], ["Engine light, steady", "check engine light on"],
     ["Battery", "battery light on while driving"], ["Oil", "oil light on low oil pressure"],
     ["Temperature", "temperature light on running hot"], ["Brake", "brake warning light"],
     ["ABS / traction", "abs light and traction light on"], ["Tire pressure", "tire pressure light on"],
-    ["Wrench / reduced power", "wrench light reduced engine power"], ["4WD / AWD", "service 4wd light flashing"],
-    ["Hybrid / EV system", "check hybrid system warning"], ["DEF / exhaust filter (diesel)", "def warning light diesel exhaust filter"],
-    ["Suspension", "air suspension fault warning"], ["Collision / sensor blocked", "collision warning sensor blocked brakes by itself"]] },
-  { id: "nostart", emoji: "🔑", label: "Won't start", q: "What happens when you turn the key or press Start? Tap 🔊 to compare.", where: false, options: [
+    ["Wrench, or \"reduced power\"", "wrench light reduced engine power"], ["4-wheel drive", "service 4wd light flashing"],
+    ["Hybrid or electric system", "check hybrid system warning"], ["Diesel exhaust (DEF)", "def warning light diesel exhaust filter"],
+    ["Suspension", "air suspension fault warning"], ["Crash warning or \"sensor blocked\"", "collision warning sensor blocked brakes by itself"]] },
+  { id: "nostart", emoji: "🔑", label: "Won't start", q: "What happens when you try to start it? Tap 🔊 to compare.", where: false, options: [
     ["Fast clicking", "clicks fast wont start dim lights", "fast_click"], ["One loud click", "one click no crank lights bright", "one_click"],
-    ["Cranks, won't catch", "cranks but wont start", "crank"], ["Cranks slowly", "slow crank", "slow_crank"],
-    ["Key won't turn / not detected", "key wont turn key not detected"], ["Nothing at all", "nothing happens no lights dead"]] },
+    ["Tries to start but won't catch", "cranks but wont start", "crank"], ["Starts slowly, sounds tired", "slow crank", "slow_crank"],
+    ["Key won't turn or isn't found", "key wont turn key not detected"], ["Nothing at all", "nothing happens no lights dead"]] },
   { id: "leak", emoji: "💧", label: "A leak", q: "What color is the fluid?", where: false, options: [
     ["Brown or black", "oil leak brown drip under the engine"], ["Red", "red fluid leaking"],
     ["Green, orange or pink", "coolant leak green sweet smell"], ["Clear and slippery", "clear slippery fluid leaking near the wheel brake"],
     ["Wet carpet, sweet smell", "wet carpet passenger side sweet smell"], ["Water inside after rain", "wet carpet after rain water inside"],
-    ["Clear water, front", "__ac_water"], ["Blue", "__washer"]] },
+    ["Clear water under the front", "__ac_water"], ["Blue", "__washer"]] },
   { id: "hot", emoji: "🌡️", label: "Running hot", q: "What's happening?", where: false, options: [
-    ["Gauge in the red", "temperature gauge in the red"], ["Steam from the hood", "steam from under the hood"],
-    ["Losing coolant", "losing coolant"], ["White smoke, milky oil", "white smoke milky oil"]] },
+    ["Temperature needle is high", "temperature gauge in the red"], ["Steam from under the hood", "steam from under the hood"],
+    ["Keeps needing coolant", "losing coolant"], ["White smoke from the back", "white smoke milky oil"]] },
   { id: "air", emoji: "🌬️", label: "Heat & A/C", q: "What's the heat or A/C doing?", where: false, options: [
     ["A/C blows warm", "ac blows warm air"], ["Fan only works on high", "fan only works on high"],
     ["No air from the vents", "no air from the vents"], ["Heat is weak", "heater blows lukewarm temp gauge low"],
-    ["Windows fog, sweet smell", "windows fog sweet smell inside"], ["Clicking behind the dash, air stuck", "clicking behind the dash air stuck hot cold"]] },
+    ["Windows fog up, sweet smell", "windows fog sweet smell inside"], ["Clicking behind the dash", "clicking behind the dash air stuck hot cold"]] },
   { id: "rough", emoji: "⚡", label: "Runs rough", q: "What's the engine doing?", where: false, options: [
-    ["Shakes at idle", "rough idle shaking"], ["Stalls", "stalls"], ["Hesitates when I press the gas", "hesitates when accelerating"],
-    ["No power uphill", "loses power uphill"], ["Revs but won't go faster", "engine revs but doesnt go faster"],
-    ["Stalls at stops / wrench light", "stalls coming to a stop wrench light"], ["Ticks even when warm", "ticking stays when warm misfire"],
-    ["Needs oil, no leaks", "needs oil no leak blue smoke"]] },
+    ["Shakes while stopped", "rough idle shaking"], ["Dies (stalls)", "stalls"], ["Stumbles when I press the gas", "hesitates when accelerating"],
+    ["Weak going uphill", "loses power uphill"], ["Loud but won't speed up", "engine revs but doesnt go faster"],
+    ["Dies when I slow down to stop", "stalls coming to a stop wrench light"], ["Ticking that won't go away", "ticking stays when warm misfire"],
+    ["Keeps needing oil", "needs oil no leak blue smoke"]] },
   { id: "brakes", emoji: "🛑", label: "Brakes", q: "What do the brakes do?", where: false, options: [
     ["Squeal", "squealing when braking", "squeal"], ["Grind", "grinding when braking", "grind"],
-    ["Pedal pulses", "brake pedal pulses when stopping"], ["Soft or sinking pedal", "brake pedal soft sinks to the floor"],
+    ["Pedal shakes", "brake pedal pulses when stopping"], ["Pedal feels soft or sinks", "brake pedal soft sinks to the floor"],
     ["Pulls to one side", "pulls when braking one wheel hot"]] },
   { id: "tires", emoji: "🛞", label: "Tires", q: "What's going on with the tires?", where: false, options: [
     ["Tire light on", "tire pressure light on"], ["One looks low", "tire looks low"],
-    ["Wearing on one edge", "tires wearing on the edge"], ["Bulge on the side", "bulge on the side of the tire shakes"],
-    ["Shakes at highway speed", "shakes at highway speed tires"]] },
+    ["Worn on one edge", "tires wearing on the edge"], ["Bubble on the side", "bulge on the side of the tire shakes"],
+    ["Shakes on the highway", "shakes at highway speed tires"]] },
   { id: "steer", emoji: "🧭", label: "Steering", q: "What's the steering doing?", where: false, options: [
     ["Pulls to one side", "pulls to one side alignment"], ["Hard to turn", "steering hard to turn"],
-    ["Loose / wanders", "steering loose sloppy wanders"], ["Clicks when turning", "clicking when turning", "cv_click"],
+    ["Feels loose, drifts around", "steering loose sloppy wanders"], ["Clicks when turning", "clicking when turning", "cv_click"],
     ["Whines when turning", "whine when turning the wheel", "whine"]] },
   { id: "inside", emoji: "📱", label: "Inside & electric", q: "What's acting up?", where: false, options: [
-    ["Touchscreen / radio", "touchscreen freezes radio screen"], ["Gauges / speedometer", "speedometer gauge stuck"],
+    ["Touchscreen or radio", "touchscreen freezes radio screen"], ["Gauges or speedometer", "speedometer gauge stuck"],
     ["Window", "window wont go up regulator"], ["Door locks", "door lock wont lock buzzing"],
     ["Battery keeps dying", "battery keeps dying overnight"], ["Water inside after rain", "wet carpet after rain water inside"]] },
   { id: "drive", emoji: "🚙", label: "4WD & drivetrain", q: "What's happening?", where: false, options: [
-    ["4WD won't engage", "4wd wont engage light flashing"], ["Whine from the rear end", "whine from the rear end on and off the gas"],
-    ["Clunk when shifting", "clunk shifting into drive"], ["Shudder like rumble strips", "shudder like rumble strips on light gas"],
-    ["Sags overnight (air ride)", "air suspension sags overnight"], ["Rust on the frame or body", "rust holes frame"]] },
+    ["4-wheel drive won't work", "4wd wont engage light flashing"], ["Whine from the back", "whine from the rear end on and off the gas"],
+    ["Clunk when I put it in gear", "clunk shifting into drive"], ["Feels like rumble strips", "shudder like rumble strips on light gas"],
+    ["Sits low in the morning", "air suspension sags overnight"], ["Rust holes", "rust holes frame"]] },
   { id: "power", emoji: "🔋", label: "Hybrid, EV & diesel", q: "What's going on?", where: false, options: [
-    ["Hybrid warning", "check hybrid system warning"], ["EV won't charge", "ev wont charge"],
-    ["Mileage or range dropped", "hybrid mpg dropped range lower"], ["DEF / exhaust filter warning", "def warning dpf diesel"],
-    ["Diesel lost power", "diesel reduced power derate"], ["Turbo whistle, no power", "turbo whistle no boost"]] },
+    ["Hybrid warning light", "check hybrid system warning"], ["Electric car won't charge", "ev wont charge"],
+    ["Gets fewer miles than before", "hybrid mpg dropped range lower"], ["Diesel exhaust (DEF) warning", "def warning dpf diesel"],
+    ["Diesel lost power", "diesel reduced power derate"], ["Whistle and no power (turbo)", "turbo whistle no boost"]] },
 ];
 
 // When a description is too vague to guess from, open the matching picker
@@ -464,6 +464,7 @@ const CATEGORY_WORDS = {
 };
 
 function askForMore(tokens) {
+  session.followups++;
   const id = tokens.map((t) => CATEGORY_WORDS[t]).find(Boolean);
   const cat = PICKER.find((c) => c.id === id);
   if (cat) {
@@ -478,13 +479,13 @@ function askForMore(tokens) {
 // "Where is it coming from?" Tap a spot on the vehicle.
 const ZONES = [
   ["fl", "Front left wheel", "from the front wheel"], ["engine", "Engine / hood", "from the engine"], ["fr", "Front right wheel", "from the front wheel"],
-  ["dash", "Inside / dash", "from behind the dash"], ["middle", "Underneath, middle", "from under the middle of the truck"],
-  ["rl", "Rear left wheel", "from the rear wheels"], ["exhaust", "Exhaust / back", "from the exhaust"], ["rr", "Rear right wheel", "from the rear wheels"],
+  ["dash", "Inside, behind the dash", "from behind the dash"], ["middle", "Underneath", "from under the middle of the truck"],
+  ["rl", "Rear left wheel", "from the rear wheels"], ["exhaust", "Back, tailpipe", "from the exhaust"], ["rr", "Rear right wheel", "from the rear wheels"],
 ];
 
 const WHEN = [
   ["When starting", "when starting"], ["At idle", "at idle"], ["When braking", "when braking"],
-  ["When turning", "when turning"], ["Speeding up", "when accelerating"], ["Highway speed", "at highway speed"],
+  ["When turning", "when turning"], ["Speeding up", "when accelerating"], ["On the highway", "at highway speed"],
   ["Over bumps", "over bumps"], ["Only when cold", "only when cold"],
 ];
 
@@ -526,6 +527,7 @@ function openPicker(cat) {
               chipRow(["New problem"], welcome));
             return;
           }
+          session.followups++;
           state.words = [words];
           state.label = label;
           cat.where ? stepWhere() : stepWhen();
@@ -542,14 +544,16 @@ function openPicker(cat) {
         el("span", { class: "carmap-body", "aria-hidden": "true" }),
         ...ZONES.map(([id, label, words]) => el("button", { class: "zone zone-" + id, type: "button", onclick: () => {
           buzz();
+          session.followups++;
           state.zone = words;
           stepWhen();
         } }, label))),
-      el("button", { class: "btn small-btn ghost", type: "button", onclick: stepWhen }, "Not sure, skip"));
+      el("button", { class: "btn small-btn ghost", type: "button", onclick: () => { session.followups++; stepWhen(); } }, "Not sure, skip"));
   };
 
   const stepWhen = () => {
     const go = el("button", { class: "btn primary", type: "button", onclick: () => {
+      session.followups++;
       const text = [...state.words, state.zone, ...state.when].filter(Boolean).join(" ");
       box.closest(".msg").remove();
       sendMessage(text, `${cat.emoji} ${[state.label, ZONES.find((z) => z[2] === state.zone)?.[1].toLowerCase(), ...WHEN.filter((w) => state.when.has(w[1])).map((w) => w[0].toLowerCase())].filter(Boolean).join(", ")}`);
@@ -985,6 +989,7 @@ function techBlock(v, causeKey) {
       }
       for (const f of families) {
         if (!f.generic) body.append(el("p", { class: "tech-family" }, f.name));
+        if (f.checked) body.append(el("p", { class: "tech-checked" }, "✓ " + f.checked));
         body.append(...specTable(f.specs, causeKey));
       }
     }
@@ -1039,170 +1044,189 @@ function initFeatures(vehicles) {
 // ===========================================================================
 
 const QUESTIONS = [
-  { id: "start_sound", q: "What happens when you turn the key (or press Start)?",
+  { id: "start_sound", q: "What happens when you try to start it?",
     about: ["dead_battery", "bad_starter", "fuel_delivery_problem", "key_ignition_problem"],
     options: [["Fast clicking", "fast clicking wont start"], ["One loud click", "one click no crank"],
-      ["Engine turns over but won't catch", "cranks but wont start"], ["Nothing, or the key won't turn", "key wont turn not detected"]] },
-  { id: "dash_lights", q: "When you try to start it, what do the dashboard lights do?",
+      ["It tries to start but won't catch", "cranks but wont start"], ["Nothing, or the key won't turn", "key wont turn not detected"]] },
+  { id: "dash_lights", q: "When you try to start it, what do the lights on the dashboard do?",
     about: ["dead_battery", "bad_starter", "fuel_delivery_problem", "electrical_ground_problem", "key_ignition_problem"],
     options: [["Stay bright", "lights stay bright"], ["Go dim or flicker", "lights dim flicker"],
       ["Don't come on at all", "no lights at all dead"], ["Not sure", ""]] },
-  { id: "battery_light", q: "Did a battery-shaped light come on while you were driving?",
+  { id: "battery_light", q: "Did a red light shaped like a battery come on while driving?",
     about: ["bad_alternator", "dead_battery", "worn_serpentine_belt", "electrical_ground_problem"],
-    options: [["Yes, while driving", "battery light on while driving"], ["No, it died while parked", "died while parked sitting"], ["Not sure", ""]] },
-  { id: "pedal_feel", q: "How does the brake pedal feel?",
+    options: [["Yes, while driving", "battery light on while driving"], ["No, it died while it was parked", "died while parked sitting"], ["Not sure", ""]] },
+  { id: "pedal_feel", q: "How does the brake pedal feel when you push it?",
     about: ["worn_brake_pads", "warped_rotors", "brake_fluid_leak", "sticking_brake_caliper", "abs_sensor_problem"],
-    options: [["Normal", "brake pedal normal"], ["It pulses or shakes", "brake pedal pulses"],
-      ["Soft, or sinks down", "brake pedal soft sinks"], ["Normal, but it pulls to one side", "pulls to one side one wheel hot"]] },
-  { id: "speed_or_rev", q: "Does it change with how fast you're going, or when you rev the engine while parked?",
+    options: [["Normal", "brake pedal normal"], ["It shakes or pulses", "brake pedal pulses"],
+      ["Soft, or sinks to the floor", "brake pedal soft sinks"], ["Normal, but the car pulls to one side", "pulls to one side one wheel hot"]] },
+  { id: "speed_or_rev", q: "What makes the sound louder?",
     about: ["bad_wheel_bearing", "tire_balance", "worn_u_joint", "power_steering_problem", "worn_serpentine_belt", "bad_alternator", "exhaust_leak", "transmission_problem", "differential_problem", "turbo_problem", "cvt_problem"],
-    options: [["Faster driving = louder", "louder with speed"], ["Revving while parked = louder", "louder when revving the engine rpm"],
-      ["Only when turning", "when turning"], ["Not sure", ""]] },
+    options: [["Driving faster", "louder with speed"], ["Pressing the gas while parked", "louder when revving the engine rpm"],
+      ["Turning the steering wheel", "when turning"], ["Not sure", ""]] },
   { id: "turn_sound", q: "When you turn the steering wheel, what do you hear?",
     about: ["worn_cv_axle", "power_steering_problem", "bad_wheel_bearing", "worn_suspension"],
     options: [["Clicking", "clicking when turning"], ["Whining or groaning", "whine when turning the wheel"],
-      ["A hum that changes", "hum changes when turning"], ["A clunk", "clunk when turning"]] },
-  { id: "temp_needle", q: "Where is the temperature needle on your dash?",
+      ["A hum", "hum changes when turning"], ["A clunk", "clunk when turning"]] },
+  { id: "temp_needle", q: "Look at the temperature gauge (the one with H and C). Where is the needle?",
     about: ["overheating", "thermostat_stuck_open", "head_gasket_failure", "heater_core_problem"],
-    options: [["High, near H or red", "temperature gauge high red"], ["Low, never warms up", "temp gauge stays low"],
-      ["In the middle, normal", "temp gauge normal"]] },
-  { id: "smoke", q: "Any smoke from the tailpipe?",
+    options: [["High, near H", "temperature gauge high red"], ["Low, near C, even after driving", "temp gauge stays low"],
+      ["In the middle (normal)", "temp gauge normal"]] },
+  { id: "smoke", q: "Any smoke from the pipe at the back of the car?",
     about: ["head_gasket_failure", "overheating", "oil_leak_low_oil", "oil_burning", "catalytic_converter_problem", "engine_misfire", "turbo_problem"],
     options: [["White, smells sweet", "white smoke sweet smell"], ["Blue-gray", "blue smoke burning oil"],
       ["Black", "black smoke"], ["No smoke", ""]] },
-  { id: "engine_light", q: "Is the check engine light on?",
+  { id: "engine_light", q: "Is the orange engine-shaped light on (check engine light)?",
     about: ["engine_misfire", "dirty_maf_sensor", "vacuum_leak", "fuel_delivery_problem", "evap_leak", "catalytic_converter_problem", "timing_chain_problem", "bad_motor_mounts", "collapsed_lifter", "throttle_body_problem"],
-    options: [["Yes, flashing", "check engine light flashing"], ["Yes, steady", "check engine light on"], ["No", ""]] },
-  { id: "rough_when", q: "When is it worst?",
+    options: [["Yes, blinking", "check engine light flashing"], ["Yes, it stays on", "check engine light on"], ["No", ""]] },
+  { id: "rough_when", q: "When does it run the worst?",
     about: ["engine_misfire", "dirty_maf_sensor", "vacuum_leak", "fuel_delivery_problem", "bad_motor_mounts", "throttle_body_problem"],
-    options: [["Sitting still at idle", "at idle"], ["When I press the gas", "when accelerating hesitates"],
-      ["Highway or going uphill", "highway uphill loses power"]] },
+    options: [["Sitting still", "at idle"], ["When I press the gas", "when accelerating hesitates"],
+      ["On the highway or going uphill", "highway uphill loses power"]] },
   { id: "shake_when", q: "When do you feel the shaking?",
     about: ["tire_balance", "warped_rotors", "worn_suspension", "worn_u_joint", "bad_motor_mounts", "engine_misfire", "bad_wheel_bearing", "torque_converter_shudder", "death_wobble"],
-    options: [["Only when braking", "shakes when braking"], ["At a certain speed", "shakes at highway speed"],
-      ["Stopped at a light", "shakes at idle in drive"], ["Over bumps", "over bumps"]] },
+    options: [["When I brake", "shakes when braking"], ["At a certain speed", "shakes at highway speed"],
+      ["Stopped at a red light", "shakes at idle in drive"], ["Over bumps", "over bumps"]] },
   { id: "startup_length", q: "How long does the noise last after you start it?",
     about: ["timing_chain_problem", "worn_serpentine_belt", "exhaust_leak", "bad_starter", "collapsed_lifter"],
-    options: [["Just a few seconds", "rattle few seconds at startup"], ["Until the engine warms up", "until warm when cold"],
-      ["A squeal that fades", "squeal at startup belt"], ["The whole time", ""]] },
-  { id: "clunk_when", q: "When does the clunk happen?",
+    options: [["Just a few seconds", "rattle few seconds at startup"], ["Until it warms up", "until warm when cold"],
+      ["A squeal that fades away", "squeal at startup belt"], ["The whole time", ""]] },
+  { id: "clunk_when", q: "When do you hear the clunk?",
     about: ["worn_u_joint", "bad_motor_mounts", "worn_suspension", "transmission_problem", "worn_cv_axle"],
-    options: [["Shifting into drive or reverse", "clunk shifting into drive reverse"], ["Over bumps", "clunk over bumps"],
+    options: [["Putting it in drive or reverse", "clunk shifting into drive reverse"], ["Over bumps", "clunk over bumps"],
       ["When I step on the gas", "clunk when accelerating"], ["When turning", "clunk when turning"]] },
-  { id: "manual", q: "Do you drive a stick shift (with a clutch pedal)?",
+  { id: "manual", q: "Does it have a clutch pedal (stick shift)?",
     about: ["clutch_problem", "transmission_problem", "cvt_problem"],
     // The model can't guess this, so always ask unless they already said.
     always: true, skipIf: ["manual", "stick", "clutch", "automatic"],
-    options: [["Yes, stick shift", "manual stick shift clutch"], ["No, automatic", "automatic transmission"]] },
+    options: [["Yes, I shift gears myself", "manual stick shift clutch"], ["No, it's automatic", "automatic transmission"]] },
   { id: "vent_air", q: "Is air coming out of the vents?",
     about: ["ac_problem", "blower_motor_problem", "heater_core_problem", "thermostat_stuck_open", "blend_door_actuator"],
-    options: [["Yes, but it's not cold", "air blowing but ac not cold"], ["Only on the highest fan setting", "fan only works on high"],
-      ["Barely or none", "no air from vents"], ["Yes, but the heat is weak", "heat lukewarm"]] },
-  { id: "after_gas", q: "Did the light come on right after you got gas?",
+    options: [["Yes, but it's not cold", "air blowing but ac not cold"], ["Only on the highest fan speed", "fan only works on high"],
+      ["Barely, or none at all", "no air from vents"], ["Yes, but the heat is weak", "heat lukewarm"]] },
+  { id: "after_gas", q: "Did the light come on right after you filled up with gas?",
     about: ["evap_leak", "catalytic_converter_problem", "engine_misfire"],
     options: [["Yes", "after getting gas cap"], ["No", ""]] },
-  { id: "leak_color", q: "What color is the drip?",
+  { id: "leak_color", q: "What color is the puddle or drip?",
     about: ["oil_leak_low_oil", "transmission_problem", "power_steering_problem", "brake_fluid_leak", "overheating", "heater_core_problem", "water_pump_failure", "differential_problem"],
     options: [["Brown or black", "oil leak brown"], ["Red", "red fluid leak"], ["Green, orange or pink", "coolant leak green"],
       ["Clear and slippery", "clear slippery brake fluid"]] },
-  { id: "pull_check", q: "Look at your tires and wheels. Anything stand out?",
+  { id: "pull_check", q: "Take a look at your tires. Anything stand out?",
     about: ["alignment_problem", "low_tire_pressure", "sticking_brake_caliper", "tire_balance"],
     options: [["One tire looks low", "tire looks low"], ["One wheel is hot or smells burnt", "one wheel hot burning smell"],
-      ["Nope, they look fine", "pulls after pothole alignment"]] },
+      ["They look fine", "pulls after pothole alignment"]] },
   // Questions for the more specific problems.
   { id: "tick_type", q: "Which sounds more like it?",
     about: ["collapsed_lifter", "exhaust_leak", "engine_knock", "timing_chain_problem", "engine_misfire"],
-    options: [["Light tick, gone once warm", "tick when cold goes away when warm"],
-      ["Tick that stays when warm, maybe a misfire", "ticking stays when warm misfire lifter"],
-      ["Deep knock, louder with gas", "deep knock louder when accelerating"],
-      ["Rattle for a few seconds at start", "rattle few seconds at startup"]] },
-  { id: "transmission_type", q: "Does it shift through gears you can feel, or is it smooth with no shifts (a CVT)?",
+    options: [["A light tick that goes away once warm", "tick when cold goes away when warm"],
+      ["A tick that stays, and it runs rough", "ticking stays when warm misfire lifter"],
+      ["A deep knock, louder with gas", "deep knock louder when accelerating"],
+      ["A rattle for a few seconds when it starts", "rattle few seconds at startup"]] },
+  { id: "transmission_type", q: "When you speed up, can you feel it change gears?",
     about: ["cvt_problem", "transmission_problem", "torque_converter_shudder"],
     skipIf: ["cvt", "manual", "stick", "clutch"],
-    options: [["I feel it shift gears", "automatic transmission shifts gears"], ["Smooth, no shifts (CVT)", "cvt"], ["Not sure", ""]] },
-  { id: "shudder_type", q: "What makes the shake start or stop?",
+    options: [["Yes, I feel it shift", "automatic transmission shifts gears"], ["No, it's smooth, like a rubber band", "cvt"], ["Not sure", ""]] },
+  { id: "shudder_type", q: "When does the shaking happen?",
     about: ["torque_converter_shudder", "tire_balance", "death_wobble", "cvt_problem", "worn_u_joint"],
-    options: [["Light gas at 30 to 50 mph; stops if I press harder", "shudder light gas 40 mph rumble strips"],
-      ["Highway speed, no matter the gas", "shakes at highway speed steering wheel"],
-      ["A bump sets off a violent shake", "violent shake after a bump death wobble"],
+    options: [["Around 30 to 50 mph, like driving over rumble strips", "shudder light gas 40 mph rumble strips"],
+      ["On the highway", "shakes at highway speed steering wheel"],
+      ["A bump starts a wild shake I have to slow down for", "violent shake after a bump death wobble"],
       ["Pulling away from a stop", "judder when pulling away from a stop"]] },
-  { id: "hum_gas", q: "Does the hum or whine change when you let off the gas, or when you curve left and right?",
+  { id: "hum_gas", q: "What changes the hum or whine?",
     about: ["differential_problem", "bad_wheel_bearing", "cvt_problem", "turbo_problem", "tire_balance"],
-    options: [["Changes on and off the gas", "whine changes on and off the gas rear end"],
-      ["Changes when I curve", "hum changes when turning"],
-      ["Rises with engine speed, even parked", "whine rises with engine rpm"], ["Not sure", ""]] },
-  { id: "coolant_where", q: "Where does the coolant seem to go?",
+    options: [["Pressing or letting off the gas", "whine changes on and off the gas rear end"],
+      ["Going around a curve", "hum changes when turning"],
+      ["Revving the engine, even parked", "whine rises with engine rpm"], ["Not sure", ""]] },
+  { id: "coolant_where", q: "Where does the coolant (antifreeze) seem to go?",
     about: ["water_pump_failure", "overheating", "head_gasket_failure", "heater_core_problem"],
-    options: [["Drips at the front of the engine", "coolant drip front of engine water pump"],
-      ["Gone, with no leak anywhere", "losing coolant no leak white smoke"],
-      ["Wet floor inside, sweet smell", "wet passenger floor sweet smell"], ["Not sure", ""]] },
-  { id: "oil_where", q: "Any oil spots where you park?",
+    options: [["It drips under the front", "coolant drip front of engine water pump"],
+      ["It disappears, no puddles", "losing coolant no leak white smoke"],
+      ["The floor inside is wet and smells sweet", "wet passenger floor sweet smell"], ["Not sure", ""]] },
+  { id: "oil_where", q: "Any dark oil spots where you park?",
     about: ["oil_leak_low_oil", "oil_burning", "engine_knock", "turbo_problem"],
-    options: [["Yes, drips or spots", "oil drips spots under the engine"],
-      ["No spots, but it needs oil", "needs oil no leak blue smoke"], ["Not sure", ""]] },
+    options: [["Yes, spots or drips", "oil drips spots under the engine"],
+      ["No spots, but it keeps needing oil", "needs oil no leak blue smoke"], ["Not sure", ""]] },
   { id: "idle_stall", q: "What does the engine do?",
     about: ["throttle_body_problem", "vacuum_leak", "dirty_maf_sensor", "fuel_delivery_problem"],
-    options: [["Stalls coming to a stop, or a wrench light", "stalls coming to a stop wrench light reduced power"],
-      ["Hissing and a high idle", "hissing high idle vacuum"],
-      ["Hesitates when I press the gas", "hesitates when accelerating maf"],
-      ["Sputters or dies under load", "sputters under load fuel pump"]] },
-  { id: "four_wd", q: "Does it only happen in 4WD (or AWD warning on)?",
+    options: [["It dies when I slow down to stop", "stalls coming to a stop wrench light reduced power"],
+      ["It hisses and revs high when sitting still", "hissing high idle vacuum"],
+      ["It stumbles when I press the gas", "hesitates when accelerating maf"],
+      ["It sputters going uphill or carrying a load", "sputters under load fuel pump"]] },
+  { id: "four_wd", q: "Does it only happen in 4-wheel drive?",
     about: ["four_wheel_drive_problem", "worn_cv_axle", "worn_u_joint", "differential_problem"],
-    options: [["Yes, only in 4WD", "only in 4wd"], ["No, in 2WD too", ""]] },
-  { id: "water_kind", q: "Is the wet carpet from rain, or does it smell sweet?",
+    options: [["Yes, only in 4-wheel drive", "only in 4wd"], ["No, all the time", ""]] },
+  { id: "water_kind", q: "When is the carpet wet?",
     about: ["water_leak_inside", "heater_core_problem", "ac_problem"],
-    options: [["After rain or a car wash", "wet carpet after rain"], ["Sweet smell, foggy windows", "sweet smell foggy windows coolant"],
-      ["Only when the A/C runs", "ac water dripping inside"]] },
-  { id: "power_type", q: "What kind of engine does it have?",
+    options: [["After rain or a car wash", "wet carpet after rain"], ["It smells sweet and the windows fog up", "sweet smell foggy windows coolant"],
+      ["When the A/C is on", "ac water dripping inside"]] },
+  { id: "power_type", q: "What kind of vehicle is it?",
     about: ["hybrid_ev_problem", "diesel_emissions_problem", "turbo_problem", "bad_alternator", "dead_battery"],
     skipIf: ["hybrid", "diesel", "turbo", "duramax", "cummins", "powerstroke"],
-    options: [["Gas", ""], ["Diesel", "diesel"], ["Turbo gas", "turbo"], ["Hybrid or electric", "hybrid"]] },
-  { id: "air_flow", q: "What's wrong with the air?",
+    options: [["Regular gas", ""], ["Diesel", "diesel"], ["Gas with a turbo", "turbo"], ["Hybrid or electric", "hybrid"]] },
+  { id: "air_flow", q: "What's wrong with the air from the vents?",
     about: ["blend_door_actuator", "blower_motor_problem", "ac_problem", "heater_core_problem"],
-    options: [["Wrong temperature or wrong vents, maybe clicking", "air stuck wrong vents clicking behind the dash"],
+    options: [["Wrong temperature or wrong vents, maybe a clicking sound", "air stuck wrong vents clicking behind the dash"],
       ["Little or no air comes out", "no air from vents blower"],
-      ["Plenty of air, just not cold", "air blowing but ac not cold"]] },
-  { id: "gauge_or_all", q: "Is it just the gauges, or do lights and other things act up too?",
+      ["Lots of air, but not cold", "air blowing but ac not cold"]] },
+  { id: "noise_where", q: "Where does the sound seem to come from?",
+    about: ["bad_wheel_bearing", "worn_cv_axle", "worn_brake_pads", "warped_rotors", "worn_suspension", "worn_serpentine_belt",
+      "bad_alternator", "exhaust_leak", "catalytic_converter_problem", "blend_door_actuator", "blower_motor_problem",
+      "worn_u_joint", "differential_problem", "collapsed_lifter", "timing_chain_problem", "engine_knock", "power_steering_problem",
+      "heater_core_problem", "water_pump_failure", "transmission_problem"],
+    options: [["Near a front wheel", "from the front wheel"], ["Under the hood", "from the engine"],
+      ["Inside, behind the dashboard", "from behind the dash"], ["Underneath or the back", "from under the middle of the truck rear end exhaust"]] },
+  { id: "gas_feel", q: "What happens when you press the gas?",
+    about: ["transmission_problem", "engine_knock", "cvt_problem", "clutch_problem", "engine_misfire", "fuel_delivery_problem",
+      "catalytic_converter_problem", "torque_converter_shudder", "turbo_problem", "dirty_maf_sensor"],
+    options: [["Engine gets loud but the car barely speeds up", "engine revs but doesnt go faster slipping"],
+      ["It stumbles or jerks", "hesitates stumbles when accelerating"], ["A deep knock gets louder", "deep knock louder when accelerating"],
+      ["Feels weak, like it can't breathe", "no power cant breathe uphill"]] },
+  { id: "gauge_or_all", q: "What's acting up?",
     about: ["instrument_cluster_problem", "electrical_ground_problem", "bad_alternator", "infotainment_problem"],
-    options: [["Just one or more gauges", "speedometer gauge stuck"], ["Lights flicker, many things act up", "lights flicker random electrical"],
+    options: [["Just the gauges (like the speedometer)", "speedometer gauge stuck"], ["Lights flicker and lots of things act up", "lights flicker random electrical"],
       ["Just the touchscreen", "screen freezes radio"]] },
 ];
 
-const MAX_QUESTIONS = 3; // per problem, so it never feels like a quiz
+const MAX_QUESTIONS = 3; // quick questions per problem, so it never feels like a quiz
+const MAX_FOLLOWUPS = 4; // every tap after the first description (picker steps + quick questions)
 
-// Picks the best question for the current top guesses, or null.
-function pickQuestion(top, usefulWords) {
-  if (session.asked.size >= MAX_QUESTIONS) return null;
+// Picks the question that best tells the top guesses apart, or null when
+// we're sure enough or out of questions. `specific` is how many specific
+// symptom words were given; with fewer than 3 we always ask, because a
+// confident guess from two words is often a wrong one.
+function pickQuestion(top, specific) {
+  if (session.asked.size >= MAX_QUESTIONS || session.followups >= MAX_FOLLOWUPS) return null;
   const best = top[0];
-  const second = top[1];
-  const unsure = best.prob < 0.75 || (second && second.prob > 0.12) || usefulWords < 2;
-  const labels = top.map((g) => g.label);
+  const rivals = top.slice(1);
   const said = new Set(tokenize(sessionText()));
   for (const q of QUESTIONS) {
     if (q.always && !session.asked.has(q.id) && q.about.includes(best.label) && !q.skipIf.some((w) => said.has(w))) return q;
   }
+  const unsure = best.prob < 0.85 || rivals.some((g) => g.prob > 0.1) || specific < 3;
+  if (!unsure) return null;
   let pick = null;
   let score = 0;
   for (const q of QUESTIONS) {
-    if (!unsure) break;
-    if (session.asked.has(q.id) || q.always) continue;
+    if (session.asked.has(q.id) || q.always || !q.about.includes(best.label)) continue;
     if (q.skipIf && q.skipIf.some((w) => said.has(w))) continue;
-    const hits = labels.filter((l) => q.about.includes(l)).length;
-    // Must touch the top guess and at least one other, to tell them apart.
-    if (!q.about.includes(best.label) || hits < 2) continue;
-    if (hits > score) { score = hits; pick = q; }
+    // How much of the other guesses' weight this question can sort out.
+    // A weak or thin guess with no rival covered can still be confirmed or ruled out.
+    const weight = rivals.filter((g) => q.about.includes(g.label)).reduce((sum, g) => sum + g.prob, 0)
+      || ((best.prob < 0.6 || specific < 3) && session.asked.size === 0 ? 0.01 : 0);
+    if (weight > score) { score = weight; pick = q; }
   }
   return pick;
 }
 
 function questionBlock(q) {
+  const last = session.asked.size + 1 >= MAX_QUESTIONS || session.followups + 1 >= MAX_FOLLOWUPS;
   const block = el("div", { class: "followup quick-q" },
-    el("p", { class: "eyebrow" }, "Quick question"),
+    el("p", { class: "eyebrow" }, last ? "Last quick question" : "Quick question"),
     el("p", { class: "quick-q-text" }, q.q));
   block.append(el("div", { class: "options" }, ...q.options.map(([label, words]) =>
     el("button", { class: "option", type: "button", onclick: () => {
       buzz();
       session.asked.add(q.id);
+      session.followups++;
       block.remove();
       answerQuestion(label, words);
     } }, label))));

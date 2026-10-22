@@ -1,0 +1,71 @@
+// Car Doctor - quick-question check (run by tests/check.py).
+//
+// Plays the follow-up questions against data/holdout.csv: a pretend user who
+// knows the real cause taps the answer that fits it best (or skips when none
+// does). Reports accuracy before and after the questions and how many were
+// asked, for full sentences and for vague ones (first 2 words only).
+//
+//   node tests/questions.js
+"use strict";
+const fs = require("fs");
+const path = require("path");
+
+const ROOT = path.join(__dirname, "..");
+const app = fs.readFileSync(path.join(ROOT, "app/app.js"), "utf8");
+const features = fs.readFileSync(path.join(ROOT, "app/features.js"), "utf8");
+
+// The model code from app.js (same trick as check.py).
+const core = app.slice(0, app.indexOf("// ===== STORAGE ====="));
+const lib = new Function(core + "\nreturn { tokenize, predict, setModel: (m) => { MODEL = m; } };")();
+lib.setModel(JSON.parse(fs.readFileSync(path.join(ROOT, "app/model.json"), "utf8")));
+const BROAD = new Set(eval(app.match(/const BROAD_WORDS = new Set\((\[[\s\S]*?\])\)/)[1]));
+
+// QUESTIONS, the limits and pickQuestion from features.js.
+const slice = (start, end) => { const i = features.indexOf(start); return features.slice(i, features.indexOf(end, i)); };
+const source = slice("const QUESTIONS = [", "\n];\n") + "\n];\n"
+  + features.match(/^const MAX_QUESTIONS = .*$/m)[0] + "\n" + features.match(/^const MAX_FOLLOWUPS = .*$/m)[0] + "\n"
+  + slice("function pickQuestion(", "\nfunction questionBlock(");
+const session = { asked: new Set(), followups: 0, messages: [] };
+const sessionText = () => session.messages.join(" ");
+const { QUESTIONS, MAX_QUESTIONS, pickQuestion } = new Function("session", "tokenize", "sessionText",
+  source + "\nreturn { QUESTIONS, MAX_QUESTIONS, pickQuestion };")(session, lib.tokenize, sessionText);
+
+const specific = (text) => new Set(lib.tokenize(text).filter((t) => !t.includes("_") && MODEL_HAS(t) && !BROAD.has(t))).size;
+function MODEL_HAS(token) { return lib.predict(token).recognized > 0; }
+const probOf = (text, label) => lib.predict(text).ranked.find((g) => g.label === label).prob;
+
+const holdout = fs.readFileSync(path.join(ROOT, "data/holdout.csv"), "utf8").trim().split("\n").slice(1)
+  .map((line) => { const i = line.indexOf(","); return [line.slice(0, i), line.slice(i + 1)]; });
+
+function play(rows) {
+  let before = 0, after = 0, asked = 0, most = 0, broke = 0;
+  for (const [label, text] of rows) {
+    session.asked = new Set(); session.followups = 0; session.messages = [text];
+    const first = lib.predict(sessionText()).ranked[0].label === label;
+    let n = 0;
+    for (;;) {
+      const ranked = lib.predict(sessionText()).ranked;
+      const top = ranked.filter((g, i) => i === 0 || g.prob >= 0.05).slice(0, 3);
+      const q = pickQuestion(top, specific(sessionText()));
+      if (!q) break;
+      session.asked.add(q.id); session.followups++; n++;
+      let pick = "", best = probOf(sessionText(), label);
+      for (const [, words] of q.options) {
+        if (words && probOf(sessionText() + " " + words, label) > best * 1.15) { best = probOf(sessionText() + " " + words, label); pick = words; }
+      }
+      if (pick) session.messages.push(pick);
+    }
+    const last = lib.predict(sessionText()).ranked[0].label === label;
+    before += first; after += last; asked += n; most = Math.max(most, n);
+    if (first && !last) broke++;
+  }
+  const pct = (x) => Math.round(1000 * x / rows.length) / 10;
+  return { sentences: rows.length, before: pct(before), after: pct(after), broke, avgQuestions: Math.round(100 * asked / rows.length) / 100, maxQuestions: most };
+}
+
+const vague = holdout.map(([l, t]) => [l, t.split(" ").filter((w) => lib.tokenize(w).length).slice(0, 2).join(" ")])
+  .filter(([, t]) => lib.predict(t).recognized > 0);
+// Every answer that adds words must add words the model knows.
+const deadAnswers = QUESTIONS.flatMap((q) => q.options.filter(([, w]) => w && !lib.predict(w).recognized).map(([l]) => `${q.id}: ${l}`));
+
+console.log(JSON.stringify({ maxAllowed: MAX_QUESTIONS, full: play(holdout), vague: play(vague), deadAnswers }));

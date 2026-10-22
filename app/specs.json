@@ -83,6 +83,7 @@
     "hummer",
     "bravada"
    ],
+   "checked": "Oil, fuel pressure, plug gap and oil pressure checked against the factory manual (2004 Silverado 2500 6.0)",
    "specs": [
     [
      "oil",
@@ -93,6 +94,11 @@
      "oil",
      "Oil capacity",
      "6 qt with filter"
+    ],
+    [
+     "oil",
+     "Oil pressure (hot, minimum)",
+     "6 psi at 1,000 rpm, 18 psi at 2,000, 24 psi at 4,000"
     ],
     [
      "ignition",
@@ -106,8 +112,8 @@
     ],
     [
      "ignition",
-     "Spark plug gap",
-     "0.060 in"
+     "Spark plugs",
+     "Current plug ACDelco 41-985 (iridium) comes gapped at 0.040 in; don't regap it. The original platinum plugs were 0.060 in (GM bulletin 03-06-04-060B)"
     ],
     [
      "cooling",
@@ -190,6 +196,7 @@
     "hummer",
     "bravada"
    ],
+   "checked": "Oil, plug gap, plug torque and fuel pressure checked against the factory manual (2007 Silverado 1500 5.3)",
    "specs": [
     [
      "oil",
@@ -217,6 +224,11 @@
      "0.040 in"
     ],
     [
+     "ignition",
+     "Spark plug torque",
+     "11 ft-lb"
+    ],
+    [
      "cooling",
      "Coolant",
      "DEX-COOL (orange), 50/50 with distilled water"
@@ -229,7 +241,7 @@
     [
      "fuel",
      "Fuel pressure",
-     "About 55 to 62 psi, key on engine off"
+     "50 to 60 psi, key on engine off"
     ],
     [
      "notes",
@@ -1023,6 +1035,7 @@
     2004,
     2014
    ],
+   "checked": "Oil capacity checked against the factory manual (2007 F-150 5.4)",
    "models": [
     "f150",
     "f250",
@@ -1173,6 +1186,7 @@
     2010,
     2026
    ],
+   "checked": "Oil capacity checked against the factory manual (2011 F-150 3.5 EcoBoost)",
    "specs": [
     [
      "oil",
@@ -1567,6 +1581,7 @@
     2003,
     2026
    ],
+   "checked": "Oil capacity checked against the factory manual (2005 Ram 1500 5.7)",
    "specs": [
     [
      "oil",
@@ -3377,6 +3392,36 @@
      "wheels",
      "Lug nut torque",
      "140 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "models": [
+    "silverado2500",
+    "silverado3500",
+    "sierra2500",
+    "sierra3500"
+   ],
+   "years": [
+    2001,
+    2007
+   ],
+   "specs": [
+    [
+     "drivetrain",
+     "Transmission",
+     "6.0 gas with an automatic: 4L80-E, about 7.7 qt for a pan drop (factory manual, 2004 Silverado 2500). Duramax and 8.1: Allison 1000"
     ]
    ]
   },

@@ -951,6 +951,7 @@ body[data-tab="vehicle"] .vehicle-card { display: none; }
   font-family: var(--font-heading); font-size: 1rem; color: var(--text-strong);
 }
 .tech-family { margin: 0 0 8px; font-size: 0.85rem; font-weight: 700; color: var(--accent-text); }
+.tech-checked { margin: -4px 0 8px; font-size: 0.8rem; font-weight: 600; color: var(--safe); }
 .spec-group { margin: 0 0 10px; }
 .spec-group .eyebrow { margin: 0 0 4px; }
 .spec-group.wanted .eyebrow { color: var(--accent-text); }

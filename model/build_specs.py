@@ -63,9 +63,12 @@ DIESEL_OIL = "15W-40 diesel oil (API CK-4)"
 ENGINES = [
     # ---------------- GM ----------------
     {"id": "gm_gen3", "name": "GM Vortec V8 (Gen III: 4.8, 5.3, 6.0)", "makes": GM, "disp": ["4.8", "5.3", "6.0"],
-     "kind": "gas", "years": (1999, 2006), "models": GM_TRUCKS, "specs": [
+     "kind": "gas", "years": (1999, 2006), "models": GM_TRUCKS,
+     "checked": "Oil, fuel pressure, plug gap and oil pressure checked against the factory manual (2004 Silverado 2500 6.0)", "specs": [
         ["oil", "Oil", "5W-30"], ["oil", "Oil capacity", "6 qt with filter"],
-        V8_GM_FIRING, V8_GM_CYL, ["ignition", "Spark plug gap", "0.060 in"],
+        ["oil", "Oil pressure (hot, minimum)", "6 psi at 1,000 rpm, 18 psi at 2,000, 24 psi at 4,000"],
+        V8_GM_FIRING, V8_GM_CYL,
+        ["ignition", "Spark plugs", "Current plug ACDelco 41-985 (iridium) comes gapped at 0.040 in; don't regap it. The original platinum plugs were 0.060 in (GM bulletin 03-06-04-060B)"],
         DEXCOOL, ["cooling", "Thermostat", "At the lower radiator hose, on the water pump"],
         ["fuel", "Fuel pressure", "About 55 to 62 psi, key on engine off"],
         ["notes", "Oil pressure sensor", "Behind the intake manifold at the top rear of the engine. A common oil leak and the usual cause of a jumping oil gauge"],
@@ -73,11 +76,12 @@ ENGINES = [
         ["notes", "Exhaust manifold bolts", "Rear bolts often break, causing a tick at cold start that fades when warm"],
      ]},
     {"id": "gm_gen4", "name": "GM Vortec V8 (Gen IV: 4.8, 5.3, 6.0, 6.2)", "makes": GM, "disp": ["4.8", "5.3", "6.0", "6.2"],
-     "kind": "gas", "years": (2007, 2013), "models": GM_TRUCKS, "specs": [
+     "kind": "gas", "years": (2007, 2013), "models": GM_TRUCKS,
+     "checked": "Oil, plug gap, plug torque and fuel pressure checked against the factory manual (2007 Silverado 1500 5.3)", "specs": [
         ["oil", "Oil", "5W-30 (dexos1 on 2011 and newer)"], ["oil", "Oil capacity", "6 qt with filter"],
-        V8_GM_FIRING, V8_GM_CYL, ["ignition", "Spark plug gap", "0.040 in"],
+        V8_GM_FIRING, V8_GM_CYL, ["ignition", "Spark plug gap", "0.040 in"], ["ignition", "Spark plug torque", "11 ft-lb"],
         DEXCOOL, ["cooling", "Thermostat", "At the lower radiator hose, on the water pump"],
-        ["fuel", "Fuel pressure", "About 55 to 62 psi, key on engine off"],
+        ["fuel", "Fuel pressure", "50 to 60 psi, key on engine off"],
         ["notes", "Active Fuel Management", "Most 5.3s (and some 6.0/6.2) have AFM. Collapsed lifters and oil burning are common; keep the oil full and changed on time"],
         ["notes", "Oil pressure sensor", "Top rear of the engine behind the intake. Leaks and false low readings are common (a screen under the sensor can clog too)"],
         ["notes", "Exhaust manifold bolts", "Rear bolts often break, causing a tick at cold start"],
@@ -158,6 +162,7 @@ ENGINES = [
 
     # ---------------- Ford ----------------
     {"id": "ford_54_3v", "name": "Ford 5.4 Triton 3V V8", "makes": FORD, "disp": ["5.4"], "kind": "gas", "years": (2004, 2014),
+     "checked": "Oil capacity checked against the factory manual (2007 F-150 5.4)",
      "models": ["f150", "f250", "f350", "superduty", "expedition", "navigator", "marklt", "blackwood"], "specs": [
         ["oil", "Oil", "5W-20"], ["oil", "Oil capacity", "7 qt with filter"],
         ["ignition", "Firing order", "1-3-7-2-6-5-4-8"],
@@ -178,7 +183,8 @@ ENGINES = [
         ["ignition", "Cylinder numbers", "1 to 4 on the passenger side front to back, 5 to 8 on the driver side"],
         ["notes", "Oil use", "Some 2018 and newer engines use oil between changes. Check the dipstick regularly"],
      ]},
-    {"id": "ford_35_ecoboost", "name": "Ford 3.5 EcoBoost V6", "makes": FORD, "disp": ["3.5"], "kind": "turbo", "years": (2010, 2026), "specs": [
+    {"id": "ford_35_ecoboost", "name": "Ford 3.5 EcoBoost V6", "makes": FORD, "disp": ["3.5"], "kind": "turbo", "years": (2010, 2026),
+     "checked": "Oil capacity checked against the factory manual (2011 F-150 3.5 EcoBoost)", "specs": [
         ["oil", "Oil", "5W-30"], ["oil", "Oil capacity", "6 qt with filter"],
         ["ignition", "Firing order", "1-4-2-5-3-6"],
         ["notes", "Timing chain (2011 to 2016)", "Chain stretch: rattle at startup and codes P0016 to P0019"],
@@ -232,7 +238,8 @@ ENGINES = [
      ]},
 
     # ---------------- Mopar ----------------
-    {"id": "mopar_hemi_57", "name": "Chrysler 5.7 Hemi V8", "makes": MOPAR, "disp": ["5.7"], "kind": "gas", "years": (2003, 2026), "specs": [
+    {"id": "mopar_hemi_57", "name": "Chrysler 5.7 Hemi V8", "makes": MOPAR, "disp": ["5.7"], "kind": "gas", "years": (2003, 2026),
+     "checked": "Oil capacity checked against the factory manual (2005 Ram 1500 5.7)", "specs": [
         ["oil", "Oil", "5W-20"], ["oil", "Oil capacity", "7 qt with filter"],
         ["ignition", "Firing order", "1-8-4-3-6-5-7-2"], ["ignition", "Spark plugs", "16 plugs: two per cylinder"],
         ["ignition", "Spark plug gap", "0.043 in"],
@@ -493,6 +500,8 @@ VEHICLES = [
      [["wheels", "Lug nut torque", "140 ft-lb"]]),
     (GM, ["silverado2500", "silverado3500", "sierra2500", "sierra3500"], (2001, 2026),
      [["wheels", "Lug nut torque", "140 ft-lb"]]),
+    (GM, ["silverado2500", "silverado3500", "sierra2500", "sierra3500"], (2001, 2007),
+     [["drivetrain", "Transmission", "6.0 gas with an automatic: 4L80-E, about 7.7 qt for a pan drop (factory manual, 2004 Silverado 2500). Duramax and 8.1: Allison 1000"]]),
     (["Ford"], ["f150"], (2004, 2026), [["wheels", "Lug nut torque", "150 ft-lb"]]),
     (["Ford"], ["f250", "f350", "superduty"], (2005, 2026), [["wheels", "Lug nut torque", "165 ft-lb"]]),
     (["Ram", "Dodge"], ["1500", "ram1500"], (2002, 2026), [["wheels", "Lug nut torque", "130 ft-lb"]]),

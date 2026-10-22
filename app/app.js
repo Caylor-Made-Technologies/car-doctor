@@ -395,7 +395,7 @@ const DETAILS = [
   { text: "Only when cold", keys: ["cold"] },
 ];
 
-const session = { messages: [], shown: [], resultNode: null, done: false, busy: false, asked: new Set(), last: null };
+const session = { messages: [], shown: [], resultNode: null, done: false, busy: false, asked: new Set(), followups: 0, last: null };
 
 function sessionText() {
   return session.messages.join(" ");
@@ -466,6 +466,7 @@ function welcome() {
   session.resultNode = null;
   session.done = false;
   session.asked = new Set();
+  session.followups = 0; // taps after the first description; capped so it never feels like a quiz
   session.last = null;
   session.askedMore = false;
   stopSound();
@@ -565,7 +566,7 @@ async function sendMessage(text, shown) {
 }
 
 // Words that say what kind of problem, but not which one ("noise", "shake").
-const BROAD_WORDS = new Set(["noise", "smell", "light", "shake", "leak", "make", "drive", "run", "come", "happen", "doing",
+const BROAD_WORDS = new Set(["noise", "smell", "light", "shake", "leak", "make", "drive", "run", "come", "happen", "doing", "loud",
   "sometime", "start", "car", "vehicle", "engine", "ther", "seem", "keep", "new", "old", "today", "lately"]);
 function specificWords(text) {
   return new Set(tokenize(text).filter((t) => !t.includes("_") && MODEL.vocab[t] !== undefined && !BROAD_WORDS.has(t))).size;
@@ -684,17 +685,18 @@ function showResults(result) {
 
   // Unsure, or the description is too short to trust? Ask one simple
   // question that separates the top guesses. If none fits, fall back to
-  // "when does it happen?" chips the user hasn't covered yet.
+  // "when does it happen?" chips the user hasn't covered yet. Both count
+  // toward the follow-up limit (MAX_FOLLOWUPS in features.js).
   const usefulWords = new Set(tokenize(sessionText()).filter((t) => !t.includes("_") && MODEL.vocab[t] !== undefined));
-  const question = pickQuestion(top, usefulWords.size);
+  const question = pickQuestion(top, specificWords(sessionText()));
   if (question) {
     card.append(questionBlock(question));
-  } else if (best.prob < 0.6 || usefulWords.size < 2) {
+  } else if ((best.prob < 0.6 || usefulWords.size < 2) && session.followups < MAX_FOLLOWUPS) {
     const said = new Set(tokenize(sessionText()));
     const missing = DETAILS.filter((d) => !d.keys.some((k) => said.has(k))).map((d) => d.text);
     card.append(el("div", { class: "followup" },
       el("p", {}, "Not sure yet. When does it happen?"),
-      missing.length ? chipRow(missing, sendMessage) : null));
+      missing.length ? chipRow(missing, (text) => { session.followups++; sendMessage(text); }) : null));
   }
 
   card.append(el("div", { class: "actions" },
