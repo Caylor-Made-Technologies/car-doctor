@@ -117,7 +117,6 @@ dirty_maf_sensor,hesitates when i step on the gas
 dirty_maf_sensor,engine bogs down when accelerating from a stop
 dirty_maf_sensor,code p0101 mass air flow
 dirty_maf_sensor,stalls right after starting then restarts fine
-dirty_maf_sensor,gas mileage dropped a lot and it hesitates
 dirty_maf_sensor,surging at idle rpm goes up and down
 dirty_maf_sensor,jerks and hesitates at low speed
 dirty_maf_sensor,after i put in an oiled air filter it runs bad
@@ -126,7 +125,6 @@ dirty_maf_sensor,check engine light with maf sensor code and poor power
 dirty_maf_sensor,lean codes p0171 and p0174 and hesitation
 dirty_maf_sensor,sluggish acceleration and black smoke sometimes
 vacuum_leak,hissing noise from the engine at idle
-vacuum_leak,idle is high and wont come down
 vacuum_leak,codes p0171 and p0174 system too lean both banks
 vacuum_leak,rough idle and a whistling sound under the hood
 vacuum_leak,rpm jumps around at idle and hisses
@@ -187,7 +185,7 @@ transmission_problem,no reverse but drive works
 transmission_problem,flares between shifts and the engine revs
 transmission_problem,stuck in limp mode and wont shift
 transmission_problem,code p0894 transmission slipping
-transmission_problem,shudders like driving over rumble strips at 45 mph
+torque_converter_shudder,shudders like driving over rumble strips at 45 mph
 worn_cv_axle,clicking noise when turning
 worn_cv_axle,popping sound when i make a sharp turn
 worn_cv_axle,clicking from the front wheel when turning in a parking lot
@@ -255,7 +253,6 @@ oil_leak_low_oil,oil light flickers at idle
 oil_leak_low_oil,dipstick shows low oil
 oil_leak_low_oil,smoke from the engine bay and a burning smell
 oil_leak_low_oil,brown spot on the driveway in the morning
-oil_leak_low_oil,have to add a quart of oil every week
 oil_leak_low_oil,oil pressure gauge drops to zero at idle
 oil_leak_low_oil,blue smoke and oil leaking from the valve cover
 oil_leak_low_oil,oil dripping from the back of the engine
@@ -279,24 +276,24 @@ ac_problem,air conditioning not cold anymore
 ac_problem,ac compressor clutch not engaging
 ac_problem,ac works on the highway but warm at idle
 ac_problem,ac only blows cold on one side
-ac_problem,clicking behind the dash when i change the temperature
+blend_door_actuator,clicking behind the dash when i change the temperature
 ac_problem,musty smell from the vents when the ac is on
 ac_problem,ac blows cold then turns warm after a while
-ac_problem,weak airflow from the ac vents
+blower_motor_problem,weak airflow from the ac vents
 ac_problem,water dripping inside the cab under the dash from the ac
 ac_problem,ac makes a loud noise when it kicks on
 ac_problem,recharged the freon and it was warm again a week later
 electrical_ground_problem,lights flicker and gauges jump around
 electrical_ground_problem,random electrical problems and warning lights
-electrical_ground_problem,gauges stick or go dead randomly
+instrument_cluster_problem,gauges stick or go dead randomly
 electrical_ground_problem,headlights dim when i use the turn signal
 electrical_ground_problem,random no start but sometimes it fires right up
 electrical_ground_problem,dash goes black for a second over bumps
 electrical_ground_problem,ground strap is corroded and things act weird
 electrical_ground_problem,radio resets and lights flicker
-electrical_ground_problem,speedometer needle stuck and wont move
+instrument_cluster_problem,speedometer needle stuck and wont move
 electrical_ground_problem,all the warning lights come on at once then go off
-electrical_ground_problem,fuel gauge jumps from full to empty
+instrument_cluster_problem,fuel gauge jumps from full to empty
 electrical_ground_problem,power windows and locks work sometimes and not others
 electrical_ground_problem,turn signal blinks really fast and the bulb is fine
 worn_suspension,clunk over bumps
@@ -307,7 +304,7 @@ worn_suspension,knocking from the front when going over speed bumps
 worn_suspension,creaking noise when going over bumps
 worn_suspension,nose dives hard when braking
 worn_suspension,rattle from the front end on dirt roads
-worn_suspension,death wobble after hitting a bump
+death_wobble,death wobble after hitting a bump
 worn_suspension,squeaky noise over bumps and leaning in turns
 worn_suspension,clunking when i turn the wheel at a stop
 worn_suspension,sways a lot on the highway and floats
@@ -390,10 +387,8 @@ fuel_delivery_problem,sputters going up hills and loses power
 fuel_delivery_problem,cranks fine but wont fire no fuel
 fuel_delivery_problem,dies on the highway and wont restart right away
 overheating,engine overheating and temp gauge high
-overheating,running hot and coolant leaking
 overheating,overheats at idle in traffic
 overheating,temp gauge goes high and steam from the radiator
-overheating,coolant leaking and engine getting hot
 overheating,overheating when towing up hills
 thermostat_stuck_open,heater blows cold air and the engine runs cold
 thermostat_stuck_open,temp gauge stays low and no heat
@@ -438,7 +433,6 @@ exhaust_leak,ticking noise when cold only
 exhaust_leak,puffing ticking from the exhaust manifold area
 oil_leak_low_oil,oil leak under the engine
 oil_leak_low_oil,oil leaking and burning smell
-oil_leak_low_oil,low oil and the oil light comes on
 oil_leak_low_oil,oil drips on the driveway
 oil_leak_low_oil,oil pressure low at idle and low oil
 oil_leak_low_oil,smell burning oil and see smoke from the engine
@@ -453,7 +447,6 @@ ac_problem,ac blowing hot air
 ac_problem,air conditioner warm and compressor not kicking on
 ac_problem,ac cold sometimes and warm other times
 ac_problem,ac weak and not cooling
-ac_problem,ac stopped working
 electrical_ground_problem,flickering lights and gauges acting weird
 electrical_ground_problem,electrical problems lights flicker
 electrical_ground_problem,gauges go crazy and lights flicker
@@ -563,7 +556,7 @@ overheating,engine temperature climbing and overheating
 overheating,coolant boiling and steam from the hood
 overheating,temp gauge rising into the red at idle
 overheating,overheating with the ac on in traffic
-overheating,water pump leaking coolant and running hot
+water_pump_failure,water pump leaking coolant and running hot
 thermostat_stuck_open,heater blowing cold and temp gauge low
 thermostat_stuck_open,engine stays cold and the heater is weak
 thermostat_stuck_open,thermostat stuck open no heat
@@ -578,7 +571,7 @@ transmission_problem,wont go into gear
 transmission_problem,transmission shifts erratic and harsh
 transmission_problem,transmission stuck in one gear
 transmission_problem,slipping gears when towing
-transmission_problem,torque converter shudder at 40 mph
+torque_converter_shudder,torque converter shudder at 40 mph
 worn_cv_axle,clicking from the front axle when turning
 worn_cv_axle,cv joint clicking on tight turns
 worn_cv_axle,ripped cv boot slinging grease
@@ -624,13 +617,13 @@ ac_problem,ac compressor not turning on
 ac_problem,ac only cools on the highway
 electrical_ground_problem,lights flickering and gauges jumping
 electrical_ground_problem,random electrical gremlins
-electrical_ground_problem,gauges drop to zero and come back
+instrument_cluster_problem,gauges drop to zero and come back
 electrical_ground_problem,flickering headlights and dash lights
 electrical_ground_problem,bad ground causing random no start
-electrical_ground_problem,instrument cluster gauges stuck
+instrument_cluster_problem,instrument cluster gauges stuck
 electrical_ground_problem,dash lights flicker over bumps
 electrical_ground_problem,corroded ground wire and electrical problems
-electrical_ground_problem,speedometer and gauges stop working randomly
+instrument_cluster_problem,speedometer and gauges stop working randomly
 electrical_ground_problem,power locks and windows act up randomly
 worn_suspension,clunk over bumps in the front end
 worn_suspension,bouncy ride and worn shocks
@@ -650,17 +643,17 @@ dirty_maf_sensor,hesitates and jerks then catches up
 electrical_ground_problem,gauges go crazy and the dash flickers
 electrical_ground_problem,random no start then it starts fine the next try
 electrical_ground_problem,dash goes black for a second
-electrical_ground_problem,gauges drop to zero randomly
+instrument_cluster_problem,gauges drop to zero randomly
 electrical_ground_problem,turn signal blinks fast and lights dim
 electrical_ground_problem,windows and locks work sometimes
 electrical_ground_problem,electrical problems come and go randomly
-electrical_ground_problem,speedometer stuck at zero and gauges dead
+instrument_cluster_problem,speedometer stuck at zero and gauges dead
 transmission_problem,no reverse gear
 transmission_problem,delayed engagement and slipping
 transmission_problem,transmission acting weird with a p0700 code
 transmission_problem,red transmission fluid leaking from the pan
 transmission_problem,rpm climbs but no acceleration slipping
-transmission_problem,shudder from the transmission at 40 to 50 mph like rumble strips
+torque_converter_shudder,shudder from the transmission at 40 to 50 mph like rumble strips
 transmission_problem,harsh shift and transmission light
 fuel_delivery_problem,turns over fine but never fires
 fuel_delivery_problem,cranks fine never starts
@@ -712,7 +705,6 @@ timing_chain_problem,timing chain rattle and the engine runs rough
 timing_chain_problem,cold start rattle from the front of the motor
 head_gasket_failure,white smoke from the exhaust and losing coolant
 head_gasket_failure,milky oil on the dipstick
-head_gasket_failure,coolant disappearing with no leak
 head_gasket_failure,sweet smelling white smoke from the tailpipe
 head_gasket_failure,bubbles in the coolant reservoir while running
 head_gasket_failure,blown head gasket
@@ -787,7 +779,7 @@ overheating,overheats at stop lights then cools when moving
 overheating,radiator fan not spinning and engine overheating
 overheating,temp light on and steam
 overheating,coolant leaking from the radiator and engine overheating
-overheating,water pump leaking and overheating
+water_pump_failure,water pump leaking and overheating
 overheating,needle pegged hot and steam from the radiator
 overheating,overheating on the highway towing a trailer
 head_gasket_failure,oil looks milky like chocolate milk
@@ -848,7 +840,7 @@ worn_suspension,bounces like a boat over bumps
 worn_suspension,clunks and rattles over rough roads suspension
 worn_suspension,sway bar link clunk over bumps
 worn_suspension,bumpy ride and front end noise over bumps
-ac_problem,clicking behind the dash when changing ac temperature
+blend_door_actuator,clicking behind the dash when changing ac temperature
 ac_problem,ac compressor loud noise when it turns on
 ac_problem,ac water dripping inside the cab
 ac_problem,recharged the ac and it got warm again
@@ -859,7 +851,7 @@ ac_problem,ac vents blowing hot air in summer
 ac_problem,ac freon low and not cooling
 ac_problem,ac fan works but no cold air
 ac_problem,ac smells musty from the vents
-ac_problem,blend door clicking and ac only warm
+blend_door_actuator,blend door clicking and ac only warm
 dirty_maf_sensor,lean codes and hesitation maf
 dirty_maf_sensor,idle surges up and down and hesitates maf
 dirty_maf_sensor,maf code and sluggish power
@@ -886,7 +878,7 @@ catalytic_converter_problem,converter rattle and rotten egg smell
 catalytic_converter_problem,sulfur smell and poor power catalytic converter
 transmission_problem,no reverse transmission
 transmission_problem,shifts hard and transmission slipping check engine
-transmission_problem,torque converter shudder transmission
+torque_converter_shudder,torque converter shudder transmission
 transmission_problem,rpm goes up but no acceleration transmission slipping
 transmission_problem,red transmission fluid leak under the middle
 transmission_problem,transmission slipping and shifting hard
@@ -943,7 +935,7 @@ bad_starter,starter one click no crank jump doesnt help
 bad_starter,bad starter click no crank
 electrical_ground_problem,random no start ground wire
 electrical_ground_problem,radio resets and lights flicker ground
-electrical_ground_problem,speedometer stuck gauges cluster
+instrument_cluster_problem,speedometer stuck gauges cluster
 electrical_ground_problem,electrical gremlins flickering lights
 electrical_ground_problem,gauges flicker and drop bad ground
 engine_misfire,stumbles and jerks under hard acceleration misfire
@@ -986,14 +978,13 @@ vacuum_leak,idle surges and whistles vacuum
 overheating,overheats towing a trailer
 overheating,overheats at stop lights cools down when driving
 overheating,overheating and heater blowing cold air
-overheating,water pump leak and engine overheats
-overheating,engine overheats and coolant leaks
+water_pump_failure,water pump leak and engine overheats
 overheating,overheating in stop and go traffic
 overheating,temp gauge high and engine hot
 electrical_ground_problem,all warning lights flash on at once
 electrical_ground_problem,headlights dim with the turn signal on
 electrical_ground_problem,windows and locks work only sometimes
-electrical_ground_problem,speedometer needle stuck at zero
+instrument_cluster_problem,speedometer needle stuck at zero
 electrical_ground_problem,random no start sometimes fine sometimes not
 electrical_ground_problem,warning lights flicker on and off randomly
 electrical_ground_problem,dash lights and gauges act up randomly
@@ -1121,9 +1112,7 @@ sticking_brake_caliper,pulls hard to one side when i brake and a wheel gets hot
 sticking_brake_caliper,slide pins seized and pad dragging
 sticking_brake_caliper,drags and feels sluggish with a hot wheel
 sticking_brake_caliper,smoky burning smell near the front tire
-bad_motor_mounts,clunk when i put it in drive or reverse
 bad_motor_mounts,engine jumps when i shift into gear
-bad_motor_mounts,big thump when shifting from park to drive and reverse
 bad_motor_mounts,vibrates a lot at stop lights in drive but smooth in neutral
 bad_motor_mounts,engine rocks a lot when revving
 bad_motor_mounts,motor mount broken
@@ -1139,7 +1128,6 @@ bad_motor_mounts,transmission mount worn and clunks
 bad_motor_mounts,jerk and clunk when taking off from a stop engine mount
 bad_motor_mounts,engine lurches when i shift
 bad_motor_mounts,shakes at idle in drive engine mount
-bad_motor_mounts,thump when the transmission engages
 bad_motor_mounts,engine twists hard when i accelerate
 bad_motor_mounts,loud clunk going into reverse engine moves
 bad_motor_mounts,vibration at idle that goes away in neutral
@@ -1512,12 +1500,12 @@ transmission_problem,engine revs high truck doesnt go transmission
 transmission_problem,transmission fluid burnt and dark
 transmission_problem,red fluid under the middle transmission leak
 transmission_problem,automatic transmission wont go into gear
-transmission_problem,torque converter shudder like rumble strips
+torque_converter_shudder,torque converter shudder like rumble strips
 transmission_problem,transmission shudder at 45 mph
 ac_problem,ac quit working no cold air
 ac_problem,ac water dripping inside under the dash
 ac_problem,fan blows but ac not cold
-ac_problem,ac clicking behind the dash changing temperature
+blend_door_actuator,ac clicking behind the dash changing temperature
 tire_balance,shake after getting new tires balanced
 tire_balance,shake comes and goes at certain speeds tires
 tire_balance,highway shake at certain speeds
@@ -1544,3 +1532,2550 @@ bad_starter,starter solenoid one click
 bad_starter,smoke from the starter when trying to start
 catalytic_converter_problem,loses power at high speed converter clogged
 electrical_ground_problem,electrical problems over bumps flicker
+cvt_problem,cvt judders when i take off from a stop
+cvt_problem,my nissan cvt whines louder the faster i go
+cvt_problem,rpms go up but the car doesnt speed up and it has a cvt
+cvt_problem,cvt transmission shudders pulling away from a light
+cvt_problem,whining noise from the cvt on the highway
+cvt_problem,engine revs high and the car feels like a rubber band
+cvt_problem,rubber band feeling when i accelerate
+cvt_problem,cvt went into limp mode going up a long hill
+cvt_problem,car loses power on hot days and the cvt light comes on
+cvt_problem,judder at low speed in my rogue
+cvt_problem,subaru cvt jerks and judders at 20 mph
+cvt_problem,continuously variable transmission making a whine
+cvt_problem,rpm flares and drops while cruising with a cvt
+cvt_problem,the cvt slips when i press the gas from a stop
+cvt_problem,code p17f0 cvt judder
+cvt_problem,cvt overheating and slowing down on the interstate
+cvt_problem,hesitation then a surge from the cvt
+cvt_problem,droning whine from the transmission and there are no gears to feel
+cvt_problem,the cvt shakes when i start moving
+cvt_problem,engine screams but i barely move uphill cvt
+cvt_problem,my altima cvt makes a howling whine
+cvt_problem,cvt feels like it is slipping at 40 mph
+cvt_problem,nissan sentra transmission whine and jerking cvt
+cvt_problem,judder from the cvt in stop and go traffic
+cvt_problem,the cvt whines and the rpm goes up and down by itself
+cvt_problem,limp mode and the car wont go over 40 cvt
+cvt_problem,cvt fluid never changed and now it judders
+cvt_problem,my car has no gears and it whines and shudders when pulling away
+cvt_problem,transmission whine that rises with speed on my honda cvt
+cvt_problem,engine revs up like it is in neutral then catches cvt
+cvt_problem,cvt shudder and a clunk from the transmission
+cvt_problem,jerky acceleration from the cvt at low speed
+cvt_problem,my mitsubishi cvt is noisy and slow to go
+cvt_problem,loud whine from the cvt when i accelerate
+cvt_problem,cvt judder going up a small hill
+cvt_problem,the transmission is a cvt and it revs without going faster
+cvt_problem,cvt makes a grinding whine and the car is sluggish
+cvt_problem,shudder when i take off and my car has a cvt
+cvt_problem,cvt shakes the whole car pulling away slowly
+cvt_problem,high rpm but low speed cvt slipping
+cvt_problem,cvt warning light and the car feels weak
+cvt_problem,whirring noise that rises and falls with speed cvt
+torque_converter_shudder,feels like driving over rumble strips at 40 mph
+torque_converter_shudder,shudder at 35 to 50 mph on light gas that goes away when i push harder
+torque_converter_shudder,truck shudders on the highway when cruising lightly
+torque_converter_shudder,rumble strip feeling around 45 when going up a slight hill
+torque_converter_shudder,8 speed shudder in my silverado
+torque_converter_shudder,torque converter clutch shudder p0741
+torque_converter_shudder,shake at 30 mph that stops when i let off the gas
+torque_converter_shudder,shudder like a washboard road at steady speed
+torque_converter_shudder,rpm needle wavers and the truck shudders at 50
+torque_converter_shudder,light throttle shudder on the freeway
+torque_converter_shudder,feels like rumble strips but the road is smooth
+torque_converter_shudder,my tahoe shudders between 40 and 50 mph
+torque_converter_shudder,shudder only when barely pressing the gas at cruising speed
+torque_converter_shudder,vibration at 45 that goes away when i floor it or coast
+torque_converter_shudder,transmission shudder when the converter locks up
+torque_converter_shudder,brief shudder when cruising and the rpm drops a little
+torque_converter_shudder,8l90 shudder at low speed
+torque_converter_shudder,shuddering like rolling over rumble strips while cruising
+torque_converter_shudder,truck feels like it is driving on rumble strips uphill
+torque_converter_shudder,vibration at 40 mph that feels like it comes from the transmission
+torque_converter_shudder,shudder when the transmission locks up on the highway
+torque_converter_shudder,rumble strip vibration that comes and goes with light gas
+torque_converter_shudder,shudder at 40 that changes when i press more gas
+torque_converter_shudder,ford escape shudders like rumble strips at 30 mph
+torque_converter_shudder,rumble feeling through the floor at 45 on light throttle
+torque_converter_shudder,shudder in overdrive at highway speed going uphill
+torque_converter_shudder,shudder that happens only around 35 to 45 mph
+torque_converter_shudder,my yukon shakes like a rumble strip when cruising
+torque_converter_shudder,rumble strips feeling then it stops when i let off
+torque_converter_shudder,torque converter shudder after the transmission warms up
+torque_converter_shudder,shudder at steady speed and the tach bounces a little
+torque_converter_shudder,cruising at 45 the truck shudders for a second
+torque_converter_shudder,feels like running over rumble strips but only on the gas
+torque_converter_shudder,shudder from the drivetrain under light load
+torque_converter_shudder,lockup shudder at 50 mph
+water_pump_failure,water pump leaking coolant at the front of the engine
+water_pump_failure,coolant dripping from the water pump weep hole
+water_pump_failure,green crust under the water pump
+water_pump_failure,water pump pulley wobbles and squeals
+water_pump_failure,grinding noise from the water pump and coolant leak
+water_pump_failure,coolant leaking from the front of the motor near the belt
+water_pump_failure,pink coolant drip behind the fan
+water_pump_failure,low coolant light and drips at the front of the engine
+water_pump_failure,whining from the water pump and the temp is rising
+water_pump_failure,water pump bearing is noisy
+water_pump_failure,coolant spraying from the water pump when the engine is hot
+water_pump_failure,orange coolant puddle at the front under the engine
+water_pump_failure,the water pump is leaking and the engine runs warm
+water_pump_failure,sweet smell and coolant drip from the pump
+water_pump_failure,coolant leaking near the timing belt cover
+water_pump_failure,water pump failed and the car overheated
+water_pump_failure,coolant on the belt and pulleys at the front
+water_pump_failure,keep adding coolant and it drips from the water pump
+water_pump_failure,water pump gasket leaking
+water_pump_failure,squealing and wobbling pulley on the water pump
+water_pump_failure,coolant loss with no leak and milky oil internal water pump
+water_pump_failure,internal water pump failed and coolant went in the oil
+water_pump_failure,coolant drips on the front of the engine after i park
+water_pump_failure,hear grinding from the front of the engine and coolant is low
+water_pump_failure,coolant leaking down the front of the block
+water_pump_failure,electric water pump failed and it overheated
+water_pump_failure,the front of my engine is wet with coolant
+water_pump_failure,coolant dripping from behind the serpentine belt
+water_pump_failure,water pump weeping coolant
+water_pump_failure,toyota water pump leak pink crust
+water_pump_failure,drip of green coolant right under the water pump pulley
+water_pump_failure,coolant leaking from the pump area and temp gauge creeping up
+water_pump_failure,shaft play in the water pump pulley
+water_pump_failure,a wet spot of coolant under the front center of the engine
+water_pump_failure,water pump squeal and steam
+water_pump_failure,coolant drips from the front of the engine when it is running
+water_pump_failure,water pump noise like a bad bearing
+water_pump_failure,leaking water pump on my v6
+oil_burning,needs a quart of oil every 1000 miles but no leaks
+oil_burning,burning oil with no drips under the car
+oil_burning,blue smoke at startup and oil low between changes
+oil_burning,engine uses oil but nothing leaks
+oil_burning,adding oil all the time and there are no spots
+oil_burning,oil level drops and puffs of blue smoke from the tailpipe
+oil_burning,my car burns oil
+oil_burning,blue gray smoke when i step on it
+oil_burning,oil consumption on my 2.4 toyota
+oil_burning,oil light comes on before the oil change is due and no leak
+oil_burning,spark plugs are oily and the engine burns oil
+oil_burning,smoke from the exhaust that smells like oil
+oil_burning,going through oil fast but the driveway is clean
+oil_burning,blue smoke from the tailpipe after idling
+oil_burning,dipstick is low every few weeks with no leaks
+oil_burning,oil burning engine needs oil every fill up
+oil_burning,puff of blue smoke when i start it in the morning
+oil_burning,subaru using a lot of oil
+oil_burning,oil goes missing between changes and no puddles
+oil_burning,afm engine burning oil
+oil_burning,my honda v6 burns oil and fouls plugs
+oil_burning,blue smoke on deceleration
+oil_burning,uses two quarts between oil changes
+oil_burning,fouled plugs from burning oil
+oil_burning,exhaust smoke blue and oil disappearing
+oil_burning,oil low again even though nothing is leaking
+oil_burning,smoke out the tailpipe and oil keeps dropping
+oil_burning,my engine eats oil
+oil_burning,blue smoke when accelerating hard
+oil_burning,oil consumption test at the dealer
+oil_burning,the oil keeps getting low and theres oily soot on the tailpipe
+oil_burning,keeps running low on oil with no leak anywhere
+oil_burning,piston rings worn and burning oil
+oil_burning,valve seals leaking blue smoke at startup
+oil_burning,oil burning and check engine for misfire
+oil_burning,add a quart every week and i never see a drip
+oil_burning,blue haze out the back when i start it
+oil_burning,low oil warning but no oil under the car
+throttle_body_problem,wrench light came on and the car went into reduced power
+throttle_body_problem,reduced engine power message and it barely accelerates
+throttle_body_problem,stalls when i come to a stop and the idle is low
+throttle_body_problem,idle surges up and down at a stop
+throttle_body_problem,dirty throttle body and rough idle
+throttle_body_problem,gas pedal doesnt respond for a second
+throttle_body_problem,idle is too high at 2000 rpm
+throttle_body_problem,code p2135 throttle position
+throttle_body_problem,electronic throttle control light on
+throttle_body_problem,car stalls at stop signs then restarts
+throttle_body_problem,engine stalls when i let off the gas coming to a stop
+throttle_body_problem,limp mode wrench light and the gas pedal does nothing
+throttle_body_problem,throttle body is black inside and it stalls
+throttle_body_problem,engine idles high and wont come down
+throttle_body_problem,idle hunting up and down
+throttle_body_problem,press the gas and nothing happens then it surges
+throttle_body_problem,p2111 throttle stuck open
+throttle_body_problem,reduced power mode and wont go over 30 mph
+throttle_body_problem,dies at idle with the ac on
+throttle_body_problem,throttle sticks and the engine races
+throttle_body_problem,stalling when i park and the idle drops
+throttle_body_problem,car wont idle unless i hold the gas
+throttle_body_problem,engine power reduced on the dash
+throttle_body_problem,the yellow wrench light is on
+throttle_body_problem,surging idle and the rpm bounces
+throttle_body_problem,engine almost dies at a red light
+throttle_body_problem,gas pedal feels dead and then the car lunges
+throttle_body_problem,cleaned the throttle body and the idle got better
+throttle_body_problem,p2101 throttle actuator
+throttle_body_problem,rpms bounce at idle then it stalls
+throttle_body_problem,idle drops really low when braking to a stop
+throttle_body_problem,throttle body failure reduced power
+throttle_body_problem,idles rough and low after a cold start
+throttle_body_problem,the car went into limp mode with a wrench symbol
+throttle_body_problem,slow throttle response and a stall
+throttle_body_problem,engine revs by itself at a stop
+throttle_body_problem,throttle position sensor code and stalling
+throttle_body_problem,dodge stalls at idle throttle body
+collapsed_lifter,ticking that gets louder and a misfire
+collapsed_lifter,lifter tick on my 5.3
+collapsed_lifter,hemi tick and a misfire on one cylinder
+collapsed_lifter,ticking from the top of the engine that never goes away
+collapsed_lifter,tick sounds like a sewing machine and it is getting louder
+collapsed_lifter,afm lifter collapsed
+collapsed_lifter,ticking all the time even when warm and the engine shakes
+collapsed_lifter,tick that speeds up with the engine and a check engine light
+collapsed_lifter,misfire on cylinder 7 and a ticking sound
+collapsed_lifter,valve tick at idle that stays when warm
+collapsed_lifter,ticking under the valve cover
+collapsed_lifter,loud tick and rough idle after an oil change
+collapsed_lifter,ticking that follows the rpm and a flashing light
+collapsed_lifter,p3400 code and ticking
+collapsed_lifter,lifter noise and cylinder misfire
+collapsed_lifter,ticking gets worse as the engine warms up
+collapsed_lifter,the engine ticks constantly and runs rough
+collapsed_lifter,tapping from the top of the engine like a lifter
+collapsed_lifter,dfm lifter failure on my silverado
+collapsed_lifter,rocker arm tick on the 3.6 pentastar
+collapsed_lifter,ticking noise from the heads and misfire codes
+collapsed_lifter,ticking with a shake at idle
+collapsed_lifter,tick tick tick from the engine all the time
+collapsed_lifter,lifter ticking after the truck sat
+collapsed_lifter,loud tapping and misfire on one side
+collapsed_lifter,ticking that never quiets down hot or cold
+collapsed_lifter,cam lobe wiped and ticking
+collapsed_lifter,constant tapping and the check engine light
+collapsed_lifter,ticking louder with rpm and engine misses
+collapsed_lifter,tick from the valvetrain
+collapsed_lifter,tapping noise when warm and a rough idle
+collapsed_lifter,ticking noise and engine shaking on the 5.7
+collapsed_lifter,top end tick and misfire
+collapsed_lifter,ticking that gets louder every week and it misfires
+collapsed_lifter,valve adjustment needed ticking
+collapsed_lifter,fast ticking from the engine that matches the rpm
+collapsed_lifter,cylinder deactivation lifter noise
+collapsed_lifter,tick from under the valve cover and a misfire code
+engine_knock,deep knocking from the engine that gets faster with rpm
+engine_knock,rod knock
+engine_knock,knocking from the bottom of the engine
+engine_knock,loud knock when i accelerate and the oil light flickers
+engine_knock,engine knocking and oil pressure low
+engine_knock,deep thud from inside the engine
+engine_knock,knocking gets louder when i give it gas
+engine_knock,metal shavings in the oil and knocking
+engine_knock,my hyundai engine is knocking
+engine_knock,theta engine knock
+engine_knock,knock knock from the engine at idle that speeds up
+engine_knock,heavy knock under load
+engine_knock,bottom end knock and oil light
+engine_knock,engine makes a loud knocking and then stalled
+engine_knock,spun a bearing knocking
+engine_knock,the engine is knocking really loud
+engine_knock,deep rhythmic knocking from the engine
+engine_knock,knocking noise and metal flakes on the drain plug
+engine_knock,knocking that follows the rpm and gets louder
+engine_knock,deep knock from the oil pan area
+engine_knock,rod bearing knock on my kia
+engine_knock,thumping knock inside the engine
+engine_knock,knocking from the engine that is louder when revving
+engine_knock,engine knocks and the oil pressure drops at idle
+engine_knock,hammering noise from the engine
+engine_knock,knocking from the motor that is getting worse
+engine_knock,loud knock and the engine seized
+engine_knock,clunking knock inside the engine at every rpm
+engine_knock,deep knock when warm
+engine_knock,knocking sound from the lower engine when accelerating
+engine_knock,engine knock recall
+engine_knock,metal in the oil filter
+engine_knock,banging from inside the engine and the oil light
+engine_knock,engine knocking under acceleration loud
+engine_knock,knocking from the engine block
+engine_knock,engine seized after knocking
+turbo_problem,turbo whistle and loss of power
+turbo_problem,loud siren sound from the turbo
+turbo_problem,lost boost and the truck is slow
+turbo_problem,code p0299 underboost
+turbo_problem,turbo is making a whining noise
+turbo_problem,blue smoke and the turbo is loud
+turbo_problem,no power when i floor it on my ecoboost
+turbo_problem,boost leak and hissing when accelerating
+turbo_problem,turbo spools but no power
+turbo_problem,oil in the intercooler pipes
+turbo_problem,whistling from the engine when i accelerate
+turbo_problem,turbo failed and white smoke
+turbo_problem,wastegate rattle at idle
+turbo_problem,rattling from the turbo when letting off the gas
+turbo_problem,boost gauge low and sluggish
+turbo_problem,turbo makes a grinding whine
+turbo_problem,loss of power at highway speed with a turbo engine
+turbo_problem,turbo shaft has play
+turbo_problem,intercooler hose popped off and no power
+turbo_problem,whooshing sound and no boost
+turbo_problem,turbo noise like a siren getting louder
+turbo_problem,overboost code p0234
+turbo_problem,smoke from the turbo and oil leaking
+turbo_problem,my turbo car is slow and whistles
+turbo_problem,feels like it lost all its power and the turbo whines
+turbo_problem,turbo whine louder than normal
+turbo_problem,hissing from the intake when boosting
+turbo_problem,boost cuts out going uphill
+turbo_problem,check engine light and no boost on my turbo
+turbo_problem,turbo is leaking oil
+turbo_problem,whistle when the turbo kicks in and weak acceleration
+turbo_problem,underboost and limp mode
+turbo_problem,cracked intercooler and low power
+turbo_problem,loud whistling when i step on the gas
+turbo_problem,turbo lag got much worse
+turbo_problem,the turbo sounds like a dentist drill
+turbo_problem,lost power and blue smoke from the turbo
+turbo_problem,turbo charger noise and smoke
+diesel_emissions_problem,def warning light on my diesel
+diesel_emissions_problem,dpf full and the truck is in limp mode
+diesel_emissions_problem,countdown to 55 mph speed limit def
+diesel_emissions_problem,exhaust fluid quality poor message
+diesel_emissions_problem,service def system and the truck wont go over 5 mph
+diesel_emissions_problem,diesel particulate filter light
+diesel_emissions_problem,regen happening all the time
+diesel_emissions_problem,nox sensor code on my duramax
+diesel_emissions_problem,egr cooler leaking coolant on my powerstroke
+diesel_emissions_problem,p20ee scr efficiency
+diesel_emissions_problem,cummins reduced power and def light
+diesel_emissions_problem,soot filter clogged
+diesel_emissions_problem,diesel exhaust fluid heater code
+diesel_emissions_problem,my diesel truck says exhaust filter full
+diesel_emissions_problem,derate after a def warning
+diesel_emissions_problem,diesel losing power and black smoke egr
+diesel_emissions_problem,p2463 dpf soot
+diesel_emissions_problem,def pump failure
+diesel_emissions_problem,emissions warning on my diesel and limp mode
+diesel_emissions_problem,regen wont finish on my diesel
+diesel_emissions_problem,diesel exhaust fluid low but i just filled it
+diesel_emissions_problem,engine derate on the cummins
+diesel_emissions_problem,nox sensor failed and def light on
+diesel_emissions_problem,ecodiesel egr cooler
+diesel_emissions_problem,dpf regen every 100 miles
+diesel_emissions_problem,diesel in limp mode with an emissions code
+diesel_emissions_problem,egr valve stuck on my diesel
+diesel_emissions_problem,def gauge and speed limit warning
+diesel_emissions_problem,service emissions system message on the duramax
+diesel_emissions_problem,diesel is slow and the exhaust filter light is on
+diesel_emissions_problem,scr system fault
+diesel_emissions_problem,def crystals around the injector
+diesel_emissions_problem,power stroke regen problems
+diesel_emissions_problem,diesel losing coolant and egr cooler code
+diesel_emissions_problem,diesel emissions light and reduced speed
+diesel_emissions_problem,exhaust temperature sensor code on my diesel
+diesel_emissions_problem,def heater failed in cold weather
+diesel_emissions_problem,dpf pressure sensor code
+hybrid_ev_problem,check hybrid system warning
+hybrid_ev_problem,my prius gas mileage dropped and the engine runs all the time
+hybrid_ev_problem,hybrid battery warning light
+hybrid_ev_problem,car wont go into ready mode
+hybrid_ev_problem,electric car wont charge
+hybrid_ev_problem,ev charging stops after a few minutes
+hybrid_ev_problem,p0a80 replace hybrid battery
+hybrid_ev_problem,range dropped a lot on my ev
+hybrid_ev_problem,hybrid system fault and it lost power
+hybrid_ev_problem,inverter coolant pump failed
+hybrid_ev_problem,ev says power reduced and battery warning
+hybrid_ev_problem,charge port wont latch the plug
+hybrid_ev_problem,my hybrid runs the gas engine way more than before
+hybrid_ev_problem,hybrid battery fan is loud
+hybrid_ev_problem,12 volt battery warning on my ioniq
+hybrid_ev_problem,iccu failure loss of power
+hybrid_ev_problem,check ev system message
+hybrid_ev_problem,hybrid battery not holding charge
+hybrid_ev_problem,the car shut down and says hybrid system malfunction
+hybrid_ev_problem,slow charging at home on my electric car
+hybrid_ev_problem,fast charger wont start on my ev
+hybrid_ev_problem,prius red triangle warning
+hybrid_ev_problem,battery range estimate jumps around
+hybrid_ev_problem,plug in hybrid wont charge
+hybrid_ev_problem,ev lost propulsion power on the road
+hybrid_ev_problem,high voltage battery warning
+hybrid_ev_problem,hybrid gas mileage went from 50 to 35
+hybrid_ev_problem,electric motor whine and power loss on my ev
+hybrid_ev_problem,charging error on my tesla
+hybrid_ev_problem,battery heater not working ev range low in winter
+hybrid_ev_problem,the hybrid battery is dying
+hybrid_ev_problem,stop safely now message on my electric car
+hybrid_ev_problem,isolation fault on my hybrid
+hybrid_ev_problem,ready light wont come on in the prius
+hybrid_ev_problem,electric car charger keeps faulting
+hybrid_ev_problem,ev battery degraded
+hybrid_ev_problem,charging cable gets stuck and it wont charge
+hybrid_ev_problem,hybrid assist not working and low mpg
+four_wheel_drive_problem,4wd wont engage
+four_wheel_drive_problem,service 4wd light on my silverado
+four_wheel_drive_problem,four wheel drive light flashing and it wont go into 4x4
+four_wheel_drive_problem,transfer case wont shift
+four_wheel_drive_problem,grinding from the front wheels in 2wd
+four_wheel_drive_problem,binding and hopping in tight turns in 4wd
+four_wheel_drive_problem,4x4 stuck in four wheel drive
+four_wheel_drive_problem,transfer case leaking fluid
+four_wheel_drive_problem,awd light on and burning smell
+four_wheel_drive_problem,ptu leaking gear oil
+four_wheel_drive_problem,encoder motor failed on the transfer case
+four_wheel_drive_problem,4 hi works but 4 low doesnt
+four_wheel_drive_problem,front axle wont engage in 4wd
+four_wheel_drive_problem,ford iwe hubs grinding
+four_wheel_drive_problem,4wd button does nothing
+four_wheel_drive_problem,whine from the transfer case
+four_wheel_drive_problem,clunk when shifting into 4x4
+four_wheel_drive_problem,transfer case making noise
+four_wheel_drive_problem,service awd message
+four_wheel_drive_problem,the 4x4 light blinks and nothing happens
+four_wheel_drive_problem,front hubs wont lock
+four_wheel_drive_problem,grinding when i put it in four wheel drive
+four_wheel_drive_problem,awd system fault warning
+four_wheel_drive_problem,transfer case pump rub
+four_wheel_drive_problem,crow hopping in turns with 4wd
+four_wheel_drive_problem,4wd actuator not working
+four_wheel_drive_problem,4x4 wont come out of four wheel drive
+four_wheel_drive_problem,power take off unit leak on my explorer
+four_wheel_drive_problem,4wd indicator flashing and service 4wd
+four_wheel_drive_problem,grinding noise from the transfer case in 4 low
+four_wheel_drive_problem,four by four not working
+four_wheel_drive_problem,front wheels not pulling in 4x4
+four_wheel_drive_problem,transfer case shift motor failed
+four_wheel_drive_problem,burnt gear oil smell from the awd
+four_wheel_drive_problem,4wd engages and then pops out
+four_wheel_drive_problem,4wd light stays on after i shift back to 2wd
+four_wheel_drive_problem,awd binding when turning
+four_wheel_drive_problem,front axle actuator not working
+differential_problem,whine from the rear end at highway speed
+differential_problem,howling from the back that changes when i let off the gas
+differential_problem,rear differential groaning on turns
+differential_problem,gear oil leaking from the rear axle
+differential_problem,whirring noise from the rear on and off the gas
+differential_problem,rear end howl at 60 mph
+differential_problem,chatter from the rear in tight turns
+differential_problem,differential fluid leaking at the pinion seal
+differential_problem,clunk from the rear differential when i accelerate
+differential_problem,whining from under the back when accelerating
+differential_problem,rear axle seal leaking onto the brakes
+differential_problem,the rear end is noisy
+differential_problem,limited slip chatter in parking lots
+differential_problem,howl from the back that is quieter when coasting
+differential_problem,differential whine that changes with the gas pedal
+differential_problem,metal shavings in the differential fluid
+differential_problem,front differential noise
+differential_problem,whining from the rear axle on deceleration
+differential_problem,rear diff groans when turning in a parking lot
+differential_problem,oil on the inside of the rear tire
+differential_problem,rear end whines louder when i let off
+differential_problem,gear whine from the back of the truck
+differential_problem,rear differential howling
+differential_problem,rumbling howl from the rear end at speed
+differential_problem,differential cover leaking
+differential_problem,pinion bearing noise
+differential_problem,rear end clunks on take off
+differential_problem,whine from the middle back of the truck on the gas
+differential_problem,the rear axle is making a howling noise
+differential_problem,grinding from the rear end
+differential_problem,rear end groan in tight turns and chatter
+differential_problem,whine that comes and goes with the throttle from the back
+differential_problem,gear oil smell and leak at the back axle
+differential_problem,howling noise from the differential at 45
+differential_problem,diff fluid never changed and now it whines
+differential_problem,rear end leaking gear oil and noisy
+death_wobble,violent shaking after hitting a bump at 50 mph
+death_wobble,death wobble on my jeep
+death_wobble,the whole front end shakes like crazy after a bump and only stops when i slow way down
+death_wobble,steering wheel goes back and forth violently after a pothole
+death_wobble,uncontrollable front end shake on my ram 2500
+death_wobble,my super duty gets the death wobble
+death_wobble,front end shakes violently on the bridge expansion joint
+death_wobble,track bar loose and the front end shakes hard
+death_wobble,scary shake in the steering after a bump on the highway
+death_wobble,steering wheel shakes so hard i cant hold it
+death_wobble,violent wobble at 55 that only stops if i almost stop
+death_wobble,wrangler shakes violently after bumps
+death_wobble,front end oscillates after a bump
+death_wobble,lifted truck shakes violently after bumps
+death_wobble,shaking so bad after a bump i had to pull over
+death_wobble,the front tires shake side to side after a bump
+death_wobble,violent shimmy after hitting a pothole
+death_wobble,uncontrollable shaking of the front end at 45
+death_wobble,death wobble at highway speed
+death_wobble,the steering goes crazy after a bump and the whole truck shakes
+death_wobble,solid axle truck shakes violently over bumps
+death_wobble,front end freaks out after a bump at 50
+death_wobble,steering wheel whips back and forth after a bump
+death_wobble,violent vibration only stops when i slow below 20
+death_wobble,violent front end shake after a bump in my gladiator
+death_wobble,new steering stabilizer and still violent shaking after bumps
+death_wobble,shake gets violent after hitting a crack in the road
+death_wobble,my jeep shakes so hard after a bump it feels like it will fall apart
+death_wobble,violent oscillation in the steering on rough roads
+death_wobble,front end wobble violently after potholes
+death_wobble,the front of the truck shakes uncontrollably after bumps
+death_wobble,violent shake that starts after a bump and wont stop
+death_wobble,terrifying shaking after hitting a bump
+death_wobble,violent shaking from the front axle after a bump at speed
+death_wobble,shaking so violent the steering wheel jerks out of my hands
+death_wobble,the front end goes into a violent wobble
+air_suspension_problem,air suspension sagging overnight
+air_suspension_problem,one corner sits low in the morning
+air_suspension_problem,air ride compressor runs all the time
+air_suspension_problem,suspension fault warning and it is sitting low
+air_suspension_problem,rear sags to the ground after sitting
+air_suspension_problem,air bag leaking on the rear suspension
+air_suspension_problem,airmatic warning on my mercedes
+air_suspension_problem,range rover suspension fault
+air_suspension_problem,compressor noise from the air suspension
+air_suspension_problem,truck sits lower on one side every morning
+air_suspension_problem,air ride wont raise up
+air_suspension_problem,suspension compressor is loud and keeps running
+air_suspension_problem,the back of my lincoln sags
+air_suspension_problem,air springs cracked and leaking
+air_suspension_problem,ride height warning on the dash
+air_suspension_problem,quadra lift fault on my jeep
+air_suspension_problem,vehicle is very bouncy and the air suspension light is on
+air_suspension_problem,front end is sagging air suspension
+air_suspension_problem,hissing from the suspension and it lowers
+air_suspension_problem,air suspension stuck in the low position
+air_suspension_problem,service air suspension message
+air_suspension_problem,adaptive suspension warning and harsh ride
+air_suspension_problem,magnetic ride shock leaking and service suspension
+air_suspension_problem,car leans to one side when parked overnight
+air_suspension_problem,air bag suspension deflated
+air_suspension_problem,suspension pump runs every time i start it
+air_suspension_problem,rear end drops when it sits a few hours
+air_suspension_problem,air ride stuck high
+air_suspension_problem,my expedition rear air suspension sagging
+air_suspension_problem,ram air suspension fault
+air_suspension_problem,suspension light on and it rides rough
+air_suspension_problem,air strut leaking
+air_suspension_problem,whole car sits low when i come out in the morning
+air_suspension_problem,compressor clicking on and off for air ride
+air_suspension_problem,suspension warning and one corner is lower
+blend_door_actuator,clicking behind the dash when i start the car
+blend_door_actuator,tapping noise behind the glove box
+blend_door_actuator,air only blows hot no matter the setting
+blend_door_actuator,heat stuck on full hot
+blend_door_actuator,driver side blows cold and passenger side blows hot
+blend_door_actuator,blend door actuator clicking
+blend_door_actuator,clicking in the dash that stops after a minute
+blend_door_actuator,air comes out the wrong vents
+blend_door_actuator,cant switch from defrost to the dash vents
+blend_door_actuator,temperature wont change from cold
+blend_door_actuator,knocking behind the dash when i change the temp
+blend_door_actuator,different temperatures from each side
+blend_door_actuator,air stuck on the floor vents
+blend_door_actuator,clicking under the dash on the passenger side
+blend_door_actuator,hvac actuator noise behind the dash
+blend_door_actuator,repeated clicking from the dashboard
+blend_door_actuator,air wont come out the defrost
+blend_door_actuator,ticking behind the radio when the truck is on
+blend_door_actuator,heat blows hot on one side only
+blend_door_actuator,clicking from the center of the dash after i turn the key
+blend_door_actuator,vents stuck on one mode
+blend_door_actuator,temperature knob does nothing
+blend_door_actuator,clicking behind the dash and the air is stuck hot
+blend_door_actuator,blend door broken heater stuck
+blend_door_actuator,thumping behind the glove box when changing temperature
+blend_door_actuator,the ac is cold on one side only
+blend_door_actuator,clicking noise in the dash that comes and goes
+blend_door_actuator,mode door stuck on defrost
+blend_door_actuator,air coming out of the floor no matter what
+blend_door_actuator,clicking behind the center console when the fan is on
+blend_door_actuator,cant get cold air on the passenger side
+blend_door_actuator,knocking in the dash and the temp is stuck
+blend_door_actuator,tapping inside the dash for a few seconds at startup
+instrument_cluster_problem,speedometer stuck at 0 while driving
+instrument_cluster_problem,gas gauge reads empty with a full tank
+instrument_cluster_problem,tachometer needle jumps around
+instrument_cluster_problem,speedometer reads wrong and bounces
+instrument_cluster_problem,fuel gauge stuck on full
+instrument_cluster_problem,gauges sweep at startup but one is dead
+instrument_cluster_problem,speedo needle sticks at 40
+instrument_cluster_problem,odometer screen blank
+instrument_cluster_problem,fuel gauge goes up and down
+instrument_cluster_problem,gauge stepper motor bad
+instrument_cluster_problem,oil pressure gauge reads zero but the engine is fine
+instrument_cluster_problem,dash cluster dead but the truck runs
+instrument_cluster_problem,ran out of gas but the gauge said quarter tank
+instrument_cluster_problem,speedometer works sometimes
+instrument_cluster_problem,gauges come back to life after i hit a bump
+instrument_cluster_problem,needles drop to zero then come back
+instrument_cluster_problem,cluster lights out and gauges dead
+instrument_cluster_problem,fuel level sender reads wrong
+instrument_cluster_problem,mph needle wont move
+instrument_cluster_problem,gas gauge always reads full
+instrument_cluster_problem,tach and speedometer both stuck
+instrument_cluster_problem,the speedometer is off by ten mph
+instrument_cluster_problem,fuel gauge drops to empty while driving
+instrument_cluster_problem,odometer and gauges blank
+instrument_cluster_problem,dash gauges stuck after a cold morning
+instrument_cluster_problem,speedometer needle bouncing
+infotainment_problem,touchscreen freezes
+infotainment_problem,radio screen goes black
+infotainment_problem,bluetooth keeps disconnecting
+infotainment_problem,apple carplay keeps dropping
+infotainment_problem,the screen reboots by itself
+infotainment_problem,backup camera goes blank
+infotainment_problem,screen presses buttons by itself
+infotainment_problem,ghost touch on the radio screen
+infotainment_problem,uconnect screen frozen
+infotainment_problem,sync wont connect my phone
+infotainment_problem,infotainment system keeps restarting
+infotainment_problem,navigation screen stuck on the logo
+infotainment_problem,android auto disconnects
+infotainment_problem,radio display flickers and goes dark
+infotainment_problem,touch screen not responding to touch
+infotainment_problem,no sound from the radio and the screen is frozen
+infotainment_problem,backup camera says no signal
+infotainment_problem,my phone wont pair with the car
+infotainment_problem,screen bubbles and doesnt respond
+infotainment_problem,radio turns on and off by itself
+infotainment_problem,center screen black but the car runs
+infotainment_problem,cue screen cracked and wont touch
+infotainment_problem,screen lag and freezing
+infotainment_problem,stereo resets every drive
+infotainment_problem,carplay wont start
+infotainment_problem,touchscreen glitch
+infotainment_problem,the media screen is stuck rebooting
+infotainment_problem,rear camera flickers
+infotainment_problem,radio stuck on one station and screen frozen
+infotainment_problem,screen went black and the climate controls are on it
+infotainment_problem,voice commands not working
+infotainment_problem,the display is unresponsive
+infotainment_problem,radio screen is dead
+infotainment_problem,infotainment lag
+infotainment_problem,software update for the screen
+infotainment_problem,screen randomly turns off
+window_regulator_problem,window fell into the door
+window_regulator_problem,power window wont go up
+window_regulator_problem,window goes up crooked
+window_regulator_problem,grinding noise in the door when i use the window
+window_regulator_problem,window moves really slow
+window_regulator_problem,hear the motor but the window doesnt move
+window_regulator_problem,window regulator broke
+window_regulator_problem,clicking in the door and the window wont move
+window_regulator_problem,driver window stuck down
+window_regulator_problem,window drops down by itself
+window_regulator_problem,power window goes down but wont come back up
+window_regulator_problem,window off track
+window_regulator_problem,the glass slid down inside the door
+window_regulator_problem,window motor dead
+window_regulator_problem,popping noise from the door then the window fell
+window_regulator_problem,window is tilted in the door
+window_regulator_problem,back window wont roll down
+window_regulator_problem,power window makes a crunching sound
+window_regulator_problem,window wont close all the way
+window_regulator_problem,window shakes when going up
+window_regulator_problem,window cable snapped
+window_regulator_problem,passenger window stuck halfway
+window_regulator_problem,window works from the driver switch only and slow
+window_regulator_problem,window falls when i shut the door
+window_regulator_problem,window rolls down but wont go up
+window_regulator_problem,grinding in the door panel and slow window
+window_regulator_problem,window goes up and then bounces back down
+window_regulator_problem,window clunks in the door
+window_regulator_problem,window wont roll up in the rain
+window_regulator_problem,power window broke
+door_lock_problem,door wont lock with the key fob
+door_lock_problem,one door doesnt unlock
+door_lock_problem,buzzing in the door when i lock it
+door_lock_problem,door lock actuator broke
+door_lock_problem,cant open the door from inside
+door_lock_problem,door wont open from the outside handle
+door_lock_problem,sliding door wont close
+door_lock_problem,power sliding door stuck
+door_lock_problem,door locks and unlocks by itself
+door_lock_problem,the rear door wont latch
+door_lock_problem,lock button doesnt work on one door
+door_lock_problem,grinding in the door when locking
+door_lock_problem,sliding door makes noise and stops halfway
+door_lock_problem,tailgate latch broken wont open
+door_lock_problem,door wont stay shut
+door_lock_problem,liftgate wont open with the button
+door_lock_problem,door ajar light stays on
+door_lock_problem,passenger door wont unlock with the remote
+door_lock_problem,door handle broke off
+door_lock_problem,door lock clicking but doesnt lock
+door_lock_problem,my van sliding door cable broke
+door_lock_problem,cant lock the driver door
+door_lock_problem,door lock motor dead
+door_lock_problem,door wont open at all
+door_lock_problem,the locks buzz but nothing happens
+door_lock_problem,power door locks only work on some doors
+door_lock_problem,door latch stuck
+door_lock_problem,sliding door wont open with the button
+door_lock_problem,the door lock is slow and weak
+door_lock_problem,liftgate latch failure
+water_leak_inside,wet carpet after it rains
+water_leak_inside,water dripping from the headliner
+water_leak_inside,sunroof leaking
+water_leak_inside,water on the floor after a car wash
+water_leak_inside,musty smell and damp carpet after rain
+water_leak_inside,water stain on the headliner
+water_leak_inside,sunroof drains clogged
+water_leak_inside,rain water coming in the door
+water_leak_inside,puddle on the floor after a storm
+water_leak_inside,wet seats after rain
+water_leak_inside,water leaking in near the a pillar
+water_leak_inside,trunk has water in it
+water_leak_inside,water drips from the dome light
+water_leak_inside,the rear floor is soaked after rain
+water_leak_inside,mildew smell inside after rain
+water_leak_inside,windshield leak water on the dash
+water_leak_inside,water in the spare tire well
+water_leak_inside,carpet soaked with water not coolant
+water_leak_inside,water leaks in from the roof
+water_leak_inside,water coming in around the windshield
+water_leak_inside,wet headliner by the sunroof
+water_leak_inside,door seal leaking water
+water_leak_inside,floor is wet every time it rains
+water_leak_inside,windows fog up and the carpet is wet from rain
+water_leak_inside,water leaks in when i wash the car
+water_leak_inside,rain gets in on the passenger side floor
+water_leak_inside,soft top leaking water
+water_leak_inside,water in the footwell after rain
+water_leak_inside,leaky sunroof dripping on me
+water_leak_inside,mold smell and wet floor mats after rain
+water_leak_inside,panoramic roof leaking
+water_leak_inside,water leaking from above the door
+rust_damage,rust holes in the rocker panels
+rust_damage,frame is rusting badly
+rust_damage,cab corners rusted out
+rust_damage,bubbling paint on the wheel arches
+rust_damage,rust on the frame flaking off
+rust_damage,holes rusted in the floor
+rust_damage,rust around the wheel wells
+rust_damage,frame rust recall on my tacoma
+rust_damage,rusty bed and frame
+rust_damage,rust spots coming through the paint
+rust_damage,the frame has rot and holes
+rust_damage,rocker panels are rotted
+rust_damage,orange rust stains under the doors
+rust_damage,body rust everywhere
+rust_damage,rust on the subframe
+rust_damage,quarter panel is rusting through
+rust_damage,frame rail rusted thin
+rust_damage,rust bubbles on the tailgate
+rust_damage,floor pan rusted through
+rust_damage,the truck frame is crumbling from rust
+rust_damage,rust coming through above the rear wheel
+rust_damage,rotted frame on my truck
+rust_damage,rust damage under the truck
+rust_damage,rust holes in the cab corners
+rust_damage,surface rust all over the frame
+rust_damage,rust under the door sills
+rust_damage,flaking frame from salt
+rust_damage,rust on the body panels
+rust_damage,the rear wheel arches are rusting
+rust_damage,frame rust spots
+adas_problem,car slammed on the brakes by itself
+adas_problem,phantom braking on the highway
+adas_problem,automatic emergency braking activates for nothing
+adas_problem,collision warning beeps with nothing in front
+adas_problem,front sensor blocked message
+adas_problem,the car brakes hard by itself under bridges
+adas_problem,forward collision alert keeps going off
+adas_problem,adaptive cruise control not working
+adas_problem,lane keep assist shuts off with a warning
+adas_problem,emergency brake kicked in on an empty road
+adas_problem,car braked by itself and almost got rear ended
+adas_problem,pre collision system warning light
+adas_problem,radar sensor blocked warning
+adas_problem,auto brake goes off at shadows
+adas_problem,camera unavailable message on the windshield
+adas_problem,driver assist unavailable
+adas_problem,the car stops suddenly by itself on the highway
+adas_problem,false collision warnings
+adas_problem,emergency braking slams on for no reason
+adas_problem,blind spot warning not working
+adas_problem,cruise control turns off and says sensor blocked
+adas_problem,automatic braking false alarm
+adas_problem,my rogue brakes by itself
+adas_problem,car brakes for no reason when passing trucks
+adas_problem,collision mitigation braking warning light
+adas_problem,the car beeps brake brake with nothing there
+adas_problem,phantom brake on cruise control
+adas_problem,forward collision warning unavailable
+adas_problem,the car brakes on its own when going under an overpass
+adas_problem,emergency braking error on the dash
+turbo_problem,turbo whining louder and no power
+turbo_problem,my turbo whistles when i accelerate
+turbo_problem,turbo boost is low
+turbo_problem,not making boost
+turbo_problem,turbo is loud and the car is slow
+turbo_problem,boost leak on my turbo engine
+turbo_problem,turbo makes a siren noise
+turbo_problem,whistle from the turbo and smoke
+turbo_problem,my ecoboost turbo is whistling
+turbo_problem,turbo rattle and low power
+turbo_problem,the turbo doesnt spool up
+turbo_problem,turbo engine has no power going uphill
+turbo_problem,boost pressure drops and it feels weak
+turbo_problem,turbo oil line leaking onto the exhaust
+turbo_problem,the turbo is going out
+turbo_problem,underboost code and whistling
+turbo_problem,turbo whistle like a jet
+turbo_problem,boost hose split and no power
+turbo_problem,turbo smoke when accelerating
+turbo_problem,the turbo makes a screaming whistle
+turbo_problem,turbo whine and oil in the intake
+turbo_problem,boost leak whistle
+turbo_problem,turbo shaft wobble
+turbo_problem,my turbo diesel lost power and whistles
+turbo_problem,wastegate stuck and no boost
+turbo_problem,no boost and the check engine light came on
+turbo_problem,turbo surge and power loss
+turbo_problem,turbo is noisy when i let off the gas
+cvt_problem,cvt judder
+cvt_problem,the cvt is slipping
+cvt_problem,cvt whine
+cvt_problem,my cvt transmission is going out
+cvt_problem,cvt shudders when taking off
+cvt_problem,cvt revs high
+cvt_problem,cvt transmission whining and judder
+cvt_problem,the cvt feels like a rubber band
+cvt_problem,cvt hesitates from a stop
+cvt_problem,cvt is jerky
+cvt_problem,cvt limp mode on the highway
+cvt_problem,cvt makes a loud whine when accelerating
+cvt_problem,nissan cvt judder from a stop
+cvt_problem,cvt slipping uphill
+cvt_problem,whining cvt and the rpms flare
+cvt_problem,cvt overheats and loses power
+cvt_problem,judder when pulling away in my nissan
+cvt_problem,the transmission judders and whines and it is a cvt
+cvt_problem,cvt surging and rpm going up and down
+cvt_problem,cvt shakes from a stop
+cvt_problem,judder from the transmission at low speed in my subaru
+throttle_body_problem,throttle body problem
+throttle_body_problem,dirty throttle body stalling
+throttle_body_problem,reduced engine power
+throttle_body_problem,wrench light on the dash
+throttle_body_problem,throttle body stuck
+throttle_body_problem,throttle body cleaning fixed the stall
+throttle_body_problem,reduced power and wrench light
+throttle_body_problem,high idle after starting and it stays high
+throttle_body_problem,reduced power warning and the pedal does nothing
+throttle_body_problem,electronic throttle body failed
+throttle_body_problem,throttle body code and idle surging
+throttle_body_problem,engine power reduced and wrench light flashing
+throttle_body_problem,the throttle sticks
+throttle_body_problem,stalls at idle and the throttle body is dirty
+throttle_body_problem,throttle pedal not working right
+throttle_body_problem,reduced engine power message on my chevy
+throttle_body_problem,engine idle surges with a wrench light
+throttle_body_problem,gas pedal unresponsive and reduced power
+throttle_body_problem,throttle position sensor bad
+hybrid_ev_problem,hybrid system warning light
+hybrid_ev_problem,hybrid battery is failing
+hybrid_ev_problem,my hybrid wont start and says check hybrid system
+hybrid_ev_problem,ev wont charge
+hybrid_ev_problem,ev battery warning
+hybrid_ev_problem,ev lost power
+hybrid_ev_problem,hybrid mpg dropped and the engine runs constantly
+hybrid_ev_problem,prius wont start and the red triangle is on
+hybrid_ev_problem,ev charging problem
+hybrid_ev_problem,the ev wont go into drive
+hybrid_ev_problem,electric vehicle wont charge at the charger
+hybrid_ev_problem,hybrid inverter failed
+hybrid_ev_problem,hybrid battery replacement
+hybrid_ev_problem,hybrid system malfunction stop the car
+hybrid_ev_problem,my ev range is way lower than it was
+hybrid_ev_problem,ev charge port broken
+hybrid_ev_problem,hybrid lost power and a warning came on
+hybrid_ev_problem,my plug in hybrid stopped charging
+hybrid_ev_problem,ev not charging past 80 percent
+hybrid_ev_problem,ev drive unit noise and warning
+hybrid_ev_problem,hybrid wont go into ready
+hybrid_ev_problem,ev power limited warning
+four_wheel_drive_problem,4wd light flashing
+four_wheel_drive_problem,4wd not working
+four_wheel_drive_problem,service 4wd
+four_wheel_drive_problem,4x4 wont engage
+four_wheel_drive_problem,awd not working
+four_wheel_drive_problem,4wd stuck
+four_wheel_drive_problem,4x4 light blinking
+four_wheel_drive_problem,transfer case problem
+four_wheel_drive_problem,4wd grinding
+four_wheel_drive_problem,transfer case grinding in 4wd
+four_wheel_drive_problem,4wd binding when turning
+four_wheel_drive_problem,4x4 wont disengage
+four_wheel_drive_problem,service 4wd light and it wont shift into 4hi
+four_wheel_drive_problem,4wd switch not working
+four_wheel_drive_problem,awd warning light
+four_wheel_drive_problem,4lo wont engage
+four_wheel_drive_problem,4wd clunk and grinding
+four_wheel_drive_problem,transfer case encoder motor bad
+four_wheel_drive_problem,4wd hubs grinding when not in 4wd
+four_wheel_drive_problem,awd ptu leaking
+four_wheel_drive_problem,transfer case fluid leak and whine
+four_wheel_drive_problem,the 4wd light flashes and the front axle wont engage
+infotainment_problem,radio screen frozen
+infotainment_problem,touchscreen not working
+infotainment_problem,screen freezes and reboots
+infotainment_problem,radio screen black
+infotainment_problem,phone keeps disconnecting from the radio
+infotainment_problem,phone wont connect
+infotainment_problem,screen glitching
+infotainment_problem,radio not working and screen is frozen
+infotainment_problem,touch screen stopped working
+infotainment_problem,the radio screen keeps restarting
+infotainment_problem,backup camera not working
+infotainment_problem,phone disconnects while driving
+infotainment_problem,screen is unresponsive
+infotainment_problem,radio display not working
+infotainment_problem,screen ghost touching
+infotainment_problem,phone audio cuts out
+infotainment_problem,navigation screen frozen
+infotainment_problem,backup camera screen black
+infotainment_problem,radio screen reboots over and over
+infotainment_problem,the screen goes black while driving
+blend_door_actuator,blend door clicking behind the dash
+blend_door_actuator,clicking behind the dash
+blend_door_actuator,blend door stuck
+blend_door_actuator,heat stuck on hot
+blend_door_actuator,air stuck on cold and clicking behind the dash
+blend_door_actuator,clicking behind the glove box
+blend_door_actuator,blend door actuator bad
+blend_door_actuator,tapping behind the dash
+blend_door_actuator,one side hot and one side cold
+blend_door_actuator,clicking behind the dash and the heat is stuck
+blend_door_actuator,air comes out the wrong vent and clicks
+blend_door_actuator,cant change the temperature and clicking
+blend_door_actuator,clicking in the dash when the truck is on
+blend_door_actuator,temperature stuck hot
+blend_door_actuator,behind the dash clicking noise
+blend_door_actuator,hvac clicking
+blend_door_actuator,air wont switch vents
+blend_door_actuator,hot on the driver side cold on passenger side
+blend_door_actuator,clicking behind the dash after turning the key
+blend_door_actuator,blend door motor clicking
+instrument_cluster_problem,speedometer stopped working
+instrument_cluster_problem,speedometer not working
+instrument_cluster_problem,gas gauge not working
+instrument_cluster_problem,fuel gauge wrong
+instrument_cluster_problem,speedometer stuck
+instrument_cluster_problem,instrument cluster not working
+instrument_cluster_problem,gauges stuck
+instrument_cluster_problem,speedometer jumping around
+instrument_cluster_problem,fuel gauge reads wrong
+instrument_cluster_problem,speedometer and tach not working
+instrument_cluster_problem,fuel gauge stuck on empty
+instrument_cluster_problem,speedometer needle stuck
+instrument_cluster_problem,gauge needles stuck
+instrument_cluster_problem,odometer not working
+instrument_cluster_problem,gauge cluster dead
+instrument_cluster_problem,speedometer needle drops to zero
+instrument_cluster_problem,the gas gauge is broken
+instrument_cluster_problem,tach needle stuck
+instrument_cluster_problem,dash gauges not working
+oil_leak_low_oil,oil dripping under the engine
+oil_leak_low_oil,oil spots on the driveway
+oil_leak_low_oil,oil leak from the valve cover gasket
+oil_leak_low_oil,oil pan leaking
+oil_leak_low_oil,rear main seal leaking oil
+oil_leak_low_oil,oil drips when parked
+oil_leak_low_oil,leaking oil all over the engine
+oil_leak_low_oil,black drips under the front
+oil_leak_low_oil,oil leaking on the exhaust and smoking
+oil_leak_low_oil,oil leak puddle
+oil_leak_low_oil,oil leaking from the oil filter
+oil_leak_low_oil,oil drip under the motor
+oil_leak_low_oil,oil leaking from the drain plug
+oil_leak_low_oil,oily mess on the bottom of the engine
+oil_leak_low_oil,brown oil drip in the garage
+oil_leak_low_oil,valve cover leaking oil
+oil_leak_low_oil,oil leak and low oil light
+oil_leak_low_oil,oil pressure light on and oil is low
+oil_leak_low_oil,oil light came on and the dipstick was dry
+oil_leak_low_oil,leaking oil from the back of the engine
+water_leak_inside,water leak inside
+water_leak_inside,water getting inside when it rains
+water_leak_inside,wet carpet when it rains
+water_leak_inside,rain water on the floor
+water_leak_inside,water inside on the floor after rain
+water_leak_inside,wet floor after rain
+water_leak_inside,rain water leaking in
+water_leak_inside,sunroof leaks when it rains
+water_leak_inside,water drips inside from the roof
+water_leak_inside,wet carpet after washing the car
+water_leak_inside,the carpet is wet with rain water
+water_leak_inside,water leaking inside the cab
+water_leak_inside,wet headliner after rain
+water_leak_inside,rain gets inside
+water_leak_inside,water inside the trunk after rain
+water_leak_inside,water leaking in through the door when it rains
+water_leak_inside,sunroof drain clogged water inside
+water_leak_inside,leak inside when it rains
+water_leak_inside,the back seat floor is wet after rain
+water_leak_inside,water comes in from the windshield when it rains
+adas_problem,car brakes by itself
+adas_problem,brakes by itself with nothing there
+adas_problem,emergency braking by itself
+adas_problem,collision warning by itself
+adas_problem,sensor blocked
+adas_problem,collision warning
+adas_problem,automatic emergency braking problem
+adas_problem,the car slammed on the brakes on its own
+adas_problem,forward collision warning
+adas_problem,car brakes on its own on the highway
+adas_problem,front radar sensor blocked
+adas_problem,collision alert keeps beeping
+adas_problem,adaptive cruise and collision warning not available
+adas_problem,emergency brake by itself on the freeway
+adas_problem,phantom braking with cruise control
+adas_problem,lane assist and collision warning not working
+adas_problem,camera blocked warning on the windshield
+adas_problem,driver assist warning and cruise wont work
+air_suspension_problem,air suspension
+air_suspension_problem,air suspension fault
+air_suspension_problem,air suspension sag
+air_suspension_problem,sags overnight
+air_suspension_problem,air ride sag
+air_suspension_problem,air suspension compressor
+air_suspension_problem,suspension fault
+air_suspension_problem,the car sags when parked
+air_suspension_problem,air bag sag in the rear
+air_suspension_problem,air suspension warning light
+air_suspension_problem,rear sag overnight
+air_suspension_problem,air suspension leaking
+air_suspension_problem,air ride compressor loud
+air_suspension_problem,suspension sag on one corner
+air_suspension_problem,air suspension wont pump up
+air_suspension_problem,ride height fault
+torque_converter_shudder,rumble strips
+torque_converter_shudder,shudder like rumble strips
+torque_converter_shudder,rumble strip feeling
+torque_converter_shudder,feels like rumble strips at 45
+torque_converter_shudder,rumble strips feeling on light gas
+torque_converter_shudder,torque converter shudder
+torque_converter_shudder,torque converter problem
+torque_converter_shudder,shudder on light throttle
+torque_converter_shudder,light gas shudder
+torque_converter_shudder,shudder when cruising at 45 on light gas
+torque_converter_shudder,shudder at 40 mph on light throttle
+torque_converter_shudder,shudder only on light gas
+torque_converter_shudder,shudder cruising on light gas around 40
+torque_converter_shudder,rumble strips feeling at 40 mph
+torque_converter_shudder,torque converter lockup shudder
+oil_burning,burning oil
+oil_burning,burns oil
+oil_burning,engine burning oil no leak
+oil_burning,using oil no leak
+oil_burning,oil consumption
+oil_burning,burning oil blue smoke
+oil_burning,blue smoke
+oil_burning,blue smoke from the tailpipe
+oil_burning,uses a lot of oil no leaks
+oil_burning,burning a quart of oil no leak
+oil_burning,blue smoke from the exhaust at startup
+oil_burning,oil disappearing with no leak
+oil_burning,engine using oil and blue smoke
+oil_burning,oil consumption no drips
+oil_burning,no leaks but the oil is low every time
+differential_problem,rear end whine
+differential_problem,differential whine
+differential_problem,rear end howl
+differential_problem,rear differential noise
+differential_problem,differential leaking
+differential_problem,rear end noise on and off the gas
+differential_problem,differential howl on the highway
+differential_problem,rear end whine at 50
+differential_problem,rear differential leak
+differential_problem,whine from the rear differential
+differential_problem,rear end groan when turning
+differential_problem,the differential is whining
+differential_problem,rear end noise that changes with gas
+differential_problem,whine from the rear end on decel
+engine_knock,engine knocking
+engine_knock,engine knock
+engine_knock,deep engine knock
+engine_knock,loud engine knock
+engine_knock,knocking from inside the engine
+engine_knock,engine knocking loud
+engine_knock,rod knocking
+engine_knock,knocking from the engine and oil light
+engine_knock,bad knock in the engine
+engine_knock,knocking engine getting louder
+engine_knock,engine knocking low oil pressure
+engine_knock,deep knock from the motor
+diesel_emissions_problem,def light
+diesel_emissions_problem,dpf light
+diesel_emissions_problem,def problem
+diesel_emissions_problem,dpf clogged
+diesel_emissions_problem,egr cooler
+diesel_emissions_problem,def warning
+diesel_emissions_problem,diesel exhaust fluid warning
+diesel_emissions_problem,exhaust filter full
+diesel_emissions_problem,diesel limp mode def
+diesel_emissions_problem,diesel regen problem
+diesel_emissions_problem,diesel emissions problem
+diesel_emissions_problem,diesel exhaust filter warning
+window_regulator_problem,window regulator
+window_regulator_problem,window wont go up
+window_regulator_problem,window fell down
+window_regulator_problem,window stuck
+window_regulator_problem,power window stuck
+window_regulator_problem,window off its track
+window_regulator_problem,window grinding
+window_regulator_problem,window motor not working
+door_lock_problem,door lock not working
+door_lock_problem,door wont lock
+door_lock_problem,door wont unlock
+door_lock_problem,door lock buzzing
+door_lock_problem,sliding door broken
+door_lock_problem,door wont open
+door_lock_problem,lock actuator
+door_lock_problem,door latch broken
+door_lock_problem,power locks not working on one door
+door_lock_problem,sliding door wont work
+collapsed_lifter,lifter tick
+collapsed_lifter,lifter ticking
+collapsed_lifter,ticking engine and misfire
+collapsed_lifter,engine ticking all the time
+collapsed_lifter,lifter failure
+collapsed_lifter,hemi tick
+collapsed_lifter,afm lifter
+collapsed_lifter,ticking that wont go away when warm
+collapsed_lifter,collapsed lifter misfire
+collapsed_lifter,constant tick and misfire
+rust_damage,rust
+rust_damage,rust holes
+rust_damage,frame rust
+rust_damage,rust everywhere
+rust_damage,rust spots
+rust_damage,rust on the frame
+water_pump_failure,water pump
+water_pump_failure,water pump leak
+water_pump_failure,water pump leaking
+water_pump_failure,bad water pump
+water_pump_failure,water pump noise
+water_pump_failure,water pump going out
+throttle_body_problem,wrench light and the car stalls at stops
+throttle_body_problem,stalls coming to a stop with a wrench light
+throttle_body_problem,idle surges and stalls at stop lights throttle body
+throttle_body_problem,the throttle body needs cleaning it stalls when i stop
+throttle_body_problem,dies when coming to a stop and restarts fine
+throttle_body_problem,idle dips and almost stalls when i stop
+throttle_body_problem,wrench light and limp mode
+throttle_body_problem,reduced engine power and the gas pedal is slow to respond
+throttle_body_problem,engine power reduced message and no acceleration
+throttle_body_problem,wrench symbol and the truck wont accelerate
+throttle_body_problem,limp mode with a wrench light and no throttle
+throttle_body_problem,gas pedal lag and reduced power warning
+throttle_body_problem,stall at a stop light then it starts right back up
+throttle_body_problem,idle drops and the engine dies when i stop
+throttle_body_problem,throttle body dirty idle surging
+throttle_body_problem,stalls when i come to a stop
+throttle_body_problem,engine dies coming to a stop sign
+throttle_body_problem,rpm drops to almost nothing when stopping then stalls
+throttle_body_problem,surging idle and stalling at stops
+throttle_body_problem,reduced power and it wont go faster than 20
+throttle_body_problem,wrench light on my ford and it lost power
+vacuum_leak,hissing from the engine and a high idle
+vacuum_leak,hissing sound and lean codes
+vacuum_leak,hiss under the hood at idle and rough idle
+vacuum_leak,cracked vacuum hose hissing
+vacuum_leak,lean code p0171 and a hissing noise
+vacuum_leak,whistling hiss from the intake and idle is high
+vacuum_leak,vacuum hose popped off and the idle is high
+vacuum_leak,hissing at idle that gets quieter when revving
+vacuum_leak,smoke test found a vacuum leak
+vacuum_leak,high idle with a hiss and check engine light lean
+vacuum_leak,intake gasket leak and lean codes
+vacuum_leak,brake booster hissing and idle high
+dirty_maf_sensor,hesitates when accelerating and the mass air flow sensor is dirty
+dirty_maf_sensor,maf sensor dirty hesitation
+dirty_maf_sensor,cleaned the mass airflow sensor and it ran better
+dirty_maf_sensor,bogs down when i step on the gas and maf code
+dirty_maf_sensor,stumbles under acceleration and poor gas mileage maf
+dirty_maf_sensor,hesitation on acceleration after an air filter change
+dirty_maf_sensor,maf code p0101 and it hesitates
+dirty_maf_sensor,jerks and hesitates when accelerating maf sensor
+blower_motor_problem,blower fan only works on high
+blower_motor_problem,fan only works on the highest setting
+blower_motor_problem,blower motor not working at all
+blower_motor_problem,no air from the vents and the fan is silent
+blower_motor_problem,blower motor resistor bad
+blower_motor_problem,fan speed 1 2 and 3 dont work
+blower_motor_problem,blower makes a squealing noise behind the glove box
+blower_motor_problem,fan doesnt blow any air on low
+blower_motor_problem,the fan quit and no air comes out
+blower_motor_problem,blower motor runs then stops
+blower_motor_problem,the blower is dead
+blower_motor_problem,fan only on 4
+blower_motor_problem,blower motor noise and weak air
+blower_motor_problem,heater fan stopped working
+blower_motor_problem,the fan knob does nothing and no air
+blower_motor_problem,blower motor works sometimes
+ac_problem,ac compressor not kicking on
+ac_problem,ac blows hot air
+ac_problem,ac needs freon
+ac_problem,ac cold then warm
+ac_problem,air conditioning blowing warm
+ac_problem,ac clutch not engaging
+ac_problem,ac only cold at highway speed
+ac_problem,ac compressor noise
+ac_problem,ac not cooling
+ac_problem,ac stopped blowing cold
+ac_problem,ac leak and warm air
+ac_problem,ac is weak and not cold enough
+heater_core_problem,sweet smell inside and foggy windows
+heater_core_problem,coolant smell inside and windows fog
+heater_core_problem,greasy fog on the windshield and sweet smell
+heater_core_problem,heater core leaking coolant on the floor
+heater_core_problem,passenger floor wet with coolant and sweet smell
+heater_core_problem,antifreeze smell from the vents
+heater_core_problem,heater core leak sweet smell and coolant low
+heater_core_problem,windows fog up with the heat on and smell like syrup
+heater_core_problem,sweet syrup smell from the vents and foggy windows
+heater_core_problem,coolant on the passenger floor
+heater_core_problem,heater core clogged no heat
+heater_core_problem,no heat even though the engine is hot and coolant is full
+heater_core_problem,heater core plugged and heat is cold
+heater_core_problem,green coolant wet carpet passenger side
+water_leak_inside,wet carpet after rain and a musty smell
+water_leak_inside,water on the floor after a rain storm
+water_leak_inside,the carpet gets wet whenever it rains
+water_leak_inside,water inside after a car wash
+water_leak_inside,rain water dripping from the sunroof
+water_leak_inside,drivers floor wet after rain
+water_leak_inside,the floor mats are soaked after rain
+water_leak_inside,water drips from the roof liner when it rains
+oil_burning,oil low but no leaks and blue smoke
+oil_burning,no oil spots but it needs oil every week
+oil_burning,adding oil with no leak
+oil_burning,oil disappears and no leak
+oil_burning,no leak but the oil is always low
+oil_burning,clean driveway but low oil
+oil_burning,blue smoke and low oil with no drips
+oil_burning,burning oil and blue smoke out the tailpipe
+oil_burning,smoke from the tailpipe blue and oil consumption
+oil_burning,the engine burns a quart of oil with no leak
+oil_burning,uses oil and blue smoke at start
+oil_burning,oil burning no drips
+oil_burning,consumes oil no leaks
+oil_burning,low on oil every 1000 miles and no leak
+oil_leak_low_oil,oil leak
+oil_leak_low_oil,oil leaking
+oil_leak_low_oil,oil drip
+oil_leak_low_oil,oil spots under the car
+oil_leak_low_oil,leaking oil
+oil_leak_low_oil,leaking oil from the gasket
+oil_leak_low_oil,oil leak at the oil pan gasket
+oil_leak_low_oil,drips of oil every night
+oil_leak_low_oil,oil leak from the rear main seal
+oil_leak_low_oil,oil drips on the garage floor
+oil_leak_low_oil,oil leaking from the timing cover
+oil_leak_low_oil,oil leaking onto the exhaust burning smell
+oil_leak_low_oil,oil leak smoke from the engine bay
+torque_converter_shudder,shudder at 40 on light gas that stops when i press harder
+torque_converter_shudder,rumble strips feeling when cruising on light gas
+torque_converter_shudder,feels like rumble strips on light throttle at 35 to 50
+torque_converter_shudder,light throttle rumble at 45 mph
+torque_converter_shudder,shudder on light gas going up a hill at 45
+torque_converter_shudder,rumble strip shudder on the gas at 40
+torque_converter_shudder,shudders on light gas then stops when i floor it
+torque_converter_shudder,rumble strips at 50 on light gas
+torque_converter_shudder,shudder when cruising on light throttle
+torque_converter_shudder,light gas shudder like rumble strips
+tire_balance,steering wheel shakes at 65
+tire_balance,shake at 60 to 70 mph in the steering wheel
+tire_balance,tires out of balance shake at highway speed
+tire_balance,new tires and the steering wheel shakes at 70
+tire_balance,shakes at highway speed no matter the gas pedal
+tire_balance,steering wheel shake at 70 that goes away at 80
+tire_balance,wheel balance shake on the highway
+tire_balance,highway speed steering wheel vibration
+tire_balance,lost a wheel weight steering shakes at 65
+tire_balance,steering wheel shakes at 60 and up
+worn_u_joint,squeak from the driveshaft when moving slowly
+worn_u_joint,clunk from the driveshaft when shifting into drive
+worn_u_joint,u joint clunk when taking off
+worn_u_joint,driveshaft clunk and chirp
+worn_u_joint,u joint squeaking under the truck
+worn_u_joint,driveshaft u joint has play
+worn_u_joint,chirping from under the truck that speeds up with speed
+worn_u_joint,u joint vibration when accelerating
+death_wobble,violent shake after a bump
+death_wobble,violent shaking after hitting a bump
+death_wobble,violent wobble after a bump at 50
+death_wobble,violent front end shake after bumps
+death_wobble,violent steering shake after a pothole
+death_wobble,death wobble after a bump
+death_wobble,violent shake after hitting a pothole that wont stop until i slow down
+death_wobble,violent shaking front end jeep
+cvt_problem,my car has a cvt and it judders
+cvt_problem,the cvt revs up and the car is slow
+cvt_problem,cvt shudder from a stop
+cvt_problem,cvt slipping
+cvt_problem,cvt whining and slipping
+cvt_problem,cvt judder at low speed
+cvt_problem,cvt transmission problem
+cvt_problem,cvt went into limp mode
+cvt_problem,cvt loud whine
+cvt_problem,the cvt is whining
+transmission_problem,transmission slipping between gears
+transmission_problem,transmission shifts hard
+transmission_problem,transmission slips when shifting
+transmission_problem,hard shift from 2nd to 3rd
+transmission_problem,transmission wont shift out of second
+transmission_problem,slipping transmission and burnt fluid
+transmission_problem,late shifts and slipping gears
+transmission_problem,transmission flares between gears
+transmission_problem,transmission slams into gear
+turbo_problem,turbo whistle
+turbo_problem,turbo whine
+turbo_problem,turbo loud
+turbo_problem,no turbo boost
+turbo_problem,turbo failing
+turbo_problem,lost turbo boost
+turbo_problem,turbo smoke
+turbo_problem,turbo noise
+turbo_problem,boost leak
+turbo_problem,low boost
+hybrid_ev_problem,hybrid battery
+hybrid_ev_problem,hybrid warning
+hybrid_ev_problem,ev not charging
+hybrid_ev_problem,ev warning
+hybrid_ev_problem,hybrid problem
+hybrid_ev_problem,hybrid system problem
+hybrid_ev_problem,my ev wont charge at home
+hybrid_ev_problem,ev charging issue
+hybrid_ev_problem,ev battery problem
+hybrid_ev_problem,hybrid battery bad
+bad_alternator,battery light on while driving and the voltage drops
+bad_alternator,alternator not charging the battery
+bad_alternator,charging system warning and battery light
+bad_alternator,alternator whine and dim lights
+bad_alternator,battery light comes on when driving
+bad_alternator,voltage at 12 volts with the engine running
+instrument_cluster_problem,speedometer stopped working but everything else works
+instrument_cluster_problem,only the speedometer is dead
+instrument_cluster_problem,gas gauge broken
+instrument_cluster_problem,speedometer reads zero
+instrument_cluster_problem,odometer blank
+instrument_cluster_problem,the gauges stopped working but the truck runs fine
+instrument_cluster_problem,speedometer needle sticks
+instrument_cluster_problem,fuel gauge not accurate
+electrical_ground_problem,lights flicker over bumps
+electrical_ground_problem,headlights flicker and dash lights flicker
+electrical_ground_problem,random electrical issues and flickering
+electrical_ground_problem,bad ground and flickering lights
+electrical_ground_problem,electrical stuff cuts out over bumps
+electrical_ground_problem,flickering dash lights and random warnings
+collapsed_lifter,ticking all the time hot or cold
+collapsed_lifter,ticking that does not go away when warm
+collapsed_lifter,constant ticking from the engine top end
+collapsed_lifter,ticking when warm and cold and a misfire
+collapsed_lifter,lifter tick getting louder
+collapsed_lifter,ticking and misfire on the v8
+exhaust_leak,ticking when cold that goes away when warm
+exhaust_leak,ticking only when cold then it fades
+exhaust_leak,tick at cold start that goes away after warm up
+exhaust_leak,exhaust manifold leak ticking when cold
+exhaust_leak,puffing tick from the exhaust manifold
+exhaust_leak,exhaust leak loud
+abs_sensor_problem,stabilitrak light and abs light
+abs_sensor_problem,service stabilitrak
+abs_sensor_problem,traction control light on
+abs_sensor_problem,abs and traction control lights on
+abs_sensor_problem,stability control light on
+abs_sensor_problem,service stability system and abs light
+abs_sensor_problem,traction light and abs light on at the same time
+abs_sensor_problem,wheel speed sensor code and abs light
+differential_problem,whine on and off the gas from the rear
+differential_problem,rear end whine that changes on the gas
+differential_problem,howling from the rear end when i let off
+differential_problem,differential gear whine
+differential_problem,rear diff whine
+differential_problem,rear axle whine at speed
+differential_problem,differential noise rear end
+differential_problem,rear end leaking and whining
+bad_wheel_bearing,hum that changes when i swerve left and right
+bad_wheel_bearing,humming louder with speed and changes in turns
+bad_wheel_bearing,wheel bearing hum
+bad_wheel_bearing,growling from one wheel at speed
+bad_wheel_bearing,hum from the front wheel that gets louder with speed
+four_wheel_drive_problem,4wd wont work
+four_wheel_drive_problem,4wd problem
+four_wheel_drive_problem,4x4 problem
+four_wheel_drive_problem,awd problem
+four_wheel_drive_problem,4x4 light flashing
+four_wheel_drive_problem,transfer case noise
+worn_cv_axle,clicking when turning
+worn_cv_axle,cv axle clicking on turns
+worn_cv_axle,torn cv boot grease on the wheel
+infotainment_problem,radio problem
+infotainment_problem,screen problem
+infotainment_problem,radio screen problem
+infotainment_problem,phone problem with the radio
+infotainment_problem,radio wont work
+infotainment_problem,backup camera problem
+door_lock_problem,door lock problem
+door_lock_problem,door problem wont open
+door_lock_problem,lock problem on one door
+door_lock_problem,door lock actuator buzzing
+window_regulator_problem,window problem
+window_regulator_problem,window wont roll up
+window_regulator_problem,window regulator broken
+window_regulator_problem,window motor problem
+adas_problem,phantom braking
+adas_problem,automatic braking by itself
+adas_problem,collision system warning
+adas_problem,brakes by itself on the highway
+engine_knock,knocking engine
+engine_knock,motor knocking
+engine_knock,knock from the engine
+engine_knock,engine knocking noise
+air_suspension_problem,air suspension problem
+air_suspension_problem,air ride problem
+air_suspension_problem,sagging
+air_suspension_problem,suspension sagging
+rust_damage,rust problem
+rust_damage,rusted out
+rust_damage,rust through
+rust_damage,rusty frame
+water_pump_failure,water pump problem
+water_pump_failure,water pump failing
+water_pump_failure,coolant leak from the water pump
+water_pump_failure,water pump bearing
+diesel_emissions_problem,def problem diesel
+diesel_emissions_problem,dpf problem
+diesel_emissions_problem,diesel exhaust fluid
+diesel_emissions_problem,egr problem diesel
+overheating,engine overheating
+overheating,overheating in traffic
+overheating,running hot and the temp gauge is high
+overheating,the engine is overheating and steaming
+overheating,steam from the radiator and overheating
+overheating,overheats when idling with the ac on
+overheating,radiator fan not coming on and it overheats
+overheating,temp gauge in the red and coolant boiling over
+overheating,coolant reservoir boiling and overheating
+overheating,radiator cracked and overheating
+overheating,overheating on the highway in summer
+overheating,radiator leaking and the engine runs hot
+overheating,overheating and the cooling fan wont turn on
+overheating,hot engine light and steam
+overheating,engine got too hot and smells like coolant
+overheating,radiator hose burst and overheated
+thermostat_stuck_open,temp gauge stays cold
+thermostat_stuck_open,engine never warms up
+thermostat_stuck_open,heater blows cold and the temp stays low
+thermostat_stuck_open,thermostat stuck open
+thermostat_stuck_open,temp needle low all the time
+thermostat_stuck_open,takes forever to warm up and heat is weak
+thermostat_stuck_open,engine runs cold in winter
+thermostat_stuck_open,temp gauge barely moves off cold
+head_gasket_failure,white smoke and coolant loss
+head_gasket_failure,milky oil and white smoke
+head_gasket_failure,bubbles in the coolant reservoir
+head_gasket_failure,head gasket blown white smoke
+head_gasket_failure,losing coolant and white smoke from the tailpipe
+head_gasket_failure,sweet white smoke from the exhaust and overheats
+head_gasket_failure,coolant gone and no leaks with white exhaust smoke
+water_pump_failure,water pump leaking at the front
+water_pump_failure,coolant leak at the water pump
+water_pump_failure,water pump weep hole dripping
+water_pump_failure,water pump noise and coolant leak
+water_pump_failure,water pump bad and overheating
+water_pump_failure,the water pump is leaking coolant
+water_pump_failure,water pump grinding
+water_pump_failure,replace the water pump leaking
+collapsed_lifter,lifter tick on my hemi
+collapsed_lifter,lifter tick on the 6.2
+collapsed_lifter,ticking that gets louder and wont go away when warm
+collapsed_lifter,ticking after warm up that stays
+collapsed_lifter,ticking constantly with a misfire
+collapsed_lifter,tick that stays when warm plus misfire
+collapsed_lifter,afm lifter tick and misfire
+collapsed_lifter,lifter collapsed and it misfires
+collapsed_lifter,the engine ticks when warm and misfires
+collapsed_lifter,top of the engine ticking warm or cold
+collapsed_lifter,valve train tick that never goes away
+collapsed_lifter,tick on one cylinder with a misfire code
+collapsed_lifter,lifter tick at idle when warm
+collapsed_lifter,ticking louder when warm and a misfire
+engine_misfire,engine misfire
+engine_misfire,misfire code p0300
+engine_misfire,flashing check engine light and shaking
+engine_misfire,coil pack misfire
+engine_misfire,spark plug misfire
+engine_misfire,engine misfiring under load
+engine_misfire,rough idle and misfire code
+engine_misfire,the engine misses and shakes
+engine_misfire,misfire on cylinder 3 bad coil
+engine_misfire,misfire and flashing light when accelerating
+engine_misfire,bad spark plugs and rough running
+engine_misfire,ignition coil failed misfire
+exhaust_leak,exhaust leak ticking cold
+exhaust_leak,ticking cold goes away warm
+exhaust_leak,tick when cold only
+exhaust_leak,exhaust manifold ticking when cold
+exhaust_leak,ticking from the manifold at cold start
+exhaust_leak,exhaust is louder than normal
+exhaust_leak,exhaust leak smell
+four_wheel_drive_problem,4wd wont engage and the light flashes
+four_wheel_drive_problem,the 4wd light keeps flashing
+four_wheel_drive_problem,4x4 not engaging
+four_wheel_drive_problem,4wd service light
+four_wheel_drive_problem,4wd grinding when engaging
+four_wheel_drive_problem,4wd shift motor
+four_wheel_drive_problem,4wd hub problem
+four_wheel_drive_problem,4wd actuator
+four_wheel_drive_problem,4wd hopping in turns
+four_wheel_drive_problem,4wd system fault
+four_wheel_drive_problem,awd fault light
+four_wheel_drive_problem,ptu leak
+four_wheel_drive_problem,ptu failure awd
+four_wheel_drive_problem,transfer case leak
+four_wheel_drive_problem,transfer case wont engage 4wd
+four_wheel_drive_problem,front hubs wont engage in 4wd
+oil_leak_low_oil,oil leak under the car
+oil_leak_low_oil,oil leak at the valve cover
+oil_leak_low_oil,oil leaking at the rear main seal
+oil_leak_low_oil,oil leak onto the exhaust smells like burning
+oil_leak_low_oil,oil leak at the oil filter
+oil_leak_low_oil,leaking oil drips under the engine
+oil_leak_low_oil,oil leak getting worse with drips
+oil_leak_low_oil,low oil pressure light and the oil is low
+oil_leak_low_oil,oil light on low oil
+oil_leak_low_oil,oil pressure warning at idle low oil
+cvt_problem,cvt judders and whines
+cvt_problem,cvt slipping and revving
+cvt_problem,cvt limp mode
+cvt_problem,cvt overheating
+cvt_problem,cvt fluid
+cvt_problem,cvt hesitation
+cvt_problem,cvt surge
+cvt_problem,cvt noise
+cvt_problem,cvt failing
+cvt_problem,cvt warning light
+cvt_problem,cvt whining noise when accelerating
+cvt_problem,cvt judder in my nissan rogue
+key_ignition_problem,key not detected
+key_ignition_problem,push to start not working key not detected
+key_ignition_problem,key fob not detected and it wont start
+key_ignition_problem,anti theft light and no start
+key_ignition_problem,steering wheel locked and the key wont turn
+key_ignition_problem,ignition lock cylinder stuck
+key_ignition_problem,key turns but nothing happens and the security light is on
+clutch_problem,clutch slipping
+clutch_problem,clutch pedal soft
+clutch_problem,clutch pedal goes to the floor
+clutch_problem,clutch chatter
+clutch_problem,clutch wont disengage hard to shift
+clutch_problem,clutch grabs high
+clutch_problem,clutch burning smell
+clutch_problem,manual transmission grinding gears
+clutch_problem,stick shift grinding into gear
+clutch_problem,clutch slave cylinder leaking
+clutch_problem,throwout bearing noise when pressing the clutch
+clutch_problem,clutch shudder when taking off in first
+oil_burning,burning oil but not leaking
+oil_burning,blue smoke from the exhaust
+oil_burning,oil consumption no leaks blue smoke
+oil_burning,engine using oil
+oil_burning,uses oil
+oil_burning,oil keeps going down and no leak
+oil_burning,low oil and no leaks
+oil_burning,going through oil
+oil_burning,quart of oil every week no leak
+oil_burning,oil burning blue smoke
+blend_door_actuator,blend door
+blend_door_actuator,blend door actuator
+blend_door_actuator,clicking behind the dash heater
+blend_door_actuator,clicking dash
+blend_door_actuator,dash clicking
+blend_door_actuator,temperature stuck
+blend_door_actuator,heat stuck
+blend_door_actuator,air stuck on defrost
+blend_door_actuator,vent stuck
+blend_door_actuator,stuck on hot air
+blend_door_actuator,clicking behind the dash and the air is stuck
+differential_problem,differential
+differential_problem,rear differential
+differential_problem,rear end
+differential_problem,rear end whine on the highway
+differential_problem,differential fluid leak
+differential_problem,rear end gear noise
+differential_problem,rear differential leaking gear oil
+differential_problem,rear end clunk
+differential_problem,rear end howl on decel
+differential_problem,differential bearing noise
+turbo_problem,turbo whistle and smoke
+turbo_problem,turbo leaking oil and smoking
+turbo_problem,turbo oil leak
+turbo_problem,boost low and no power
+turbo_problem,turbo no power
+turbo_problem,turbo lost power
+turbo_problem,underboost limp mode turbo
+turbo_problem,turbo hissing
+turbo_problem,turbo hose leak
+turbo_problem,turbo wastegate
+air_suspension_problem,air suspension sagging
+air_suspension_problem,air suspension leak
+air_suspension_problem,air suspension compressor running
+air_suspension_problem,suspension compressor
+air_suspension_problem,air suspension wont lift
+air_suspension_problem,airmatic
+air_suspension_problem,air springs leaking
+air_suspension_problem,sits low after parking overnight
+air_suspension_problem,one side sags
+air_suspension_problem,rear sags when parked
+death_wobble,death wobble
+death_wobble,violent shaking after bumps at speed
+death_wobble,violent shake in the front end
+death_wobble,shakes violently after a bump
+death_wobble,violent wobble
+death_wobble,uncontrollable shaking after a bump
+death_wobble,the front end wobbles violently after a bump
+death_wobble,violent shimmy after a bump
+instrument_cluster_problem,speedometer
+instrument_cluster_problem,speedometer broken
+instrument_cluster_problem,gas gauge
+instrument_cluster_problem,fuel gauge
+instrument_cluster_problem,gauges
+instrument_cluster_problem,instrument cluster
+instrument_cluster_problem,tach not working
+instrument_cluster_problem,fuel gauge stuck
+instrument_cluster_problem,gas gauge stuck
+instrument_cluster_problem,odometer
+hybrid_ev_problem,hybrid
+hybrid_ev_problem,ev
+hybrid_ev_problem,hybrid battery dying
+hybrid_ev_problem,ev battery
+hybrid_ev_problem,hybrid battery warning and low mpg
+hybrid_ev_problem,ev charging
+hybrid_ev_problem,ev charger
+hybrid_ev_problem,ev range low
+hybrid_ev_problem,hybrid system
+hybrid_ev_problem,hybrid inverter
+dead_battery,battery dead
+dead_battery,dead battery
+dead_battery,battery died overnight
+dead_battery,needs a jump every morning
+dead_battery,battery keeps dying
+dead_battery,clicking fast wont start dead battery
+dead_battery,battery is weak and slow crank
+dead_battery,jump start fixed it
+dead_battery,battery dies after sitting a few days
+worn_suspension,ball joint clunk
+worn_suspension,worn ball joints
+worn_suspension,clunking front end over bumps
+worn_suspension,tie rod loose
+worn_suspension,control arm bushings worn
+worn_suspension,sway bar link clunk
+worn_suspension,bad struts bouncy ride
+worn_suspension,shocks worn bouncing
+worn_suspension,front end clunk over potholes
+worn_u_joint,u joint
+worn_u_joint,u joint bad
+worn_u_joint,u joint squeak
+worn_u_joint,driveshaft vibration
+worn_u_joint,driveshaft clunk
+worn_u_joint,u joint clunk
+worn_u_joint,squeaking driveshaft
+worn_u_joint,u joints worn
+torque_converter_shudder,shudder at 40
+torque_converter_shudder,shudder at 45 mph
+torque_converter_shudder,rumble strips 40 mph
+torque_converter_shudder,shudder cruising 40
+torque_converter_shudder,shudder going 45 on light gas
+torque_converter_shudder,shudder 35 mph light gas
+heater_core_problem,heater core
+heater_core_problem,heater core leak
+heater_core_problem,sweet smell inside
+heater_core_problem,foggy windshield sweet smell
+heater_core_problem,coolant leaking inside the car
+heater_core_problem,heater core clogged
+water_leak_inside,water leak when it rains
+water_leak_inside,rain leak
+water_leak_inside,rain water inside
+water_leak_inside,wet floor rain
+water_leak_inside,sunroof leak
+water_leak_inside,water inside the car
+throttle_body_problem,throttle body
+throttle_body_problem,throttle body bad
+throttle_body_problem,throttle body dirty
+throttle_body_problem,throttle
+throttle_body_problem,wrench light
+throttle_body_problem,reduced power
+throttle_body_problem,stalls at stops
+throttle_body_problem,stalls when stopping
+throttle_body_problem,idle surge
+throttle_body_problem,idle surging
+throttle_body_problem,reduced engine power and stalling
+throttle_body_problem,wrench light and stalling
+throttle_body_problem,stalls at red lights wrench light
+throttle_body_problem,the throttle body stalls at idle
+vacuum_leak,hissing
+vacuum_leak,hissing noise from the engine
+vacuum_leak,vacuum leak
+vacuum_leak,vacuum leak hiss
+vacuum_leak,lean codes
+vacuum_leak,lean code p0174
+vacuum_leak,vacuum hose leak
+dirty_maf_sensor,maf sensor
+dirty_maf_sensor,dirty maf
+dirty_maf_sensor,mass air flow sensor
+dirty_maf_sensor,maf code
+dirty_maf_sensor,hesitation when accelerating maf
+abs_sensor_problem,abs light
+abs_sensor_problem,abs sensor
+abs_sensor_problem,abs and traction light
+blower_motor_problem,blower motor
+blower_motor_problem,blower motor resistor
+blower_motor_problem,blower only high
+blower_motor_problem,no air from the vents
+blower_motor_problem,fan not blowing
+ac_problem,ac warm
+ac_problem,ac broken
+ac_problem,ac compressor
+ac_problem,ac not working warm air
+fuel_delivery_problem,fuel pump
+fuel_delivery_problem,fuel pump bad cranks no start
+fuel_delivery_problem,fuel pump whine and no start
+fuel_delivery_problem,sputters and dies like it is out of gas
+engine_knock,knock
+engine_knock,rod knock loud
+engine_knock,knocking bottom end
+engine_knock,the engine is knocking and the oil light is on
+bad_alternator,alternator
+bad_alternator,alternator bad
+bad_alternator,alternator not charging
+bad_alternator,battery light on
+bad_motor_mounts,engine jumps when i shift into drive
+bad_motor_mounts,engine lurches and thumps when shifting into reverse
+bad_motor_mounts,engine moves a lot when i put it in gear
+bad_motor_mounts,broken motor mount and the engine rocks
+bad_motor_mounts,engine rocks and clunks when i hit the gas
+bad_motor_mounts,motor mount clunk under the hood when accelerating
+bad_motor_mounts,vibration in the cab at idle in drive that goes away in neutral
+bad_motor_mounts,engine shakes the whole cab at a stop in gear
+bad_motor_mounts,engine torques over when revved
+bad_motor_mounts,clunk from the engine bay when shifting and the engine moves
+alignment_problem,pulls to the right on a straight road
+alignment_problem,pulls to one side after hitting a pothole
+alignment_problem,steering wheel crooked when driving straight
+alignment_problem,needs an alignment pulls left
+alignment_problem,tires wearing on the inside edges and pulls
+alignment_problem,drifts right and the steering wheel is off center
+alignment_problem,pulls left but no hot wheel and no brake smell
+alignment_problem,alignment is off after new tie rods
+alignment_problem,uneven tire wear and pulls to the right
+alignment_problem,lifted truck pulls and wears tires on the edge
+sticking_brake_caliper,one wheel hot and pulls when not braking
+sticking_brake_caliper,brake caliper sticking one wheel hot
+sticking_brake_caliper,caliper stuck and a burning brake smell
+sticking_brake_caliper,brake dust on one wheel only and it is hot
+sticking_brake_caliper,brake drags on one wheel
+dead_battery,battery is dead after sitting
+dead_battery,battery wont hold a charge
+dead_battery,fast clicking and dim lights wont start
+dead_battery,jump start and it starts right up
+dead_battery,battery dies overnight
+dead_battery,cold morning and the battery is too weak to crank
+dead_battery,old battery and slow crank in the cold
+dead_battery,clicking rapidly and the dash lights dim
+bad_starter,one click and no crank lights bright
+bad_starter,starter clicks once and nothing
+bad_starter,starter grinding when i start it
+bad_starter,starter spins but the engine doesnt turn
+bad_starter,hitting the starter with a hammer makes it start
+bad_starter,good battery but the starter wont turn the engine
+bad_starter,starter makes a whirring noise and no crank
+bad_alternator,alternator not charging and the battery light is on
+bad_alternator,battery light on and the truck died while driving
+bad_alternator,new battery keeps dying because the alternator is bad
+bad_alternator,voltage drops while driving and the lights dim
+bad_alternator,dies while driving with the battery light
+electrical_ground_problem,random electrical problems
+electrical_ground_problem,lights flicker randomly
+electrical_ground_problem,corroded ground strap and random problems
+electrical_ground_problem,everything electrical acts up over bumps
+electrical_ground_problem,random warning lights and flickering
+abs_sensor_problem,abs light and no abs
+abs_sensor_problem,abs pump buzzing and abs light
+abs_sensor_problem,abs activates at low speed for no reason
+abs_sensor_problem,abs light came on after a brake job
+blower_motor_problem,blower only works on high
+blower_motor_problem,weak air from all the vents and fan noise
+blower_motor_problem,fan blows weak on every setting
+blower_motor_problem,blower motor squeal
+blower_motor_problem,no fan at all for heat or ac
+blower_motor_problem,the fan doesnt come on
+ac_problem,ac blows warm but the fan works fine
+ac_problem,air comes out but not cold
+ac_problem,ac warm and the compressor clutch doesnt engage
+ac_problem,ac low on refrigerant
+ac_problem,ac recharge only lasts a week
+heater_core_problem,heater core leak sweet smell and fog
+heater_core_problem,no heat with a full radiator and hot engine heater core
+heater_core_problem,heater blows cold but the engine is at normal temperature heater core
+heater_core_problem,sweet smell from the heater vents
+heater_core_problem,coolant drips under the dash
+blend_door_actuator,clicking behind the dash every time i start the truck
+blend_door_actuator,air temperature wont change
+blend_door_actuator,the temperature dial does nothing and it clicks
+blend_door_actuator,tapping behind the dash at startup
+blend_door_actuator,blend door makes clicking noise
+blend_door_actuator,heat only on one side
+thermostat_stuck_open,heater lukewarm and the temp gauge sits low
+thermostat_stuck_open,temp gauge stays at the bottom
+thermostat_stuck_open,engine takes a long time to warm up
+thermostat_stuck_open,temp gauge drops on the highway and heater gets cold
+overheating,temp gauge climbing and steam
+overheating,overheating at idle
+overheating,overheating when the ac is on
+overheating,radiator fan not working and overheating
+overheating,engine running hot
+overheating,engine overheated and the radiator is low
+overheating,overheating in summer traffic
+overheating,engine temperature high
+overheating,coolant boiling over from the overflow tank
+overheating,the radiator is clogged and it overheats
+water_pump_failure,coolant leak from the front of the engine by the pump
+water_pump_failure,water pump leaking and coolant low
+water_pump_failure,water pump pulley loose
+water_pump_failure,coolant dripping from the front of the engine
+water_pump_failure,water pump leaks and the engine is getting hot
+water_pump_failure,new water pump fixed the leak
+head_gasket_failure,head gasket white smoke milky oil
+head_gasket_failure,overheated and now there is white smoke
+head_gasket_failure,coolant in the oil milky
+head_gasket_failure,losing coolant with no leak and white smoke
+head_gasket_failure,combustion gases in the radiator
+oil_burning,needs oil between changes but nothing leaks
+oil_burning,oil low every 1000 miles with no drips
+oil_burning,adding a quart of oil every week but no leaks
+oil_burning,blue smoke and needs oil
+oil_burning,eats oil with no leaks
+oil_burning,oil consumption and blue smoke
+oil_leak_low_oil,oil leak with drips on the ground
+oil_leak_low_oil,oil puddle in the driveway
+oil_leak_low_oil,oil leaking and dripping
+oil_leak_low_oil,oil dripping on the exhaust and smoking
+oil_leak_low_oil,oil drips and the level is low
+oil_leak_low_oil,oil leak needs a quart a week
+engine_knock,knocking engine and low oil pressure
+engine_knock,rod knock after low oil
+engine_knock,metal in the oil and the engine knocks
+engine_knock,engine knock under load deep
+engine_knock,knocking from the engine bottom end
+collapsed_lifter,ticking with a check engine light and misfire
+collapsed_lifter,ticking stays after it warms up
+collapsed_lifter,lifter tick and check engine light
+collapsed_lifter,ticking constant and misfire code
+collapsed_lifter,top end tick misfire
+collapsed_lifter,tick that is there hot or cold
+exhaust_leak,ticking when cold that goes away
+exhaust_leak,cold start tick that fades
+exhaust_leak,exhaust ticking from the manifold when cold
+exhaust_leak,passenger side tick when cold
+exhaust_leak,ticking goes away when the engine warms up
+exhaust_leak,exhaust rattle and leak
+engine_misfire,misfire code cylinder
+engine_misfire,cylinder misfire
+engine_misfire,misfire p0302
+engine_misfire,misfire p0305
+engine_misfire,engine shaking misfire flashing light
+engine_misfire,misfire from a bad coil
+cvt_problem,cvt limp mode on a hill
+cvt_problem,cvt went into limp mode and wont go over 40
+cvt_problem,cvt slipping from a stop
+cvt_problem,cvt whine when accelerating
+cvt_problem,cvt grinding whine
+cvt_problem,cvt revs high and slips
+cvt_problem,cvt judders at take off
+cvt_problem,cvt whine on the highway
+cvt_problem,cvt problem nissan
+transmission_problem,transmission slipping
+transmission_problem,transmission slips
+transmission_problem,slipping gears
+transmission_problem,hard shifting
+transmission_problem,transmission limp mode stuck in one gear
+transmission_problem,transmission stuck in third gear
+transmission_problem,automatic transmission slipping between gears
+transmission_problem,the transmission shifts late and hard
+transmission_problem,engine revs between shifts transmission slipping
+transmission_problem,automatic transmission delayed engagement
+torque_converter_shudder,rumble strips feel at 40
+torque_converter_shudder,shudder at 40 on light throttle like rumble strips
+torque_converter_shudder,shudders at 45 on the highway on light gas
+torque_converter_shudder,shudder at 50 on light gas
+torque_converter_shudder,silverado shudder at 40 mph
+torque_converter_shudder,8 speed transmission shudder at 45
+tire_balance,shakes only at highway speed
+tire_balance,highway shake 65 to 75
+tire_balance,vibration at highway speed tires
+tire_balance,tire shake on the highway
+tire_balance,balance tires shake at 70
+death_wobble,violent shake after a bump on the highway
+death_wobble,violent steering wheel shake after a bump
+death_wobble,after a bump the front end shakes violently
+death_wobble,shakes violently after a bump and wont stop
+death_wobble,violent shaking after bumps on my ram
+death_wobble,violent shaking front end after a bump at 50 mph
+worn_u_joint,clunk shifting into drive from the driveshaft
+worn_u_joint,driveshaft clunk when shifting
+worn_u_joint,u joint clunk shifting into drive or reverse
+worn_u_joint,squeak from the driveshaft
+worn_u_joint,u joint squeaks when backing up
+differential_problem,rear end clunk when letting off the gas
+differential_problem,differential clunk
+differential_problem,rear diff leak
+differential_problem,rear end gear oil leaking
+differential_problem,differential cover leak
+differential_problem,rear end whining and leaking gear oil
+four_wheel_drive_problem,4wd light blinks and it wont engage
+four_wheel_drive_problem,4wd button not working
+four_wheel_drive_problem,4wd light blinking
+four_wheel_drive_problem,front hubs not locking 4wd
+four_wheel_drive_problem,4wd clunk
+four_wheel_drive_problem,ptu leaking
+four_wheel_drive_problem,4wd stuck on
+four_wheel_drive_problem,4wd grinding front wheels
+turbo_problem,turbo whine and whistle
+turbo_problem,turbo is noisy
+turbo_problem,turbo noise and power loss
+turbo_problem,turbo grinding
+turbo_problem,turbo boost lost going uphill
+turbo_problem,turbo oil leaking onto the exhaust
+turbo_problem,turbo engine no boost check engine light
+turbo_problem,turbo hissing when boosting
+turbo_problem,wastegate rattle
+hybrid_ev_problem,hybrid battery warning
+hybrid_ev_problem,ev warning light
+hybrid_ev_problem,hybrid battery low mpg
+hybrid_ev_problem,ev wont go
+hybrid_ev_problem,ev power loss
+hybrid_ev_problem,hybrid system warning and mpg dropped
+hybrid_ev_problem,prius ready light
+hybrid_ev_problem,ev battery warning light
+instrument_cluster_problem,speedometer not working right
+instrument_cluster_problem,fuel gauge not working right
+instrument_cluster_problem,gauge not working
+instrument_cluster_problem,speedometer dead
+instrument_cluster_problem,gauge stuck
+instrument_cluster_problem,speedometer wrong
+instrument_cluster_problem,gas gauge wrong
+throttle_body_problem,throttle body causing stalling
+throttle_body_problem,throttle body causing high idle
+throttle_body_problem,high idle throttle body
+throttle_body_problem,idle high from the throttle body
+throttle_body_problem,throttle body idle surge
+throttle_body_problem,reduced power wrench
+throttle_body_problem,wrench light reduced power stall
+throttle_body_problem,stalling at stops throttle body
+vacuum_leak,vacuum leak high idle and hissing
+vacuum_leak,hissing vacuum leak and lean code
+vacuum_leak,vacuum leak rough idle hiss
+vacuum_leak,hiss and high idle
+dirty_maf_sensor,maf hesitation
+dirty_maf_sensor,maf sensor causing hesitation
+dirty_maf_sensor,hesitates and bogs maf
+key_ignition_problem,key wont turn
+key_ignition_problem,key fob not detected
+key_ignition_problem,security light on no start
+key_ignition_problem,ignition key stuck
+door_lock_problem,door lock actuator not working
+door_lock_problem,door lock buzzing noise
+door_lock_problem,one door wont lock
+door_lock_problem,sliding door stuck
+window_regulator_problem,window regulator bad
+window_regulator_problem,window goes down by itself
+window_regulator_problem,window fell in the door
+window_regulator_problem,window wont move
+infotainment_problem,carplay not working
+infotainment_problem,phone audio not working through the radio
+infotainment_problem,voice control on the radio not working
+infotainment_problem,radio screen
+water_leak_inside,water leak in the roof
+water_leak_inside,water leaking inside from the roof
+water_leak_inside,soft top leaks when it rains
+water_leak_inside,water comes in by the windshield pillar
+air_suspension_problem,airmatic sagging
+air_suspension_problem,air suspension sits low overnight
+air_suspension_problem,the car sits low in the morning
+air_suspension_problem,airmatic warning
+diesel_emissions_problem,def heater
+diesel_emissions_problem,scr fault diesel
+diesel_emissions_problem,def pump
+diesel_emissions_problem,diesel derate
+power_steering_problem,groaning when turning while parked power steering
+power_steering_problem,power steering whine
+power_steering_problem,power steering fluid leak
+power_steering_problem,steering stiff and groans
+worn_suspension,loose steering and clunks
+worn_suspension,steering loose from worn tie rods
+worn_suspension,clunk when turning parked from the front suspension
+worn_suspension,bouncy ride worn shocks
+worn_brake_pads,brake squeal from the wear indicator
+worn_brake_pads,pads thin and squealing
+worn_brake_pads,brakes squeal when stopping
+worn_serpentine_belt,belt squeal at startup
+worn_serpentine_belt,squealing belt when cold
+worn_serpentine_belt,serpentine belt chirp at idle
+worn_serpentine_belt,belt squeals when i rev the engine
+catalytic_converter_problem,catalytic converter rattle
+catalytic_converter_problem,p0420 catalyst efficiency
+catalytic_converter_problem,clogged catalytic converter no power
+low_tire_pressure,nail in the tire
+low_tire_pressure,tire pressure light
+low_tire_pressure,low tire
+low_tire_pressure,tire keeps going flat
+clutch_problem,clutch slipping in high gear
+clutch_problem,stick shift clutch slipping
+clutch_problem,manual clutch slips
+clutch_problem,clutch revs up and slips stick shift
+blend_door_actuator,air only comes out the floor vents
+blend_door_actuator,air wont come out of the dash vents only defrost
+blend_door_actuator,mode door wont switch vents
+blend_door_actuator,defrost vents stuck on
+blend_door_actuator,cant switch the air from floor to dash
+blend_door_actuator,vents dont change when i turn the knob
+blend_door_actuator,air blows out the defroster no matter the setting
+blend_door_actuator,clicking behind the glove box and air stuck
+blend_door_actuator,knocking behind the glove box
+blend_door_actuator,clicking noise behind the glove box when the key is on
+blend_door_actuator,temperature knob doesnt change anything
+blend_door_actuator,turning the temperature knob does nothing and it clicks
+blend_door_actuator,the ac is cold on the driver side only
+blend_door_actuator,hot air on one side and cold air on the other
+blend_door_actuator,clicking in the dash and the vents wont switch
+blend_door_actuator,heat wont turn off stuck hot
+blend_door_actuator,cold air only and the engine is warm and the dash clicks
+blower_motor_problem,no air coming out at all on any fan speed
+blower_motor_problem,the fan doesnt blow at any setting
+blower_motor_problem,fan speed knob does nothing no air
+blower_motor_problem,blower fan dead no air at all
+blower_motor_problem,fan only works on the highest speed
+blower_motor_problem,blower makes a squeak on low
+blower_motor_problem,heater fan squeaks
+blower_motor_problem,blower motor rattling behind the glove box
+blower_motor_problem,blower motor resistor burnt fan only high
+blower_motor_problem,the fan stopped blowing
+diesel_emissions_problem,def pump failed on my diesel
+diesel_emissions_problem,diesel exhaust fluid pump code
+diesel_emissions_problem,scr efficiency code on my diesel
+diesel_emissions_problem,scr catalyst code diesel
+diesel_emissions_problem,egr cooler leaking coolant diesel
+diesel_emissions_problem,egr cooler failed white smoke diesel
+diesel_emissions_problem,diesel derate and def light
+diesel_emissions_problem,reduced power on my diesel with def light
+diesel_emissions_problem,soot filter full diesel
+diesel_emissions_problem,diesel soot sensor code
+diesel_emissions_problem,emissions system fault on the diesel
+diesel_emissions_problem,service emissions on my duramax
+diesel_emissions_problem,cummins def warning
+diesel_emissions_problem,duramax def heater code
+diesel_emissions_problem,powerstroke dpf regen
+diesel_emissions_problem,diesel stuck in regen
+dead_battery,battery keeps dying overnight
+dead_battery,battery dies every few days
+dead_battery,battery dead every morning
+dead_battery,machine gun clicking and dim lights
+dead_battery,rapid clicking when i try to start it
+dead_battery,jumped it and it started right away
+dead_battery,dim dash lights and clicking
+dead_battery,battery wont stay charged
+dead_battery,battery is low
+dead_battery,battery 11.9 volts wont start
+electrical_ground_problem,all the warning lights flash at once
+electrical_ground_problem,every warning light comes on randomly
+electrical_ground_problem,things work sometimes and not others
+electrical_ground_problem,electrical gremlins
+electrical_ground_problem,random flickering of everything electrical
+electrical_ground_problem,wiring problem things cut in and out
+electrical_ground_problem,loose ground wire
+electrical_ground_problem,dash lights and headlights flicker together
+instrument_cluster_problem,speedometer quits sometimes
+instrument_cluster_problem,speedometer comes and goes
+instrument_cluster_problem,one gauge doesnt sweep at startup
+instrument_cluster_problem,gauge motor bad in the cluster
+instrument_cluster_problem,fuel gauge said quarter tank but it ran out
+instrument_cluster_problem,fuel gauge lies about how much gas
+instrument_cluster_problem,odometer display blank
+instrument_cluster_problem,oil gauge reads zero but oil level is full
+instrument_cluster_problem,speedometer reads wrong after bigger tires
+instrument_cluster_problem,speedometer is off
+instrument_cluster_problem,cluster gauges dead
+instrument_cluster_problem,gauges go dead randomly but no flickering
+throttle_body_problem,idle high and wont come down throttle body
+throttle_body_problem,high idle that stays high and a wrench light
+throttle_body_problem,idle at 2000 rpm with a wrench light
+throttle_body_problem,engine revs up by itself at idle
+throttle_body_problem,dies when i come to a stop then restarts fine
+throttle_body_problem,stalls coming to a stop and restarts
+throttle_body_problem,press the gas and nothing then it lunges
+throttle_body_problem,gas pedal delay then surge
+throttle_body_problem,throttle control warning light
+throttle_body_problem,reduced power wont go over 30
+throttle_body_problem,throttle body p2111
+throttle_body_problem,low idle after cold start throttle body
+throttle_body_problem,electronic throttle problem
+throttle_body_problem,throttle body failing and reduced power
+vacuum_leak,idle high and hissing sound
+vacuum_leak,hissing and idle at 1500
+vacuum_leak,vacuum leak hissing under the hood
+vacuum_leak,lean codes both banks and hissing
+vacuum_leak,hissing at idle
+overheating,radiator leaking and overheating
+overheating,radiator leak and the temp goes up
+overheating,radiator cracked leaking coolant and running hot
+overheating,overheating and the radiator fan doesnt come on
+overheating,cooling fan not working overheating
+overheating,overheats after driving for a while
+overheating,overheating with the coolant boiling
+overheating,green fluid on the ground and it overheated
+overheating,overheating and coolant smell
+overheating,radiator hose leaking and overheating
+cvt_problem,cvt overheat warning
+cvt_problem,cvt loses power on hot days
+cvt_problem,cvt shudders from a stop
+cvt_problem,cvt jerky at low speed
+cvt_problem,cvt hesitates then surges
+cvt_problem,cvt engine screams uphill
+cvt_problem,cvt slips when i press the gas
+cvt_problem,cvt high rpm uphill slow
+cvt_problem,cvt shudder at take off
+hybrid_ev_problem,12 volt warning on my electric car
+hybrid_ev_problem,ev 12v battery warning
+hybrid_ev_problem,high voltage battery
+hybrid_ev_problem,range estimate wrong on my ev
+hybrid_ev_problem,iccu failed
+hybrid_ev_problem,ev drive unit noise
+hybrid_ev_problem,inverter coolant pump
+hybrid_ev_problem,hybrid inverter coolant
+hybrid_ev_problem,ev battery coolant warning
+death_wobble,violent shaking after a bump so i pulled over
+death_wobble,front tires shake back and forth after a bump
+death_wobble,steering wheel shakes violently after a bump
+death_wobble,violent shake in the steering wheel after bumps
+death_wobble,violent oscillation front end
+death_wobble,death wobble highway
+death_wobble,death wobble jeep
+death_wobble,death wobble ram
+torque_converter_shudder,8 speed shudder
+torque_converter_shudder,8l90 shudder
+torque_converter_shudder,8l45 shudder
+torque_converter_shudder,shudder in overdrive uphill
+torque_converter_shudder,shudders cruising lightly
+torque_converter_shudder,shudder cruising
+torque_converter_shudder,shudder under light load
+torque_converter_shudder,transmission shudder at 45
+worn_u_joint,driveline clunk
+worn_u_joint,driveshaft vibration at speed
+worn_u_joint,u joint vibration under the floor
+oil_leak_low_oil,oil light flickers at idle low oil
+oil_leak_low_oil,oil pressure light flickers low oil
+oil_leak_low_oil,oily engine bottom
+oil_leak_low_oil,oil leak under the front of the engine
+oil_leak_low_oil,oil leak quart a week drips
+oil_leak_low_oil,oil leak drips everywhere
+oil_burning,no drip but adds a quart every week
+oil_burning,oil low warning but no leak
+oil_burning,no oil under the car but low on the dipstick
+oil_burning,smoke smells like oil from the tailpipe
+oil_burning,blue smoke accelerating
+oil_burning,blue smoke under hard acceleration
+engine_misfire,cylinder 8 misfire
+engine_misfire,misfire code
+engine_misfire,p0300 random misfire
+engine_misfire,misfire cylinder 2
+engine_misfire,misfire and shaking at stop lights
+engine_misfire,misfire with loss of power uphill
+collapsed_lifter,ticking worse when warm
+collapsed_lifter,ticking that stays warm
+collapsed_lifter,tick does not go away
+collapsed_lifter,ticking when warm and a misfire light
+exhaust_leak,ticking goes away when warm
+exhaust_leak,tick goes away once it warms up
+exhaust_leak,tapping when cold only
+exhaust_leak,exhaust fumes from under the cab
+exhaust_leak,exhaust noise under the cab
+heater_core_problem,passenger carpet wet with coolant
+heater_core_problem,wet carpet passenger side with a sweet smell
+heater_core_problem,damp carpet sweet smell foggy windows
+heater_core_problem,defrost makes the windows foggy and smells sweet
+heater_core_problem,heat blows cold and coolant is full heater core
+ac_problem,ac vents blow hot in summer
+ac_problem,air blowing but it is not cold ac
+ac_problem,ac condensation dripping inside
+ac_problem,ac drain clogged water on the floor
+ac_problem,ac broken warm air
+adas_problem,collision mitigation brake warning
+adas_problem,pre collision warning light
+adas_problem,brakes by itself when passing trucks
+adas_problem,auto braking for shadows
+adas_problem,car brakes for no reason
+adas_problem,blind spot monitor not working
+dirty_maf_sensor,black smoke and sluggish maf
+dirty_maf_sensor,maf sensor lean codes and hesitation
+dirty_maf_sensor,hesitates jerks maf
+dirty_maf_sensor,jerky hesitation in town maf
+dirty_maf_sensor,sluggish acceleration dirty air filter maf
+fuel_delivery_problem,sputters going uphill fuel pump
+fuel_delivery_problem,bucking under load fuel filter
+fuel_delivery_problem,starving for fuel at high speed
+fuel_delivery_problem,only starts with a full tank fuel pump
+fuel_delivery_problem,fuel pressure low
+evap_leak,fuel smell near the gas cap
+evap_leak,gas smell by the filler neck
+evap_leak,raw gas smell near the tank
+evap_leak,evap leak code
+key_ignition_problem,ignition switch
+key_ignition_problem,fob wont start the car
+key_ignition_problem,key fob battery dead wont start
+key_ignition_problem,stalls when the key is bumped
+door_lock_problem,lock buzzes and doesnt lock
+door_lock_problem,door wont lock with the fob but others do
+door_lock_problem,door handle broken
+door_lock_problem,outside door handle snapped
+door_lock_problem,door ajar light and door wont latch
+infotainment_problem,radio turns off by itself
+infotainment_problem,stereo resets itself
+infotainment_problem,touch screen dead
+infotainment_problem,rear camera flickering
+infotainment_problem,carplay wont connect
+infotainment_problem,phone audio cuts out on the radio
+four_wheel_drive_problem,4wd button
+four_wheel_drive_problem,awd light
+four_wheel_drive_problem,awd burning smell
+four_wheel_drive_problem,ptu gear oil smell
+four_wheel_drive_problem,power transfer unit leak
+four_wheel_drive_problem,clunk engaging 4x4
+differential_problem,diff whine
+differential_problem,diff fluid
+differential_problem,limited slip chatter
+differential_problem,rear axle gear oil leak
+differential_problem,pinion seal leak
+differential_problem,rear end whine accelerating
+turbo_problem,turbo noise when letting off the gas
+turbo_problem,boost cuts out
+turbo_problem,turbo oil leaking
+turbo_problem,low boost sluggish
+turbo_problem,turbo intake hissing
+air_suspension_problem,air suspension pump runs a lot
+air_suspension_problem,rear drops after sitting air suspension
+air_suspension_problem,air suspension rear sag
+window_regulator_problem,window motor dead no movement
+window_regulator_problem,glass fell down inside the door
+window_regulator_problem,window glass came off the track
+low_tire_pressure,slow leak in a tire
+low_tire_pressure,tire going flat slowly
+low_tire_pressure,tire pressure light on cold mornings
+low_tire_pressure,tire looks soft
+sticking_brake_caliper,hot wheel and burning brake smell
+sticking_brake_caliper,brake smell from one wheel and pulls
+sticking_brake_caliper,smoke from one wheel
+sticking_brake_caliper,one wheel heat and brake smell
+warped_rotors,shake when braking after new pads
+warped_rotors,pulsing brake pedal
+worn_brake_pads,brake dust and grinding
+worn_brake_pads,squeal and lots of brake dust on the front
+worn_serpentine_belt,squeal when revving
+worn_serpentine_belt,chirp from the belt at idle
+worn_serpentine_belt,squeal at cold start goes away
+worn_suspension,control arm bushings
+worn_suspension,bouncy after dips worn shocks
+worn_suspension,clunk turning the wheel parked from the suspension
+power_steering_problem,groan when turning parked
+power_steering_problem,steering box leaking
+head_gasket_failure,chocolate milk oil
+head_gasket_failure,exhaust smells like coolant
+head_gasket_failure,coolant gone no leak
+water_pump_failure,water pump drip sweet smell
+water_pump_failure,water pump leaking coolant at the weep hole
+worn_cv_axle,popping when turning and backing out
+worn_cv_axle,clicking turning in 4wd cv axle
+dead_battery,car battery is low and it wont start
+dead_battery,battery wont hold a charge and it is 6 years old
+dead_battery,battery doesnt stay charged overnight
+dead_battery,my battery is weak and dying
+dead_battery,battery low warning and slow crank
+dead_battery,battery tested bad at the parts store
+dead_battery,started after a jump from my other truck
+dead_battery,jumped it from another car and it fired right up
+dead_battery,clicks and the dash lights go dim
+dead_battery,headlights dim and it just clicks when i turn the key
+dead_battery,battery keeps going dead
+dead_battery,truck battery dies if it sits for a week
+bad_alternator,dies again a few minutes after a jump
+bad_alternator,runs after a jump then dies while driving
+bad_alternator,headlights pulse with the engine running
+bad_alternator,lights get brighter when i rev it
+bad_alternator,battery light and the voltage is low while running
+bad_starter,lights bright but the starter does nothing
+bad_starter,key turns and silence with bright lights
+bad_starter,thunk from the starter and no crank
+bad_starter,no crank but the radio and lights stay bright
+bad_starter,starter solenoid clicks and nothing
+clutch_problem,clutch pedal spongy
+clutch_problem,clutch pedal feels soft and goes to the floor
+clutch_problem,clutch fluid low and the pedal is soft
+clutch_problem,clutch master cylinder leaking and soft pedal
+clutch_problem,clutch pedal stays down on the floor
+clutch_problem,stick shift engine revs but doesnt pull
+clutch_problem,manual transmission clutch slips when accelerating
+engine_misfire,cylinder 1 misfire bad spark plug
+engine_misfire,misfire on cylinder 6 from the coil
+engine_misfire,p0308 misfire coil
+engine_misfire,cylinder 2 misfire after rain
+engine_misfire,misfire code on one cylinder from a bad plug
+engine_misfire,engine sputters at idle and misfires
+engine_misfire,misfire with the check engine light flashing under load
+engine_misfire,swapped the coil and the misfire moved
+dirty_maf_sensor,stalls right after starting and the maf is dirty
+dirty_maf_sensor,stalls after it starts then runs fine maf
+dirty_maf_sensor,surging idle from a dirty maf
+dirty_maf_sensor,hesitation and stalls when taking off maf
+dirty_maf_sensor,stumbles on take off maf sensor
+dirty_maf_sensor,lean codes and hesitation from the maf
+dirty_maf_sensor,maf cleaner fixed the hesitation
+dirty_maf_sensor,hesitation and poor mileage after an oiled air filter
+electrical_ground_problem,lights flicker and the gauges jump
+electrical_ground_problem,flickering dash and gauges jumping bad ground
+electrical_ground_problem,warning lights all flash on at once
+electrical_ground_problem,all the dash lights come on at once randomly
+electrical_ground_problem,windows and locks act up sometimes
+electrical_ground_problem,electrical things cut in and out
+electrical_ground_problem,random no start then it starts the next time
+electrical_ground_problem,headlights flicker when i hit bumps
+electrical_ground_problem,battery cable corroded and electrical problems
+exhaust_leak,exhaust louder than normal
+exhaust_leak,loud exhaust like a motorcycle
+exhaust_leak,exhaust puffing noise and louder
+exhaust_leak,muffler loud
+exhaust_leak,exhaust pipe rattling over bumps
+exhaust_leak,hole in the muffler loud exhaust
+exhaust_leak,tick that goes away once warm sounds like a lifter
+exhaust_leak,broken exhaust manifold bolt ticking
+catalytic_converter_problem,rattle from the catalytic converter
+catalytic_converter_problem,exhaust pipe red hot catalytic converter clogged
+catalytic_converter_problem,sulfur smell and low power
+catalytic_converter_problem,rotten egg smell and no power
+catalytic_converter_problem,cat converter rattle under the floor
+engine_knock,engine knocking getting worse
+engine_knock,motor knocks and oil pressure is low
+engine_knock,deep knock and oil pressure drops
+engine_knock,hammering knock from inside the engine
+engine_knock,metal flakes in the oil filter and a knock
+oil_leak_low_oil,oil on the bottom of the engine and drips
+oil_leak_low_oil,oil pressure gauge drops at idle and the oil is low
+oil_leak_low_oil,oil really low and leaking
+oil_leak_low_oil,smoke from the engine bay where oil drips on the exhaust
+oil_leak_low_oil,oil leaking so bad i add a quart every week
+overheating,overheats after driving a while
+overheating,coolant smell and overheating
+overheating,engine overheated and smells like antifreeze
+overheating,cooling fan wont turn on and the temp goes up
+overheating,overheating and white smoke from under the hood
+thermostat_stuck_open,heater barely warm and the temp gauge is low
+thermostat_stuck_open,temp gauge low all the time
+heater_core_problem,heater blows cold but the temp gauge is normal heater core
+heater_core_problem,no heat but the temp gauge is in the middle
+heater_core_problem,coolant dripping under the dash on the passenger side
+heater_core_problem,heater core clogged no heat with normal temp
+head_gasket_failure,radiator hoses hard and coolant pushed out
+head_gasket_failure,coolant disappearing and no leak and white smoke
+head_gasket_failure,coolant pushing out of the overflow head gasket
+blend_door_actuator,air only comes out the defroster
+blend_door_actuator,air comes out the floor no matter what
+blend_door_actuator,air blows out the wrong vents and wont switch
+blend_door_actuator,tapping behind the dash for a few seconds
+blower_motor_problem,defrost has no air
+blower_motor_problem,no air blowing from any vent
+blower_motor_problem,fan doesnt work on low or medium
+blower_motor_problem,fan only blows on high speed
+hybrid_ev_problem,high voltage battery fault
+hybrid_ev_problem,iccu failure ev lost power
+hybrid_ev_problem,inverter pump failed hybrid
+hybrid_ev_problem,hybrid inverter coolant pump failed
+infotainment_problem,backup camera flickering
+infotainment_problem,backup camera screen flickers
+infotainment_problem,screen touches itself
+infotainment_problem,touch screen presses by itself
+low_tire_pressure,tpms light on
+low_tire_pressure,tpms light cold morning
+low_tire_pressure,tire pressure light on in the morning
+low_tire_pressure,horseshoe light with an exclamation mark
+low_tire_pressure,slow leak in the tire
+low_tire_pressure,hissing from the tire
+warped_rotors,steering wheel shakes when slowing down
+warped_rotors,shake when braking from highway speed
+warped_rotors,new pads and now it shakes when braking
+worn_suspension,ball joint play
+worn_suspension,steering loose and sloppy worn tie rods
+worn_suspension,control arm bushing clunk
+worn_suspension,bouncy after hitting dips
+worn_suspension,clunk turning the wheel while parked from the front end
+worn_u_joint,clunk shifting from park to drive from the driveshaft
+worn_u_joint,driveshaft vibration at 45 mph
+worn_u_joint,vibration from the driveshaft under the floor at 40 to 50
+turbo_problem,turbo underboost limp mode
+turbo_problem,turbo oil line leak
+turbo_problem,turbo failed smoke
+turbo_problem,turbo leaking oil on the exhaust
+cvt_problem,cvt hesitation and surge
+cvt_problem,cvt jerks in town
+key_ignition_problem,ignition switch failing
+key_ignition_problem,key wont come out of the ignition
+key_ignition_problem,anti theft system wont let it start
+brake_fluid_leak,brake warning light on the dash
+brake_fluid_leak,red brake warning light stays on
+brake_fluid_leak,brake light on and the fluid is low
+brake_fluid_leak,brake warning light and the pedal feels low
+brake_fluid_leak,brake system warning light and fluid below min
+brake_fluid_leak,red brake light with the parking brake off
+brake_fluid_leak,brake light came on and the pedal goes down further
+brake_fluid_leak,brake fluid low warning
+tire_balance,whole truck shakes at highway speed
+tire_balance,whole vehicle vibrates at 60 to 70
+tire_balance,the whole car shakes on the freeway
+tire_balance,seat and floor vibrate at highway speed after new tires
+worn_u_joint,whole truck vibrates when accelerating from a stop
+worn_u_joint,vibration through the whole truck that gets worse with speed driveshaft
+worn_cv_axle,clicking noise from the front wheel when turning
+worn_cv_axle,clicking from the wheel on tight turns
+brake_fluid_leak,brake light on dash and fluid low
+brake_fluid_leak,red brake light on and soft pedal
+brake_fluid_leak,brake light stays on low brake fluid
+brake_fluid_leak,have to pump the brake pedal to stop
+brake_fluid_leak,pumping the brakes to get pressure
+brake_fluid_leak,brake pedal sinks slowly at a stop light
+brake_fluid_leak,brake fluid leaking near a wheel and the brake light is on
+brake_fluid_leak,brake light on and fluid on the inside of the tire
+adas_problem,the car braked on its own for nothing
+adas_problem,automatic emergency braking slammed on for nothing
+adas_problem,forward collision warning beeping for nothing
+overheating,coolant smell and the temp gauge is high
+overheating,smells like coolant and the engine is overheating
+overheating,engine overheating and coolant smell under the hood
+overheating,overheating white smoke from the radiator
+overheating,radiator cracked and running hot
+overheating,overheating with a leaking radiator
+overheating,temp gauge rises when idling in traffic
+overheating,the temperature gauge goes up past the middle
+overheating,engine overheat warning on the dash
+overheating,temperature warning light came on
+thermostat_stuck_open,heater lukewarm on cold mornings and gauge low
+thermostat_stuck_open,no heat after 20 minutes and the temp gauge stays low
+thermostat_stuck_open,defroster blows lukewarm and engine stays cold
+transmission_problem,transmission slips out of gear when accelerating
+transmission_problem,automatic wont shift out of first gear
+transmission_problem,automatic stuck in one gear limp mode
+transmission_problem,shifts hard and check engine light transmission code
+transmission_problem,transmission shifts harsh
+transmission_problem,automatic revs but wont accelerate transmission slipping
+transmission_problem,transmission limp mode wont shift
+transmission_problem,automatic transmission shifting hard with a code
+transmission_problem,truck slips going into overdrive
+transmission_problem,transmission fluid leak and slipping
+instrument_cluster_problem,speedometer quits and comes back
+instrument_cluster_problem,speedometer only works sometimes
+instrument_cluster_problem,gauges come back after a bump
+instrument_cluster_problem,speedometer off by a few mph
+instrument_cluster_problem,oil gauge says zero but oil is full
+instrument_cluster_problem,gauge needle stuck but the engine runs fine
+dead_battery,battery keeps dying and it is old
+dead_battery,battery dying overnight
+dead_battery,slow crank like its struggling then stops
+dead_battery,everything is dead no dome light when i open the door
+dead_battery,dome light dim and slow crank
+dead_battery,battery dead after leaving the lights on
+dead_battery,dim lights and clicking battery
+dead_battery,jump started it and it runs fine now
+dead_battery,battery corroded and slow to start
+dead_battery,battery dead again
+differential_problem,differential bearing whine
+differential_problem,pinion bearing whine from the rear
+differential_problem,rear diff groan turning in a parking lot
+differential_problem,rear end chatter in tight turns
+differential_problem,rear axle seal leaking gear oil on the tire
+differential_problem,whine from the back on the throttle
+ac_problem,ac blows air but it is not cold
+ac_problem,ac cold on one side only low refrigerant
+ac_problem,water on the floor from the ac drain
+ac_problem,ac drain line clogged water inside
+ac_problem,ac condensation leaking into the cab
+ac_problem,ac evaporator leaking water inside
+water_leak_inside,water leaking into the cab when it rains
+water_leak_inside,rain leaking in on the passenger floor
+water_leak_inside,wet carpet from rain and fogged windows
+water_leak_inside,water in the trunk after rain
+water_leak_inside,water in the spare tire area after rain
+water_leak_inside,trunk seal leaking rain water
+worn_u_joint,clunk from under the middle of the truck when shifting
+worn_u_joint,clunk from the driveshaft on and off the gas
+worn_u_joint,squeak from under the truck at low speed driveshaft
+worn_u_joint,u joint squeak at low speed
+worn_u_joint,driveshaft vibration at 45
+exhaust_leak,exhaust smell inside the cab
+exhaust_leak,smell exhaust inside the truck
+exhaust_leak,exhaust fumes inside
+exhaust_leak,tick that goes away after warm up exhaust
+exhaust_leak,tapping when cold exhaust manifold
+key_ignition_problem,key stuck cant get it out
+key_ignition_problem,engine shut off when the key was bumped
+key_ignition_problem,heavy keychain and the engine cuts off
+key_ignition_problem,dash flickers when the key moves
+key_ignition_problem,fob doesnt start or unlock
+sticking_brake_caliper,brake pad worn only on one wheel
+sticking_brake_caliper,one wheel has way more brake dust
+sticking_brake_caliper,one brake dragging and hot
+sticking_brake_caliper,hot brake smell from one front wheel and pulls
+worn_brake_pads,screeching when slowing down
+worn_brake_pads,screech when stopping
+worn_brake_pads,grinding from the rear brakes
+worn_brake_pads,squealing brakes and the pads are low
+torque_converter_shudder,shudder at 30 mph that stops when i let off
+torque_converter_shudder,shudder light load 40 mph
+torque_converter_shudder,shudder in overdrive on light gas
+torque_converter_shudder,8l90 shudder at 40
+death_wobble,death wobble at 50
+death_wobble,death wobble after a pothole
+death_wobble,the steering goes crazy after a bump
+death_wobble,steering wheel shakes so hard after a bump i cant hold it
+clutch_problem,clutch pedal spongy and goes to the floor
+clutch_problem,throwout bearing noise clutch pedal
+clutch_problem,stick shift revs up but doesnt go
+clutch_problem,manual transmission rpms jump in high gear
+four_wheel_drive_problem,4 low not working
+four_wheel_drive_problem,grinding when engaging four wheel drive
+four_wheel_drive_problem,binding in tight turns 4wd on
+four_wheel_drive_problem,power transfer unit leaking
+turbo_problem,turbo whining noise
+turbo_problem,turbo underboost
+turbo_problem,turbo smoking white
+turbo_problem,turbo oil leaking on the exhaust
+turbo_problem,boost low sluggish
+hybrid_ev_problem,hybrid engine runs all the time now
+hybrid_ev_problem,prius mileage dropped engine runs more
+hybrid_ev_problem,ev 12 volt warning
+hybrid_ev_problem,ev stops charging after a few minutes
+oil_leak_low_oil,oil leak bad quart a week
+oil_leak_low_oil,oil all over the bottom of the engine
+oil_leak_low_oil,black oil drips at the front
+oil_burning,smoke smells like burning oil from the tailpipe
+oil_burning,burning oil misfire fouled plug
+dirty_maf_sensor,jerky hesitation in town
+dirty_maf_sensor,hesitation and lean codes maf
+dirty_maf_sensor,maf surging idle
+cvt_problem,cvt grinding whine
+cvt_problem,cvt rubber band feeling
+blend_door_actuator,clicking under the dash passenger side
+blend_door_actuator,defroster stuck on
+blend_door_actuator,clicking in the dash for a minute after starting
+electrical_ground_problem,corroded battery cable and random electrical problems
+electrical_ground_problem,wiring problem things cut out
+throttle_body_problem,high idle after starting throttle body
+throttle_body_problem,idle 2000 rpm throttle
+throttle_body_problem,gas pedal not working right throttle body

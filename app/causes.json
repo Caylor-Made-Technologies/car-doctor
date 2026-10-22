@@ -775,5 +775,467 @@
       "Wet carpet on the passenger side",
       "Losing coolant with no puddle"
     ]
+  },
+  "cvt_problem": {
+    "name": "CVT transmission problem",
+    "severity": "high",
+    "diy": "Shop",
+    "plain": "A CVT is an automatic with no fixed gears (common on Nissan, Subaru, Honda, Toyota, Mitsubishi). When it wears, it judders, whines, or revs up without speeding up.",
+    "drive": "Gently, for now. Avoid hard acceleration and towing. If it goes into limp mode or slips badly, have it towed.",
+    "todo": "Ask a dealer if there's a software update or an extended CVT warranty for your VIN, then have the CVT fluid checked.",
+    "summary": "The CVT belt, pulleys or valve body are wearing or overheating: judder from a stop, a rising whine, RPM flare, or limp mode. Many makers extended CVT warranties.",
+    "checks": [
+      "Read transmission codes. Nissan P17F0/P17F1 (judder), P0776, P0841 and P0868 (low fluid pressure) are common.",
+      "Check for overheating: CVT fluid temperature over about 230°F (110°C) on a scan tool puts it in limp mode.",
+      "CVT fluid is specific (Nissan NS-2/NS-3, Subaru High Torque, Honda HCF-2). The wrong fluid causes judder.",
+      "Many makers recommend a fluid change around 25,000 to 60,000 miles even if the manual says 'lifetime'."
+    ],
+    "signs": [
+      "Judder or shudder when pulling away from a stop",
+      "A whine that rises as you speed up",
+      "Engine revs climb but you don't go faster",
+      "Sudden loss of power (limp mode) on long hills or hot days"
+    ]
+  },
+  "torque_converter_shudder": {
+    "name": "Torque converter shudder",
+    "severity": "medium",
+    "diy": "Shop",
+    "plain": "The torque converter connects the engine to an automatic transmission. When its clutch slips and grabs, it feels like driving over rumble strips at 25 to 50 mph.",
+    "drive": "Yes, for now. It gets worse over time and can wear the transmission, so get it looked at soon.",
+    "todo": "Ask a shop or dealer about a transmission fluid exchange with the updated fluid (GM 8-speeds especially). If that doesn't stop it, the torque converter is replaced.",
+    "summary": "The torque converter clutch is slipping and grabbing, usually from worn or wrong fluid. Common on GM 6L80/8L90/8L45, Ford 6F35 and older 4L60-E automatics.",
+    "checks": [
+      "It happens on light gas around 25 to 50 mph, and stops when you press harder or let off. That's the torque converter clutch.",
+      "Codes P0741 (torque converter clutch stuck off) or P0796 can show up.",
+      "GM 8L90/8L45 (2015 to 2019): GM service bulletins call for a triple flush with Mobil 1 LV ATF HP fluid.",
+      "Check that the engine isn't misfiring; a misfire at cruise can feel the same. Tire balance shakes don't stop when you change throttle."
+    ],
+    "signs": [
+      "Feels like rumble strips at 25 to 50 mph",
+      "Shudder on light gas that stops when you press harder",
+      "Happens on the highway when climbing a gentle hill",
+      "Engine RPM wavers a little at steady speed"
+    ]
+  },
+  "water_pump_failure": {
+    "name": "Water pump failure",
+    "severity": "high",
+    "diy": "Medium",
+    "plain": "The water pump pushes coolant through the engine. When its seal leaks or its bearing wears, coolant drips out at the front of the engine and it can overheat.",
+    "drive": "Only if the temperature gauge stays normal and you keep coolant topped up. If it gets hot or the pump is loud, stop.",
+    "todo": "Look for drips or crusty coolant below the pump at the front of the engine. Get it replaced before it overheats; if a timing belt drives it, do both together.",
+    "summary": "The water pump's seal is leaking or its bearing is worn. Coolant drips at the front of the engine, the pump may whine or grind, and it can overheat.",
+    "checks": [
+      "Look for a weep hole drip or dried coolant crust right under the pump pulley.",
+      "Engine off, grab the pump pulley and rock it: any wobble or grinding means a worn bearing.",
+      "Some engines (Ford 3.5/3.7, Mazda 3.7, Chrysler 2.7, GM 3.6) have the pump inside, behind the timing chain: coolant loss with no drip and milky oil.",
+      "Pressure-test the cooling system (around 15 to 18 psi for most cars) to find the leak."
+    ],
+    "signs": [
+      "Coolant drips at the front of the engine",
+      "A sweet smell after driving",
+      "Low coolant light that keeps coming back",
+      "Whine or grinding from the belt area"
+    ]
+  },
+  "oil_burning": {
+    "name": "Engine burning oil",
+    "severity": "medium",
+    "diy": "Shop",
+    "plain": "Some engines burn oil inside instead of leaking it out. The oil level drops between changes but there are no drips, and you may see blue smoke.",
+    "drive": "Yes, as long as you keep the oil full. Running it low on oil is what kills the engine.",
+    "todo": "Check the oil every time you get gas and top it up. Ask a dealer about an oil consumption test and warranty extensions; many engines had them.",
+    "summary": "Oil is getting past worn or sticking piston rings, valve seals, or the PCV system and burning. Common on Toyota 2.4L, Subaru FB, GM 2.4L and 5.3L AFM, Honda V6 VCM, Audi 2.0T and BMW N63.",
+    "checks": [
+      "No drips under the vehicle and no oil on the engine, but the level drops: it's burning, not leaking.",
+      "Pull the spark plugs: oily, black-crusted plugs show which cylinders burn oil.",
+      "A dealer oil consumption test measures how much it uses over about 1,000 miles; over a quart in 1,000 to 2,000 miles usually qualifies for warranty help.",
+      "Check the PCV valve first; a stuck one can pull oil into the intake and is cheap to replace."
+    ],
+    "signs": [
+      "Need to add oil between changes",
+      "Blue-gray smoke at startup or when you step on it",
+      "Oil light flickers on turns when it's low",
+      "Oily, fouled spark plugs"
+    ]
+  },
+  "throttle_body_problem": {
+    "name": "Dirty or failing throttle body",
+    "severity": "medium",
+    "diy": "Easy",
+    "plain": "The throttle body is the electronic valve that lets air into the engine when you press the gas. Dirt or a failing motor makes it stall, idle wrong, or drop into reduced power.",
+    "drive": "Usually yes around town. If it goes into reduced power mode, drive gently to a shop or home.",
+    "todo": "Clean the throttle body with throttle body cleaner (engine off). If the wrench light or reduced power comes back, it needs replacing; check for warranty coverage.",
+    "summary": "Carbon on the throttle plate or a failing electronic throttle motor causes stalling, a high or low idle, slow response and reduced power (wrench light). Common on GM, Ford, Dodge and Nissan.",
+    "checks": [
+      "Codes P2101, P2111, P2112, P2119, P2135 or P0121/P0122 point at the throttle body or pedal sensor.",
+      "Look inside the throttle body: a black ring around the plate causes stalling and a low idle.",
+      "After cleaning or replacing it, many need an idle relearn (key on 10 seconds, then idle for a few minutes, or a scan tool).",
+      "Ford, GM and Nissan had warranty extensions on electronic throttle bodies for some years."
+    ],
+    "signs": [
+      "Wrench light or 'reduced engine power'",
+      "Stalls when coming to a stop",
+      "Idle too high or surging",
+      "Slow or no response when you press the gas"
+    ]
+  },
+  "collapsed_lifter": {
+    "name": "Lifter or valve tick",
+    "severity": "high",
+    "diy": "Shop",
+    "plain": "Lifters ride on the camshaft and open the valves. When one collapses or sticks, it ticks like a sewing machine and that cylinder misfires. Very common on V8s that shut off cylinders to save gas (GM AFM/DFM, Hemi MDS).",
+    "drive": "Short trips only. A failed lifter can chew up the camshaft and turn a lifter job into an engine job.",
+    "todo": "Check the oil level first. Get it to a shop soon and tell them it ticks all the time and may misfire. Ask about recalls and warranty on GM 5.3/6.2 and Hemi engines.",
+    "summary": "A stuck or collapsed hydraulic lifter (or bad rocker/valve clearance) makes a steady tick that follows engine speed, often with a misfire on one cylinder. Common on GM AFM/DFM V8s, Chrysler Hemi and early 3.6L Pentastar.",
+    "checks": [
+      "The tick stays after warm-up and speeds up with RPM. An exhaust manifold tick fades as it warms.",
+      "Read misfire codes: a single-cylinder misfire (like P0302 or P0307) plus a tick points to a lifter.",
+      "GM AFM/DFM: P3400 codes and misfires on cylinders 1, 4, 6, 7 (AFM cylinders) are a strong sign.",
+      "Use the right oil viscosity and change it on time; dirty or low oil starves the lifters."
+    ],
+    "signs": [
+      "A tick that speeds up with the engine",
+      "Ticking that doesn't go away when warm",
+      "Misfire or shaking on one cylinder",
+      "Check engine light that keeps coming back"
+    ]
+  },
+  "engine_knock": {
+    "name": "Engine knock (rod bearing)",
+    "severity": "critical",
+    "diy": "Shop",
+    "plain": "A deep knock from inside the engine usually means a worn rod bearing. The parts are hitting each other, and the engine can fail suddenly.",
+    "drive": "No. Driving with a rod knock can break the engine. Have it towed.",
+    "todo": "Turn it off and check the oil level. Have it towed to a shop. On Hyundai/Kia, GM 6.2L and other recalled engines, check your VIN; many get a free engine.",
+    "summary": "A deep, rhythmic knock that gets faster with RPM and louder under load usually means a spun or worn rod bearing, often from low oil. Hyundai/Kia Theta II and Nu, GM 6.2L L87 and some Toyota/Lexus V6s had engine recalls.",
+    "checks": [
+      "A rod knock is deep and gets louder when you rev it or load it; a lifter tick is light and steady.",
+      "Check oil pressure with a gauge; low hot-idle pressure (under about 10 psi) points to worn bearings.",
+      "Look for metal flakes in the oil or on the drain plug magnet.",
+      "Hyundai/Kia: a knock sensor detection system update was part of the recall; check for a lifetime engine warranty on your VIN."
+    ],
+    "signs": [
+      "Deep knock that gets faster with the engine",
+      "Knocking louder when you accelerate",
+      "Oil light on, especially at idle",
+      "Metal flakes in the oil"
+    ]
+  },
+  "turbo_problem": {
+    "name": "Turbocharger problem",
+    "severity": "high",
+    "diy": "Shop",
+    "plain": "A turbo uses exhaust to push extra air into the engine. When it leaks or wears, you lose power, hear a whistle or siren sound, or see smoke.",
+    "drive": "Gently. If you see heavy smoke or hear grinding from the turbo, stop driving; a failing turbo can send pieces into the engine.",
+    "todo": "Have a shop check for boost leaks (cracked hoses or intercooler) and oil leaks at the turbo. Change oil on time; old oil kills turbos.",
+    "summary": "Boost leaks, a sticking wastegate or worn turbo bearings cause low power, a loud whistle or siren, smoke, and code P0299 (underboost). Common on Ford EcoBoost, VW/Audi TSI, BMW N54/N55, Subaru turbos and Mazda 2.3T.",
+    "checks": [
+      "Code P0299 = underboost (leak or wastegate); P0234 = overboost.",
+      "Check the intercooler hoses and clamps for oil film, cracks or loose clamps; a smoke test finds boost leaks.",
+      "Pull the intake hose at the turbo and check the shaft: in-and-out play or a chewed-up wheel means a failed turbo.",
+      "Let a hot turbo idle 30 to 60 seconds before shutting off after hard driving or towing."
+    ],
+    "signs": [
+      "Loss of power when you step on it",
+      "A loud whistle or siren sound",
+      "Blue or white smoke from the exhaust",
+      "Check engine light (P0299)"
+    ]
+  },
+  "diesel_emissions_problem": {
+    "name": "Diesel emissions (DPF / DEF / EGR) problem",
+    "severity": "high",
+    "diy": "Shop",
+    "plain": "Modern diesels clean their exhaust with a soot filter (DPF), a fluid called DEF, and an EGR system. When a sensor or part fails, the truck limits its power or speed.",
+    "drive": "Usually yes, but power may be cut or a countdown can limit you to 5 mph. Get it fixed before the countdown runs out.",
+    "todo": "Check the DEF level and quality first. Then have a diesel shop read the codes; NOx sensors, DEF heaters and clogged EGR coolers are common and well known.",
+    "summary": "DPF soot loading, DEF heater or NOx sensor failures, or a clogged/leaking EGR cooler set emissions codes and limp mode. Common on Duramax, Power Stroke, Cummins and EcoDiesel trucks since 2007.",
+    "checks": [
+      "Codes: P2002/P2463 (DPF), P20EE (SCR efficiency), P20B9 (DEF heater), P2201 (NOx sensor), P0401/P0402 (EGR).",
+      "Watch the DPF soot load on a scan tool. Short trips stop it from regenerating; 20+ minutes on the highway helps it clean itself.",
+      "DEF goes bad when old or hot; a refractometer should read about 32.5% urea.",
+      "Losing coolant with white sweet smoke on a 6.0 or 6.4 Power Stroke (or EcoDiesel) points to a leaking EGR cooler."
+    ],
+    "signs": [
+      "DEF or exhaust filter warning light",
+      "Reduced power or limp mode",
+      "A countdown message to a speed limit",
+      "Regenerating (cleaning) much more often"
+    ]
+  },
+  "hybrid_ev_problem": {
+    "name": "Hybrid or EV system problem",
+    "severity": "high",
+    "diy": "Shop",
+    "plain": "Hybrids and electric vehicles have a big high-voltage battery, an inverter and a charger. When one has trouble, you get a 'check hybrid system' warning, less range or power, or it won't charge.",
+    "drive": "If it still drives normally, go straight to a dealer. If it won't go into Ready or loses power, have it towed. Never touch orange high-voltage cables.",
+    "todo": "Have a dealer or hybrid/EV specialist check it. Check your warranty: hybrid and EV batteries are usually covered for 8 years / 100,000 miles or more. Check for recalls too.",
+    "summary": "A weak high-voltage battery, failing inverter or coolant pump, or charger fault (like Hyundai/Kia ICCU) causes hybrid warnings, poor mileage or range, power loss, or charging failures.",
+    "checks": [
+      "Toyota hybrids: P0A80 (replace hybrid battery) and P0A7F mean worn battery cells; check the battery cooling fan filter under the rear seat.",
+      "P0AA6 (high-voltage isolation fault) is a safety warning; don't keep driving it.",
+      "Hyundai/Kia/Genesis EVs: a 12V battery warning or loss of power can be the ICCU, which was recalled.",
+      "Check the 12V battery too; a weak 12V battery makes hybrids and EVs refuse to start."
+    ],
+    "signs": [
+      "'Check hybrid system' or EV warning",
+      "Worse gas mileage or less range",
+      "Won't go into Ready, or loses power",
+      "Won't charge, or charges very slowly"
+    ]
+  },
+  "four_wheel_drive_problem": {
+    "name": "4WD / AWD system problem",
+    "severity": "medium",
+    "diy": "Medium",
+    "plain": "4WD and AWD systems send power to all wheels through a transfer case or PTU and front hubs. When a motor, actuator or gear fails, 4WD won't engage, you get a warning, or it grinds.",
+    "drive": "Yes in 2WD, if it doesn't grind or bind. Don't use 4WD on dry pavement, and stop if it binds or clunks in turns.",
+    "todo": "Have a shop scan the 4WD codes and check the transfer case or PTU fluid. Shift motors, actuators and vacuum lines are common, moderate fixes.",
+    "summary": "A failed transfer case shift motor/encoder, front axle actuator, vacuum hub (Ford IWE), worn PTU or transfer case pump causes 4WD warnings, no engagement, grinding or binding.",
+    "checks": [
+      "GM trucks: 'Service 4WD' with code C0327 (encoder) often means the transfer case encoder motor; check the connector for corrosion.",
+      "Ford F-150 IWE: grinding from the front wheels in 2WD usually means a cracked vacuum line or check valve, not the hubs.",
+      "Ford/Volvo AWD PTU: check for gear oil leaks and a burnt smell; the fluid is often never changed.",
+      "GM NP261/263 transfer cases: 'pump rub' wears a hole in the rear case; look for fluid leaks at the back of the transfer case."
+    ],
+    "signs": [
+      "4WD light flashing or 'Service 4WD'",
+      "4WD won't engage or won't come out",
+      "Grinding from the front wheels",
+      "Binding or hopping in tight turns"
+    ]
+  },
+  "differential_problem": {
+    "name": "Differential (rear end) problem",
+    "severity": "medium",
+    "diy": "Medium",
+    "plain": "The differential is the gear box in the middle of the axle that turns the wheels. When its fluid is low or gears wear, it whines or howls at speed, especially on and off the gas.",
+    "drive": "Yes, for now, if it's just a whine. If it clunks, grinds or leaks a lot, get it checked soon; a failed differential can lock up.",
+    "todo": "Have the differential fluid level checked and changed (with friction modifier for limited slip). Fix any leaking axle or pinion seals.",
+    "summary": "Low or worn gear oil, worn pinion bearings or gears, or leaking seals in the front or rear differential. A whine or howl that changes on and off the gas, groaning on turns, or oily axle ends.",
+    "checks": [
+      "Whine that changes when you go from gas to coasting = differential gears or pinion bearing. A wheel bearing hum changes when you swerve.",
+      "Check the fill plug: fluid should be right at the bottom of the hole. Metal paste on the drain plug means wear.",
+      "Limited-slip rear ends (common on trucks) groan or chatter in tight turns without friction modifier.",
+      "Look for wet gear oil around the pinion seal (front of the axle) and the axle ends behind the wheels."
+    ],
+    "signs": [
+      "Whine or howl from the rear at highway speed",
+      "Noise changes on and off the gas",
+      "Groan or chatter in tight turns",
+      "Gear oil leaking at the axle"
+    ]
+  },
+  "death_wobble": {
+    "name": "Death wobble",
+    "severity": "critical",
+    "diy": "Medium",
+    "plain": "On trucks and Jeeps with a solid front axle, a worn track bar, ball joints or tie rods can let the front end shake violently after a bump. It's scary but it stops when you slow way down.",
+    "drive": "Not until it's fixed. If it starts: grip the wheel, don't slam the brakes, and slow down gently until it stops.",
+    "todo": "Have a shop check the track bar, ball joints, tie rods, steering box and tire balance. A new steering damper alone only hides it.",
+    "summary": "Violent front-end oscillation after a bump at 40 to 60 mph on solid-axle trucks and Jeeps (Ram 2500/3500, Ford Super Duty, Jeep Wrangler/Gladiator). Usually a loose track bar or worn steering parts.",
+    "checks": [
+      "With the engine running and someone rocking the steering wheel, watch the track bar ends for any movement.",
+      "Check ball joints, tie rod ends and the steering box mount for play; lifted trucks wear them faster.",
+      "After a lift, check caster (a shop can measure it) plus tire balance and pressure.",
+      "Jeep Wrangler JL and Gladiator had a recall for the track bar bracket weld on the frame; check your VIN."
+    ],
+    "signs": [
+      "Violent steering wheel shake after hitting a bump",
+      "Only stops when you slow way down",
+      "Happens around 40 to 60 mph",
+      "Loose steering between episodes"
+    ]
+  },
+  "air_suspension_problem": {
+    "name": "Air or electronic suspension problem",
+    "severity": "medium",
+    "diy": "Medium",
+    "plain": "Some vehicles ride on air bags instead of metal springs. When a bag leaks or the compressor wears out, the vehicle sags, the compressor runs a lot, or a suspension warning comes on.",
+    "drive": "Short, gentle trips if it isn't sagging to the bump stops. Driving it sagged wears the compressor and makes it handle badly.",
+    "todo": "Have the leaking air spring found (spray soapy water on them) and replaced, plus the compressor relay. Coil spring conversion kits are a cheaper permanent option on some.",
+    "summary": "Leaking air springs, a worn compressor or a stuck relay cause sagging, a noisy or constantly running compressor, and suspension warnings. Common on Land Rover, Mercedes Airmatic, Lincoln/Ford, Jeep Quadra-Lift, Audi allroad, Lexus AHC and Ram.",
+    "checks": [
+      "Sagging overnight at one corner = a leaking air spring or line on that corner.",
+      "Spray soapy water on the air springs and fittings with the system aired up; bubbles show the leak.",
+      "A compressor that runs for minutes or never stops can burn out; replace the relay with the compressor.",
+      "Magnetic/adaptive shocks: oily shocks and a 'service suspension' message mean a leaking shock."
+    ],
+    "signs": [
+      "Sags at one corner after sitting",
+      "Compressor runs a lot or is loud",
+      "Suspension warning on the dash",
+      "Bouncy or very harsh ride"
+    ]
+  },
+  "blend_door_actuator": {
+    "name": "Blend door actuator",
+    "severity": "low",
+    "diy": "Medium",
+    "plain": "Small motors behind the dash move doors that mix hot and cold air and pick the vents. When one breaks, it clicks or taps and the air gets stuck hot, cold, or on one vent.",
+    "drive": "Yes. It's annoying, not dangerous. Make sure the defroster still works in winter.",
+    "todo": "Have a shop find which actuator is clicking (the sound gives it away) and replace it. The part is inexpensive; labor depends on where it sits.",
+    "summary": "A stripped or failing HVAC door actuator behind the dash: clicking or tapping, air stuck hot or cold, wrong vents, or different temperatures on each side. Very common on GM trucks and SUVs and Ford F-150s.",
+    "checks": [
+      "Clicking that starts when you turn the key or change the temperature, then stops, is a stripped actuator gear.",
+      "GM: an HVAC actuator recalibration (pull the HVAC fuse for a minute, then reinstall with everything off) can fix a confused actuator.",
+      "Stuck hot or cold on one side only means that side's temperature door actuator.",
+      "If the A/C is cold at the vents only with the temp on full cold, the A/C works; the blend door is the issue."
+    ],
+    "signs": [
+      "Clicking or tapping behind the dash",
+      "Air stuck hot or stuck cold",
+      "Different temperatures on each side",
+      "Air comes out the wrong vents"
+    ]
+  },
+  "instrument_cluster_problem": {
+    "name": "Instrument cluster / gauge problem",
+    "severity": "low",
+    "diy": "Medium",
+    "plain": "The gauges on your dash are run by small motors and sensors. When they wear, needles stick, jump around or drop to zero, even though the engine is fine.",
+    "drive": "Yes, but you can't trust the gauges. Watch your speed with a phone GPS app and check fuel by miles driven.",
+    "todo": "A cluster repair shop can replace the gauge motors for much less than a new cluster. A wrong fuel gauge only is often the fuel level sender in the tank.",
+    "summary": "Failed gauge stepper motors or a bad fuel level sender: speedometer, tach, fuel or temp needles stick, jump or read zero. Very common on 2003 to 2006 GM trucks and SUVs.",
+    "checks": [
+      "GM 2003 to 2006: run the cluster self-test (hold the odometer button while turning the key on); a needle that doesn't sweep has a bad motor.",
+      "Only the fuel gauge wrong = test the fuel level sender resistance at the tank connector.",
+      "Several gauges dead at once with warning lights can be a bad ground or a cluster power wire.",
+      "Check the speedometer against GPS; bigger tires make it read low (common on lifted trucks)."
+    ],
+    "signs": [
+      "Speedometer stuck or jumping",
+      "Gas gauge reads wrong",
+      "Needles drop to zero while driving",
+      "Gauges come back after a bump"
+    ]
+  },
+  "infotainment_problem": {
+    "name": "Touchscreen / infotainment problem",
+    "severity": "low",
+    "diy": "Easy",
+    "plain": "The touchscreen runs the radio, maps, Bluetooth and often the backup camera. Software glitches make it freeze, reboot, go black or touch things by itself.",
+    "drive": "Yes, but if the backup camera or defrost controls are on the screen, be careful when they drop out.",
+    "todo": "Restart it (hold the power or volume button 10+ seconds), remove and re-pair your phone, then ask a dealer for software updates. Some screens are replaced under recall or warranty.",
+    "summary": "Infotainment software or hardware faults: frozen or black screen, random reboots, ghost touches, Bluetooth/CarPlay dropping, a dead backup camera. Common across most makes since about 2010.",
+    "checks": [
+      "Do a soft reset (hold power 10 to 20 seconds), then a factory reset of the radio if needed.",
+      "Ghost touches and delamination (Cadillac CUE) mean the touch layer failed; the screen is replaced.",
+      "Check the backup camera recall list; many makes recalled cameras that go blank.",
+      "A weak 12V battery causes lots of screen glitches; test the battery."
+    ],
+    "signs": [
+      "Screen freezes or goes black",
+      "Radio reboots by itself",
+      "Bluetooth or CarPlay keeps dropping",
+      "Screen presses things on its own"
+    ]
+  },
+  "window_regulator_problem": {
+    "name": "Power window regulator",
+    "severity": "low",
+    "diy": "Easy",
+    "plain": "The window regulator is the track and cable inside the door that lifts the glass. When it breaks, the window drops, goes up crooked, or the motor grinds.",
+    "drive": "Yes. If the window won't close, tape plastic over it or tape the glass up so it doesn't fall or let rain in.",
+    "todo": "Replace the regulator (often sold with the motor). It's an easy DIY on most vehicles: remove the door panel, unbolt it, swap it.",
+    "summary": "A broken cable, clip or motor in the window regulator: the window falls into the door, goes up crooked, moves slowly, or you hear grinding or clicking with no movement.",
+    "checks": [
+      "Hear the motor run but the glass doesn't move = broken regulator cable or clips.",
+      "Nothing at all from that window = check the switch and the motor; try the master switch on the driver door.",
+      "Slow window: clean and lubricate the window channels with silicone spray.",
+      "Some makers (VW, BMW, Ford, Chrysler) have very common regulator failures; good aftermarket kits are cheap."
+    ],
+    "signs": [
+      "Window fell into the door",
+      "Grinding or clicking in the door",
+      "Window goes up crooked",
+      "Window moves very slowly"
+    ]
+  },
+  "door_lock_problem": {
+    "name": "Door lock or latch problem",
+    "severity": "low",
+    "diy": "Medium",
+    "plain": "Each door has a small lock motor (actuator) and latch. When one fails, that door won't lock or unlock with the button, it buzzes, or it won't open. Sliding doors use cables that break.",
+    "drive": "Yes, as long as every door closes and latches. A door that won't latch shut is unsafe; don't drive with it.",
+    "todo": "Have the door lock actuator or latch replaced; check for door latch recalls. Sliding van doors often need a new cable or motor.",
+    "summary": "A failed door lock actuator, latch, handle or power sliding door cable: doors that don't lock/unlock with the key fob, buzz, won't open, or a sliding door that sticks.",
+    "checks": [
+      "One door doesn't lock with the fob but the others do = that door's lock actuator.",
+      "Buzzing or grinding in the door when you lock it = stripped actuator gears.",
+      "None lock = check the fob battery and the lock fuse first.",
+      "Power sliding doors (Honda Odyssey, Toyota Sienna, Chrysler vans) have common cable and latch recalls."
+    ],
+    "signs": [
+      "One door won't lock with the button",
+      "Buzzing in the door when locking",
+      "Door won't open from inside or outside",
+      "Sliding door sticks or won't close"
+    ]
+  },
+  "water_leak_inside": {
+    "name": "Water leak inside (sunroof drains / seals)",
+    "severity": "low",
+    "diy": "Easy",
+    "plain": "Rain or car wash water is getting inside, usually through clogged sunroof drains or bad door and window seals. It soaks the carpet and can ruin electronics.",
+    "drive": "Yes, but dry it out soon. Wet carpet grows mold, and water can short out modules under the seats or dash.",
+    "todo": "Clear the sunroof drains (in each corner of the sunroof) with compressed air or a trimmer line. Check door seals and the windshield seal. Dry the carpet fully.",
+    "summary": "Clogged sunroof drains or failing door, window, roof or windshield seals let water in: wet carpet, drips from the headliner, a musty smell and foggy windows, especially after rain.",
+    "checks": [
+      "Pour a little water in the sunroof tray corners; it should drain out behind the front wheels or rear wheels in seconds.",
+      "Wet carpet only after rain (not after using the heater) points to a leak; sweet-smelling wet carpet is a heater core.",
+      "Run a hose over one area at a time with someone inside to find the leak.",
+      "Check under the carpet and seats for wet modules and wiring; many electrical glitches start with water."
+    ],
+    "signs": [
+      "Wet carpet after rain or a car wash",
+      "Water dripping from the headliner",
+      "Musty smell inside",
+      "Water stains on the headliner"
+    ]
+  },
+  "rust_damage": {
+    "name": "Rust damage",
+    "severity": "medium",
+    "diy": "Shop",
+    "plain": "Road salt and moisture eat metal. Rust on body panels is cosmetic, but rust on the frame, brake lines or suspension mounts can be dangerous.",
+    "drive": "Yes if it's just body panels. If the frame is flaking through or has holes, have it inspected before driving it hard or towing.",
+    "todo": "Have a shop check the frame, brake lines and suspension mounts. Treat surface rust early; wash the underside often in winter. Check for frame recalls (Toyota trucks).",
+    "summary": "Corrosion of body panels (rockers, cab corners, wheel arches) or structural parts (frame, subframe, control arm mounts). Common on older GM and Ford trucks, Toyota Tacoma/Tundra/Sequoia frames and Mazda wheel arches.",
+    "checks": [
+      "Tap the frame with a hammer: a solid ring is fine, a dull thud or flaking means it's thin.",
+      "Look at the rocker panels and cab corners from underneath; bubbles on the outside mean holes inside.",
+      "Check brake and fuel lines along the frame rails; rusted lines can burst.",
+      "Toyota Tacoma (2005 to 2010), Tundra and Sequoia had frame rust recalls and buybacks; check the VIN."
+    ],
+    "signs": [
+      "Bubbling paint on the rockers or wheel arches",
+      "Holes in the cab corners",
+      "Flaking or soft frame",
+      "Orange stains under the doors"
+    ]
+  },
+  "adas_problem": {
+    "name": "Driver-assist (auto braking) problem",
+    "severity": "high",
+    "diy": "Easy",
+    "plain": "Driver-assist systems use a camera behind the windshield and a radar in the grille to brake for you. Dirt, a bad sensor or a software bug can make them brake hard for nothing.",
+    "drive": "Yes, carefully. Many vehicles let you turn automatic emergency braking off in the settings until it's fixed.",
+    "todo": "Clean the windshield in front of the camera and the radar sensor in the front bumper or grille. Ask a dealer for software updates and check for recalls.",
+    "summary": "False automatic emergency braking (phantom braking) or collision warnings from a dirty, misaligned or faulty camera or radar, or software. Several makes have had investigations or recalls for it.",
+    "checks": [
+      "Check for a 'front sensor blocked' message; mud, snow or a bug-covered grille blocks the radar.",
+      "After a windshield replacement or front-end repair, the camera and radar must be recalibrated.",
+      "Note when it happens (bridges, shadows, overpasses) to tell the dealer; it helps them find the software fix.",
+      "Look up the VIN for recalls on automatic emergency braking."
+    ],
+    "signs": [
+      "Brakes slam on with nothing in front",
+      "Collision warning beeps for no reason",
+      "'Front sensor blocked' message",
+      "Cruise control or lane assist shuts off"
+    ]
   }
 }

@@ -99,6 +99,23 @@ SYNONYM_GROUPS = {
                 "missing", "skipping", "skips"],
     "hesitate": ["hesitate", "hesitates", "hesitation", "hesitating", "bog",
                  "bogs", "bogging", "stumble", "stumbles", "stumbling"],
+    # Words for newer problems (screens, turbos, 4WD, leaks inside, rust...).
+    "screen": ["screen", "screens", "display", "displays", "touchscreen", "monitor"],
+    "radio": ["radio", "radios", "stereo", "infotainment", "headunit"],
+    "phone": ["phone", "phones", "bluetooth", "carplay"],
+    "turbo": ["turbo", "turbos", "turbocharger", "turbocharged", "boost", "boosting", "boosted", "underboost", "overboost", "spool", "spools"],
+    "whistle": ["whistle", "whistles", "whistling", "siren", "whoosh", "whooshing"],
+    "4wd": ["4wd", "4x4", "awd", "4hi", "4lo", "ptu"],
+    "speedometer": ["speedometer", "speedometers", "speedo", "tachometer", "tach", "odometer"],
+    "coolant": ["coolant", "antifreeze"],
+    "fob": ["fob", "fobs", "keyfob", "remote"],
+    "wet": ["wet", "damp", "soaked", "soggy", "moist", "drenched"],
+    "rain": ["rain", "rains", "raining", "rained", "rainy", "storm", "storms"],
+    "rust": ["rust", "rusty", "rusted", "rusting", "rot", "rotted", "rotting"],
+    "regen": ["regen", "regens", "regenerating", "regeneration"],
+    "hybrid": ["hybrid", "hybrids", "ev", "evs", "phev", "prius"],
+    "sag": ["sag", "sags", "sagging", "saggy"],
+    "judder": ["judder", "judders", "juddering"],
 }
 
 # Flip the groups into one lookup table: variant -> canonical word.
@@ -194,14 +211,26 @@ def cross_validate(texts, labels, alpha):
 
 
 def export(model, vec, path, accuracy):
-    """Save everything the browser needs to repeat the math."""
+    """Save everything the browser needs to repeat the math.
+
+    Most words never appear in a given problem's examples, and smoothing
+    gives all of those the same score. So each problem stores one
+    "unseen" score plus the scores of the words it has actually seen.
+    Same math as the full table, at a fraction of the file size.
+    """
     vocab = {token: int(index) for token, index in vec.vocabulary_.items()}
+    seen_rows, unseen = [], []
+    for counts, row in zip(model.feature_count_, model.feature_log_prob_):
+        seen = np.flatnonzero(counts)
+        missing = np.flatnonzero(counts == 0)
+        unseen.append(round(float(row[missing[0]]), 4) if len(missing) else 0.0)
+        seen_rows.append({str(int(i)): round(float(row[i]), 4) for i in seen})
     data = {
         "classes": model.classes_.tolist(),
         "accuracy": accuracy,  # cross-validated scores, for reference
         "class_log_prior": [round(float(v), 4) for v in model.class_log_prior_],
-        "feature_log_prob": [[round(float(v), 4) for v in row]
-                             for row in model.feature_log_prob_],
+        "unseen_log_prob": unseen,
+        "feature_log_prob": seen_rows,  # {word index: score}, words this problem has seen
         "vocab": dict(sorted(vocab.items(), key=lambda kv: kv[1])),
     }
     path.write_text(json.dumps(data, separators=(",", ":")), encoding="utf-8")

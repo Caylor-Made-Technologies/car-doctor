@@ -43,6 +43,15 @@
   ],
   "related": "abs_sensor_problem"
  },
+ "C0327": {
+  "title": "Transfer case encoder circuit (GM 4WD)",
+  "causes": [
+   "Failing transfer case encoder / shift motor",
+   "Corroded connector at the transfer case",
+   "Wiring problem"
+  ],
+  "related": "four_wheel_drive_problem"
+ },
  "P0008": {
   "title": "Engine position system performance (bank 1)",
   "causes": [
@@ -205,7 +214,7 @@
    "Dirty throttle body",
    "Wiring or connector problem"
   ],
-  "related": "dirty_maf_sensor"
+  "related": "throttle_body_problem"
  },
  "P0128": {
   "title": "Coolant temperature below thermostat regulating temperature",
@@ -370,6 +379,24 @@
   ],
   "related": "fuel_delivery_problem"
  },
+ "P0234": {
+  "title": "Turbo/supercharger overboost",
+  "causes": [
+   "Stuck or sticking wastegate",
+   "Boost control solenoid or its vacuum line",
+   "Bad boost pressure sensor"
+  ],
+  "related": "turbo_problem"
+ },
+ "P0236": {
+  "title": "Turbo boost sensor range/performance",
+  "causes": [
+   "Boost or MAP sensor fault",
+   "Boost leak",
+   "Cracked or loose sensor hose"
+  ],
+  "related": "turbo_problem"
+ },
  "P0299": {
   "title": "Turbo/supercharger underboost",
   "causes": [
@@ -377,7 +404,7 @@
    "Failing turbo or wastegate",
    "Clogged air filter"
   ],
-  "related": "vacuum_leak"
+  "related": "turbo_problem"
  },
  "P0300": {
   "title": "Random/multiple cylinder misfire",
@@ -659,7 +686,7 @@
    "Failed idle air control valve",
    "Vacuum leak"
   ],
-  "related": "vacuum_leak"
+  "related": "throttle_body_problem"
  },
  "P0506": {
   "title": "Idle RPM lower than expected",
@@ -800,7 +827,7 @@
    "Failed TCC solenoid",
    "Low or burnt fluid"
   ],
-  "related": "transmission_problem"
+  "related": "torque_converter_shudder"
  },
  "P0748": {
   "title": "Pressure control solenoid electrical",
@@ -845,6 +872,33 @@
   ],
   "related": "transmission_problem"
  },
+ "P0776": {
+  "title": "Pressure control solenoid B stuck off",
+  "causes": [
+   "Worn CVT/transmission valve body",
+   "Failing solenoid",
+   "Dirty or low fluid"
+  ],
+  "related": "cvt_problem"
+ },
+ "P0841": {
+  "title": "Transmission fluid pressure sensor range/performance",
+  "causes": [
+   "Failing pressure sensor",
+   "Low fluid",
+   "Valve body wear (common on Nissan CVTs)"
+  ],
+  "related": "cvt_problem"
+ },
+ "P0868": {
+  "title": "Transmission fluid pressure low",
+  "causes": [
+   "Low or old transmission/CVT fluid",
+   "Worn pump or valve body",
+   "Clogged filter or strainer"
+  ],
+  "related": "cvt_problem"
+ },
  "P0894": {
   "title": "Transmission component slipping",
   "causes": [
@@ -855,6 +909,33 @@
   ],
   "related": "transmission_problem"
  },
+ "P0A7F": {
+  "title": "Hybrid battery pack deterioration",
+  "causes": [
+   "Worn hybrid battery cells",
+   "Battery overheating (blocked cooling vent)",
+   "Weak battery modules"
+  ],
+  "related": "hybrid_ev_problem"
+ },
+ "P0A80": {
+  "title": "Replace hybrid battery pack",
+  "causes": [
+   "Worn hybrid battery cells",
+   "Clogged hybrid battery cooling fan or filter",
+   "Corroded battery connections"
+  ],
+  "related": "hybrid_ev_problem"
+ },
+ "P0AA6": {
+  "title": "Hybrid battery voltage system isolation fault",
+  "causes": [
+   "High-voltage leak to the body (often the A/C compressor or inverter)",
+   "Damaged orange high-voltage cables",
+   "Water in a high-voltage connector"
+  ],
+  "related": "hybrid_ev_problem"
+ },
  "P1101": {
   "title": "MAF sensor out of self-test range (GM)",
   "causes": [
@@ -863,5 +944,113 @@
    "Clogged air filter"
   ],
   "related": "dirty_maf_sensor"
+ },
+ "P17F0": {
+  "title": "CVT judder (Nissan)",
+  "causes": [
+   "Worn CVT belt and pulleys",
+   "Old or wrong CVT fluid",
+   "Needs a software update"
+  ],
+  "related": "cvt_problem"
+ },
+ "P2002": {
+  "title": "Diesel particulate filter efficiency below threshold",
+  "causes": [
+   "Clogged or cracked DPF",
+   "Too many short trips (no regeneration)",
+   "Failing exhaust pressure sensor"
+  ],
+  "related": "diesel_emissions_problem"
+ },
+ "P20B9": {
+  "title": "Reductant (DEF) heater A control circuit",
+  "causes": [
+   "Failed DEF heater in the tank",
+   "Wiring or fuse problem",
+   "DEF tank module failure"
+  ],
+  "related": "diesel_emissions_problem"
+ },
+ "P20EE": {
+  "title": "SCR NOx catalyst efficiency below threshold",
+  "causes": [
+   "Failing NOx sensor",
+   "Bad or diluted DEF",
+   "DEF injector or doser problem"
+  ],
+  "related": "diesel_emissions_problem"
+ },
+ "P2101": {
+  "title": "Throttle actuator control motor range/performance",
+  "causes": [
+   "Dirty or failing electronic throttle body",
+   "Wiring or connector problem at the throttle body",
+   "Weak battery or bad ground"
+  ],
+  "related": "throttle_body_problem"
+ },
+ "P2111": {
+  "title": "Throttle actuator stuck open",
+  "causes": [
+   "Carbon build-up in the throttle body",
+   "Failing throttle body motor",
+   "Throttle plate sticking"
+  ],
+  "related": "throttle_body_problem"
+ },
+ "P2112": {
+  "title": "Throttle actuator stuck closed",
+  "causes": [
+   "Carbon build-up in the throttle body",
+   "Failing throttle body motor",
+   "Wiring problem"
+  ],
+  "related": "throttle_body_problem"
+ },
+ "P2119": {
+  "title": "Throttle actuator range/performance",
+  "causes": [
+   "Dirty or failing throttle body",
+   "Throttle position sensor fault",
+   "Wiring or connector problem"
+  ],
+  "related": "throttle_body_problem"
+ },
+ "P2135": {
+  "title": "Throttle/pedal position sensor A/B correlation",
+  "causes": [
+   "Failing throttle body position sensor",
+   "Failing gas pedal sensor",
+   "Wiring or connector problem"
+  ],
+  "related": "throttle_body_problem"
+ },
+ "P2201": {
+  "title": "NOx sensor circuit range/performance",
+  "causes": [
+   "Failing NOx sensor",
+   "Wiring or connector problem",
+   "Exhaust leak near the sensor"
+  ],
+  "related": "diesel_emissions_problem"
+ },
+ "P2463": {
+  "title": "Diesel particulate filter soot accumulation",
+  "causes": [
+   "DPF full of soot from short trips",
+   "Failed regeneration",
+   "Leaking injector or EGR problem making extra soot"
+  ],
+  "related": "diesel_emissions_problem"
+ },
+ "P3400": {
+  "title": "Cylinder deactivation system bank 1 (GM AFM/DFM)",
+  "causes": [
+   "Collapsed or sticking lifter",
+   "Low or old oil",
+   "Failing AFM/DFM oil control valve (lifter solenoid)"
+  ],
+  "related": "collapsed_lifter"
  }
 }

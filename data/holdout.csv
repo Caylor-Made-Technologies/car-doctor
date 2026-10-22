@@ -73,3 +73,48 @@ exhaust_leak,ticking sound when its cold that goes away
 thermostat_stuck_open,the temp gauge never goes up to the middle
 timing_chain_problem,rattling noise right when i start it then it stops
 electrical_ground_problem,my gauges jump around and the radio cuts out
+cvt_problem,when i start going from a red light it kind of shakes and my nissan sounds like its whining
+cvt_problem,the engine gets loud and revs but the car is slow to pick up speed and it doesnt have regular gears
+cvt_problem,it feels like a rubber band when i press the gas on my subaru
+torque_converter_shudder,around 40 it feels like i am going over those bumpy lines on the side of the road
+torque_converter_shudder,the truck shudders when im cruising easy but if i push the gas harder it stops
+water_pump_failure,there is green stuff dripping from the front of the engine and the belt area is wet
+water_pump_failure,the mechanic said the pump in the front is leaking antifreeze
+oil_burning,i keep having to put oil in it but there is never any oil on the ground
+oil_burning,little puff of bluish smoke every morning and the oil is always low
+throttle_body_problem,a yellow wrench came on the dash and the car wont speed up much
+throttle_body_problem,it almost dies every time i stop at a light and the rpm goes really low
+collapsed_lifter,theres a constant ticking from the engine even after its warm and it shakes a little
+collapsed_lifter,my silverado started ticking and now the check engine light flashes sometimes
+engine_knock,there is a loud deep knocking coming from inside the engine and it gets faster when i go
+engine_knock,the oil light flickers and the motor makes a heavy knocking noise
+turbo_problem,it makes a whistling sound and has no get up anymore
+turbo_problem,my ecoboost lost a lot of power and theres a whooshing noise
+diesel_emissions_problem,my diesel says exhaust fluid and theres a countdown to slow down
+diesel_emissions_problem,the diesel keeps doing a regen and now it has no power
+hybrid_ev_problem,my prius says check hybrid system and it wont go
+hybrid_ev_problem,my electric car stopped charging when i plug it in
+four_wheel_drive_problem,i push the four wheel drive button and the light just blinks
+four_wheel_drive_problem,in 4 wheel drive it hops and binds when i turn tight
+differential_problem,theres a howl from the back of the truck that changes when i let off the gas
+differential_problem,the back end groans when i turn in a parking lot
+death_wobble,after i hit a bump the whole front of my jeep starts shaking crazy until i slow way down
+death_wobble,my steering wheel was flying back and forth after a pothole on the highway
+air_suspension_problem,every morning the back of my car is sitting really low
+air_suspension_problem,there is a motor running under the car a lot and it says suspension fault
+blend_door_actuator,there is a clicking noise behind the glove box every time i start it
+blend_door_actuator,my heat only blows hot on the drivers side and cold on the other
+instrument_cluster_problem,the speedometer needle just sits at zero while im driving
+instrument_cluster_problem,my gas gauge said half then i ran out of gas
+infotainment_problem,the big screen in the middle keeps freezing and my phone wont stay connected
+infotainment_problem,the backup camera goes black sometimes
+window_regulator_problem,i pushed the window button and heard a pop and the window fell down
+window_regulator_problem,i can hear the window motor but the glass doesnt move
+door_lock_problem,when i hit lock on the remote one door doesnt lock and buzzes
+door_lock_problem,the sliding door on my van gets stuck and wont close
+water_leak_inside,every time it rains the floor on my side gets wet
+water_leak_inside,water drips on my head from the roof when it rains
+rust_damage,there are holes rusting under the doors
+rust_damage,the bottom of the truck frame is flaking away with rust
+adas_problem,the car slammed on the brakes by itself and nothing was there
+adas_problem,it keeps beeping like i am going to crash when there is nothing in front

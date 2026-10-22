@@ -241,6 +241,7 @@ const CAUSE_SOUND = {
   exhaust_leak: "tick", timing_chain_problem: "chain_rattle", worn_cv_axle: "cv_click",
   power_steering_problem: "whine", vacuum_leak: "hiss", worn_u_joint: "chirp", bad_motor_mounts: "clunk",
   worn_suspension: "clunk", catalytic_converter_problem: "rattle", bad_alternator: "whine",
+  collapsed_lifter: "tick", cvt_problem: "whine", differential_problem: "hum", turbo_problem: "whine",
 };
 
 function stopSound() {

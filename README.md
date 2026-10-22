@@ -10,8 +10,8 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 
 | Tab | What it does |
 |---|---|
-| **Chat** | Tap what you notice (12 tiles: noise, shaking, smell, warning light, won't start, leak, running hot, heat & A/C, runs rough, brakes, tires, steering), then *which* one (🔊 hear example sounds), *where* on the vehicle (tap a spot on a truck diagram), and *when*. Or just type it. When two problems look alike it asks **one simple question** anyone can answer ("Do the dash lights stay bright or go dim?"), up to 3 per problem. Answers come in plain English: **What's going on**, **Can I drive it?**, **What to do**, a severity badge, a gauge dial for the match %, and a note if the problem is **common on your vehicle**. Harder or dangerous problems get **Find a mechanic near me** (and **Roadside help** when it's critical). |
-| **Codes** | Type a trouble code (`p0300` becomes `P0300`) for its meaning, causes and fix difficulty (86 codes). **What's that light?** explains 9 dashboard warning lights. |
+| **Chat** | Tap what you notice (15 tiles: noise, shaking, smell, warning light, won't start, leak, running hot, heat & A/C, runs rough, brakes, tires, steering, inside & electric, 4WD & drivetrain, hybrid/EV & diesel), then *which* one (🔊 hear example sounds), *where* on the vehicle (tap a spot on a truck diagram), and *when*. Or just type it. When two problems look alike it asks **one simple question** anyone can answer ("Do the dash lights stay bright or go dim?"), up to 3 per problem. Answers come in plain English: **What's going on**, **Can I drive it?**, **What to do**, a severity badge, a gauge dial for the match %, and a note if the problem is **common on your vehicle**. Harder or dangerous problems get **Find a mechanic near me** (and **Roadside help** when it's critical). |
+| **Codes** | Type a trouble code (`p0300` becomes `P0300`) for its meaning, causes and fix difficulty (113 codes, including turbo, throttle body, CVT, GM AFM, diesel DEF/DPF and hybrid codes). **What's that light?** explains 9 dashboard warning lights. |
 | **Reminders** | Oil changes, tires, brakes and more, added to your phone's Calendar with alerts. |
 | **Log** | Repair history, newest first. |
 | **Vehicle** | Your vehicle (with make/model suggestions) and its **known problems**, **Look up any vehicle** (handy before buying), "Teach the model", privacy and terms. |
@@ -25,11 +25,15 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 - **Other signs of this:** every problem lists everyday signs it can show up as.
 
 ### Known problems by vehicle
-`model/build_vehicles.py` builds `app/vehicles.json`: 36 makes and 392 common models (2000 and newer) to pick from, with 179 commonly reported problems across 199 models (signs + what to do in plain words). Problems tied to a specific engine only show if your saved engine matches. Your vehicle's known problems also get a small extra score in the diagnosis. These are widely reported problems, not a promise your vehicle has them.
+`model/build_vehicles.py` builds `app/vehicles.json` from two sources:
+- **Hand-checked list** (`ISSUES` / `MODELS` in the script): 179 problems with hand-written text.
+- **US vehicle list** (`data/us_vehicles.json`): 674 generations of US vehicles sold since 2000 (44 makes, with years, generation and engines) and their commonly reported problems. `model/problem_rules.py` gives each of its 849 problem titles plain-English **signs** and **what to do**, and links it to a diagnosis. A build fails if a title has no rule.
+
+Together: 44 makes, 453 models in the pickers, 1,739 known problems on 965 year ranges (387 models have lists). When both sources cover the same vehicle, the hand-checked text wins and duplicates are dropped. Problems tied to an engine (like "5.4L 3-valve" or "2.5T") say **Only on: ...** and only show if your saved engine matches; the Vehicle tab suggests engines for your year, make and model and shows its generation. Your vehicle's known problems also get a small extra score in the diagnosis. These are widely reported problems, not a promise your vehicle has them; recall items point to nhtsa.gov/recalls.
 
 ### Made for people who don't know cars
 - Every answer starts with everyday words before any specs.
-- **Tap any underlined word** (rotor, alternator, 12.6V, psi, mm...) for a one-line explanation. 79 terms and measurements live in `app/glossary.json`.
+- **Tap any underlined word** (rotor, alternator, 12.6V, psi, mm...) for a one-line explanation. 107 terms and measurements live in `app/glossary.json` (CVT, lifter, DEF, transfer case, track bar...).
 - Difficulty is said plainly: "Easy DIY fix", "DIY if you're handy", "Needs a shop".
 
 ### Look and feel
@@ -51,6 +55,10 @@ The model is **Naive Bayes**, one of the oldest and simplest text classifiers. I
 5. **Smooth.** A word never seen with a problem would give it a score of zero, so a small number (`alpha`) is added to every count. Training tries several values and keeps the best.
 6. **Percentages.** Scores are turned into percentages that add up to 100% (softmax).
 
+The 59 problems include specific ones, not just general areas: CVT judder, torque converter shudder, collapsed lifter (AFM/Hemi tick), rod knock, oil burning vs. oil leak, water pump, throttle body, turbo, diesel DEF/DPF/EGR, hybrid/EV, 4WD/AWD, differential, death wobble, air suspension, blend door actuator, gauges, touchscreen, windows, door locks, water leaks inside, rust and false automatic braking.
+
+`model.json` stores, for each problem, the scores of the words it has seen plus one shared score for every unseen word (they're all the same after smoothing). Same math, about 300 KB instead of 3.5 MB.
+
 It's called "naive" because it pretends each word is independent of the others. That's not true, but it works surprisingly well and the math is tiny: the browser does it in a few milliseconds.
 
 **Trouble codes** get extra weight: a known code adds +3 to its related problem's log-score (roughly 20× more likely).
@@ -59,17 +67,17 @@ It's called "naive" because it pretends each word is independent of the others. 
 
 `model/train.py` uses **5-fold cross-validation**: it hides 1/5 of the examples, trains on the rest, tests on the hidden part, and repeats 5 times. So these numbers are on sentences the model didn't see.
 
-Current results (1,544 examples, 37 problems):
+Current results (4,080 examples, 59 problems):
 
 | alpha | top-1 | top-3 |
 |---|---|---|
-| **0.05 (picked)** | **96.1%** | **99.3%** |
-| 0.1 | 96.0% | 99.3% |
-| 0.3 | 95.2% | 99.2% |
-| 0.5 | 94.2% | 99.2% |
-| 1.0 | 92.9% | 99.3% |
+| **0.05 (picked)** | **96.6%** | **99.6%** |
+| 0.1 | 96.5% | 99.6% |
+| 0.3 | 96.0% | 99.5% |
+| 0.5 | 95.3% | 99.5% |
+| 1.0 | 94.2% | 99.4% |
 
-**A more honest number:** `data/holdout.csv` has 74 everyday sentences ("how a parent would say it") that the model never trains on. On those it gets **90.5% top-1 and 100% top-3**. That's closer to real life, and it's why the app asks a quick follow-up question when two problems look alike. Never copy holdout sentences into `symptoms.csv`, or the check stops meaning anything.
+**A more honest number:** `data/holdout.csv` has 119 everyday sentences ("how a parent would say it") that the model never trains on. On those it gets **93.3% top-1 and 98.3% top-3** (the original 74: 90.5%; the 45 for the newer problems: 97.8%). That's closer to real life, and it's why the app asks a quick follow-up question when two problems look alike. Never copy holdout sentences into `symptoms.csv`, or the check stops meaning anything.
 
 **95% is enforced.** If new training data drops top-1 below 95%, `train.py` fails, the deploy stops, and the old app stays live. Run `python model/train.py` locally to see the numbers, then add clearer examples for the problems that get mixed up.
 
@@ -81,8 +89,10 @@ Current results (1,544 examples, 37 problems):
 ```
 data/symptoms.csv              training data: label,text (one sentence per row)
 data/holdout.csv               test-only sentences, never trained on
+data/us_vehicles.json          US vehicles since 2000: generations, engines, common problems
 model/train.py                 trains the model and writes app/model.json (fails under 95%)
 model/build_vehicles.py        known problems by vehicle -> app/vehicles.json
+model/problem_rules.py         plain-English signs + fixes for each problem title in us_vehicles.json
 model/make_icons.py            draws the app icons (Pillow)
 tests/check.py                 consistency checks (Python vs browser, data files)
 app/                           the app (this folder is what gets published)
@@ -132,12 +142,15 @@ You can also just type new lines yourself: `label,how a person would describe it
 
 ### Add a new problem
 1. Pick a label like `bad_fuel_injector` (lowercase, underscores).
-2. Add an entry to `app/causes.json` with `name`, `severity` (low/medium/high/critical), `diy` (Easy/Medium/Hard/Shop), `summary` and 3–4 `checks`.
-3. Add **at least 10** varied sentences for it to `data/symptoms.csv`.
+2. Add an entry to `app/causes.json` with `name`, `severity` (low/medium/high/critical), `diy` (Easy/Medium/Hard/Shop), `plain`, `drive`, `todo`, `summary`, 3–4 `checks` and `signs`.
+3. Add **at least 40** varied sentences for it to `data/symptoms.csv`, plus a few that say how it differs from look-alike problems. Run `python model/train.py`: it must stay at 95%+.
 4. Push. `tests/check.py` fails the deploy if the label and cause don't match.
 
 ### Add a vehicle or known problem
-Edit `model/build_vehicles.py`: add a problem to a group in `ISSUES` (title, signs, what to do, related cause) and a row to `MODELS` (make, model, first year, last year, groups). If it only affects one engine, add the group to `ENGINE_TAGS`. Push, and the workflow rebuilds `vehicles.json`.
+- **Quick way:** add the generation or problem title to `data/us_vehicles.json`. If the title is new, add a rule in `model/problem_rules.py` (pattern, related cause, signs, what to do); the build tells you which titles have no rule. Engine-specific titles ("(5.4 3V)", "2.5T") get their engine filter automatically.
+- **Hand-written:** add a problem to a group in `ISSUES` in `model/build_vehicles.py` (title, signs, what to do, related cause) and a row to `MODELS` (make, model, first year, last year, groups). If it only affects one engine, add the group to `ENGINE_TAGS`.
+
+Push, and the workflow rebuilds `vehicles.json`.
 
 ### Explain a new word
 Add to `app/glossary.json`: `{ "term": "Rotor", "match": ["rotor", "rotors"], "text": "The metal disc..." }`. For measurements use `"regex"` instead of `"match"`.
@@ -180,4 +193,4 @@ Car Doctor gives **guidance only**. It is not a professional diagnosis, and it c
 
 - **Sound recording:** attach a short recording to repair log entries; later, train a sound classifier on those clips (squeal vs. grind vs. tick).
 - **Bluetooth OBD-II adapter:** read codes and live data (fuel trims, coolant temp, voltage) straight into the app with Web Bluetooth.
-- **Vehicle-specific known issues:** boost causes that are common for the saved make/model/engine (e.g. GM 6.0L knock sensors, exhaust manifold bolts).
+- **Cross-check the vehicle list with NHTSA:** the recall and complaint API (api.nhtsa.gov) could confirm or add problems per model year.

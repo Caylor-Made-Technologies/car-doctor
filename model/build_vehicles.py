@@ -13,6 +13,11 @@ How it's organized:
             (a GMC Sierra uses the same truck groups as a Chevy Silverado).
   MODELS  - (make, model, first year, last year, [groups], [other names])
 
+  data/us_vehicles.json - 674 vehicle generations sold in the US since 2000
+            (make, model, years, engines, common problem titles). Each title
+            gets plain-English signs and a fix from model/problem_rules.py.
+            Problems already in ISSUES for the same vehicle aren't repeated.
+
 Each problem is I(title, symptoms, what to do, related cause):
   - Keep the words plain and short. Someone who doesn't know cars should get it.
   - "cause" must be a key from app/causes.json (or None if none fits).
@@ -21,10 +26,15 @@ Each problem is I(title, symptoms, what to do, related cause):
 """
 
 import json
+import re
 from pathlib import Path
+
+from problem_rules import RULES, classify, with_recall
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "app" / "vehicles.json"
+DATASET = ROOT / "data" / "us_vehicles.json"
+LAST_YEAR = 2026  # "present" in the dataset
 
 
 def I(title, symptoms, todo, cause):
@@ -43,13 +53,13 @@ ISSUES = {
     ],
     "gm_afm": [
         I("Active Fuel Management lifter failure (V8 cylinder shutoff)", "Ticking that gets louder, misfire codes, rough running, a check engine light.",
-          "Get it checked soon. A collapsed lifter can damage the camshaft. Many owners add an AFM disabler after the repair.", "engine_misfire"),
+          "Get it checked soon. A collapsed lifter can damage the camshaft. Many owners add an AFM disabler after the repair.", "collapsed_lifter"),
         I("Oil burning (AFM engines)", "Needing to add a quart of oil between changes, fouled spark plugs.",
-          "Check the oil every fill-up. Shops can replace the PCV/oil deflector parts or piston rings in bad cases.", "oil_leak_low_oil"),
+          "Check the oil every fill-up. Shops can replace the PCV/oil deflector parts or piston rings in bad cases.", "oil_burning"),
     ],
     "gm_truck_9907": [
         I("Instrument cluster gauges stick or die", "Speedometer, fuel or temp needles stick, jump, or drop to zero.",
-          "The gauge motors on the circuit board wear out. A cluster repair service fixes it for much less than a new cluster.", "electrical_ground_problem"),
+          "The gauge motors on the circuit board wear out. A cluster repair service fixes it for much less than a new cluster.", "instrument_cluster_problem"),
         I("Fuel pump failure", "Long crank before starting, sputtering under load, or cranks but won't start.",
           "Test fuel pressure (about 55 to 62 psi). The pump is in the tank, so replace the fuel filter and pump together.", "fuel_delivery_problem"),
         I("Rusted brake lines", "Soft or sinking brake pedal, brake fluid on the frame rail or above the gas tank.",
@@ -57,7 +67,7 @@ ISSUES = {
         I("Worn idler and pitman arms", "Loose, wandering steering, a clunk when turning the wheel parked.",
           "Cheap parts. Replace them and get an alignment. Lifted trucks and big tires wear them faster.", "worn_suspension"),
         I("Heater blend door clicking", "Clicking behind the dash, or air only hot or only cold on one side.",
-          "The small blend door motor behind the dash fails. It's an inexpensive part.", "ac_problem"),
+          "The small blend door motor behind the dash fails. It's an inexpensive part.", "blend_door_actuator"),
     ],
     "gm_4l60e": [
         I("4L60-E transmission wear", "Slips or loses 3rd/4th gear, flares between shifts, late or harsh shifts.",
@@ -71,19 +81,19 @@ ISSUES = {
         I("Rusted rear brake lines", "Soft brake pedal, fluid near the rear axle or along the frame.",
           "Don't drive it. Replace the line and check the others.", "brake_fluid_leak"),
         I("6-speed (6L80) torque converter shudder", "A shake like driving over rumble strips at 30 to 50 mph.",
-          "A fluid exchange with the updated fluid often fixes it; if not, the torque converter is replaced.", "transmission_problem"),
+          "A fluid exchange with the updated fluid often fixes it; if not, the torque converter is replaced.", "torque_converter_shudder"),
     ],
     "gm_truck_1418": [
         I("8-speed (8L90/8L45) shudder and harsh shifts", "Shudder like rumble strips, clunky or jerky shifts at low speed.",
-          "GM released a fluid change fix (2015 to 2019). Ask a dealer to check for updates on your VIN.", "transmission_problem"),
+          "GM released a fluid change fix (2015 to 2019). Ask a dealer to check for updates on your VIN.", "torque_converter_shudder"),
         I("A/C condenser leaks", "A/C stops blowing cold, often within a few years.",
           "The condenser is easily damaged. Find the leak before recharging.", "ac_problem"),
     ],
     "gm_truck_19up": [
         I("Lifter failure on 5.3L and 6.2L V8 (cylinder shutoff)", "Ticking, misfire codes, rough running, check engine light.",
-          "Get it in soon; a failed lifter can wreck the camshaft. Check for recalls and warranty coverage.", "engine_misfire"),
+          "Get it in soon; a failed lifter can wreck the camshaft. Check for recalls and warranty coverage.", "collapsed_lifter"),
         I("6.2L engine recall (2021 to 2024)", "Knocking from the engine, low oil pressure, or the engine shutting off.",
-          "Check your VIN for the 6.2L (L87) recall at nhtsa.gov/recalls or a dealer. Stop driving if it knocks.", "oil_leak_low_oil"),
+          "Check your VIN for the 6.2L (L87) recall at nhtsa.gov/recalls or a dealer. Stop driving if it knocks.", "engine_knock"),
         I("10-speed transmission harsh shifts", "Clunky or jerky shifts, especially at low speed.",
           "Ask a dealer about software updates and a transmission 'relearn'.", "transmission_problem"),
     ],
@@ -99,9 +109,9 @@ ISSUES = {
         I("Fan clutch failure", "Running hot at idle or in traffic, a loud roaring fan.",
           "The engine fan clutch locks up or slips. A common, moderate repair.", "overheating"),
         I("Instrument cluster and fuel gauge problems", "Gauges stick or read wrong; fuel gauge shows empty with gas in the tank.",
-          "Gauge motors and the fuel level sensor (in the tank) are common failures.", "electrical_ground_problem"),
+          "Gauge motors and the fuel level sensor (in the tank) are common failures.", "instrument_cluster_problem"),
         I("HVAC actuator clicking", "Clicking behind the dash, air won't switch vents or temperature.",
-          "The small door motors behind the dash fail. Inexpensive part.", "ac_problem"),
+          "The small door motors behind the dash fail. Inexpensive part.", "blend_door_actuator"),
     ],
     "gm_34_38_v6": [
         I("Intake manifold gasket coolant leak (3.1/3.4/3.8L V6)", "Losing coolant with no puddle, sweet smell, overheating, milky oil in bad cases.",
@@ -109,7 +119,7 @@ ISSUES = {
     ],
     "gm_24_ecotec": [
         I("Oil burning (2.4L, about 2010 to 2015)", "Oil runs low between changes; oil light comes on.",
-          "GM extended the warranty on many. Check oil every fill-up; piston rings are the fix.", "oil_leak_low_oil"),
+          "GM extended the warranty on many. Check oil every fill-up; piston rings are the fix.", "oil_burning"),
         I("Timing chain stretch (2.4L)", "Rattle at startup, codes P0008 or P0016.",
           "Usually caused by low oil. Replace the chain, guides and tensioner, and keep the oil full.", "timing_chain_problem"),
     ],
@@ -125,7 +135,7 @@ ISSUES = {
     ],
     "gm_cobalt": [
         I("Ignition switch recall", "Engine shuts off while driving, power steering and airbags can turn off.",
-          "Serious recall. Check your VIN at nhtsa.gov/recalls. Keep only the key on the ring until fixed.", "electrical_ground_problem"),
+          "Serious recall. Check your VIN at nhtsa.gov/recalls. Keep only the key on the ring until fixed.", "key_ignition_problem"),
         I("Electric power steering motor failure", "Steering suddenly gets heavy, power steering warning light.",
           "The steering motor was recalled on many. Check for open recalls.", "power_steering_problem"),
     ],
@@ -143,7 +153,7 @@ ISSUES = {
     ],
     "gm_passlock": [
         I("Passlock security no-start", "Cranks but won't start, or won't crank, security light flashing.",
-          "The anti-theft system misreads the key. A shop can do a 10-minute relearn or replace the ignition sensor.", "electrical_ground_problem"),
+          "The anti-theft system misreads the key. A shop can do a 10-minute relearn or replace the ignition sensor.", "key_ignition_problem"),
     ],
     "gm_colorado_0412": [
         I("Burnt exhaust valves (2.9/3.5/3.7L)", "Misfire on one cylinder, rough running, low compression.",
@@ -151,7 +161,7 @@ ISSUES = {
     ],
     "gm_colorado_15up": [
         I("8-speed transmission shudder", "Shudder or harsh shifts at low speed.",
-          "Ask a dealer about the transmission fluid update.", "transmission_problem"),
+          "Ask a dealer about the transmission fluid update.", "torque_converter_shudder"),
     ],
     "gm_malibu_0412": [
         I("Steering column clunk", "Clicking or clunk in the steering wheel when turning.",
@@ -165,7 +175,7 @@ ISSUES = {
     ],
     "gm_vue_cvt": [
         I("CVT transmission failure (VTi)", "Slipping, whining, or the vehicle won't move.",
-          "These CVTs often fail; repair cost can be more than the vehicle is worth. Get a quote first.", "transmission_problem"),
+          "These CVTs often fail; repair cost can be more than the vehicle is worth. Get a quote first.", "cvt_problem"),
     ],
     "gm_inline5": [
         I("Burnt exhaust valves (inline-5)", "Misfire on one cylinder, rough running.",
@@ -194,7 +204,7 @@ ISSUES = {
         I("Fuel pump driver module corrosion", "Stalls or won't start, especially after rain; fuel pump code.",
           "The module on the frame rusts. It's an inexpensive part with an updated mounting bracket.", "fuel_delivery_problem"),
         I("Heater blend door noise", "Clicking or tapping behind the dash.",
-          "The blend door actuator fails; inexpensive part.", "ac_problem"),
+          "The blend door actuator fails; inexpensive part.", "blend_door_actuator"),
     ],
     "ford_ecoboost_35": [
         I("Timing chain stretch / cam phaser rattle (3.5L EcoBoost)", "Rattle for a few seconds at cold start, codes P0016 to P0019.",
@@ -204,7 +214,7 @@ ISSUES = {
     ],
     "ford_iwe": [
         I("4x4 hub (IWE) grinding", "Grinding or clicking from the front wheels while driving in 2WD.",
-          "A vacuum leak lets the front hubs partly engage. Fixing the vacuum line or check valve usually solves it.", "vacuum_leak"),
+          "A vacuum leak lets the front hubs partly engage. Fixing the vacuum line or check valve usually solves it.", "four_wheel_drive_problem"),
     ],
     "ford_10r80": [
         I("10-speed transmission harsh shifts", "Clunky, harsh or delayed shifts, especially 1st to 3rd.",
@@ -212,7 +222,7 @@ ISSUES = {
     ],
     "ford_50_coyote": [
         I("Oil burning (5.0L, some 2018 and newer)", "Oil level drops between changes.",
-          "Check oil every fill-up and keep records; Ford has covered some under warranty.", "oil_leak_low_oil"),
+          "Check oil every fill-up and keep records; Ford has covered some under warranty.", "oil_burning"),
     ],
     "ford_27_ecoboost": [
         I("Leaking plastic oil pan (2.7L EcoBoost)", "Oil spots under the truck.",
@@ -234,7 +244,7 @@ ISSUES = {
     ],
     "ford_death_wobble": [
         I("Front end 'death wobble'", "Violent shaking of the steering wheel after hitting a bump, usually at 45 to 60 mph.",
-          "Slow down firmly to stop it. Worn track bar, steering damper, ball joints or tie rods; a front-end inspection finds it.", "worn_suspension"),
+          "Slow down firmly to stop it. Worn track bar, steering damper, ball joints or tie rods; a front-end inspection finds it.", "death_wobble"),
     ],
     "ford_40_sohc": [
         I("Timing chain rattle (4.0L SOHC V6)", "Rattle at startup or around 2,000 to 3,000 rpm, check engine light.",
@@ -246,9 +256,9 @@ ISSUES = {
     ],
     "ford_35_v6_wp": [
         I("Internal water pump failure (3.5/3.7L V6)", "Coolant loss, sweet smell, overheating, milky oil in bad cases.",
-          "The pump is inside the engine, so a leak can mix coolant into the oil. Fix it at the first sign.", "overheating"),
+          "The pump is inside the engine, so a leak can mix coolant into the oil. Fix it at the first sign.", "water_pump_failure"),
         I("PTU (AWD) leaks", "Burning gear-oil smell, leaks near the transmission.",
-          "The power transfer unit overheats its fluid. Change the fluid and fix leaks early.", "oil_leak_low_oil"),
+          "The power transfer unit overheats its fluid. Change the fluid and fix leaks early.", "four_wheel_drive_problem"),
     ],
     "ford_explorer_1119": [
         I("Exhaust fumes in the cabin", "Exhaust smell inside, especially when accelerating with the A/C on.",
@@ -274,20 +284,20 @@ ISSUES = {
         I("Cracked plastic intake manifold (4.6L)", "Coolant leak at the front of the engine, overheating.",
           "Replace it with the updated part with the aluminum coolant crossover.", "overheating"),
         I("Blend door / heater control clicking", "Clicking behind the dash, heat stuck on one setting.",
-          "The blend door actuator fails; inexpensive.", "ac_problem"),
+          "The blend door actuator fails; inexpensive.", "blend_door_actuator"),
     ],
     "ford_air_susp": [
         I("Air suspension sagging", "Sits low on one corner or in the back after parking, suspension warning.",
-          "Air springs and the compressor wear out. Some owners convert to regular coil springs.", "worn_suspension"),
+          "Air springs and the compressor wear out. Some owners convert to regular coil springs.", "air_suspension_problem"),
     ],
     "ford_mt82": [
         I("Manual transmission (MT82) grinding", "Hard shifting or grinding into gears, especially when hot.",
-          "Some fixes come from fluid changes and shifter bushings; check for updates.", "transmission_problem"),
+          "Some fixes come from fluid changes and shifter bushings; check for updates.", "clutch_problem"),
     ],
     # --------------------------------------------------- Chrysler / Dodge / Jeep / Ram
     "fca_hemi_tick": [
         I("Hemi lifter and camshaft failure ('Hemi tick')", "Ticking that gets worse, misfire codes, rough idle.",
-          "Get it checked early. A failed lifter roller damages the camshaft. Change oil on time.", "engine_misfire"),
+          "Get it checked early. A failed lifter roller damages the camshaft. Change oil on time.", "collapsed_lifter"),
     ],
     "fca_hemi_manifold": [
         I("Broken exhaust manifold bolts (5.7L Hemi)", "Ticking when cold that fades as it warms up.",
@@ -301,7 +311,7 @@ ISSUES = {
         I("Oil filter housing / oil cooler leak (3.6L V6)", "Oil leak on top of the engine in the back, burning oil smell.",
           "The plastic housing cracks. Replace it with the updated (often aluminum) part.", "oil_leak_low_oil"),
         I("Rocker arm tick (early 3.6L, 2011 to 2013)", "Ticking from the top of the engine, misfire codes.",
-          "Rocker arms and lifters are replaced; the left cylinder head was a known problem on early engines.", "engine_misfire"),
+          "Rocker arms and lifters are replaced; the left cylinder head was a known problem on early engines.", "collapsed_lifter"),
     ],
     "fca_47_v8": [
         I("4.7L V8 overheating and head gasket", "Running hot, losing coolant, white smoke.",
@@ -319,11 +329,11 @@ ISSUES = {
     ],
     "fca_death_wobble": [
         I("Front end 'death wobble' (solid front axle)", "Violent steering shake after a bump at highway speed.",
-          "Slow down firmly to stop it. Worn track bar, tie rods, ball joints or steering damper. A lift makes it more likely.", "worn_suspension"),
+          "Slow down firmly to stop it. Worn track bar, tie rods, ball joints or steering damper. A lift makes it more likely.", "death_wobble"),
     ],
     "fca_cummins_emissions": [
         I("Diesel emissions clogging (DPF/EGR)", "Loss of power, more regens, 'exhaust system service' message.",
-          "Highway driving helps the filter clean itself. A shop can clean or replace the EGR and DPF.", "catalytic_converter_problem"),
+          "Highway driving helps the filter clean itself. A shop can clean or replace the EGR and DPF.", "diesel_emissions_problem"),
     ],
     "jeep_40_rms": [
         I("Rear main seal oil leak (4.0L)", "Oil drips where the engine meets the transmission.",
@@ -339,11 +349,11 @@ ISSUES = {
     ],
     "fca_24_tigershark": [
         I("Oil burning (2.4L Tigershark)", "Oil level drops between changes.",
-          "Check the oil every fill-up. Some were covered by a warranty extension.", "oil_leak_low_oil"),
+          "Check the oil every fill-up. Some were covered by a warranty extension.", "oil_burning"),
     ],
     "fca_cvt": [
         I("CVT transmission failure", "Whining, slipping, shuddering, or loss of power.",
-          "Change CVT fluid more often than the manual says. Check for warranty extensions.", "transmission_problem"),
+          "Change CVT fluid more often than the manual says. Check for warranty extensions.", "cvt_problem"),
     ],
     "fca_41te": [
         I("41TE / 62TE automatic transmission problems", "Harsh or slipping shifts, stuck in 2nd (limp mode).",
@@ -357,12 +367,12 @@ ISSUES = {
         I("TIPM fuel pump relay no-start (2011 to 2013)", "Cranks but won't start, or stalls.",
           "There was a recall. A dealer can install the external fuel pump relay fix.", "fuel_delivery_problem"),
         I("Air suspension problems (Quadra-Lift)", "Sits low, warning lights, compressor runs a lot.",
-          "Air springs and the compressor wear out. Check for leaks.", "worn_suspension"),
+          "Air springs and the compressor wear out. Check for leaks.", "air_suspension_problem"),
     ],
     # ------------------------------------------------------------------ Toyota / Lexus / Scion
     "toyota_frame_rust": [
         I("Frame rust (some years were recalled)", "Rust holes or flaking on the frame, especially near the rear.",
-          "Have the frame inspected yearly, especially in salty areas. Check your VIN for recalls and frame replacement.", None),
+          "Have the frame inspected yearly, especially in salty areas. Check your VIN for recalls and frame replacement.", "rust_damage"),
     ],
     "toyota_sai": [
         I("Secondary air injection pump failure", "Check engine light and limp mode after a cold start (P2440 to P2445).",
@@ -372,15 +382,15 @@ ISSUES = {
         I("Cam tower / timing cover oil leaks (5.7L)", "Oil seeping at the back or front of the engine.",
           "Usually slow. Watch the oil level; fix at a bigger repair.", "oil_leak_low_oil"),
         I("Water pump leaks", "Coolant smell, pink crust at the front of the engine, low coolant.",
-          "Replace the water pump before it fails completely.", "overheating"),
+          "Replace the water pump before it fails completely.", "water_pump_failure"),
     ],
     "toyota_2az": [
         I("Oil burning (2.4L, about 2006 to 2011)", "Oil runs low between changes.",
-          "Toyota extended coverage on many. Check oil every fill-up; piston rings are the fix.", "oil_leak_low_oil"),
+          "Toyota extended coverage on many. Check oil every fill-up; piston rings are the fix.", "oil_burning"),
     ],
     "toyota_1zz": [
         I("Oil burning (1.8L, 1998 to 2002)", "Oil level drops; blue smoke at startup.",
-          "Check oil often. Piston ring wear is the cause.", "oil_leak_low_oil"),
+          "Check oil often. Piston ring wear is the cause.", "oil_burning"),
     ],
     "toyota_2gr_hose": [
         I("Oil cooler line rubber hose leak (3.5L V6)", "Sudden oil leak at the front of the engine.",
@@ -398,7 +408,7 @@ ISSUES = {
         I("6-speed automatic shift hunting", "Shifts back and forth on hills, feels like it can't pick a gear.",
           "Toyota released software updates; ask a dealer.", "transmission_problem"),
         I("Rear differential seal leaks", "Gear oil on the rear axle or inside the rear wheels.",
-          "Fix before the differential runs low on oil.", "oil_leak_low_oil"),
+          "Fix before the differential runs low on oil.", "differential_problem"),
     ],
     "toyota_tundra_22up": [
         I("Engine recall (3.4L twin turbo V6, 2022 to 2023)", "Knocking, loss of power, or engine failure.",
@@ -410,11 +420,11 @@ ISSUES = {
     ],
     "toyota_hybrid_battery": [
         I("Hybrid battery wearing out", "Worse gas mileage, battery gauge swings fast, warning light.",
-          "A hybrid shop can test it; rebuilt batteries cost much less than new.", None),
+          "A hybrid shop can test it; rebuilt batteries cost much less than new.", "hybrid_ev_problem"),
     ],
     "toyota_corolla_0913": [
         I("Water pump leaks", "Coolant smell, pink crust near the pump, low coolant.",
-          "Replace the water pump before it fails.", "overheating"),
+          "Replace the water pump before it fails.", "water_pump_failure"),
     ],
     "toyota_rav4_19up": [
         I("Gas tank won't fill completely", "Pump clicks off early; range is lower than it should be.",
@@ -433,7 +443,7 @@ ISSUES = {
         I("VCM (cylinder shutoff) misfires and oil burning", "Misfires, fouled spark plugs, shaking at low speed, oil use.",
           "Honda extended coverage on many. Some owners use a VCM disabler after repairs.", "engine_misfire"),
         I("Worn motor mounts (VCM)", "Vibration at idle or when the engine switches modes.",
-          "The active engine mounts wear out; replace them.", "worn_suspension"),
+          "The active engine mounts wear out; replace them.", "bad_motor_mounts"),
     ],
     "honda_timing_belt": [
         I("Timing belt due (3.5L V6)", "No symptom until it breaks, and then the engine stops and can be damaged.",
@@ -461,7 +471,7 @@ ISSUES = {
     ],
     "honda_cvt_judder": [
         I("CVT judder", "A shudder or vibration when accelerating gently.",
-          "Software updates and CVT fluid changes usually fix it.", "transmission_problem"),
+          "Software updates and CVT fluid changes usually fix it.", "cvt_problem"),
     ],
     "honda_9speed": [
         I("9/10-speed transmission rough shifts", "Rough or delayed shifts, hesitation.",
@@ -470,7 +480,7 @@ ISSUES = {
     # ------------------------------------------------------------------ Nissan / Infiniti
     "nissan_cvt": [
         I("CVT transmission failure", "Whining, shuddering, slipping, loss of power, or limp mode.",
-          "Nissan extended CVT warranties on many. Change CVT fluid about every 30k to 60k miles.", "transmission_problem"),
+          "Nissan extended CVT warranties on many. Change CVT fluid about every 30k to 60k miles.", "cvt_problem"),
     ],
     "nissan_qr25_precat": [
         I("Pre-catalytic converter breaking apart (2.5L, 2002 to 2006)", "Rattle under the car, loss of power, oil burning, check engine light.",
@@ -486,7 +496,7 @@ ISSUES = {
         I("Cracked exhaust manifolds (5.6L V8)", "Ticking, especially when cold; exhaust smell.",
           "Replace the manifolds and gaskets.", "exhaust_leak"),
         I("Rear axle seal leaks", "Gear oil inside the rear wheels, brakes contaminated.",
-          "Replace the axle seals and clean or replace the brake parts.", "oil_leak_low_oil"),
+          "Replace the axle seals and clean or replace the brake parts.", "differential_problem"),
     ],
     "nissan_ps_hose": [
         I("Power steering hose leaks", "Whining when turning, fluid on the ground.",
@@ -498,24 +508,24 @@ ISSUES = {
     ],
     "infiniti_vq_oil": [
         I("Oil burning (early 3.5L VQ)", "Oil level drops, especially if driven hard.",
-          "Check oil often.", "oil_leak_low_oil"),
+          "Check oil often.", "oil_burning"),
     ],
     # ------------------------------------------------------------------ Hyundai / Kia
     "hk_theta2": [
         I("Theta II engine failure (2.0T / 2.4L)", "Knocking that gets louder with RPM, oil light, stalling, oil burning.",
-          "Stop driving if it knocks. Hyundai/Kia recalled many and extended warranties; check your VIN.", "oil_leak_low_oil"),
+          "Stop driving if it knocks. Hyundai/Kia recalled many and extended warranties; check your VIN.", "engine_knock"),
     ],
     "hk_nu_gamma": [
         I("Engine failure (1.6/1.8/2.0L Gamma/Nu)", "Knocking, oil burning, loss of power.",
-          "Check your VIN for recalls and warranty extensions. Keep oil full.", "oil_leak_low_oil"),
+          "Check your VIN for recalls and warranty extensions. Keep oil full.", "engine_knock"),
     ],
     "hk_steering_coupler": [
         I("Steering coupler clicking", "Clicking or knocking in the steering wheel when turning.",
-          "The rubber coupler in the electric steering wears out; an inexpensive part.", "power_steering_problem"),
+          "The rubber coupler in the electric steering wears out; an inexpensive part.", "worn_suspension"),
     ],
     "hk_theft": [
         I("Easy to steal (key-start models, no immobilizer)", "Broken steering column, damaged ignition.",
-          "Get the free anti-theft software update at a dealer and use a steering wheel lock.", None),
+          "Get the free anti-theft software update at a dealer and use a steering wheel lock.", "key_ignition_problem"),
     ],
     "hk_soul_cat": [
         I("Catalytic converter overheating damages pistons (1.6L, recall)", "Knocking, loss of power, check engine light.",
@@ -530,11 +540,11 @@ ISSUES = {
     ],
     "subaru_fb_oil": [
         I("Oil burning (FB engines, about 2011 to 2015)", "Oil level drops between changes.",
-          "Subaru extended coverage on many. Check oil every fill-up.", "oil_leak_low_oil"),
+          "Subaru extended coverage on many. Check oil every fill-up.", "oil_burning"),
     ],
     "subaru_cvt": [
         I("CVT judder or failure", "Shudder when accelerating, hesitation, whining.",
-          "Subaru extended CVT warranties on many; ask a dealer about updates.", "transmission_problem"),
+          "Subaru extended CVT warranties on many; ask a dealer about updates.", "cvt_problem"),
     ],
     "subaru_battery_drain": [
         I("Battery drains while parked (about 2015 to 2020)", "Dead battery after sitting a day or two.",
@@ -551,11 +561,11 @@ ISSUES = {
         I("Timing chain tensioner failure (2.0T, about 2008 to 2012)", "Rattle at startup; if it fails, the engine stops and is badly damaged.",
           "Replace the tensioner with the updated part as prevention. This one is worth doing before it fails.", "timing_chain_problem"),
         I("Oil burning (2.0T)", "Oil level drops between changes.",
-          "Piston ring and PCV updates fix it; check oil often.", "oil_leak_low_oil"),
+          "Piston ring and PCV updates fix it; check oil often.", "oil_burning"),
     ],
     "vw_water_pump": [
         I("Plastic water pump / thermostat housing leaks", "Coolant smell, low coolant warning, pink crust at the pump.",
-          "Replace the pump housing; very common on 2.0T and 1.8T engines.", "overheating"),
+          "Replace the pump housing; very common on 2.0T and 1.8T engines.", "water_pump_failure"),
     ],
     "vw_carbon": [
         I("Carbon buildup on intake valves (direct injection)", "Rough idle, misfires, hesitation.",
@@ -588,11 +598,11 @@ ISSUES = {
         I("Timing chain rattle (2007 to 2013)", "Rattle at cold start.",
           "Replace the chain and tensioner before it jumps a tooth.", "timing_chain_problem"),
         I("Oil burning and carbon buildup", "Oil runs low, rough idle.",
-          "Check oil often; clean the intake valves.", "oil_leak_low_oil"),
+          "Check oil often; clean the intake valves.", "oil_burning"),
     ],
     "mini_r50": [
         I("CVT failure (2002 to 2006 automatic)", "Slipping or won't move.",
-          "These CVTs often fail; a manual transmission was much more reliable.", "transmission_problem"),
+          "These CVTs often fail; a manual transmission was much more reliable.", "cvt_problem"),
         I("Electric power steering pump failure", "Heavy steering, whining.",
           "The pump's cooling fan fails first; replacing it early can save the pump.", "power_steering_problem"),
     ],
@@ -603,7 +613,7 @@ ISSUES = {
     ],
     "mb_airmatic": [
         I("Air suspension sagging (Airmatic)", "Sits low after parking, suspension warning.",
-          "Air struts and the compressor wear out.", "worn_suspension"),
+          "Air struts and the compressor wear out.", "air_suspension_problem"),
     ],
     "mb_trans_plate": [
         I("Transmission conductor plate failure", "Stuck in one gear (limp mode), harsh shifts.",
@@ -616,11 +626,11 @@ ISSUES = {
     # ------------------------------------------------------------------ Mazda / Mitsubishi / Volvo / others
     "mazda_cx7": [
         I("Turbo and timing chain problems (2.3L turbo)", "Loss of power, smoke, rattle at startup.",
-          "Change oil often; these turbos and VVT parts need clean oil.", "timing_chain_problem"),
+          "Change oil often; these turbos and VVT parts need clean oil.", "turbo_problem"),
     ],
     "mazda_cx9_wp": [
         I("Internal water pump failure (3.7L V6)", "Losing coolant, overheating, coolant in the oil.",
-          "The pump is inside the engine; fix at the first sign of coolant loss.", "overheating"),
+          "The pump is inside the engine; fix at the first sign of coolant loss.", "water_pump_failure"),
     ],
     "mazda_rx8": [
         I("Rotary engine wear and flooding", "Hard starts, rough idle, low compression, oil burning by design.",
@@ -628,11 +638,11 @@ ISSUES = {
     ],
     "mazda3_0409": [
         I("Rust (rear wheel arches)", "Bubbling paint and rust around the rear wheels.",
-          "Treat rust early.", None),
+          "Treat rust early.", "rust_damage"),
     ],
     "mitsu_cvt": [
         I("CVT problems", "Whining, shudder, hesitation.",
-          "Change CVT fluid on schedule.", "transmission_problem"),
+          "Change CVT fluid on schedule.", "cvt_problem"),
     ],
     "volvo_pcv": [
         I("Clogged PCV / oil trap", "Oil leaks, whistling from the engine, oil burning.",
@@ -644,7 +654,7 @@ ISSUES = {
     ],
     "volvo_angle_gear": [
         I("AWD angle gear failure", "AWD warning, clunk or grinding from the front.",
-          "Change its oil; it's often ignored.", "worn_cv_axle"),
+          "Change its oil; it's often ignored.", "four_wheel_drive_problem"),
     ],
     "tesla_12v": [
         I("12-volt battery failure", "Car won't wake up or warnings to replace the 12V battery.",
@@ -660,7 +670,7 @@ ISSUES = {
     ],
     "lr_air": [
         I("Air suspension failure", "Sits low, suspension fault warning, compressor runs a lot.",
-          "Air springs and the compressor wear out; a common repair on these.", "worn_suspension"),
+          "Air springs and the compressor wear out; a common repair on these.", "air_suspension_problem"),
     ],
     "lr_50_chain": [
         I("Timing chain guide wear (5.0L V8)", "Rattle at startup, P0016 codes.",
@@ -668,7 +678,7 @@ ISSUES = {
     ],
     "pt_cruiser": [
         I("Worn motor mounts", "Clunk when accelerating or shifting, vibration.",
-          "Replace the engine mounts.", "worn_suspension"),
+          "Replace the engine mounts.", "bad_motor_mounts"),
         I("Head gasket leak", "Losing coolant, overheating.",
           "Fix before the engine overheats.", "head_gasket_failure"),
     ],
@@ -990,6 +1000,8 @@ MODELS = [
 # Common US models from 2000 on, for the make/model pickers. Models that
 # aren't in MODELS above simply have no known-problem list yet.
 MODEL_NAMES = {
+    # Makes only in the dataset get their model names from it.
+    "Alfa Romeo": [], "Isuzu": [], "Oldsmobile": [], "Plymouth": [], "Porsche": [], "Rivian": [], "Saab": [], "Suzuki": [],
     "Acura": ["CL", "ILX", "Integra", "MDX", "RDX", "RL", "RSX", "TL", "TLX", "TSX", "ZDX"],
     "Audi": ["A3", "A4", "A5", "A6", "A8", "Q3", "Q5", "Q7", "Q8", "TT", "e-tron"],
     "BMW": ["3 Series", "4 Series", "5 Series", "7 Series", "X1", "X3", "X5", "X6", "Z4", "i3"],
@@ -1069,6 +1081,182 @@ MAKE_ALIASES = {
 }
 
 
+# ---------------------------------------------------------------------------
+# The US vehicle dataset (data/us_vehicles.json)
+# ---------------------------------------------------------------------------
+
+def norm(text):
+    return "".join(ch for ch in text.lower() if ch.isalnum())
+
+
+# Dataset names that need help becoming the names people type.
+NAME_FIXES = {
+    ("Chevrolet", "Silverado 2500HD/3500"): ("Chevrolet", ["Silverado 2500HD", "Silverado 3500HD", "Silverado 2500", "Silverado 3500"]),
+    ("GMC", "Sierra 2500HD/3500"): ("GMC", ["Sierra 2500HD", "Sierra 3500HD", "Sierra 2500", "Sierra 3500"]),
+    ("Ram", "2500/3500"): ("Ram", ["2500", "3500"]),
+    ("Dodge", "Ram 1500"): ("Ram", ["1500"]),  # the app treats "Dodge Ram" as Ram
+    ("Dodge", "Ram 2500/3500"): ("Ram", ["2500", "3500"]),
+    ("Ford", "F-250/F-350 Super Duty"): ("Ford", ["F-250 Super Duty", "F-350 Super Duty", "F-250", "F-350"]),
+    ("Chevrolet", "Blazer (S-10)"): ("Chevrolet", ["Blazer", "S-10 Blazer"]),
+    ("Chevrolet", "Bolt EV / EUV"): ("Chevrolet", ["Bolt EV", "Bolt EUV", "Bolt"]),
+}
+
+
+def dataset_names(make, model):
+    """"Yukon / Yukon XL" -> ("GMC", ["Yukon", "Yukon XL"])."""
+    if (make, model) in NAME_FIXES:
+        return NAME_FIXES[(make, model)]
+    return make, [part.strip() for part in model.split(" / ") if part.strip()]
+
+
+# Words in a problem title that tie it to certain engines, and the words
+# that mark those engines in the dataset's engine list.
+ENGINE_WORDS = {
+    "ecoboost": ["ecoboost"], "hemi": ["hemi"], "coyote": ["coyote", "5.0"],
+    "duramax": ["duramax"], "power stroke": ["power stroke"], "powerstroke": ["power stroke"],
+    "cummins": ["cummins"], "ecodiesel": ["ecodiesel"], "tdi": ["tdi"],
+    "diesel": ["diesel", "duramax", "cummins", "power stroke", "tdi", "ecodiesel", "crd"],
+    "hybrid": ["hybrid", "phev", "prime", "energi"], "turbo": ["turbo", "ecoboost", "tt"],
+    "v6": ["v6"], "v8": ["v8"], "v10": ["v10"], "i5": ["i5"],
+    "2az": ["2.4"], "1zz": ["1zz", "1.8"], "2zz": ["2zz"], "2gr": ["3.5"], "2zr": ["1.8"], "1mz": ["3.0"],
+    "qr25": ["2.5"], "vq": ["3.5"], "ej25": ["2.5"], "fb25": ["2.5"], "fb20": ["2.0"], "fa20": ["2.0"],
+    "n20": ["n20", "2.0"], "n54": ["n54"], "n55": ["n55"], "n63": ["4.4"], "m272": ["v6", "3.0", "3.5"],
+    "lb7": ["lb7"], "lly": ["lly"], "lmm": ["lmm"], "lml": ["lml"], "l5p": ["l5p"], "l87": ["6.2"],
+    "ls1": ["ls1"], "ls7": ["ls7"], "3v": ["3v"], "1.8t": ["1.8"], "2.0t": ["2.0"], "1.5t": ["1.5"],
+    "1.6t": ["1.6"], "2.5t": ["2.5"], "1.4t": ["1.4"], "smartstream": ["2.0"], "theta": ["2.0", "2.4"],
+    "gdi": ["gdi", "1.6", "2.0", "2.4"], "nu": ["1.8", "2.0"],
+}
+DISPLACEMENT = re.compile(r"(?<![\d.])(\d\.\d)(?![\d])")
+
+
+def engine_tags(title, engines):
+    """Which of a generation's engines a problem applies to.
+
+    Returns (tags, label): tags are the normalized words the app looks for in
+    the engine the owner typed; label is shown to people ("5.4L V8 3V").
+    ([], "") means the problem applies to every engine.
+    """
+    lower = title.lower()
+    words = set(DISPLACEMENT.findall(lower))
+    for word in ENGINE_WORDS:
+        if re.search(r"(?<![a-z0-9.])" + re.escape(word) + r"(?![a-z0-9])", lower):
+            words.add(word)
+    # "2.5T" means the 2.5 turbo, not every 2.5.
+    turbo_sizes = {w for w in words if w.endswith("t") and DISPLACEMENT.fullmatch(w[:-1])}
+    words -= {w[:-1] for w in turbo_sizes}
+    if not words or not engines:
+        return [], ""
+
+    def hits(engine, word):
+        e = engine.lower()
+        if word in turbo_sizes:
+            return word[:-1] in e and any(t in e for t in ("turbo", "tsi", "ecoboost", "tt"))
+        keys = ENGINE_WORDS.get(word, [word])
+        return any(k in e for k in keys)
+
+    matched = [e for e in engines if any(hits(e, w) for w in words)]
+    # Displacements are the most specific clue: if any number in the title
+    # matches an engine, only keep engines that match a number.
+    numbers = [w for w in words if DISPLACEMENT.fullmatch(w)]
+    if numbers and any(hits(e, n) for e in engines for n in numbers):
+        matched = [e for e in matched if any(hits(e, n) for n in numbers)]
+    if not matched or len(matched) == len(engines):
+        return [], ""
+    tags = set()
+    for engine in matched:
+        e = engine.lower()
+        for num in DISPLACEMENT.findall(e):
+            # Only use the number if no unaffected engine shares it.
+            if not any(num in other for other in engines if other not in matched):
+                tags.add(norm(num))
+        for word in words:
+            for key in ENGINE_WORDS.get(word, [word]):
+                if key in e and not DISPLACEMENT.fullmatch(key):
+                    tags.add(norm(key))
+    if turbo_sizes:
+        tags.add("turbo")
+    tags.discard("")
+    if not tags:
+        return [], ""
+    return sorted(tags), ", ".join(matched)
+
+
+# How ENGINE_TAGS words are shown to people ("Only on: 5.4L Triton 3V V8").
+WORD_LABELS = {"v6": "V6", "v8": "V8", "v10": "V10", "ls": "LS", "lb7": "LB7", "lml": "LML", "3v": "3V",
+               "tdi": "TDI", "tsi": "TSI", "fsi": "FSI", "vr6": "VR6", "n54": "N54", "n20": "N20",
+               "ecoboost": "EcoBoost", "hemi": "Hemi", "duramax": "Duramax", "cummins": "Cummins",
+               "triton": "Triton", "coyote": "Coyote", "northstar": "Northstar", "pentastar": "Pentastar",
+               "diesel": "diesel", "powerstroke": "Power Stroke", "power stroke": "Power Stroke"}
+
+
+def engine_label(tags):
+    sizes = [t for t in tags if DISPLACEMENT.fullmatch(t)]
+    words = []
+    for t in tags:
+        label = WORD_LABELS.get(t)
+        if label and label not in words:
+            words.append(label)
+    return " ".join(filter(None, ["/".join(sizes) + "L" if sizes else "", *words]))
+
+
+def significant_words(title):
+    skip = {"failure", "issues", "issue", "leaks", "leak", "problems", "wear", "faults", "about", "early"}
+    return {w for w in re.findall(r"[a-z]{4,}", title.lower()) if w not in skip}
+
+
+def dataset_rows(curated_models):
+    """Turn every dataset generation into a vehicles.json row and group.
+
+    A problem is skipped when a curated MODELS row for the same vehicle
+    already covers it (same kind of problem, or same cause and shared words),
+    so the hand-checked text wins and nothing shows twice.
+    """
+    data = json.loads(DATASET.read_text(encoding="utf-8"))
+    curated_by_key = {}
+    for make, model, start, end, groups, aka in curated_models:
+        for name in [model, *aka]:
+            curated_by_key.setdefault((make, norm(name)), []).append((start, end, groups))
+    groups, rows, unmatched = {}, [], []
+    for v in data["vehicles"]:
+        make, names = dataset_names(v["make"], v["model"])
+        start, end = v["year_start"], v["year_end"] or LAST_YEAR
+        start = max(start, 1984)
+        covered = []  # curated issues for this exact vehicle and all its years
+        for (c_make, key), ranges in curated_by_key.items():
+            # "Yukon XL" is covered by a curated "Yukon" row too.
+            if c_make != make or not any(norm(n).startswith(key) for n in names):
+                continue
+            for c_start, c_end, c_groups in ranges:
+                if c_start <= max(start, 2000) and c_end >= end:
+                    covered += [i for g in c_groups for i in ISSUES[g]]
+        covered_kinds = {(classify(i["t"]) or {}).get("kind") for i in covered}
+        issues = []
+        for title in v["common_problems"]:
+            rule = classify(title)
+            if rule is None:
+                unmatched.append(title)
+                continue
+            if rule["kind"] in covered_kinds or any(
+                    i["c"] is not None and i["c"] == rule["c"] and significant_words(i["t"]) & significant_words(title)
+                    for i in covered):
+                continue
+            issue = {"t": title, "k": rule["kind"]}
+            todo = with_recall(rule, title)
+            if todo != rule["w"]:
+                issue["w"] = todo
+            tags, label = engine_tags(title, v["engines"])
+            if tags:
+                issue["e"], issue["en"] = tags, label
+            issues.append(issue)
+        group = "v:" + v["id"]
+        groups[group] = issues
+        rows.append({"make": make, "model": names[0], "from": start, "to": end, "groups": [group],
+                     "aka": [n.lower() for n in names[1:]], "gen": v["generation"], "eng": v["engines"]})
+    assert not unmatched, f"add rules in problem_rules.py for: {sorted(set(unmatched))}"
+    kinds = {r["kind"]: {"s": r["s"], "w": r["w"], "c": r["c"]} for r in RULES}
+    return groups, rows, kinds
+
+
 def main():
     causes = json.loads((ROOT / "app" / "causes.json").read_text(encoding="utf-8"))
     for name, issues in ISSUES.items():
@@ -1077,29 +1265,38 @@ def main():
     for row in MODELS:
         for group in row[4]:
             assert group in ISSUES, f"{row[:2]}: unknown group {group}"
-    norm = lambda text: "".join(ch for ch in text.lower() if ch.isalnum())
+    for rule in RULES:
+        assert rule["c"] is None or rule["c"] in causes, f"problem_rules {rule['kind']}: unknown cause {rule['c']}"
     for group, tags in ENGINE_TAGS.items():
         assert group in ISSUES, f"ENGINE_TAGS: unknown group {group}"
         for issue in ISSUES[group]:
             issue["e"] = [norm(t) for t in tags]
+            issue["en"] = engine_label(tags)
+    ds_groups, ds_rows, kinds = dataset_rows(MODELS)
+    for row in MODELS + [(r["make"],) for r in ds_rows]:
+        assert row[0] in MODEL_NAMES, f"add {row[0]} to MODEL_NAMES"
+    names = {make: set(models) for make, models in MODEL_NAMES.items()}
+    for m in MODELS:
+        names[m[0]].add(m[1])
+    for r in ds_rows:
+        # Picker shows the first name; alternates (aka) only if not a bare number.
+        names[r["make"]].add(r["model"])
     data = {
         "note": "Commonly reported problems. Not every vehicle will have them.",
         "aliases": MAKE_ALIASES,
-        "names": {make: sorted(set(names) | {m[1] for m in MODELS if m[0] == make})
-                  for make, names in MODEL_NAMES.items()},
-        "groups": ISSUES,
+        "names": {make: sorted(n, key=str.lower) for make, n in sorted(names.items())},
+        "kinds": kinds,
+        "groups": {**ISSUES, **ds_groups},
+        # Curated rows first so their hand-written text shows first.
         "models": [{"make": m, "model": mo, "from": a, "to": b, "groups": g, "aka": aka}
-                   for m, mo, a, b, g, aka in MODELS],
+                   for m, mo, a, b, g, aka in MODELS] + ds_rows,
     }
     OUT.write_text(json.dumps(data, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")
-    for row in MODELS:
-        assert row[0] in MODEL_NAMES, f"add {row[0]} to MODEL_NAMES"
-    makes = sorted(MODEL_NAMES)
-    models = {(m[0], m[1]) for m in MODELS}
-    issues = sum(len(v) for v in ISSUES.values())
-    names = sum(len(v) for v in data["names"].values())
-    print(f"Wrote {OUT.relative_to(ROOT)}: {len(makes)} makes, {names} models to pick from, "
-          f"{len(models)} with known-problem lists ({len(MODELS)} year ranges), {issues} known problems "
+    vehicles = {(r["make"], r["model"]) for r in data["models"] if any(data["groups"][g] for g in r["groups"])}
+    count = sum(len(v) for v in data["groups"].values())
+    print(f"Wrote {OUT.relative_to(ROOT)}: {len(names)} makes, {sum(len(n) for n in names.values())} models to pick from, "
+          f"{len(vehicles)} with known-problem lists ({len(data['models'])} year ranges, "
+          f"{len(ds_rows)} generations from the dataset), {count} known problems "
           f"({OUT.stat().st_size / 1024:.0f} KB)")
 
 

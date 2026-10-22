@@ -75,6 +75,23 @@ const SYNONYM_GROUPS = {
     "missing", "skipping", "skips"],
   hesitate: ["hesitate", "hesitates", "hesitation", "hesitating", "bog",
     "bogs", "bogging", "stumble", "stumbles", "stumbling"],
+  // Words for newer problems (screens, turbos, 4WD, leaks inside, rust...).
+  screen: ["screen", "screens", "display", "displays", "touchscreen", "monitor"],
+  radio: ["radio", "radios", "stereo", "infotainment", "headunit"],
+  phone: ["phone", "phones", "bluetooth", "carplay"],
+  turbo: ["turbo", "turbos", "turbocharger", "turbocharged", "boost", "boosting", "boosted", "underboost", "overboost", "spool", "spools"],
+  whistle: ["whistle", "whistles", "whistling", "siren", "whoosh", "whooshing"],
+  "4wd": ["4wd", "4x4", "awd", "4hi", "4lo", "ptu"],
+  speedometer: ["speedometer", "speedometers", "speedo", "tachometer", "tach", "odometer"],
+  coolant: ["coolant", "antifreeze"],
+  fob: ["fob", "fobs", "keyfob", "remote"],
+  wet: ["wet", "damp", "soaked", "soggy", "moist", "drenched"],
+  rain: ["rain", "rains", "raining", "rained", "rainy", "storm", "storms"],
+  rust: ["rust", "rusty", "rusted", "rusting", "rot", "rotted", "rotting"],
+  regen: ["regen", "regens", "regenerating", "regeneration"],
+  hybrid: ["hybrid", "hybrids", "ev", "evs", "phev", "prius"],
+  sag: ["sag", "sags", "sagging", "saggy"],
+  judder: ["judder", "judders", "juddering"],
 };
 
 // Flip the groups into one lookup table: variant -> canonical word.
@@ -131,8 +148,10 @@ function predict(text, boosts = {}) {
 
   const scores = MODEL.classes.map((label, c) => {
     let score = MODEL.class_log_prior[c];
+    // Words this problem never saw share one "unseen" score (see train.py).
     const row = MODEL.feature_log_prob[c];
-    for (const [index, count] of counts) score += count * row[index];
+    const unseen = MODEL.unseen_log_prob[c];
+    for (const [index, count] of counts) score += count * (row[index] ?? unseen);
     return score + (boosts[label] || 0);
   });
 

@@ -32,6 +32,11 @@ SAMPLES = [
     "AC blows warm and the compressor isn't kicking on",
     "Rattling noise while driving over bumps, something weird",
     "My fan only works on high and the windows fog up",
+    "Turbo whistles and there's no boost on my EcoBoost",
+    "4x4 light flashing and the transfer case won't shift",
+    "Wet carpet after it rains, sunroof drains?",
+    "Feels like rumble strips at 45 on light gas",
+    "my prius says check hybrid system",
 ]
 
 failures = []
@@ -54,7 +59,8 @@ def python_predict(model, text, boosts=None):
     scores = []
     for c, label in enumerate(model["classes"]):
         s = model["class_log_prior"][c]
-        s += sum(n * model["feature_log_prob"][c][i] for i, n in counts.items())
+        row, unseen = model["feature_log_prob"][c], model["unseen_log_prob"][c]
+        s += sum(n * row.get(str(i), unseen) for i, n in counts.items())
         scores.append(s + boosts.get(label, 0))
     top = max(scores)
     exps = [math.exp(s - top) for s in scores]
@@ -126,8 +132,18 @@ def main():
     vehicles = json.loads((APP / "vehicles.json").read_text(encoding="utf-8"))
     bad_v = [f"{m['make']} {m['model']}" for m in vehicles["models"]
              if any(g not in vehicles["groups"] for g in m["groups"]) or m["from"] > m["to"]]
-    bad_c = [i["t"] for g in vehicles["groups"].values() for i in g if i["c"] is not None and i["c"] not in causes]
-    check(not bad_v and not bad_c, f"vehicles.json is consistent {bad_v + bad_c or ''}")
+    kinds = vehicles["kinds"]
+    bad_k = [k for k, info in kinds.items()
+             if not info.get("s") or not info.get("w") or (info["c"] is not None and info["c"] not in causes)]
+    bad_c = []
+    for group in vehicles["groups"].values():
+        for i in group:
+            # Hand-written problems carry their own text; dataset ones point at a shared kind.
+            text_ok = (i.get("s") and i.get("w")) or i.get("k") in kinds
+            cause = i["c"] if "c" in i else kinds.get(i.get("k"), {}).get("c")
+            if not text_ok or (cause is not None and cause not in causes):
+                bad_c.append(i["t"])
+    check(not bad_v and not bad_k and not bad_c, f"vehicles.json is consistent {bad_v + bad_k + bad_c or ''}")
 
     # 4. Model matches the data.
     check(sorted(model["classes"]) == sorted(labels), "model.json classes match the CSV labels")

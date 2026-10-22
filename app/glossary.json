@@ -598,5 +598,222 @@
   "match": [
    "pcm"
   ]
+ },
+ {
+  "term": "CVT",
+  "text": "Continuously variable transmission: an automatic with no fixed gears. It uses a belt between two cone-shaped pulleys.",
+  "match": [
+   "cvt"
+  ]
+ },
+ {
+  "term": "Judder",
+  "text": "A quick, juddering shake, like a stutter, usually when pulling away.",
+  "match": [
+   "judder"
+  ]
+ },
+ {
+  "term": "Lifter",
+  "text": "A small part that rides on the camshaft and pushes a valve open. A stuck one ticks.",
+  "match": [
+   "lifter",
+   "lifters"
+  ]
+ },
+ {
+  "term": "AFM / DFM",
+  "text": "GM's cylinder shutoff (Active / Dynamic Fuel Management): the engine turns off some cylinders on the highway to save gas.",
+  "match": [
+   "afm",
+   "dfm"
+  ]
+ },
+ {
+  "term": "Rod bearing",
+  "text": "A soft metal sleeve between the crankshaft and each connecting rod. When it wears out, the engine knocks.",
+  "match": [
+   "rod bearing",
+   "rod knock"
+  ]
+ },
+ {
+  "term": "Turbo",
+  "text": "A turbocharger: a small fan spun by exhaust that pushes extra air into the engine for more power.",
+  "match": [
+   "turbo",
+   "turbocharger"
+  ]
+ },
+ {
+  "term": "Wastegate",
+  "text": "A valve that lets extra exhaust bypass the turbo so boost doesn't get too high.",
+  "match": [
+   "wastegate"
+  ]
+ },
+ {
+  "term": "Intercooler",
+  "text": "A radiator for the air coming out of the turbo. It cools the air before it goes into the engine.",
+  "match": [
+   "intercooler"
+  ]
+ },
+ {
+  "term": "DPF",
+  "text": "Diesel particulate filter: catches soot in a diesel's exhaust and burns it off now and then (a 'regen').",
+  "match": [
+   "dpf",
+   "particulate filter"
+  ]
+ },
+ {
+  "term": "DEF",
+  "text": "Diesel exhaust fluid (urea and water). It's sprayed into a diesel's exhaust to cut pollution; you refill it like washer fluid.",
+  "match": [
+   "def",
+   "diesel exhaust fluid"
+  ]
+ },
+ {
+  "term": "NOx sensor",
+  "text": "A sensor in a diesel's exhaust that checks pollution. A common failure that sets a warning and reduced power.",
+  "match": [
+   "nox sensor",
+   "nox"
+  ]
+ },
+ {
+  "term": "Regen",
+  "text": "When a diesel heats up its exhaust filter to burn off soot. Short trips can stop it from finishing.",
+  "match": [
+   "regen",
+   "regeneration"
+  ]
+ },
+ {
+  "term": "Hybrid battery",
+  "text": "The big high-voltage battery in a hybrid or EV that powers the electric motor. Not the small 12V battery.",
+  "match": [
+   "hybrid battery",
+   "high voltage battery",
+   "high-voltage battery"
+  ]
+ },
+ {
+  "term": "Inverter",
+  "text": "The box that turns the high-voltage battery's power into what the electric motor uses.",
+  "match": [
+   "inverter"
+  ]
+ },
+ {
+  "term": "Transfer case",
+  "text": "The gearbox behind the transmission that sends power to the front wheels in 4WD.",
+  "match": [
+   "transfer case"
+  ]
+ },
+ {
+  "term": "PTU",
+  "text": "Power transfer unit: the small gearbox that sends power to the rear wheels on many AWD cars and SUVs.",
+  "match": [
+   "ptu",
+   "power transfer unit"
+  ]
+ },
+ {
+  "term": "Differential",
+  "text": "The gearbox in the middle of an axle that lets the left and right wheels turn at different speeds in corners.",
+  "match": [
+   "differential",
+   "diff",
+   "rear end"
+  ]
+ },
+ {
+  "term": "Track bar",
+  "text": "A bar that keeps a solid front axle centered under the truck. A loose one is a top cause of death wobble.",
+  "match": [
+   "track bar"
+  ]
+ },
+ {
+  "term": "Death wobble",
+  "text": "A violent shake of the whole front end after a bump on trucks and Jeeps with a solid front axle.",
+  "match": [
+   "death wobble"
+  ]
+ },
+ {
+  "term": "Air suspension",
+  "text": "Suspension that rides on rubber air bags filled by a small compressor instead of metal springs.",
+  "match": [
+   "air suspension",
+   "air ride",
+   "air springs",
+   "airmatic"
+  ]
+ },
+ {
+  "term": "Actuator",
+  "text": "A small electric motor that moves something, like a door lock or an air vent flap.",
+  "match": [
+   "actuator",
+   "actuators"
+  ]
+ },
+ {
+  "term": "Window regulator",
+  "text": "The track and cable inside the door that raises and lowers the window glass.",
+  "match": [
+   "window regulator"
+  ]
+ },
+ {
+  "term": "Sunroof drain",
+  "text": "Small tubes at each corner of the sunroof that carry rain water out under the car. When they clog, water comes inside.",
+  "match": [
+   "sunroof drain",
+   "sunroof drains"
+  ]
+ },
+ {
+  "term": "Throttle body",
+  "text": "The valve that opens to let air into the engine when you press the gas. On newer vehicles it's electronic.",
+  "match": [
+   "throttle body"
+  ]
+ },
+ {
+  "term": "Reduced power mode",
+  "text": "Also called limp mode: the computer limits power to protect the engine or transmission. Often shows a wrench light.",
+  "match": [
+   "reduced power",
+   "limp mode",
+   "wrench light"
+  ]
+ },
+ {
+  "term": "Stepper motor",
+  "text": "A tiny motor behind each gauge needle. When one wears out, that needle sticks or jumps.",
+  "match": [
+   "stepper motor",
+   "gauge motor"
+  ]
+ },
+ {
+  "term": "Infotainment",
+  "text": "The touchscreen system that runs the radio, phone, maps and often the backup camera.",
+  "match": [
+   "infotainment"
+  ]
+ },
+ {
+  "term": "Oil consumption test",
+  "text": "A dealer test that measures how much oil the engine burns over about 1,000 miles. Used for warranty claims.",
+  "match": [
+   "oil consumption test"
+  ]
  }
 ]
