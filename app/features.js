@@ -799,6 +799,7 @@ function initFeatures(vehicles) {
   setupLookup();
   renderMyIssues();
   renderLights();
+  setupRoadside();
   document.getElementById("helpBtn").addEventListener("click", openHelpSheet);
   for (const sheet of document.querySelectorAll(".sheet")) {
     sheet.querySelector(".sheet-close").addEventListener("click", () => sheet.close());

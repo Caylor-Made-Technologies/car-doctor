@@ -17,7 +17,7 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 | **Log** | Repair history, newest first. |
 | **Vehicle** | **Look up by VIN** (fills in year, make, model and engine for people who don't know them), your vehicle (with make/model suggestions) and its **known problems**, **Look up any vehicle** (handy before buying), "Teach the model", privacy and terms. |
 
-**Help** (red button, top right): 911, Texas DPS roadside help **1-800-525-5555** (24/7, on the back of every Texas driver license), NTTA toll roads **#999**, and find a tow truck or mechanic.
+**Help** (red button, top right): 911, plus your state's official highway patrol or DOT roadside numbers (all 50 states and DC, in `app/roadside.js`), and find a tow truck or mechanic. The first time the app opens it asks which state you drive in; change it in My Vehicle or right in the Help sheet. Where a state's own advice is "call 911 if you're stranded", that's what it shows. Numbers were checked on state sites in October 2026; re-check them once a year.
 
 ### Easy for anyone
 - **Asks before guessing.** "It makes a weird noise" gets "What does it sound like?" with tappable choices, the way a mechanic would ask, instead of a shaky guess.
@@ -107,6 +107,7 @@ app/                           the app (this folder is what gets published)
   index.html, style.css, app.js
   features.js                  symptom picker, quick questions, check-in, dial, dash lights,
                                vehicle problems, help, glowing circuits
+  roadside.js                  roadside help numbers for every state + the state picker
   sounds.js                    example noises made with the Web Audio API
   glossary.json                plain-English meanings for tappable words
   theme.js                     applies light/dark before the page draws

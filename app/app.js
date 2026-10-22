@@ -182,6 +182,7 @@ const KEYS = {
   reminders: "cardoctor.reminders",
   pending: "cardoctor.lastGuess",
   installHint: "cardoctor.installHint",
+  state: "cardoctor.state",
 };
 
 // Reads saved data. If it's missing, damaged, or the wrong shape (say, from
@@ -1244,6 +1245,7 @@ function wireUp() {
     renderLog();
     renderTraining();
     renderReminders();
+    renderRoadside();
     welcome();
     status.textContent = "";
     alert("All Car Doctor data on this phone was deleted.");

@@ -616,6 +616,10 @@ textarea.input { resize: vertical; }
 .call span { font-size: 0.9rem; }
 .call-911 { background: #c4291f; border-color: #c4291f; color: #fff; }
 .call-911 strong { color: #fff; }
+.state-pick { display: grid; gap: 4px; margin: 4px 0 12px; font-weight: 600; }
+.state-note { margin: 0 0 12px; }
+#stateSheet .sheet-title { padding-right: 40px; }
+#stateSheet .input { width: 100%; margin: 4px 0 12px; }
 .tow { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); }
 .tow p { margin: 0 0 8px; }
 

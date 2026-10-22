@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
   <script src="sounds.js" defer></script>
+  <script src="roadside.js" defer></script>
   <script src="features.js" defer></script>
 </head>
 <body>
@@ -126,6 +127,7 @@
         <label>Engine <input class="input" name="engine" maxlength="30" placeholder="6.0L V8" list="engineList" autocomplete="off"></label>
         <datalist id="engineList"></datalist>
         <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7" placeholder="185000"></label>
+        <label class="full">State (for roadside help) <select class="input state-select" id="profileState"></select></label>
         <button class="btn primary full" type="submit">Save vehicle</button>
         <p id="profileSaved" class="hint full" role="status"></p>
       </form>
@@ -218,13 +220,31 @@
       <button class="icon-btn bare sheet-close" type="button" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
       <h2 class="sheet-title" id="helpTitle">Roadside help</h2>
       <a class="call call-911" href="tel:911"><strong>911</strong><span>Emergency, crash, fire or danger</span></a>
-      <a class="call" href="tel:18005255555"><strong>1-800-525-5555</strong><span>Texas DPS roadside help, 24/7. For flat tires, out of gas or a breakdown. It's on the back of your Texas driver license. A dispatcher sends a trooper or local help; they don't pay for a tow.</span></a>
-      <a class="call" href="tel:%23999"><strong>#999</strong><span>North Texas toll roads (NTTA) roadside help</span></a>
+      <label class="state-pick">Your state
+        <select class="input state-select" id="helpState"></select>
+      </label>
+      <div id="stateNumbers" aria-live="polite"></div>
       <div class="btn-row">
         <a class="btn" href="https://maps.apple.com/?q=tow%20truck%20near%20me" target="_blank" rel="noopener noreferrer">Find a tow truck</a>
         <a class="btn" href="https://maps.apple.com/?q=auto%20repair%20near%20me" target="_blank" rel="noopener noreferrer">Find a mechanic</a>
       </div>
       <p class="hint">Stay safe: pull as far off the road as you can and turn on your hazard lights. On a busy highway it's usually safest to stay buckled in your vehicle, unless there's smoke or fire. Your insurance or credit card may include free towing.</p>
+    </div>
+  </dialog>
+
+  <!-- First start: which state? (roadside.js) -->
+  <dialog id="stateSheet" class="sheet" aria-labelledby="stateTitle">
+    <div class="sheet-inner">
+      <button class="icon-btn bare sheet-close" type="button" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <h2 class="sheet-title" id="stateTitle">Which state do you drive in?</h2>
+      <p>So the red Help button shows your state's highway patrol roadside numbers, ready even with no signal.</p>
+      <label class="sr-only" for="firstState">State</label>
+      <select class="input state-select" id="firstState"></select>
+      <div class="btn-row">
+        <button class="btn primary" type="button" id="stateSave">Save</button>
+        <button class="btn" type="button" id="stateSkip">Not now</button>
+      </div>
+      <p class="hint">You can change it any time in My Vehicle or the Help button.</p>
     </div>
   </dialog>
 
