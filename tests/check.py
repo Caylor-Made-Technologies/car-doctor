@@ -120,7 +120,7 @@ def main():
     # 2b. Every cause has a step-by-step guide.
     guides = json.loads((APP / "guides.json").read_text(encoding="utf-8"))
     bad_guides = [k for k in causes
-                  if k not in guides or len(guides[k].get("tools", [])) < 2 or len(guides[k].get("find", [])) < 3
+                  if k not in guides or not guides[k].get("confirm") or len(guides[k].get("tools", [])) < 2 or len(guides[k].get("find", [])) < 3
                   or len(guides[k].get("fix", [])) < 3 or not guides[k].get("spots")
                   or any(not (s.get("name") and s.get("where") and s.get("look")) for s in guides[k]["spots"])]
     check(not bad_guides and set(guides) == set(causes), f"guides.json has a complete guide per cause {bad_guides or ''}")
@@ -192,6 +192,10 @@ def main():
                   "quick questions never lower held-out accuracy")
             check(full["after"] >= 95, f"held-out top-1 after questions is 95%+ ({full['after']}%)")
             check(not q["deadAnswers"], f"every answer adds words the model knows {q['deadAnswers'] or ''}")
+            for band in q["calibration"]:
+                print(f"      shown {band['band']}: {band['answers']} answers, shown avg {band['shown']}%, right {band['right']}%")
+            over = [b for b in q["calibration"] if b["answers"] >= 10 and b["shown"] > b["right"] + 10]
+            check(not over, f"shown confidence is not more than 10 points above how often it's right {over or ''}")
 
     print()
     if failures:

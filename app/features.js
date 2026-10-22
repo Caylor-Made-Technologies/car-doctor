@@ -612,7 +612,7 @@ function dial(prob) {
     needle.style.transform = `rotate(${-90 + 1.8 * pct}deg)`;
     fill.style.strokeDashoffset = String(100 - pct);
   }));
-  const word = pct >= 80 ? "Strong match" : pct >= 50 ? "Likely" : "Possible";
+  const word = pct >= 85 ? "Strong match" : pct >= 60 ? "Likely" : pct >= 40 ? "Possible" : "Just a guess";
   return el("div", { class: "dial", role: "img", "aria-label": `${pct}% match: ${word}` },
     svg,
     el("div", { class: "dial-read", "aria-hidden": "true" }, el("strong", {}, pct + "%"), el("span", {}, word)));
@@ -1227,6 +1227,7 @@ function questionBlock(q) {
       buzz();
       session.asked.add(q.id);
       session.followups++;
+      block.parentElement.querySelector(".skip-q")?.remove();
       block.remove();
       answerQuestion(label, words);
     } }, label))));

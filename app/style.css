@@ -966,6 +966,17 @@ body[data-tab="vehicle"] .vehicle-card { display: none; }
 .spec-list dt:first-of-type, .spec-list dt:first-of-type + dd { border-top: 0; }
 #myTech .tech { margin-top: 14px; }
 #lookResult .tech { margin-top: 10px; }
+/* ---------- Careful answers ---------- */
+.stop-banner.caution { background: #8a5300; animation: none; }
+.unsure-note { margin: -4px 0 12px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--soon-bg); font-weight: 600; }
+.check-first {
+  display: grid; gap: 4px; padding: 12px 14px; margin-bottom: 12px;
+  border-radius: var(--radius-sm); background: var(--safe-bg); border-left: 3px solid var(--safe);
+}
+.check-first .eyebrow { margin: 0; color: var(--safe); }
+.check-first p { margin: 0; }
+.actions .linklike { justify-self: center; }
+.skip-q { display: block; }
 /* ---------- Surprises (extras.js) ---------- */
 :root, [data-theme="dark"] { --love: #ff7aac; }
 [data-theme="light"] { --love: #c41d63; }

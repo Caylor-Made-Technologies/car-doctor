@@ -1,5 +1,6 @@
 {
   "dead_battery": {
+    "confirm": "Turn the headlights on and try to start it. If they go dim and it clicks, it's the battery. Most parts stores test batteries free.",
     "tools": [
       "Multimeter (about $20)",
       "Wire brush or battery terminal cleaner",
@@ -64,6 +65,7 @@
     ]
   },
   "bad_starter": {
+    "confirm": "Turn on the headlights and try to start it. If the lights stay bright but you hear one click and no cranking, it points to the starter.",
     "tools": [
       "Multimeter",
       "Socket set and extensions",
@@ -117,6 +119,7 @@
     ]
   },
   "bad_alternator": {
+    "confirm": "With the engine running, a parts store (or a $20 meter) should read 13.8 to 14.7 volts at the battery. Lower means the alternator isn't charging.",
     "tools": [
       "Multimeter",
       "Socket set",
@@ -169,6 +172,7 @@
     ]
   },
   "worn_brake_pads": {
+    "confirm": "Look through the wheel at the brake pad. Less than about 1/8 inch (two dimes thick) of pad left means it's time.",
     "tools": [
       "Jack, jack stands and wheel chocks",
       "Lug wrench",
@@ -225,6 +229,7 @@
     ]
   },
   "warped_rotors": {
+    "confirm": "Notice if the steering wheel or brake pedal shakes only when you brake from highway speed. Shaking when not braking is something else.",
     "tools": [
       "Jack and jack stands",
       "Lug wrench and torque wrench",
@@ -276,6 +281,7 @@
     ]
   },
   "brake_fluid_leak": {
+    "confirm": "Check the brake fluid tank under the hood and look inside each tire for wet streaks. Low fluid plus a wet spot means a leak. Don't drive it.",
     "tools": [
       "Flashlight",
       "Clean rags",
@@ -338,6 +344,7 @@
     ]
   },
   "bad_wheel_bearing": {
+    "confirm": "On an empty road at 40 to 50 mph, gently swerve left and right. If the hum gets louder one way, it's likely a wheel bearing.",
     "tools": [
       "Jack and jack stands",
       "Lug wrench",
@@ -381,6 +388,7 @@
     ]
   },
   "worn_serpentine_belt": {
+    "confirm": "With the engine off, look at the long rubber belt on the front of the engine for cracks or a shiny, glazed look.",
     "tools": [
       "Flashlight",
       "Serpentine belt tool or long ratchet",
@@ -433,6 +441,7 @@
     ]
   },
   "engine_misfire": {
+    "confirm": "Have the codes read (free at most parts stores). P0301 to P0308 tell you which cylinder is misfiring.",
     "tools": [
       "OBD-II code reader (about $20)",
       "Spark plug socket and extension",
@@ -495,6 +504,7 @@
     ]
   },
   "dirty_maf_sensor": {
+    "confirm": "Have the codes read. P0101, P0171 or P0174 point to the air sensor or an air leak. A $10 can of MAF cleaner is the cheap first try.",
     "tools": [
       "MAF sensor cleaner spray (not brake or carb cleaner)",
       "Screwdriver or Torx bits",
@@ -546,6 +556,7 @@
     ]
   },
   "vacuum_leak": {
+    "confirm": "With the engine running, listen around the top of the engine for a hiss. Codes P0171 / P0174 back it up.",
     "tools": [
       "Flashlight",
       "Code reader",
@@ -616,6 +627,7 @@
     ]
   },
   "fuel_delivery_problem": {
+    "confirm": "Turn the key to ON (don't start it) and listen at the gas tank for a 2-second hum. No hum points to the fuel pump or its fuse.",
     "tools": [
       "Fuel pressure gauge (rent free at parts stores)",
       "Code reader",
@@ -677,6 +689,7 @@
     ]
   },
   "overheating": {
+    "confirm": "Once the engine is cool, check the coolant level and look for drips under the front. Never open the cap when hot.",
     "tools": [
       "Flashlight",
       "Coolant (type on the cap or manual)",
@@ -748,6 +761,7 @@
     ]
   },
   "thermostat_stuck_open": {
+    "confirm": "If the temperature needle stays low after 15 minutes of driving and the heat is weak, it's almost always the thermostat.",
     "tools": [
       "Socket set",
       "New thermostat and gasket",
@@ -789,6 +803,7 @@
     ]
   },
   "transmission_problem": {
+    "confirm": "Check the transmission fluid (if it has a dipstick). It should be red and not smell burnt. Low or burnt fluid explains a lot.",
     "tools": [
       "Code reader",
       "Clean white paper towel",
@@ -845,6 +860,7 @@
     ]
   },
   "worn_cv_axle": {
+    "confirm": "In an empty parking lot, turn the wheel all the way and drive slowly in a circle. Clicking that speeds up with the wheels means a CV axle.",
     "tools": [
       "Jack and jack stands",
       "Breaker bar and axle nut socket",
@@ -887,6 +903,7 @@
     ]
   },
   "worn_u_joint": {
+    "confirm": "With it parked, grab the driveshaft underneath and twist it. Any clunk or play in the joints means a worn U-joint.",
     "tools": [
       "Jack and jack stands",
       "Wheel chocks",
@@ -932,6 +949,7 @@
     ]
   },
   "tire_balance": {
+    "confirm": "Check all tire pressures and look for a bubble on any tire. If it only shakes around 50 to 70 mph, balancing usually fixes it.",
     "tools": [
       "Tire pressure gauge",
       "Flashlight",
@@ -982,6 +1000,7 @@
     ]
   },
   "alignment_problem": {
+    "confirm": "Set all tires to the pressure on the door sticker first. If it still pulls on a flat road, it needs an alignment.",
     "tools": [
       "Tape measure",
       "Tire pressure gauge",
@@ -1032,6 +1051,7 @@
     ]
   },
   "exhaust_leak": {
+    "confirm": "Listen at a cold start. A ticking or puffing that quiets as it warms up, plus black soot near a joint, means an exhaust leak.",
     "tools": [
       "Flashlight",
       "Gloves",
@@ -1087,6 +1107,7 @@
     ]
   },
   "oil_leak_low_oil": {
+    "confirm": "Check the dipstick first and top it up. Then put cardboard under the engine overnight to see where it drips.",
     "tools": [
       "Flashlight",
       "Degreaser or brake cleaner",
@@ -1183,6 +1204,7 @@
     ]
   },
   "power_steering_problem": {
+    "confirm": "Check the power steering fluid level. Low fluid plus a whine when you turn is the usual sign.",
     "tools": [
       "Flashlight",
       "Correct power steering fluid (check the cap or manual)",
@@ -1244,6 +1266,7 @@
     ]
   },
   "ac_problem": {
+    "confirm": "With the A/C on max, look at the front of the A/C pump on the engine. If the center part doesn't spin, it's low on refrigerant or not engaging.",
     "tools": [
       "Flashlight",
       "Thermometer for the vent",
@@ -1306,6 +1329,7 @@
     ]
   },
   "electrical_ground_problem": {
+    "confirm": "Wiggle the battery cables and the black cable to the engine. Loose or corroded ones cause strange electrical problems.",
     "tools": [
       "Multimeter",
       "Wire brush",
@@ -1361,6 +1385,7 @@
     ]
   },
   "worn_suspension": {
+    "confirm": "Push down hard on each corner and let go. More than one bounce means worn shocks.",
     "tools": [
       "Jack and jack stands",
       "Pry bar",
@@ -1422,6 +1447,7 @@
     ]
   },
   "timing_chain_problem": {
+    "confirm": "Listen at a cold start. A rattle from the front of the engine for a few seconds, plus codes like P0016, points to the timing chain.",
     "tools": [
       "Code reader",
       "Mechanic's stethoscope or long screwdriver",
@@ -1454,6 +1480,7 @@
     ]
   },
   "head_gasket_failure": {
+    "confirm": "Look at the oil cap and dipstick for milky, tan sludge. A shop can do a quick test for exhaust gas in the coolant.",
     "tools": [
       "Combustion leak test kit (block tester, about $40)",
       "Cooling system pressure tester (rent free at parts stores)",
@@ -1508,6 +1535,7 @@
     ]
   },
   "catalytic_converter_problem": {
+    "confirm": "Have the codes read. P0420 / P0430 mean the converter. Fix any misfire codes first; they cause it.",
     "tools": [
       "Code reader",
       "Infrared thermometer",
@@ -1550,6 +1578,7 @@
     ]
   },
   "evap_leak": {
+    "confirm": "Check that the gas cap clicks and its rubber seal isn't cracked. A new cap fixes many of these codes.",
     "tools": [
       "Code reader",
       "Flashlight",
@@ -1610,6 +1639,7 @@
     ]
   },
   "sticking_brake_caliper": {
+    "confirm": "After a short drive, carefully hold your hand near (not on) each wheel. One much hotter than the others is the sticky one.",
     "tools": [
       "Jack and jack stands",
       "Infrared thermometer",
@@ -1661,6 +1691,7 @@
     ]
   },
   "bad_motor_mounts": {
+    "confirm": "Have someone hold the brake and shift between Drive and Reverse while you watch the engine. A big jump means a broken mount.",
     "tools": [
       "Flashlight",
       "Helper",
@@ -1704,6 +1735,7 @@
     ]
   },
   "blower_motor_problem": {
+    "confirm": "Try every fan speed. If only the highest works, it's the blower resistor, a cheap part.",
     "tools": [
       "Screwdriver and socket set",
       "Multimeter or test light",
@@ -1754,6 +1786,7 @@
     ]
   },
   "clutch_problem": {
+    "confirm": "In 4th gear at low speed, press the gas firmly. If the engine revs up but the car doesn't speed up, the clutch is slipping.",
     "tools": [
       "Flashlight",
       "Brake fluid (for hydraulic clutches)",
@@ -1806,6 +1839,7 @@
     ]
   },
   "low_tire_pressure": {
+    "confirm": "Check all four tires with a gauge when cold and compare to the sticker in the driver door.",
     "tools": [
       "Tire pressure gauge",
       "Air compressor or gas station air",
@@ -1867,6 +1901,7 @@
     ]
   },
   "abs_sensor_problem": {
+    "confirm": "Have the ABS codes read (not every scanner can). The code tells you which wheel's sensor.",
     "tools": [
       "Code reader that reads ABS codes",
       "Flashlight",
@@ -1919,6 +1954,7 @@
     ]
   },
   "key_ignition_problem": {
+    "confirm": "Try your spare key. If it works, the problem is the key or its battery, not the car.",
     "tools": [
       "Spare key",
       "New key fob battery (usually CR2032)",
@@ -1972,6 +2008,7 @@
     ]
   },
   "heater_core_problem": {
+    "confirm": "With the engine warm and heat on high, feel the two hoses going into the firewall. One hot and one cool means a clogged heater core.",
     "tools": [
       "Flashlight",
       "Coolant",
@@ -2022,6 +2059,7 @@
     ]
   },
   "cvt_problem": {
+    "confirm": "Have the transmission codes read and ask if your model has an extended CVT warranty before paying for repairs.",
     "tools": [
       "Code reader that reads transmission codes",
       "Flashlight"
@@ -2060,6 +2098,7 @@
     ]
   },
   "torque_converter_shudder": {
+    "confirm": "Hold a steady 35 to 45 mph with light gas. A rumble-strip feel that stops when you press harder points to the torque converter.",
     "tools": [
       "Code reader",
       "Correct transmission fluid",
@@ -2100,6 +2139,7 @@
     ]
   },
   "water_pump_failure": {
+    "confirm": "Look under the water pump (front of the engine, behind the belt) for drips or crusty dried coolant.",
     "tools": [
       "Flashlight",
       "Socket set",
@@ -2146,6 +2186,7 @@
     ]
   },
   "oil_burning": {
+    "confirm": "Write down the miles each time you add oil. More than a quart every 1,500 miles with no drips means it's burning oil.",
     "tools": [
       "Notebook to log oil added and miles",
       "Flashlight",
@@ -2207,6 +2248,7 @@
     ]
   },
   "throttle_body_problem": {
+    "confirm": "Have the codes read. P2135, P2101 or P0121 point to the throttle body. Cleaning it is a cheap first try.",
     "tools": [
       "Throttle body cleaner",
       "Clean rags or old toothbrush",
@@ -2248,6 +2290,7 @@
     ]
   },
   "collapsed_lifter": {
+    "confirm": "Listen with the engine warm. A steady tick from the top of the engine, plus a misfire code on one cylinder, points to a lifter.",
     "tools": [
       "Mechanic's stethoscope or long screwdriver",
       "Code reader",
@@ -2287,6 +2330,7 @@
     ]
   },
   "engine_knock": {
+    "confirm": "Check the oil level right away. A deep knock from low in the engine that gets louder with gas needs a mechanic before you drive more.",
     "tools": [
       "Mechanic's stethoscope",
       "Oil pressure gauge",
@@ -2337,6 +2381,7 @@
     ]
   },
   "turbo_problem": {
+    "confirm": "Have the codes read. P0299 means low boost. Look for oil-soaked or loose hoses between the turbo and the engine.",
     "tools": [
       "Flashlight",
       "Code reader",
@@ -2387,6 +2432,7 @@
     ]
   },
   "diesel_emissions_problem": {
+    "confirm": "Read the message on the dash. It usually says if it's DEF level, DEF quality, or the exhaust filter needing a highway drive.",
     "tools": [
       "Code reader that reads diesel codes",
       "DEF fluid (only real API-certified DEF)",
@@ -2447,6 +2493,7 @@
     ]
   },
   "hybrid_ev_problem": {
+    "confirm": "Test the small 12-volt battery first. A weak one causes lots of hybrid and EV warnings.",
     "tools": [
       "Code reader that reads hybrid codes",
       "12 V battery tester",
@@ -2500,6 +2547,7 @@
     ]
   },
   "four_wheel_drive_problem": {
+    "confirm": "Check the 4WD fuses, then have someone press the 4WD button while you listen under the truck for the shift motor.",
     "tools": [
       "Code reader",
       "Flashlight",
@@ -2563,6 +2611,7 @@
     ]
   },
   "differential_problem": {
+    "confirm": "Remove the fill plug on the differential. The oil should reach the bottom of the hole and not smell burnt.",
     "tools": [
       "Jack and jack stands",
       "Socket and ratchet (often 3/8 in square drive for the plug)",
@@ -2623,6 +2672,7 @@
     ]
   },
   "death_wobble": {
+    "confirm": "Have someone rock the steering wheel (engine on, parked) while you watch the front steering parts. Anything that moves loosely is the culprit.",
     "tools": [
       "Jack and jack stands",
       "Flashlight",
@@ -2691,6 +2741,7 @@
     ]
   },
   "air_suspension_problem": {
+    "confirm": "Note which corner sits low after parking overnight, then spray soapy water on that air bag to find bubbles.",
     "tools": [
       "Spray bottle of soapy water",
       "Flashlight",
@@ -2740,6 +2791,7 @@
     ]
   },
   "blend_door_actuator": {
+    "confirm": "Change the temperature setting and listen behind the dash. Clicking with air that won't change temperature means the blend door motor.",
     "tools": [
       "Screwdriver and small sockets",
       "Flashlight",
@@ -2780,6 +2832,7 @@
     ]
   },
   "instrument_cluster_problem": {
+    "confirm": "Watch the gauges at start-up. If only some needles act up while the car runs fine, it's the gauge cluster, not the engine.",
     "tools": [
       "Trim tools",
       "Small Torx and sockets",
@@ -2822,6 +2875,7 @@
     ]
   },
   "infotainment_problem": {
+    "confirm": "Restart the screen (hold the power button 10 to 20 seconds) and check for a software update.",
     "tools": [
       "Owner's manual",
       "Phone with the latest update",
@@ -2864,6 +2918,7 @@
     ]
   },
   "window_regulator_problem": {
+    "confirm": "Press the window switch and listen. Motor runs but the window doesn't move = broken regulator. Silence = switch or motor.",
     "tools": [
       "Trim panel tools",
       "Screwdrivers and sockets",
@@ -2915,6 +2970,7 @@
     ]
   },
   "door_lock_problem": {
+    "confirm": "Try the lock with the key fob, the inside button and the key. If only one door fails all three ways, it's that door's lock motor.",
     "tools": [
       "Trim panel tools",
       "Screwdrivers and sockets",
@@ -2965,6 +3021,7 @@
     ]
   },
   "water_leak_inside": {
+    "confirm": "Run a garden hose over one area at a time while someone watches inside, starting low and working up.",
     "tools": [
       "Garden hose",
       "Helper",
@@ -3038,6 +3095,7 @@
     ]
   },
   "rust_damage": {
+    "confirm": "Poke the rusty spot with a screwdriver. Solid metal rings; rotten metal crunches or goes through.",
     "tools": [
       "Flashlight",
       "Screwdriver or small hammer to probe rust",
@@ -3099,6 +3157,7 @@
     ]
   },
   "adas_problem": {
+    "confirm": "Clean the grille emblem, bumper sensors and the windshield in front of the camera, then see if the warning goes away.",
     "tools": [
       "Soft cloth",
       "Owner's manual",

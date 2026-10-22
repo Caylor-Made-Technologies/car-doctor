@@ -395,7 +395,7 @@ const DETAILS = [
   { text: "Only when cold", keys: ["cold"] },
 ];
 
-const session = { messages: [], shown: [], resultNode: null, done: false, busy: false, asked: new Set(), followups: 0, last: null };
+const session = { messages: [], shown: [], resultNode: null, done: false, busy: false, asked: new Set(), followups: 0, excluded: new Set(), last: null };
 
 function sessionText() {
   return session.messages.join(" ");
@@ -467,6 +467,8 @@ function welcome() {
   session.done = false;
   session.asked = new Set();
   session.followups = 0; // taps after the first description; capped so it never feels like a quiz
+  session.excluded = new Set(); // causes the user said it's not
+  session.skipQuestions = false;
   session.last = null;
   session.askedMore = false;
   stopSound();
@@ -507,6 +509,7 @@ async function thinking(ms) {
 //   a little for problems you've confirmed before with similar words.
 function computeBoosts() {
   const boosts = vehicleBoosts();
+  for (const label of session.excluded) boosts[label] = -50; // ruled out with "Not that"
   for (const code of findCodes(sessionText())) {
     const info = CODES[code];
     if (info && info.related) boosts[info.related] = (boosts[info.related] || 0) + 3;
@@ -584,8 +587,21 @@ async function answerQuestion(label, words) {
   session.busy = false;
 }
 
-// A guess is never certain, so the most we show is 99%.
-const percent = (prob) => Math.min(99, Math.max(1, Math.round(prob * 100)));
+// How sure we really are. The model's own score runs high: on the held-out
+// sentences a "75%" top guess was right only about 4 times in 10, while 97%+
+// was right about 95 times in 100 (tests/questions.js prints this table).
+// So scores are mapped to how often guesses like it turned out right, and
+// never shown above 95%.
+const CALIBRATION = [[0, 0.1], [0.5, 0.2], [0.75, 0.3], [0.9, 0.5], [0.97, 0.85], [1, 0.95]];
+function howSure(prob) {
+  for (let i = 1; i < CALIBRATION.length; i++) {
+    const [x1, y1] = CALIBRATION[i];
+    const [x0, y0] = CALIBRATION[i - 1];
+    if (prob <= x1) return y0 + ((prob - x0) / (x1 - x0)) * (y1 - y0);
+  }
+  return CALIBRATION[CALIBRATION.length - 1][1];
+}
+const percent = (prob) => Math.max(1, Math.round(howSure(prob) * 100));
 
 function gauge(prob) {
   const pct = percent(prob);
@@ -629,18 +645,46 @@ function showResults(result) {
 
   const top = result.ranked.filter((g, i) => i === 0 || g.prob >= 0.05).slice(0, 3);
   const best = top[0];
+  const sure = howSure(best.prob);
+
+  // Don't jump to conclusions: when unsure and a question can tell the
+  // guesses apart, ask it first instead of showing a guess we may take back.
+  const question = pickQuestion(top, specificWords(sessionText()));
+  if (question && sure < 0.85 && !session.skipQuestions) {
+    const node = addMsg("bot",
+      el("p", {}, session.asked.size ? "Thanks. One more so I get it right:" : "Before I guess, a quick question so I don't jump to conclusions:"),
+      questionBlock(question),
+      el("button", { class: "linklike skip-q", type: "button", onclick: () => {
+        session.skipQuestions = true;
+        node.remove();
+        showResults(predict(sessionText(), computeBoosts()));
+      } }, "Skip the questions and show my best guess"));
+    scrollChat(node);
+    return;
+  }
+
   const cause = lookupCause(best.label);
+  const guide = Object.hasOwn(GUIDES, best.label) ? GUIDES[best.label] : {};
   const card = el("article", { class: "result-card", "aria-label": "Diagnosis: " + cause.name });
 
   if (cause.severity === "critical") {
     card.append(el("div", { class: "stop-banner", role: "alert" }, "⚠️ Don't drive until it's checked."));
+  } else {
+    // Safety first: never hide a dangerous possibility behind a milder guess.
+    const danger = result.ranked.slice(1).find((g) => g.prob >= 0.05 && lookupCause(g.label).severity === "critical");
+    if (danger) {
+      const d = lookupCause(danger.label);
+      const advice = (d.drive || "Have it checked before driving far.").replace(/^(No|Yes)[.,]\s*/, "");
+      card.append(el("div", { class: "stop-banner caution", role: "alert" }, `⚠️ Can't rule out ${d.name.toLowerCase()}, which can be serious. ${advice}`));
+    }
   }
 
   // Plain English first; the technical checks are tucked away for DIYers.
   const seen = new Set();
   card.append(el("div", { class: "result-main" },
-    el("p", { class: "eyebrow" }, "Most likely"),
+    el("p", { class: "eyebrow" }, sure >= 0.6 ? "Most likely" : "Not sure yet · best guess"),
     el("h2", { class: "result-title" }, cause.name),
+    sure < 0.6 ? el("p", { class: "unsure-note" }, "These are close, so I can't be sure from what I know. Do the check below first and look at the other possibilities. If it's still unclear, have a mechanic look before buying parts.") : null,
     el("div", { class: "badges" }, severityBadge(cause.severity), el("span", { class: "pill" }, DIY[cause.diy] || cause.diy)),
     // The first thing anyone wants to know: can I keep driving?
     cause.drive ? el("div", { class: "drive-now sev-" + cause.severity },
@@ -649,6 +693,8 @@ function showResults(result) {
     el("h3", { class: "q" }, "What's going on"),
     el("p", {}, explain(cause.plain || cause.summary, seen)),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
+    guide.confirm ? el("div", { class: "check-first" },
+      el("h3", { class: "eyebrow" }, "🔍 Check this first, before buying parts"), el("p", {}, explain(guide.confirm, seen))) : null,
     guideBlock(best.label, seen),
     techBlock(load(KEYS.profile, {}), best.label),
     CAUSE_SOUND[best.label] ? el("div", { class: "sound-row" }, soundButton(CAUSE_SOUND[best.label]),
@@ -671,7 +717,7 @@ function showResults(result) {
   for (const g of top.slice(1)) {
     const c = lookupCause(g.label);
     const altSeen = new Set();
-    card.append(el("details", { class: "alt" },
+    card.append(el("details", sure < 0.6 ? { class: "alt", open: "" } : { class: "alt" },
       el("summary", {},
         el("span", { class: "alt-head" }, el("span", {}, c.name), icon("chevron")),
         gauge(g.prob)),
@@ -679,19 +725,18 @@ function showResults(result) {
         el("div", { class: "badges" }, severityBadge(c.severity), el("span", { class: "pill" }, DIY[c.diy] || c.diy)),
         plainBlock(c, altSeen),
         c.todo ? el("p", {}, el("strong", {}, "What to do: "), explain(c.todo, altSeen)) : null,
+        Object.hasOwn(GUIDES, g.label) ? el("p", {}, el("strong", {}, "🔍 Check: "), explain(GUIDES[g.label].confirm, altSeen)) : null,
         el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, explain(x, altSeen)))),
         guideBlock(g.label, altSeen))));
   }
 
-  // Unsure, or the description is too short to trust? Ask one simple
-  // question that separates the top guesses. If none fits, fall back to
-  // "when does it happen?" chips the user hasn't covered yet. Both count
-  // toward the follow-up limit (MAX_FOLLOWUPS in features.js).
+  // Still a question left (the stick-shift one is asked even when sure, or
+  // the user skipped)? Offer it under the card. Out of questions but thin?
+  // Offer "when does it happen?" chips. Both count toward MAX_FOLLOWUPS.
   const usefulWords = new Set(tokenize(sessionText()).filter((t) => !t.includes("_") && MODEL.vocab[t] !== undefined));
-  const question = pickQuestion(top, specificWords(sessionText()));
   if (question) {
     card.append(questionBlock(question));
-  } else if ((best.prob < 0.6 || usefulWords.size < 2) && session.followups < MAX_FOLLOWUPS) {
+  } else if ((sure < 0.6 || usefulWords.size < 2) && session.followups < MAX_FOLLOWUPS) {
     const said = new Set(tokenize(sessionText()));
     const missing = DETAILS.filter((d) => !d.keys.some((k) => said.has(k))).map((d) => d.text);
     card.append(el("div", { class: "followup" },
@@ -701,8 +746,9 @@ function showResults(result) {
 
   card.append(el("div", { class: "actions" },
     el("button", { class: "btn primary", type: "button", onclick: () => confirmCause(best.label, card) }, "✔ That was it"),
-    el("button", { class: "btn", type: "button", onclick: () => pickOther(card) }, "✖ Something else"),
-    el("button", { class: "btn wide", type: "button", onclick: welcome }, "New problem")));
+    el("button", { class: "btn", type: "button", onclick: () => ruleOut(best.label, card) }, "✖ Not that"),
+    el("button", { class: "btn wide", type: "button", onclick: welcome }, "New problem"),
+    el("button", { class: "linklike wide", type: "button", onclick: () => pickOther(card) }, "I already know what it was")));
 
   addMsg("result", card);
   session.resultNode = card;
@@ -728,6 +774,23 @@ function confirmCause(label, card) {
   card.querySelector(".actions").remove();
   addMsg("bot", el("p", {}, "Yay! 🎉 Saved to your repair log, and I'll remember it for next time."),
     chipRow(["New problem", "Open my log"], (pick) => (pick === "New problem" ? welcome() : showTab("log"))));
+}
+
+// "Not that": rule it out and think again, instead of repeating the guess.
+async function ruleOut(label, card) {
+  if (session.busy) return;
+  session.busy = true;
+  session.excluded.add(label);
+  card.querySelector(".actions")?.remove();
+  addMsg("user", "Not that");
+  await thinking(500);
+  const many = session.excluded.size >= 3;
+  addMsg("bot", el("p", {}, many
+    ? `OK, that's ${session.excluded.size} ruled out. Here's my next best guess, but this one really needs hands-on eyes; a mechanic can test it properly.`
+    : `OK, ruling out ${lookupCause(label).name.toLowerCase()}. Let me think again.`),
+    many ? el("button", { class: "btn", type: "button", onclick: () => openShopSheet(label) }, "📍 Find a mechanic near me") : null);
+  showResults(predict(sessionText(), computeBoosts()));
+  session.busy = false;
 }
 
 function pickOther(card) {

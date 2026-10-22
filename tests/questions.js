@@ -19,6 +19,9 @@ const core = app.slice(0, app.indexOf("// ===== STORAGE ====="));
 const lib = new Function(core + "\nreturn { tokenize, predict, setModel: (m) => { MODEL = m; } };")();
 lib.setModel(JSON.parse(fs.readFileSync(path.join(ROOT, "app/model.json"), "utf8")));
 const BROAD = new Set(eval(app.match(/const BROAD_WORDS = new Set\((\[[\s\S]*?\])\)/)[1]));
+// howSure() from app.js: the confidence the app shows.
+const calSource = app.slice(app.indexOf("const CALIBRATION"), app.indexOf("const percent"));
+const howSure = new Function(calSource + "\nreturn howSure;")();
 
 // QUESTIONS, the limits and pickQuestion from features.js.
 const slice = (start, end) => { const i = features.indexOf(start); return features.slice(i, features.indexOf(end, i)); };
@@ -37,6 +40,8 @@ const probOf = (text, label) => lib.predict(text).ranked.find((g) => g.label ===
 const holdout = fs.readFileSync(path.join(ROOT, "data/holdout.csv"), "utf8").trim().split("\n").slice(1)
   .map((line) => { const i = line.indexOf(","); return [line.slice(0, i), line.slice(i + 1)]; });
 
+const shown = []; // [confidence shown, was it right] for every final answer
+
 function play(rows) {
   let before = 0, after = 0, asked = 0, most = 0, broke = 0;
   for (const [label, text] of rows) {
@@ -47,7 +52,8 @@ function play(rows) {
       const ranked = lib.predict(sessionText()).ranked;
       const top = ranked.filter((g, i) => i === 0 || g.prob >= 0.05).slice(0, 3);
       const q = pickQuestion(top, specific(sessionText()));
-      if (!q) break;
+      // The app only asks when it isn't sure yet (or for "always" questions).
+      if (!q || (howSure(top[0].prob) >= 0.85 && !q.always)) break;
       session.asked.add(q.id); session.followups++; n++;
       let pick = "", best = probOf(sessionText(), label);
       for (const [, words] of q.options) {
@@ -55,7 +61,9 @@ function play(rows) {
       }
       if (pick) session.messages.push(pick);
     }
-    const last = lib.predict(sessionText()).ranked[0].label === label;
+    const end = lib.predict(sessionText()).ranked[0];
+    const last = end.label === label;
+    shown.push([howSure(end.prob), last]);
     before += first; after += last; asked += n; most = Math.max(most, n);
     if (first && !last) broke++;
   }
@@ -68,4 +76,14 @@ const vague = holdout.map(([l, t]) => [l, t.split(" ").filter((w) => lib.tokeniz
 // Every answer that adds words must add words the model knows.
 const deadAnswers = QUESTIONS.flatMap((q) => q.options.filter(([, w]) => w && !lib.predict(w).recognized).map(([l]) => `${q.id}: ${l}`));
 
-console.log(JSON.stringify({ maxAllowed: MAX_QUESTIONS, full: play(holdout), vague: play(vague), deadAnswers }));
+const full = play(holdout);
+const vagueResult = play(vague);
+// Shown confidence vs how often it was right, in bands.
+const bands = [[0, 0.4], [0.4, 0.6], [0.6, 0.85], [0.85, 1.01]].map(([lo, hi]) => {
+  const inBand = shown.filter(([c]) => c >= lo && c < hi);
+  const avgShown = inBand.reduce((sum, [c]) => sum + c, 0) / (inBand.length || 1);
+  const right = inBand.filter(([, ok]) => ok).length / (inBand.length || 1);
+  return { band: `${Math.round(lo * 100)}-${Math.min(100, Math.round(hi * 100))}%`, answers: inBand.length,
+    shown: Math.round(avgShown * 100), right: Math.round(right * 100) };
+});
+console.log(JSON.stringify({ maxAllowed: MAX_QUESTIONS, full, vague: vagueResult, calibration: bands, deadAnswers }));
