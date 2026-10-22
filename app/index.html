@@ -22,6 +22,7 @@
   <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
+  <script src="features.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -41,15 +42,22 @@
     <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4.5 1.8 6 1.8 6H4.2S6 14.5 6 10z"/><path d="M10 19.5a2 2 0 0 0 4 0"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4.5c0-.8.7-1.5 1.5-1.5H9l1.5 4.5-2 1.5a11 11 0 0 0 6 6l1.5-2 4.5 1.5v2.5c0 .8-.7 1.5-1.5 1.5A15.5 15.5 0 0 1 5 4.5z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
     <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 7h15M10 7V5h4v2M6.5 7l1 13h9l1-13"/></symbol>
   </svg>
 
   <header class="topbar">
     <div class="topbar-row">
       <p class="brand"><svg class="icon brand-icon" aria-hidden="true"><use href="#i-pulse"/></svg><span class="brand-text"><span class="brand-name">Car Doctor</span><span class="brand-by">by Caylor Made Technologies</span></span></p>
-      <button id="themeToggle" class="icon-btn" type="button" aria-label="Switch to light mode">
-        <svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>
-      </button>
+      <div class="top-actions">
+        <button id="helpBtn" class="help-btn" type="button" aria-label="Roadside help and emergency numbers">
+          <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Help</span>
+        </button>
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Switch to light mode">
+          <svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
     </div>
     <button id="vehicleCard" class="vehicle-card" type="button">
       <svg class="icon vehicle-icon" aria-hidden="true"><use href="#i-truck"/></svg>
@@ -75,7 +83,7 @@
 
     <!-- Codes -->
     <section id="tab-codes" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-codes" hidden>
-      <h1 class="page-title">Trouble codes</h1>
+      <h1 class="page-title">Codes &amp; lights</h1>
       <p class="page-sub">When the check engine light comes on, the vehicle saves a code. Type it here to see what it means.</p>
       <form id="codeForm" class="search" autocomplete="off" role="search">
         <label class="sr-only" for="codeInput">Trouble code</label>
@@ -86,6 +94,11 @@
       <div id="codeResult" aria-live="polite">
         <div class="skeleton-card" aria-hidden="true"><span class="sk sk-line w40"></span><span class="sk sk-line w80"></span><span class="sk sk-line w60"></span></div>
       </div>
+
+      <h2 class="section-title">What's that light?</h2>
+      <p class="hint">Tap the light you see on your dashboard.</p>
+      <div id="lightGrid" class="light-grid"></div>
+      <div id="lightResult" aria-live="polite"></div>
     </section>
 
     <!-- My Vehicle -->
@@ -94,13 +107,27 @@
       <p class="page-sub">Saved on this phone so answers and log entries fit your vehicle.</p>
       <form id="profileForm" class="card form-grid" autocomplete="off">
         <label>Year <input class="input" name="year" inputmode="numeric" maxlength="4" placeholder="2005"></label>
-        <label>Make <input class="input" name="make" maxlength="30" placeholder="Chevy"></label>
-        <label class="full">Model <input class="input" name="model" maxlength="40" placeholder="Silverado 2500HD"></label>
+        <label>Make <input class="input" name="make" maxlength="30" placeholder="Chevrolet" list="makeList" autocomplete="off"></label>
+        <label class="full">Model <input class="input" name="model" maxlength="40" placeholder="Silverado 2500HD" list="modelList" autocomplete="off"></label>
+        <datalist id="makeList"></datalist>
+        <datalist id="modelList"></datalist>
         <label>Engine <input class="input" name="engine" maxlength="30" placeholder="6.0L V8"></label>
         <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7" placeholder="185000"></label>
         <button class="btn primary full" type="submit">Save vehicle</button>
         <p id="profileSaved" class="hint full" role="status"></p>
       </form>
+
+      <h2 class="section-title" id="myIssuesTitle">Known problems</h2>
+      <div id="myIssues" aria-live="polite"></div>
+
+      <h2 class="section-title">Look up any vehicle</h2>
+      <p class="hint">Thinking about buying one? See what it's known for.</p>
+      <div class="card lookup">
+        <label class="sr-only" for="lookYear">Year</label><select id="lookYear" class="input"></select>
+        <label class="sr-only" for="lookMake">Make</label><select id="lookMake" class="input"></select>
+        <label class="sr-only" for="lookModel">Model</label><select id="lookModel" class="input"></select>
+      </div>
+      <div id="lookResult" aria-live="polite"></div>
 
       <h2 class="section-title">Teach the model</h2>
       <div class="card">
@@ -116,6 +143,7 @@
       <h2 class="section-title">Privacy &amp; terms</h2>
       <div class="card prose">
         <p><strong>Your data stays on this phone.</strong> Your vehicle, repair log and training examples are saved in this browser only. Nothing is sent to us or anyone else. No accounts, cookies, ads, analytics or trackers.</p>
+        <p>"Find a mechanic" only uses your location if you tap "Use my location". It stays on this phone and is only put into the map link; Apple or Google receives it when you open their map. It's never saved.</p>
         <p>Reminders you add to your calendar go to your phone's Calendar app. If you pick "Google Calendar", the reminder's title and date are sent to Google so it can create the event; nothing else is.</p>
         <p>Delete it any time with the button below, or by clearing this site's data in your browser settings.</p>
         <p><strong>Guidance only.</strong> Car Doctor suggests likely causes from what you type. It can be wrong and is not a professional inspection or repair advice. If something feels unsafe (brakes, steering, overheating, fuel or exhaust smells), don't drive it and have a qualified mechanic check it. Use jack stands, chock the wheels, and let the engine cool before working on it. The app is free, provided as-is, and meant for adults; it isn't directed at children under 13.</p>
@@ -169,6 +197,30 @@
       <ul id="logList" class="log-list" aria-label="Repair log entries"></ul>
     </section>
   </main>
+
+  <!-- Roadside help sheet -->
+  <dialog id="helpSheet" class="sheet" aria-labelledby="helpTitle">
+    <div class="sheet-inner">
+      <button class="icon-btn bare sheet-close" type="button" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <h2 class="sheet-title" id="helpTitle">Roadside help</h2>
+      <a class="call call-911" href="tel:911"><strong>911</strong><span>Emergency, crash, fire or danger</span></a>
+      <a class="call" href="tel:18005255555"><strong>1-800-525-5555</strong><span>Texas DPS roadside help, 24/7. For flat tires, out of gas or a breakdown. It's on the back of your Texas driver license. A dispatcher sends a trooper or local help; they don't pay for a tow.</span></a>
+      <a class="call" href="tel:%23999"><strong>#999</strong><span>North Texas toll roads (NTTA) roadside help</span></a>
+      <div class="btn-row">
+        <a class="btn" href="https://maps.apple.com/?q=tow%20truck%20near%20me" target="_blank" rel="noopener noreferrer">Find a tow truck</a>
+        <a class="btn" href="https://maps.apple.com/?q=auto%20repair%20near%20me" target="_blank" rel="noopener noreferrer">Find a mechanic</a>
+      </div>
+      <p class="hint">Stay safe: pull as far off the road as you can and turn on your hazard lights. On a busy highway it's usually safest to stay buckled in your vehicle, unless there's smoke or fire. Your insurance or credit card may include free towing.</p>
+    </div>
+  </dialog>
+
+  <!-- Find a mechanic sheet (filled in by features.js) -->
+  <dialog id="shopSheet" class="sheet" aria-label="Find a mechanic near you">
+    <div class="sheet-inner">
+      <button class="icon-btn bare sheet-close" type="button" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <div class="sheet-body"></div>
+    </div>
+  </dialog>
 
   <form id="composer" class="composer" autocomplete="off" aria-label="Send a message">
     <label class="sr-only" for="msgInput">Describe the problem</label>

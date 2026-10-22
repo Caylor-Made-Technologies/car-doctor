@@ -50,6 +50,9 @@ STOPWORDS = {
     "also", "then", "now", "pretty", "bit", "little", "kinda", "lot",
     "when", "from", "every", "time", "all", "up", "after", "while", "goes",
     "go", "going", "one", "does", "doesnt", "will",
+    # Vague words that say nothing about the cause ("weird noise").
+    "weird", "strange", "funny", "odd", "something", "wrong", "problem",
+    "problems", "issue", "issues", "acting",
 }
 
 # Different words people use for the same thing. The key is the "canonical"

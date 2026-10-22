@@ -10,11 +10,16 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 
 | Tab | What it does |
 |---|---|
-| **Chat** | Describe the problem in your own words or tap a quick reply ("Grinding noise", "Check engine light", "Won't start"). Answers come in plain English: **What's going on**, **Can I drive it?** and **What to do**, plus a severity badge (**Safe to drive / Get checked soon / Stop driving**), match % and how hard the fix is. Technical checks with real specs sit under "For DIYers". |
-| **Codes** | One search box. Type `p0300` and it becomes `P0300`. Shows the meaning in plain English, whether you can drive, likely causes and how hard it is to fix (74 common codes). Unknown codes are decoded by their structure. |
-| **Reminders** | Oil changes, tire rotations, brake checks and more, each with a one-line "why it matters". Pick a date, time and repeat, then **Add to Calendar**: your phone's Calendar alerts you the day before and at that time, even with the app closed. Shows overdue / due soon, a badge on the tab, and a heads-up in Chat. "Done" logs it and schedules the next one. |
-| **Log** | Repair log with date, mileage and notes, newest first. "That was it" in Chat and "Done" on a reminder add entries automatically. |
-| **Vehicle** | Year, make, model, engine and mileage (shown on a card at the top of every screen), "Teach the model", privacy and terms, and "Delete all my data". |
+| **Chat** | Tap what you notice (noise, shaking, smell, warning light, won't start, leak, running hot, brakes, steering), then *which* one, *where* on the vehicle (tap a spot on a truck diagram), and *when*. Or just type it. Answers come in plain English: **What's going on**, **Can I drive it?**, **What to do**, a severity badge, a gauge dial for the match %, and a note if the problem is **common on your vehicle**. Harder or dangerous problems get **Find a mechanic near me** (and **Roadside help** when it's critical). |
+| **Codes** | Type a trouble code (`p0300` becomes `P0300`) for its meaning, causes and fix difficulty (86 codes). **What's that light?** explains 9 dashboard warning lights. |
+| **Reminders** | Oil changes, tires, brakes and more, added to your phone's Calendar with alerts. |
+| **Log** | Repair history, newest first. |
+| **Vehicle** | Your vehicle (with make/model suggestions) and its **known problems**, **Look up any vehicle** (handy before buying), "Teach the model", privacy and terms. |
+
+**Help** (red button, top right): 911, Texas DPS roadside help **1-800-525-5555** (24/7, on the back of every Texas driver license), NTTA toll roads **#999**, and find a tow truck or mechanic.
+
+### Known problems by vehicle
+`model/build_vehicles.py` builds `app/vehicles.json`: 36 makes and 392 common models (2000 and newer) to pick from, with 179 commonly reported problems across 199 models (signs + what to do in plain words). Problems tied to a specific engine only show if your saved engine matches. Your vehicle's known problems also get a small extra score in the diagnosis. These are widely reported problems, not a promise your vehicle has them.
 
 ### Made for people who don't know cars
 - Every answer starts with everyday words before any specs.
@@ -47,29 +52,32 @@ It's called "naive" because it pretends each word is independent of the others. 
 
 `model/train.py` uses **5-fold cross-validation**: it hides 1/5 of the examples, trains on the rest, tests on the hidden part, and repeats 5 times. So these numbers are on sentences the model didn't see.
 
-Current results (689 examples, 25 problems):
+Current results (1,094 examples, 29 problems):
 
 | alpha | top-1 | top-3 |
 |---|---|---|
-| 0.05 | 86.9% | 97.0% |
-| 0.1 | 87.5% | 97.2% |
-| 0.3 | 88.7% | 97.5% |
-| **0.5 (picked)** | **88.8%** | **97.5%** |
-| 1.0 | 88.0% | 97.7% |
+| **0.05 (picked)** | **96.2%** | **99.6%** |
+| 0.1 | 96.1% | 99.6% |
+| 0.3 | 95.4% | 99.7% |
+| 0.5 | 94.9% | 99.7% |
+| 1.0 | 94.1% | 99.5% |
+
+**95% is enforced.** If new training data drops top-1 below 95%, `train.py` fails, the deploy stops, and the old app stays live. Run `python model/train.py` locally to see the numbers, then add clearer examples for the problems that get mixed up.
 
 - **Top-1** = its first guess was right. **Top-3** = the right answer was in its 3 guesses.
-- Targets: 60%+ top-1 and 80%+ top-3.
 - Real-world accuracy will be lower, since all examples so far were written by one person. Adding your own real cases (see below) is the best way to improve it.
 
 ## Project layout
 
 ```
 data/symptoms.csv              training data: label,text (one sentence per row)
-model/train.py                 trains the model and writes app/model.json
+model/train.py                 trains the model and writes app/model.json (fails under 95%)
+model/build_vehicles.py        known problems by vehicle -> app/vehicles.json
 model/make_icons.py            draws the app icons (Pillow)
 tests/check.py                 consistency checks (Python vs browser, data files)
 app/                           the app (this folder is what gets published)
   index.html, style.css, app.js
+  features.js                  symptom picker, gauge dial, dash lights, vehicle problems, help
   glossary.json                plain-English meanings for tappable words
   theme.js                     applies light/dark before the page draws
   circuit.svg                  header decoration
@@ -116,6 +124,9 @@ You can also just type new lines yourself: `label,how a person would describe it
 3. Add **at least 10** varied sentences for it to `data/symptoms.csv`.
 4. Push. `tests/check.py` fails the deploy if the label and cause don't match.
 
+### Add a vehicle or known problem
+Edit `model/build_vehicles.py`: add a problem to a group in `ISSUES` (title, signs, what to do, related cause) and a row to `MODELS` (make, model, first year, last year, groups). If it only affects one engine, add the group to `ENGINE_TAGS`. Push, and the workflow rebuilds `vehicles.json`.
+
 ### Explain a new word
 Add to `app/glossary.json`: `{ "term": "Rotor", "match": ["rotor", "rotors"], "text": "The metal disc..." }`. For measurements use `"regex"` instead of `"match"`.
 
@@ -138,6 +149,7 @@ After changing anything in `app/`, bump `VERSION` in `app/sw.js` so phones pick 
 
 ```bash
 pip install -r requirements.txt
+python model/build_vehicles.py
 python model/train.py        # prints accuracy, writes app/model.json
 python tests/check.py        # needs Node.js installed
 python -m http.server 8000 -d app

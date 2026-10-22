@@ -6,7 +6,10 @@
  *   1. Text cleaning (copied from model/train.py)
  *   2. Prediction (the Naive Bayes math)
  *   3. Storage (localStorage helpers)
- *   4. App UI (chat, codes, vehicle and log tabs)
+ *   4. App UI (chat, codes, reminders, log and vehicle tabs)
+ *
+ * More features (vehicle problems, symptom picker, dial, dash lights,
+ * roadside help) live in features.js.
  *
  * tests/check.py loads everything ABOVE the "===== STORAGE =====" line in
  * Node to make sure the browser gives the same answers as Python. Keep
@@ -29,6 +32,9 @@ const STOPWORDS = new Set([
   "also", "then", "now", "pretty", "bit", "little", "kinda", "lot",
   "when", "from", "every", "time", "all", "up", "after", "while", "goes",
   "go", "going", "one", "does", "doesnt", "will",
+  // Vague words that say nothing about the cause ("weird noise").
+  "weird", "strange", "funny", "odd", "something", "wrong", "problem",
+  "problems", "issue", "issues", "acting",
 ]);
 
 const SYNONYM_GROUPS = {
@@ -338,14 +344,7 @@ function showTab(name, { focus = false } = {}) {
 }
 
 // ---------- Chat ----------
-const STARTERS = [
-  "Grinding noise",
-  "Check engine light",
-  "Won't start",
-  "Shakes at highway speed",
-  "Squeal when I start it",
-  "Running hot",
-];
+const STARTERS = ["Grinding noise", "Check engine light", "Won't start"];
 
 // Follow-up chips. "keys" are tokens that mean the user already said it.
 const DETAILS = [
@@ -403,7 +402,9 @@ function welcome() {
   const hello = addMsg("bot",
     el("p", { class: "lead" }, name ? `What's going on with your ${name}?` : "What's going on with your vehicle?"),
     el("p", {}, "No car know-how needed. Just tell me in your own words what you hear, feel or smell, and when it happens."),
-    el("p", { class: "fineprint" }, "Like: \"it grinds when I stop\" or \"it shakes on the highway\". Or tap one:"),
+    el("p", { class: "picker-intro" }, "Tap what you notice:"),
+    pickerTiles(),
+    el("p", { class: "fineprint" }, "Or type it, like \"it grinds when I stop\". Quick picks:"),
     chipRow(STARTERS, sendMessage),
     el("p", { class: "fineprint" }, "Guidance only, not a professional diagnosis. If it feels unsafe, don't drive it."));
   const due = dueReminders();
@@ -442,8 +443,9 @@ async function sendMessage(text) {
     }));
   }
 
-  // Every code mentioned so far adds +3 to its related cause.
-  const boosts = {};
+  // Every code mentioned so far adds +3 to its related cause, and problems
+  // your vehicle is known for get a small extra weight.
+  const boosts = vehicleBoosts();
   for (const code of findCodes(sessionText())) {
     const info = CODES[code];
     if (info && info.related) boosts[info.related] = (boosts[info.related] || 0) + 3;
@@ -486,6 +488,16 @@ function plainBlock(cause, seen) {
     cause.drive ? el("p", {}, explain(cause.drive, seen)) : null);
 }
 
+// "Common on your 2005 Chevy Silverado: ..." when the vehicle is known for it.
+function knownOnVehicle(label) {
+  const p = load(KEYS.profile, {});
+  const hits = vehicleIssues(p).filter((i) => i.c === label);
+  if (!hits.length) return null;
+  return el("div", { class: "known" },
+    el("p", { class: "eyebrow" }, `Common on your ${[p.year, canonicalMake(p.make), p.model].join(" ")}`),
+    ...hits.map((h) => el("p", {}, el("strong", {}, h.t + ": "), h.w)));
+}
+
 function showResults(result) {
   // Older result cards stay in the chat but lose their buttons.
   if (session.resultNode) {
@@ -508,13 +520,17 @@ function showResults(result) {
     el("p", { class: "eyebrow" }, "Most likely"),
     el("h2", { class: "result-title" }, cause.name),
     el("div", { class: "badges" }, severityBadge(cause.severity), el("span", { class: "pill" }, DIY[cause.diy] || cause.diy)),
-    gauge(best.prob),
+    dial(best.prob),
+    knownOnVehicle(best.label),
     plainBlock(cause, seen),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
     el("details", { class: "more-checks" },
       el("summary", {}, `For DIYers: ${cause.checks.length} things to check`),
       el("p", { class: "summary" }, explain(cause.summary, seen)),
       el("ol", { class: "checks" }, ...cause.checks.map((c) => el("li", {}, explain(c, seen))))),
+    needsPro(cause) ? el("div", { class: "pro-row" },
+      el("button", { class: "btn", type: "button", onclick: () => openShopSheet(best.label) }, "📍 Find a mechanic near me"),
+      cause.severity === "critical" ? el("button", { class: "btn", type: "button", onclick: openHelpSheet }, "🚨 Roadside help") : null) : null,
     el("p", { class: "fineprint" }, "Tap any underlined word for a simple explanation.")));
 
   // Other possibilities, collapsed.
@@ -532,8 +548,10 @@ function showResults(result) {
         el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, explain(x, altSeen)))))));
   }
 
-  // Unsure? Ask for more detail with chips the user hasn't already covered.
-  if (best.prob < 0.6) {
+  // Unsure, or the description is too short to trust? Ask for more detail
+  // with chips the user hasn't already covered.
+  const usefulWords = new Set(tokenize(sessionText()).filter((t) => !t.includes("_") && MODEL.vocab[t] !== undefined));
+  if (best.prob < 0.6 || usefulWords.size < 2) {
     const said = new Set(tokenize(sessionText()));
     const missing = DETAILS.filter((d) => !d.keys.some((k) => said.has(k))).map((d) => d.text);
     card.append(el("div", { class: "followup" },
@@ -558,6 +576,7 @@ function addTraining(label) {
 }
 
 function confirmCause(label, card) {
+  celebrate(card);
   addTraining(label);
   session.done = true;
   const profile = load(KEYS.profile, {});
@@ -690,6 +709,7 @@ function renderProfile() {
   document.getElementById("vehicleTitle").textContent = empty ? "Add your vehicle" : title || "My vehicle";
   document.getElementById("vehicleSub").textContent = empty ? "For answers that fit your truck or car" : sub || "Tap to add engine and mileage";
   card.setAttribute("aria-label", empty ? "Add your vehicle" : `Vehicle: ${title} ${sub}. Edit vehicle`);
+  if (VEHICLES) renderMyIssues();
 }
 
 // ---------- Log ----------
@@ -1101,8 +1121,8 @@ async function init() {
   const sendBtn = document.getElementById("sendBtn");
   sendBtn.disabled = true;
   try {
-    const [model, causes, codes, glossary] = await Promise.all(
-      ["model.json", "causes.json", "codes.json", "glossary.json"].map((f) => fetch(f).then((r) => {
+    const [model, causes, codes, glossary, vehicles] = await Promise.all(
+      ["model.json", "causes.json", "codes.json", "glossary.json", "vehicles.json"].map((f) => fetch(f).then((r) => {
         if (!r.ok) throw new Error(f + " " + r.status);
         return r.json();
       })));
@@ -1110,6 +1130,7 @@ async function init() {
     CAUSES = causes;
     CODES = codes;
     buildGlossary(glossary);
+    initFeatures(vehicles);
     setReminderType("oil");
     renderReminders();
     sendBtn.disabled = false;
