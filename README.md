@@ -4,15 +4,23 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 
 - **Works offline.** Install it on your home screen and it runs with no signal.
 - **No AI service, no costs.** The diagnosis model is a small machine-learning model trained in Python from `data/symptoms.csv`, saved as JSON, and run right in the browser.
-- **Private.** Your vehicle, repair log and training examples stay on your phone (localStorage). Nothing is sent anywhere.
+- **Private.** Your vehicle, repair log and training examples stay on your phone (localStorage). Nothing is sent anywhere: no accounts, cookies, analytics or trackers. "Delete all my data" in My Vehicle wipes it.
 
 ## What's in the app
 
 | Tab | What it does |
 |---|---|
-| **Diagnose** | Chat. Describe the problem, add details, and it re-scores the whole conversation each time. Shows top 3 causes with match %, severity, DIY level and checks. Critical problems get a "Don't drive" banner. |
-| **Codes** | Look up 74 common OBD-II codes. Unknown codes are decoded by their structure. "Diagnose with this code" sends it to the chat. |
-| **My Vehicle** | Vehicle profile (shown in the header), repair log, and "Teach the model" (copy your confirmed answers as new training data). |
+| **Chat** | Describe the problem or tap a quick reply ("Grinding noise", "Check engine light", "Won't start"). It re-scores the whole conversation each time and shows the most likely cause with a severity badge (**Safe to drive / Get checked soon / Stop driving**), match %, DIY level, and the next thing to check. Two other possibilities sit underneath. Critical problems get a "Don't drive" banner. |
+| **Codes** | One search box. Type `p0300` and it becomes `P0300`. Shows the meaning, likely causes and how hard it is to fix for 74 common OBD-II codes; unknown codes are decoded by their structure. "Diagnose with this code" sends it to the chat. |
+| **My Vehicle** | Year, make, model, engine and mileage (shown on a card at the top of every screen), "Teach the model", privacy and terms, and a "Delete all my data" button. |
+| **Log** | Repair log with date, mileage and notes, newest first. "That was it" in the chat adds an entry automatically. |
+
+### Look and feel
+- Dark "instrument cluster" theme with an amber accent; light mode toggle (top right), remembered on the phone.
+- One font (Inter, stored in the app so it works offline; license in `app/fonts/Inter-OFL.txt`).
+- Built for one hand: bottom tab bar, 44px+ tap targets, 16px+ inputs so iPhone doesn't zoom, iPhone safe areas respected.
+- Smooth but subtle: tabs slide and fade, messages animate in after a "thinking" indicator, buttons press in, cards lift, skeleton loaders while the model loads. All motion turns off when the phone's **Reduce Motion** setting is on.
+- Accessibility: screen reader labels, keyboard focus rings and arrow-key tabs, skip link, AA color contrast. Automated accessibility scan (axe) is clean on every tab in both themes.
 
 ## How the model works (plain English)
 
@@ -33,15 +41,15 @@ It's called "naive" because it pretends each word is independent of the others. 
 
 `model/train.py` uses **5-fold cross-validation**: it hides 1/5 of the examples, trains on the rest, tests on the hidden part, and repeats 5 times. So these numbers are on sentences the model didn't see.
 
-Current results (467 examples, 25 problems):
+Current results (689 examples, 25 problems):
 
 | alpha | top-1 | top-3 |
 |---|---|---|
-| 0.05 | 73.9% | 91.6% |
-| 0.1 | 74.1% | 92.5% |
-| **0.3 (picked)** | **74.3%** | **92.9%** |
-| 0.5 | 74.3% | 92.3% |
-| 1.0 | 74.3% | 92.3% |
+| 0.05 | 86.9% | 97.0% |
+| 0.1 | 87.5% | 97.2% |
+| 0.3 | 88.7% | 97.5% |
+| **0.5 (picked)** | **88.8%** | **97.5%** |
+| 1.0 | 88.0% | 97.7% |
 
 - **Top-1** = its first guess was right. **Top-3** = the right answer was in its 3 guesses.
 - Targets: 60%+ top-1 and 80%+ top-3.
@@ -56,6 +64,8 @@ model/make_icons.py            draws the app icons (Pillow)
 tests/check.py                 consistency checks (Python vs browser, data files)
 app/                           the app (this folder is what gets published)
   index.html, style.css, app.js
+  theme.js                     applies light/dark before the page draws
+  fonts/                       Inter font + its open font license
   causes.json                  info for each problem
   codes.json                   OBD-II code database
   model.json                   made by train.py, never edit by hand
@@ -119,6 +129,10 @@ python tests/check.py        # needs Node.js installed
 python -m http.server 8000 -d app
 ```
 Open http://localhost:8000.
+
+## Privacy and terms
+
+The app's privacy and terms text lives in the My Vehicle tab. It's a plain-English template: have a Texas attorney review it before promoting the app widely.
 
 ## Safety
 
