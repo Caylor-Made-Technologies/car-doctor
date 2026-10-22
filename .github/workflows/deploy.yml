@@ -30,6 +30,9 @@ jobs:
       - name: Install Python packages
         run: pip install -r requirements.txt
 
+      - name: Build the vehicle problem list
+        run: python model/build_vehicles.py
+
       - name: Train the model
         run: python model/train.py
 

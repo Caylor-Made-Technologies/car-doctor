@@ -120,6 +120,13 @@ def main():
                  if not g.get("term") or not g.get("text") or not (g.get("match") or g.get("regex"))]
     check(not bad_terms, f"glossary.json entries are complete {bad_terms or ''}")
 
+    # 3c. Vehicle problems point at real causes and groups.
+    vehicles = json.loads((APP / "vehicles.json").read_text(encoding="utf-8"))
+    bad_v = [f"{m['make']} {m['model']}" for m in vehicles["models"]
+             if any(g not in vehicles["groups"] for g in m["groups"]) or m["from"] > m["to"]]
+    bad_c = [i["t"] for g in vehicles["groups"].values() for i in g if i["c"] is not None and i["c"] not in causes]
+    check(not bad_v and not bad_c, f"vehicles.json is consistent {bad_v + bad_c or ''}")
+
     # 4. Model matches the data.
     check(sorted(model["classes"]) == sorted(labels), "model.json classes match the CSV labels")
 
