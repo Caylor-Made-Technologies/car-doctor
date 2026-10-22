@@ -1,7 +1,7 @@
 // Car Doctor service worker: network first, cache fallback, so you get
 // updates when online and the app still works offline.
 // Bump VERSION whenever app files change so old caches get cleared.
-const VERSION = "v13";
+const VERSION = "v14";
 const CACHE = "car-doctor-" + VERSION;
 const FILES = [
   "./",
@@ -16,6 +16,7 @@ const FILES = [
   "theme.js",
   "fonts/inter-latin-wght-normal.woff2",
   "causes.json",
+  "guides.json",
   "codes.json",
   "glossary.json",
   "fonts/montserrat-latin-wght-normal.woff2",

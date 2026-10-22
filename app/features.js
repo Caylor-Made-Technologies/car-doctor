@@ -8,6 +8,7 @@
  *   4. Dash warning light guide
  *   5. Roadside help + find a mechanic near you
  *   6. Little celebrations (haptics, check pop)
+ *   7. Step-by-step repair guides (guides.json)
  */
 
 // ===========================================================================
@@ -822,6 +823,48 @@ function setupMotion() {
     void btn.offsetWidth;
     btn.classList.add("whoosh");
   });
+}
+
+// ===========================================================================
+// 7. Step-by-step repair guides
+// ===========================================================================
+
+// Words that mean "show me how", so the guide opens by itself.
+const HOW_TO = /\b(how|diagnos\w*|fix\w*|replac\w*|repair\w*|steps?|guide|where|find)\b/;
+
+// Tools, where to look (what you asked about first), how to find it, how to
+// fix it. Steps have check boxes so you can keep your place under the truck.
+function guideBlock(label, seen) {
+  const g = Object.hasOwn(GUIDES, label) ? GUIDES[label] : null;
+  if (!g) return null;
+  const said = sessionText().toLowerCase();
+  const asked = g.spots.filter((s) => (s.match || []).some((m) => said.includes(m)));
+  const spots = [...asked, ...g.spots.filter((s) => !asked.includes(s))];
+  const steps = (items) => el("ol", { class: "guide-steps" }, ...items.map((t) =>
+    el("li", {}, el("label", {}, el("input", { type: "checkbox" }), el("span", {}, explain(t, seen))))));
+  const box = el("details", { class: "guide" },
+    el("summary", {},
+      el("span", { class: "guide-icon", "aria-hidden": "true" }, "🔧"),
+      el("span", { class: "guide-sum" }, el("strong", {}, "Step-by-step guide"),
+        el("span", {}, "Tools, where to look, how to find it and fix it")),
+      icon("chevron")),
+    el("div", { class: "guide-body" },
+      g.safety ? el("p", { class: "guide-safety" }, el("strong", {}, "⚠️ Safety first: "), g.safety) : null,
+      el("h4", { class: "guide-h" }, "What you'll need"),
+      el("ul", { class: "tool-list" }, ...g.tools.map((t) => el("li", {}, t))),
+      el("h4", { class: "guide-h" }, "Where to look"),
+      ...spots.map((s) => el("div", { class: "spot" + (asked.includes(s) ? " asked" : "") },
+        asked.includes(s) ? el("p", { class: "eyebrow" }, "Matches what you said") : null,
+        el("p", { class: "spot-name" }, s.name),
+        el("p", {}, el("strong", {}, "Where: "), explain(s.where, seen)),
+        el("p", {}, el("strong", {}, "Look for: "), explain(s.look, seen)))),
+      el("h4", { class: "guide-h" }, "How to find it"),
+      steps(g.find),
+      el("h4", { class: "guide-h" }, "How to fix it"),
+      steps(g.fix),
+      el("p", { class: "fineprint" }, "Guidance only. If a step feels unsafe or needs tools you don't have, let a shop do it.")));
+  if (asked.length || HOW_TO.test(said)) box.open = true;
+  return box;
 }
 
 // Called from app.js once the data files are loaded.

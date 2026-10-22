@@ -225,6 +225,7 @@ function forget(key) {
 
 let CAUSES = {};
 let CODES = {};
+let GUIDES = {};
 
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -646,6 +647,7 @@ function showResults(result) {
     el("h3", { class: "q" }, "What's going on"),
     el("p", {}, explain(cause.plain || cause.summary, seen)),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
+    guideBlock(best.label, seen),
     CAUSE_SOUND[best.label] ? el("div", { class: "sound-row" }, soundButton(CAUSE_SOUND[best.label]),
       el("span", { class: "fineprint" }, "Hear roughly what it sounds like")) : null,
     seenBefore(best.label),
@@ -674,7 +676,8 @@ function showResults(result) {
         el("div", { class: "badges" }, severityBadge(c.severity), el("span", { class: "pill" }, DIY[c.diy] || c.diy)),
         plainBlock(c, altSeen),
         c.todo ? el("p", {}, el("strong", {}, "What to do: "), explain(c.todo, altSeen)) : null,
-        el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, explain(x, altSeen)))))));
+        el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, explain(x, altSeen)))),
+        guideBlock(g.label, altSeen))));
   }
 
   // Unsure, or the description is too short to trust? Ask one simple
@@ -1271,14 +1274,15 @@ async function init() {
   const sendBtn = document.getElementById("sendBtn");
   sendBtn.disabled = true;
   try {
-    const [model, causes, codes, glossary, vehicles] = await Promise.all(
-      ["model.json", "causes.json", "codes.json", "glossary.json", "vehicles.json"].map((f) => fetch(f).then((r) => {
+    const [model, causes, codes, glossary, vehicles, guides] = await Promise.all(
+      ["model.json", "causes.json", "codes.json", "glossary.json", "vehicles.json", "guides.json"].map((f) => fetch(f).then((r) => {
         if (!r.ok) throw new Error(f + " " + r.status);
         return r.json();
       })));
     MODEL = model;
     CAUSES = causes;
     CODES = codes;
+    GUIDES = guides;
     buildGlossary(glossary);
     initFeatures(vehicles);
     setReminderType("oil");

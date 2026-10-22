@@ -1,0 +1,3154 @@
+{
+  "dead_battery": {
+    "tools": [
+      "Multimeter (about $20)",
+      "Wire brush or battery terminal cleaner",
+      "10 mm or 1/2 in wrench",
+      "Jumper cables or jump pack",
+      "Safety glasses"
+    ],
+    "safety": "Batteries give off explosive gas. No sparks or smoking near it, wear glasses, and take the negative (black, -) cable off first and put it back on last.",
+    "spots": [
+      {
+        "name": "Battery terminals",
+        "match": [
+          "terminal",
+          "corrosion",
+          "cable"
+        ],
+        "where": "The two posts on top (or the side on GM trucks) of the battery.",
+        "look": "White, green or blue crusty buildup, a cable you can twist by hand, or a cracked cable end."
+      },
+      {
+        "name": "Battery case and date",
+        "match": [
+          "case",
+          "old battery",
+          "date"
+        ],
+        "where": "The sticker on top or side of the battery.",
+        "look": "A date code over 4 to 5 years old, a swollen or bulging case, or wet acid on top."
+      },
+      {
+        "name": "Ground cable",
+        "match": [
+          "ground"
+        ],
+        "where": "The black cable from the battery to the engine block and to the body or frame.",
+        "look": "Rust or green corrosion where it bolts on, frayed wire, or a loose bolt."
+      },
+      {
+        "name": "Something left on",
+        "match": [
+          "drain",
+          "left on",
+          "dies overnight"
+        ],
+        "where": "Dome lights, glove box and trunk lights, aftermarket stereo, dash cam or chargers.",
+        "look": "A light that stays on with the door shut, or anything plugged in all the time."
+      }
+    ],
+    "find": [
+      "Turn the headlights on and try to start it. If the lights go very dim or out and you hear clicking, the battery is weak or the connection is bad.",
+      "Set the multimeter to DC volts and touch red to + and black to - with the engine off. 12.6 V is full, 12.4 V is about 75%, under 12.2 V is low.",
+      "Grab each cable end and try to twist it. Any movement means it needs tightening. Look for crusty corrosion.",
+      "Jump start it and let it run 20 minutes. If it starts fine the next morning, the battery was just drained. If it is dead again, the battery is bad or something is draining it.",
+      "Check the voltage with the engine running: 13.8 to 14.7 V means the alternator is charging. Lower means check the alternator instead.",
+      "Most parts stores load-test batteries for free. That is the surest answer."
+    ],
+    "fix": [
+      "Clean the posts: take the negative cable off, then the positive. Scrub posts and clamps with a wire brush and a little baking soda and water. Rinse, dry, reconnect positive then negative, and tighten until they will not twist.",
+      "If the battery is old or fails the load test, replace it. Match the group size and get at least the same cold cranking amps (CCA) on the label.",
+      "Swap: negative off, positive off, remove the hold-down, lift the battery out (they are heavy, lift with your legs). Reverse to install and make sure the hold-down is tight.",
+      "If it keeps dying overnight, have a shop do a parasitic draw test (they measure current with everything off; it should be under about 50 mA)."
+    ]
+  },
+  "bad_starter": {
+    "tools": [
+      "Multimeter",
+      "Socket set and extensions",
+      "Jack and jack stands",
+      "Wire brush",
+      "Helper to turn the key"
+    ],
+    "safety": "Disconnect the negative battery cable before touching the starter. The big starter cable is always live.",
+    "spots": [
+      {
+        "name": "Starter motor",
+        "match": [
+          "starter"
+        ],
+        "where": "Low on the engine where it meets the transmission, usually on the passenger side on GM V8 trucks. Look from underneath.",
+        "look": "A cylinder about the size of a soda can with a smaller solenoid on top and a thick red cable attached."
+      },
+      {
+        "name": "Starter cables",
+        "match": [
+          "cable",
+          "wire"
+        ],
+        "where": "The thick cable from the battery + to the starter, and the small trigger wire on the solenoid.",
+        "look": "Corroded or loose nuts, melted insulation, or a wire rubbing on the exhaust."
+      },
+      {
+        "name": "Neutral safety switch",
+        "match": [
+          "park",
+          "neutral",
+          "safety switch"
+        ],
+        "where": "On the side of the transmission (or the clutch pedal switch on a manual).",
+        "look": "If it starts in Neutral but not in Park, this switch is the likely problem."
+      }
+    ],
+    "find": [
+      "Turn the key and listen. One loud click with no cranking points to the starter or its connection. Fast clicking points to the battery.",
+      "Check the battery first: 12.4 V or more with the engine off. A weak battery acts just like a bad starter.",
+      "Try starting in Neutral. If it starts, the park/neutral safety switch is the problem, not the starter.",
+      "Gently tap the starter with a hammer handle while a helper turns the key (stay clear of moving parts). If it then cranks, the starter is worn out.",
+      "With a helper holding the key at START, check volts at the big starter terminal. Over 10 V there and no cranking means the starter is bad. Low volts means a cable or connection problem."
+    ],
+    "fix": [
+      "Clean and tighten both battery terminals and the starter connections first. This fixes more no-crank problems than you would think.",
+      "To replace: disconnect the battery negative, raise the truck on jack stands, remove the wires from the solenoid (take a photo first).",
+      "Remove the 2 mounting bolts (some trucks have a brace too) and lower the starter out. Note any shims and reuse them.",
+      "Install the new starter, torque the bolts to spec (GM V8 is about 37 ft-lb), reconnect wires, then the battery.",
+      "Parts stores test starters for free if you want to be sure before buying."
+    ]
+  },
+  "bad_alternator": {
+    "tools": [
+      "Multimeter",
+      "Socket set",
+      "Serpentine belt tool or long 3/8 in ratchet",
+      "Belt routing photo"
+    ],
+    "safety": "Disconnect the negative battery cable before unplugging the alternator. Keep hands away from the belt with the engine running.",
+    "spots": [
+      {
+        "name": "Alternator",
+        "match": [
+          "alternator"
+        ],
+        "where": "Front of the engine, driven by the serpentine belt. On most V8 trucks it is upper driver side or passenger side.",
+        "look": "A round unit with cooling vents, a pulley and a thick output wire on the back."
+      },
+      {
+        "name": "Belt and tensioner",
+        "match": [
+          "belt",
+          "tensioner",
+          "squeal"
+        ],
+        "where": "The long rubber belt that runs all the pulleys.",
+        "look": "Cracks, shiny glazed ribs, or a tensioner arm that bounces or makes noise."
+      },
+      {
+        "name": "Charging wires",
+        "match": [
+          "wire",
+          "fuse"
+        ],
+        "where": "The big wire from the alternator back to the battery and the fuse box.",
+        "look": "Corrosion at the alternator stud, a loose nut, or a blown mega fuse."
+      }
+    ],
+    "find": [
+      "With the engine off, the battery should read about 12.6 V.",
+      "Start it and check again. 13.8 to 14.7 V means it is charging. Still about 12 V or dropping means the alternator is not charging.",
+      "Turn on headlights, blower on high and rear defrost. Voltage should stay above about 13.2 V. If it drops toward 12, the alternator is weak.",
+      "Listen near the alternator with a long screwdriver handle to your ear. A grinding or whining bearing means it is worn out.",
+      "Parts stores will test the alternator on the truck or on their bench for free."
+    ],
+    "fix": [
+      "Check the belt is tight and not slipping, and the connections are clean and tight. Those are free fixes.",
+      "To replace: disconnect the battery negative. Take a photo of the belt routing.",
+      "Use the belt tool on the tensioner to slip the belt off the alternator pulley.",
+      "Unplug the connector, remove the output wire nut, then the 2 or 3 mounting bolts. Swap in the new one.",
+      "Reinstall the belt following your photo, check it sits in every groove, reconnect the battery and check for 13.8 to 14.7 V."
+    ]
+  },
+  "worn_brake_pads": {
+    "tools": [
+      "Jack, jack stands and wheel chocks",
+      "Lug wrench",
+      "C-clamp or caliper piston tool",
+      "Socket set",
+      "Brake cleaner",
+      "Torque wrench"
+    ],
+    "safety": "Never work under a vehicle on just a jack. Brakes are safety parts: if you are unsure, have them checked. Pump the pedal before driving after a pad change.",
+    "spots": [
+      {
+        "name": "Pad thickness",
+        "match": [
+          "pad",
+          "thickness"
+        ],
+        "where": "Look through the wheel spokes at the caliper. The pad is the block pressed against the rotor.",
+        "look": "Pad material under 3 mm (about the thickness of 2 dimes) needs replacing. New is about 10 to 12 mm."
+      },
+      {
+        "name": "Wear indicator",
+        "match": [
+          "squeal",
+          "squeak"
+        ],
+        "where": "A small metal tab on the pad.",
+        "look": "If it is touching the rotor, that is the squeal you hear. It is telling you to replace pads soon."
+      },
+      {
+        "name": "Rotor surface",
+        "match": [
+          "rotor",
+          "grind",
+          "groove"
+        ],
+        "where": "The shiny disc behind the wheel.",
+        "look": "Deep grooves, a lip on the outer edge, or blue heat spots. Grinding usually means metal on metal and the rotor is damaged too."
+      }
+    ],
+    "find": [
+      "Note when the noise happens. Squeal while braking = wear indicator. Grinding = pads are gone.",
+      "With the wheel on, use a flashlight through the spokes to look at the outer pad. Check both sides of the vehicle.",
+      "For a better look, take the wheel off. Check both the outer and inner pads; the inner one often wears faster.",
+      "Run a fingernail across the rotor. Grooves you can catch a nail in, or a lip at the edge, mean the rotors should be replaced or resurfaced.",
+      "Check the brake fluid level. It drops as pads wear, so low fluid with thin pads is normal. Low fluid with good pads means a leak."
+    ],
+    "fix": [
+      "Loosen lug nuts, raise the vehicle and set it on jack stands, then remove the wheel.",
+      "Remove the 2 caliper slide bolts (or the bracket bolts on some trucks) and hang the caliper with wire. Do not let it hang by the hose.",
+      "Pull the old pads, clean the bracket where the pads slide, and put on new hardware clips if they came with the pads.",
+      "Push the piston back with a C-clamp (open the bleeder or watch the reservoir so it does not overflow).",
+      "Install the new pads, a thin layer of brake grease on the slide pins and pad ears only (never on the pad face), refit the caliper and torque bolts to spec.",
+      "Do both sides of the axle. Pump the pedal until firm before driving, then bed the pads: several moderate stops from 30 mph without coming to a full stop."
+    ]
+  },
+  "warped_rotors": {
+    "tools": [
+      "Jack and jack stands",
+      "Lug wrench and torque wrench",
+      "Socket set",
+      "Brake cleaner",
+      "Dial indicator (optional)"
+    ],
+    "safety": "Support the vehicle on jack stands. Torque lug nuts in a star pattern; uneven lug torque is a top cause of pulsing brakes.",
+    "spots": [
+      {
+        "name": "Rotor face",
+        "match": [
+          "rotor"
+        ],
+        "where": "The disc behind the wheel.",
+        "look": "Dark or blue patches, uneven shiny and dull areas, grooves, or a thickness that varies around the disc."
+      },
+      {
+        "name": "Caliper slide pins",
+        "match": [
+          "caliper",
+          "pin"
+        ],
+        "where": "The bolts the caliper slides on.",
+        "look": "Dry, rusty or stuck pins make one pad drag and heat the rotor."
+      },
+      {
+        "name": "Lug nuts",
+        "match": [
+          "lug"
+        ],
+        "where": "On the wheel.",
+        "look": "Nuts tightened unevenly by an impact gun can warp the rotor hat."
+      }
+    ],
+    "find": [
+      "Feel for pulsing in the pedal or a shaking steering wheel when braking from highway speed. Steering wheel shake usually means front rotors; pedal pulse only can be rear.",
+      "Remove the wheel and look at the rotor surface for uneven spots or blue heat marks.",
+      "Measure rotor thickness with a caliper at several spots. Compare to the minimum stamped on the rotor. More than about 0.001 in variation causes pulsing.",
+      "With a dial indicator on the rotor face, spin it. Runout over about 0.002 in is too much.",
+      "Check that the caliper slides freely and the pads are wearing evenly."
+    ],
+    "fix": [
+      "Replace the rotors (often cheaper than machining today) and put in new pads with them.",
+      "Remove the caliper and bracket, pull the old rotor (a rubber mallet helps if it is rusted on), and clean the hub face with a wire brush so the new rotor sits flat.",
+      "Clean the new rotor with brake cleaner to remove the shipping oil.",
+      "Reinstall the bracket and caliper, torque to spec, and lube the slide pins.",
+      "Torque the lug nuts by hand in a star pattern. Bed in the pads with several moderate stops and avoid holding the brake hard while stopped when hot."
+    ]
+  },
+  "brake_fluid_leak": {
+    "tools": [
+      "Flashlight",
+      "Clean rags",
+      "Brake cleaner",
+      "Line wrenches",
+      "Fresh brake fluid (type on the cap, usually DOT 3)"
+    ],
+    "safety": "A brake fluid leak can make you lose your brakes. Do not drive it. Tow it to a shop if you are not set up to repair brake lines.",
+    "spots": [
+      {
+        "name": "Master cylinder",
+        "match": [
+          "master",
+          "reservoir"
+        ],
+        "where": "Under the hood on the driver side against the firewall, with the plastic fluid reservoir on top.",
+        "look": "Wet fluid where it bolts to the brake booster, or a low reservoir."
+      },
+      {
+        "name": "Brake lines",
+        "match": [
+          "line",
+          "rust"
+        ],
+        "where": "Thin metal tubes running along the frame from front to back.",
+        "look": "Rust with wet spots, especially above the fuel tank and over the rear axle. Common on older trucks in salt states."
+      },
+      {
+        "name": "Brake hoses",
+        "match": [
+          "hose"
+        ],
+        "where": "Short rubber hoses at each wheel connecting the line to the caliper.",
+        "look": "Cracks, bulges or wet spots."
+      },
+      {
+        "name": "Calipers and wheel cylinders",
+        "match": [
+          "caliper",
+          "wheel cylinder",
+          "drum"
+        ],
+        "where": "At each wheel, behind the wheel.",
+        "look": "Wet fluid on the inside of the tire or wheel, or soaked brake pads/shoes."
+      }
+    ],
+    "find": [
+      "Check the reservoir. If it is below MIN and the pads are not worn out, there is a leak.",
+      "Brake fluid is clear to amber and feels slippery, almost like light oil, with little smell.",
+      "Look at the inside of each tire and wheel for wet streaks.",
+      "Follow the lines from the master cylinder back along the frame with a flashlight, looking for wet or rusty spots.",
+      "Have someone press the brake pedal firmly while you look (engine off, vehicle secured). Fluid may drip from the leak spot."
+    ],
+    "fix": [
+      "Do not drive until it is fixed. A soft or sinking pedal means the system is losing pressure.",
+      "Replace the leaking part: hose, caliper, wheel cylinder, or the rusted section of line. Rusted lines usually mean replacing the whole line.",
+      "Refill with the correct fluid type from the cap.",
+      "Bleed the brakes, starting at the wheel farthest from the master cylinder (usually right rear), then left rear, right front, left front.",
+      "Pedal should be firm and high before driving. Test at low speed in a safe place first. If you are not sure, let a shop bleed it."
+    ]
+  },
+  "bad_wheel_bearing": {
+    "tools": [
+      "Jack and jack stands",
+      "Lug wrench",
+      "Pry bar",
+      "Socket set",
+      "Torque wrench"
+    ],
+    "safety": "A badly worn bearing can let the wheel wobble or come loose. Get it fixed soon if you can feel play.",
+    "spots": [
+      {
+        "name": "Wheel hub",
+        "match": [
+          "hub",
+          "bearing"
+        ],
+        "where": "Behind the brake rotor at each wheel. Most newer trucks use a bolt-in hub assembly.",
+        "look": "Play when you rock the tire, grinding when you spin it, or grease leaking out."
+      },
+      {
+        "name": "ABS sensor wire",
+        "match": [
+          "abs"
+        ],
+        "where": "A wire going into the back of the hub.",
+        "look": "An ABS light along with the noise often means the bearing is failing."
+      }
+    ],
+    "find": [
+      "Drive on a smooth road at 40 to 60 mph. A hum or growl that gets louder with speed is classic.",
+      "Swerve gently left and right. If the noise gets louder when turning left, it is often the right side bearing (the loaded side), and the other way around.",
+      "Jack up the wheel and set a jack stand. Grab the tire at the top and bottom and rock it. Any clunk or play is a bad sign.",
+      "Spin the wheel by hand and listen and feel for roughness or grinding.",
+      "Rule out tires: uneven or cupped tread can sound just like a bearing."
+    ],
+    "fix": [
+      "Most modern trucks: remove the wheel, caliper, bracket and rotor.",
+      "Unplug the ABS sensor, remove the axle nut if it has one, then the 3 or 4 hub bolts from behind.",
+      "Pull the hub out (it may need a hammer and penetrating oil if rusted).",
+      "Clean the knuckle where the hub sits, install the new hub, and torque the bolts and axle nut to spec.",
+      "Older trucks with tapered bearings need packing with grease and setting preload. A shop can press bearings that are not bolt-in."
+    ]
+  },
+  "worn_serpentine_belt": {
+    "tools": [
+      "Flashlight",
+      "Serpentine belt tool or long ratchet",
+      "Belt routing photo or the sticker under the hood",
+      "Spray bottle of water (for testing)"
+    ],
+    "safety": "Engine off before touching the belt. The tensioner spring is strong; hold the tool firmly.",
+    "spots": [
+      {
+        "name": "Belt ribs",
+        "match": [
+          "belt",
+          "crack",
+          "rib"
+        ],
+        "where": "The long flat belt on the front of the engine.",
+        "look": "Cracks across the ribs, missing chunks, a shiny glazed surface, or frayed edges."
+      },
+      {
+        "name": "Tensioner",
+        "match": [
+          "tensioner"
+        ],
+        "where": "A spring-loaded arm with a smooth pulley.",
+        "look": "The arm shaking a lot at idle, or the pulley being noisy or wobbly."
+      },
+      {
+        "name": "Idler and accessory pulleys",
+        "match": [
+          "pulley",
+          "idler"
+        ],
+        "where": "All the pulleys the belt touches.",
+        "look": "Wobble, roughness when spun by hand with the belt off, or a pulley out of line."
+      }
+    ],
+    "find": [
+      "Squeal at startup or when turning the wheel or turning on the A/C points to the belt slipping.",
+      "With the engine running, spray a little water on the ribbed side. If the noise stops for a moment, the belt is the problem. If it gets louder, check pulley alignment.",
+      "Engine off: look over the whole belt for cracks and wear.",
+      "Watch the tensioner arm while running. Lots of bouncing means a weak tensioner.",
+      "With the belt off, spin each pulley by hand. They should spin smoothly and quietly with no wobble."
+    ],
+    "fix": [
+      "Take a photo of the belt routing or find the sticker under the hood.",
+      "Put the belt tool on the tensioner and rotate it to release tension. Slip the belt off one smooth pulley.",
+      "Remove the old belt and check every pulley.",
+      "Route the new belt following the photo, release the tensioner slowly, and check the belt sits centered in every groove.",
+      "Start the engine and watch it for a minute. Replace a noisy tensioner or idler at the same time."
+    ]
+  },
+  "engine_misfire": {
+    "tools": [
+      "OBD-II code reader (about $20)",
+      "Spark plug socket and extension",
+      "Torque wrench",
+      "Dielectric grease",
+      "Multimeter"
+    ],
+    "safety": "A flashing check engine light means a bad misfire that can overheat the catalytic converter. Drive gently and get it fixed soon.",
+    "spots": [
+      {
+        "name": "Spark plugs",
+        "match": [
+          "plug",
+          "spark"
+        ],
+        "where": "Screwed into the cylinder heads; on a V8 there are 4 on each side.",
+        "look": "Worn electrodes, black soot, oil fouling, or a cracked white insulator."
+      },
+      {
+        "name": "Coil packs and plug wires",
+        "match": [
+          "coil",
+          "wire"
+        ],
+        "where": "On top of the plugs or on the valve covers on GM V8s, with wires to each plug.",
+        "look": "Cracks, burn marks on plug boots, or a wire touching the exhaust manifold."
+      },
+      {
+        "name": "Fuel injectors",
+        "match": [
+          "injector"
+        ],
+        "where": "In the intake, one for each cylinder.",
+        "look": "A clicking sound when running (listen with a screwdriver handle). No click on one = suspect injector."
+      },
+      {
+        "name": "Vacuum leaks",
+        "match": [
+          "vacuum",
+          "hiss"
+        ],
+        "where": "Hoses and intake gaskets.",
+        "look": "A hiss at idle, or cracked rubber hoses."
+      }
+    ],
+    "find": [
+      "Read the codes. P0301 to P0308 tell you which cylinder (P0303 = cylinder 3). P0300 means random or several.",
+      "Look up your engine's cylinder numbering. On GM V8s, odd cylinders (1, 3, 5, 7) are on the driver side, front to back.",
+      "Swap the coil (or plug wire) from the misfiring cylinder with a neighbor. Clear the codes and drive. If the misfire moves, the coil is bad.",
+      "If it stays on the same cylinder, pull and inspect that spark plug. Replace it if worn or fouled.",
+      "If plug and coil are fine, the injector or a compression problem is next. A shop can do a compression test.",
+      "A random misfire (P0300) on several cylinders often means a vacuum leak, low fuel pressure or a dirty MAF sensor."
+    ],
+    "fix": [
+      "Let the engine cool. Remove one coil or wire at a time so nothing gets mixed up.",
+      "Blow dirt away from the plug hole, then remove the plug with the plug socket.",
+      "Check the gap on the new plug (on the box or under the hood sticker). Thread it in by hand to avoid cross-threading, then torque to the spec in your manual (many GM V8s are about 11 to 15 ft-lb). Too tight can strip the threads.",
+      "Put a little dielectric grease inside the boot and reinstall the coil or wire.",
+      "Replace any coil that the swap test proved bad. Clear the codes and test drive."
+    ]
+  },
+  "dirty_maf_sensor": {
+    "tools": [
+      "MAF sensor cleaner spray (not brake or carb cleaner)",
+      "Screwdriver or Torx bits",
+      "Code reader"
+    ],
+    "safety": "Never touch the sensor wires inside the MAF. Let the cleaner dry completely before reconnecting.",
+    "spots": [
+      {
+        "name": "MAF sensor",
+        "match": [
+          "maf",
+          "mass air"
+        ],
+        "where": "In the air intake tube between the air filter box and the throttle body, with an electrical plug on it.",
+        "look": "Dust or oil film on the thin wires inside."
+      },
+      {
+        "name": "Air filter",
+        "match": [
+          "air filter",
+          "filter"
+        ],
+        "where": "In the air box at the front of the engine bay.",
+        "look": "Dark, clogged filter, or an oiled filter with too much oil (contaminates the MAF)."
+      },
+      {
+        "name": "Intake tube",
+        "match": [
+          "intake",
+          "tube",
+          "boot"
+        ],
+        "where": "Rubber or plastic tube after the MAF.",
+        "look": "Cracks or loose clamps that let unmeasured air in."
+      }
+    ],
+    "find": [
+      "Read the codes: P0101 to P0103 (MAF), P0171 and P0174 (lean) are typical.",
+      "Look at the air filter. A dirty filter or an over-oiled one points to a dirty MAF.",
+      "Check the intake tube for cracks or loose clamps between the MAF and the engine.",
+      "With a scanner showing live data: at hot idle the MAF should read roughly 1 gram/sec per liter of engine (a 6.0L reads about 5 to 7 g/s)."
+    ],
+    "fix": [
+      "Unplug the MAF sensor and remove it from the intake (usually 2 screws).",
+      "Spray the sensor wires generously with MAF cleaner. Do not touch or wipe them.",
+      "Let it air dry 10 to 15 minutes.",
+      "Reinstall, plug it in, replace the air filter if dirty, and clear the codes.",
+      "If the codes come back, the MAF sensor itself may need replacing."
+    ]
+  },
+  "vacuum_leak": {
+    "tools": [
+      "Flashlight",
+      "Code reader",
+      "Spray bottle of soapy water",
+      "Screwdriver for hose clamps",
+      "Smoke tester (a shop has one)"
+    ],
+    "safety": "Keep hands, sleeves and spray away from the belt and fan when testing with the engine running. Do not use flammable spray near the exhaust.",
+    "spots": [
+      {
+        "name": "Vacuum hoses",
+        "match": [
+          "hose",
+          "hiss"
+        ],
+        "where": "Small rubber hoses on the intake manifold, brake booster and PCV valve.",
+        "look": "Cracks, a hose that has popped off, or soft collapsed rubber."
+      },
+      {
+        "name": "Intake tube",
+        "match": [
+          "intake",
+          "boot",
+          "tube"
+        ],
+        "where": "Big tube from the air filter to the throttle body.",
+        "look": "Cracks in the folds, loose clamps."
+      },
+      {
+        "name": "PCV valve and hose",
+        "match": [
+          "pcv"
+        ],
+        "where": "On the valve cover or back of the intake.",
+        "look": "Cracked elbow or a hose that is hard and split."
+      },
+      {
+        "name": "Intake manifold gasket",
+        "match": [
+          "manifold",
+          "gasket"
+        ],
+        "where": "Between the intake manifold and the heads.",
+        "look": "Hard to see; a smoke test shows it."
+      },
+      {
+        "name": "Brake booster",
+        "match": [
+          "booster",
+          "pedal"
+        ],
+        "where": "Big round can behind the master cylinder.",
+        "look": "A hiss when you press the brake pedal, or the idle drops when you brake."
+      }
+    ],
+    "find": [
+      "Read the codes: P0171 and P0174 (lean both sides) and a high idle are typical.",
+      "With the engine idling, listen for a hiss around the top of the engine.",
+      "Look over every vacuum hose and the intake tube for cracks or loose ends. Squeeze them; old ones crack when bent.",
+      "Spray soapy water on suspected spots with the engine idling. Bubbles getting sucked in or the idle changing shows the leak.",
+      "The surest way is a smoke test. A shop fills the intake with smoke and you see where it comes out."
+    ],
+    "fix": [
+      "Replace any cracked hose with the same size vacuum hose. Take the old one to the parts store to match it.",
+      "Replace a cracked intake tube or PCV elbow; most just clip or clamp on.",
+      "An intake manifold gasket is a bigger job (several hours). Shops or experienced DIYers.",
+      "Clear the codes and drive a few days to see if they stay away."
+    ]
+  },
+  "fuel_delivery_problem": {
+    "tools": [
+      "Fuel pressure gauge (rent free at parts stores)",
+      "Code reader",
+      "Safety glasses",
+      "Fire extinguisher nearby",
+      "Rags"
+    ],
+    "safety": "Gasoline is very flammable. Work outside, no sparks or smoking, relieve fuel pressure before opening any fuel line, and wear glasses.",
+    "spots": [
+      {
+        "name": "Fuel pump",
+        "match": [
+          "pump",
+          "tank"
+        ],
+        "where": "Inside the fuel tank. On most trucks you drop the tank or remove the bed to reach it.",
+        "look": "Listen for a 2-second hum from the tank when you turn the key to ON. No hum = pump or its power."
+      },
+      {
+        "name": "Fuel filter",
+        "match": [
+          "filter"
+        ],
+        "where": "Along the frame rail on older trucks (2005 Silverado: driver side frame rail). Newer ones have it inside the tank.",
+        "look": "Clogged filters cause loss of power uphill or under load."
+      },
+      {
+        "name": "Fuel pump relay and fuse",
+        "match": [
+          "relay",
+          "fuse"
+        ],
+        "where": "Under-hood fuse box.",
+        "look": "A blown fuse or a relay that does not click."
+      },
+      {
+        "name": "Fuel pressure port",
+        "match": [
+          "pressure",
+          "schrader"
+        ],
+        "where": "A valve like a tire valve on the fuel rail on top of the engine.",
+        "look": "Where you connect the gauge."
+      }
+    ],
+    "find": [
+      "Turn the key to ON (not start) and listen at the gas tank for a 2-second hum. Ask a helper if needed.",
+      "No hum: check the fuel pump fuse and relay. Swap the relay with an identical one (like the horn) to test.",
+      "Connect a fuel pressure gauge to the port on the fuel rail. Most GM trucks of that era want about 55 to 62 psi; check your spec.",
+      "Watch pressure while revving and under load (a helper driving with the gauge taped where you can see it). Pressure falling under load means a weak pump or clogged filter.",
+      "If it dies when the tank is low but runs fine when full, the pump is overheating and failing."
+    ],
+    "fix": [
+      "Replace the fuel filter first if it is external and old; it is cheap.",
+      "Replace a bad relay or fuse.",
+      "Fuel pump replacement: relieve pressure, disconnect the battery, and drop the tank (or lift the bed on some trucks). This is a half-day job with 2 people.",
+      "Swap the pump module, replace the tank seal, reinstall, and check for leaks before starting.",
+      "If you are not comfortable working with fuel, this is a good one for a shop."
+    ]
+  },
+  "overheating": {
+    "tools": [
+      "Flashlight",
+      "Coolant (type on the cap or manual)",
+      "Funnel",
+      "Code reader or infrared thermometer",
+      "Gloves"
+    ],
+    "safety": "Never open the radiator cap on a hot engine; it can spray boiling coolant. Wait at least 30 minutes until the upper hose is cool to squeeze. Pull over and shut it off if the gauge is in the red.",
+    "spots": [
+      {
+        "name": "Coolant level",
+        "match": [
+          "coolant",
+          "level",
+          "reservoir"
+        ],
+        "where": "The plastic overflow or pressurized tank, and the radiator (when cold).",
+        "look": "Below the COLD or MIN line, or empty."
+      },
+      {
+        "name": "Radiator",
+        "match": [
+          "radiator"
+        ],
+        "where": "Front of the truck behind the grille.",
+        "look": "Bugs and dirt blocking the fins, green or crusty spots (leaks), or cold spots."
+      },
+      {
+        "name": "Hoses",
+        "match": [
+          "hose"
+        ],
+        "where": "Big upper and lower hoses from the engine to the radiator, and heater hoses.",
+        "look": "Swelling, cracks, soft spots, or wet coolant at the clamps."
+      },
+      {
+        "name": "Water pump",
+        "match": [
+          "water pump",
+          "pump"
+        ],
+        "where": "Front of the engine behind the belt pulley.",
+        "look": "Drips or crusty trail from the small weep hole under it."
+      },
+      {
+        "name": "Cooling fan",
+        "match": [
+          "fan",
+          "clutch"
+        ],
+        "where": "Behind the radiator. Older GM trucks have a belt-driven fan with a clutch.",
+        "look": "Fan clutch that spins freely with the engine off and hot, or an electric fan that never runs."
+      }
+    ],
+    "find": [
+      "Stop, shut it off and let it cool. Check the coolant level once cool.",
+      "Look under the truck and around the hoses, radiator and water pump for wet spots, drips or dried crusty coolant (green, orange or pink).",
+      "Start it cold with the radiator cap off (cold only), watch the coolant. When the thermostat opens it should start flowing; bubbles that keep coming can mean a head gasket.",
+      "Check the fan: on a belt-driven fan, it should roar when the engine is hot. With the engine off and hot, it should not spin freely more than about 1 turn.",
+      "Overheats only in traffic = fan problem. Only on the highway or towing = radiator clogged or water pump. Losing coolant with no leak = head gasket.",
+      "A shop can pressure test the cooling system to find small leaks."
+    ],
+    "fix": [
+      "Top up with the correct coolant (many GMs use DEX-COOL, orange). Mix 50/50 with distilled water unless it is premixed.",
+      "Replace any leaking hose and clamp. Bleed air out by running with the cap off (cold start) and the heater on high until no more bubbles.",
+      "Replace a failed fan clutch, electric fan, thermostat, water pump or radiator as found.",
+      "Clean bugs out of the radiator fins with a garden hose from the engine side.",
+      "If coolant is in the oil (milky), or there are steady bubbles, stop driving and have a head gasket test done."
+    ]
+  },
+  "thermostat_stuck_open": {
+    "tools": [
+      "Socket set",
+      "New thermostat and gasket",
+      "Coolant",
+      "Drain pan",
+      "Scraper"
+    ],
+    "safety": "Only work on a cold engine. Coolant is poisonous to pets; clean up spills.",
+    "spots": [
+      {
+        "name": "Thermostat housing",
+        "match": [
+          "thermostat",
+          "housing"
+        ],
+        "where": "Usually where the upper radiator hose meets the engine. On GM V8 trucks (LS-based Vortec) it is at the lower radiator hose, on the water pump at the front of the engine.",
+        "look": "A small housing held with 2 bolts."
+      },
+      {
+        "name": "Temperature gauge",
+        "match": [
+          "gauge"
+        ],
+        "where": "Dashboard.",
+        "look": "Needle that stays low on the highway or takes a very long time to warm up."
+      }
+    ],
+    "find": [
+      "Note the symptoms: gauge stays low, weak heat, poor fuel mileage, code P0128.",
+      "Start the engine cold and feel the upper radiator hose. It should stay cool for several minutes and then get hot quickly when the thermostat opens. If it warms right away with the engine, the thermostat is stuck open.",
+      "A scan tool showing coolant temp is best. It should reach about 195 to 215 F and stay there."
+    ],
+    "fix": [
+      "With the engine cold, drain some coolant into a pan below the level of the thermostat.",
+      "Remove the hose and the 2 housing bolts.",
+      "Pull the old thermostat out. Note which way it faces (the spring goes toward the engine).",
+      "Clean the gasket surfaces, put in the new thermostat and gasket, and torque the bolts evenly.",
+      "Refill with coolant, bleed the air out, and check for leaks once warm."
+    ]
+  },
+  "transmission_problem": {
+    "tools": [
+      "Code reader",
+      "Clean white paper towel",
+      "Funnel with a long neck",
+      "Correct fluid (on the dipstick or manual)",
+      "Drain pan and socket set"
+    ],
+    "safety": "Check fluid with the parking brake on and wheels chocked. Hot fluid can burn you.",
+    "spots": [
+      {
+        "name": "Transmission fluid",
+        "match": [
+          "fluid",
+          "dipstick"
+        ],
+        "where": "Dipstick at the back of the engine bay (yellow or red handle on many trucks). Some newer ones have no dipstick.",
+        "look": "Should be pink or red and smell oily. Brown or black and burnt smelling means trouble."
+      },
+      {
+        "name": "Pan and lines",
+        "match": [
+          "pan",
+          "line",
+          "cooler",
+          "leak"
+        ],
+        "where": "The flat pan under the transmission and the 2 metal lines running forward to the radiator.",
+        "look": "Red wet spots or drips, especially at the pan gasket and line fittings."
+      },
+      {
+        "name": "Front pump seal",
+        "match": [
+          "front seal",
+          "pump seal",
+          "bell housing"
+        ],
+        "where": "Where the engine and transmission meet.",
+        "look": "Red fluid dripping from the bottom of the bell housing (black oil there is the engine rear main seal instead)."
+      }
+    ],
+    "find": [
+      "Read the codes. P0700 says the transmission has its own codes; P0894 and gear ratio codes (P0730 to P0736) mean slipping.",
+      "Check fluid: warm engine idling in Park on level ground. Pull the dipstick, wipe, reinsert, pull again. It should read in the HOT range.",
+      "Put a drop on a white paper towel. Red and spreading = good. Brown, black or a burnt smell = worn clutches inside.",
+      "Look for leaks under the pan, at the cooler lines and at the bell housing.",
+      "Note when it happens: slipping (revs up with no speed), harsh shifts, late shifts, or no reverse. Tell the shop exactly that."
+    ],
+    "fix": [
+      "If fluid is low, top it up through the dipstick tube a little at a time with the correct fluid, then fix the leak.",
+      "A fluid and filter service (drop the pan, replace filter and gasket, refill) helps worn but clean units. Do not flush very old, burnt fluid on a high-mileage unit without asking a shop.",
+      "Leaking pan gasket or cooler line fittings are DIY-friendly fixes.",
+      "Slipping with burnt fluid usually means a rebuild or replacement. Get a quote from a transmission shop, not just a general shop.",
+      "Lifted trucks with bigger tires: have the speedometer recalibrated so the shift points are correct."
+    ]
+  },
+  "worn_cv_axle": {
+    "tools": [
+      "Jack and jack stands",
+      "Breaker bar and axle nut socket",
+      "Pry bar",
+      "Socket set",
+      "Torque wrench"
+    ],
+    "safety": "Axle nuts are very tight; loosen with the wheel on the ground and the brakes set. Support the vehicle on jack stands.",
+    "spots": [
+      {
+        "name": "CV boots",
+        "match": [
+          "boot",
+          "grease"
+        ],
+        "where": "Rubber accordion boots at both ends of each front axle (and rear on AWD and IRS).",
+        "look": "Tears, splits, or grease slung all over the inside of the wheel and suspension."
+      },
+      {
+        "name": "Inner joint",
+        "match": [
+          "inner"
+        ],
+        "where": "Where the axle goes into the transmission or front differential.",
+        "look": "A clunk when shifting into gear or a vibration when accelerating."
+      }
+    ],
+    "find": [
+      "Make sharp, slow turns in a parking lot both ways. A clicking or popping sound that speeds up with the wheel speed is a bad outer CV joint.",
+      "Shake or clunk when accelerating, especially in a straight line, can be the inner joint.",
+      "Look behind each front wheel with a flashlight for torn boots and grease spray.",
+      "Grab the axle and twist it; a lot of rotational play means worn joints."
+    ],
+    "fix": [
+      "Replace the whole axle (cheaper and easier than rebuilding a joint).",
+      "With the wheel on the ground, loosen the axle nut. Raise the vehicle and remove the wheel.",
+      "Separate whatever is needed to swing the knuckle out (often the lower ball joint or tie rod end), and push the axle out of the hub.",
+      "Pry the inner end out of the transmission or differential (have a pan ready for fluid).",
+      "Install the new axle, reassemble, torque the axle nut to spec, and top up the fluid."
+    ]
+  },
+  "worn_u_joint": {
+    "tools": [
+      "Jack and jack stands",
+      "Wheel chocks",
+      "Socket and wrench set",
+      "Large C-clamp or U-joint press",
+      "Grease gun"
+    ],
+    "safety": "Chock the wheels and put it in Park or gear before getting under. Mark the driveshaft position before removing it so it goes back the same way.",
+    "spots": [
+      {
+        "name": "Driveshaft U-joints",
+        "match": [
+          "u joint",
+          "ujoint",
+          "driveshaft",
+          "u-joint"
+        ],
+        "where": "The cross-shaped joints at each end of the driveshaft (and the front shaft on 4WD).",
+        "look": "Rust dust (red powder) around the caps, missing grease, or play when you twist the shaft."
+      },
+      {
+        "name": "Grease fittings",
+        "match": [
+          "grease",
+          "zerk"
+        ],
+        "where": "A small nipple in the middle of the joint on greasable ones.",
+        "look": "If it has one and it has never been greased, wear is likely."
+      }
+    ],
+    "find": [
+      "Symptoms: clunk when shifting into Drive or Reverse, a squeak at low speed that matches wheel speed, or a vibration that gets worse with speed.",
+      "With the truck in Park and wheels chocked, get under it and twist the driveshaft back and forth by hand. Watch each U-joint. Any free play or clicking in the joint itself means it is worn.",
+      "Look for red rust dust around the bearing caps; that means the needle bearings are dry and wearing.",
+      "Lifted trucks: steeper driveshaft angles wear U-joints faster and can cause vibration even with good joints."
+    ],
+    "fix": [
+      "Mark the driveshaft and the yoke with paint so it goes back in the same position (keeps the balance).",
+      "Remove the strap or U-bolts at the rear and slide the shaft out of the transmission (have a pan ready).",
+      "Remove the clips, press the old caps out with a press or big C-clamp and sockets, and press the new joint in. Keep the needle bearings in place.",
+      "Reinstall the clips, grease the joint, and reinstall the shaft lined up with your marks. Torque the straps to spec.",
+      "Many people take the driveshaft to a driveline shop to press joints; it is quick and cheap."
+    ]
+  },
+  "tire_balance": {
+    "tools": [
+      "Tire pressure gauge",
+      "Flashlight",
+      "Chalk",
+      "A shop with a balancer (road-force is best)"
+    ],
+    "safety": "Do not ignore a vibration that came on suddenly; check for a bulging tire or loose lug nuts first.",
+    "spots": [
+      {
+        "name": "Wheel weights",
+        "match": [
+          "weight"
+        ],
+        "where": "Small metal weights clipped or stuck to the inside and outside of each rim.",
+        "look": "A clean spot or adhesive mark where a weight fell off."
+      },
+      {
+        "name": "Tire tread and sidewall",
+        "match": [
+          "tire",
+          "bulge",
+          "tread"
+        ],
+        "where": "Each tire.",
+        "look": "Bulges, flat spots, missing chunks, uneven or cupped wear, or a separated tread (wavy surface)."
+      },
+      {
+        "name": "Mud in the wheel",
+        "match": [
+          "mud"
+        ],
+        "where": "Inside of the wheel.",
+        "look": "Caked mud or ice throws the balance off, common on off-road trucks."
+      }
+    ],
+    "find": [
+      "Note the speed. A balance problem usually shows up around 50 to 70 mph and smooths out above or below.",
+      "Steering wheel shaking = front tires. Seat or floor shaking = rear tires.",
+      "Check all tire pressures and look for bulges or tread separation.",
+      "Look for missing wheel weights and clean out any caked mud.",
+      "Check lug nuts are tight."
+    ],
+    "fix": [
+      "Have the tires balanced. Ask for a road-force balance if a normal balance did not fix it.",
+      "Rotate tires front to back to see if the vibration moves with a tire.",
+      "Replace any tire with a bulge or separated tread right away.",
+      "Big off-road tires sometimes need special balancing beads or weights; ask the tire shop."
+    ]
+  },
+  "alignment_problem": {
+    "tools": [
+      "Tape measure",
+      "Tire pressure gauge",
+      "Flashlight",
+      "Jack and jack stands (to check for loose parts)"
+    ],
+    "safety": "A truck that pulls hard or wanders can be dangerous. Check for loose steering parts before an alignment.",
+    "spots": [
+      {
+        "name": "Tire wear",
+        "match": [
+          "wear",
+          "tread"
+        ],
+        "where": "Inner and outer edges of the front tires.",
+        "look": "One edge worn more than the other, or a feathered feel (smooth one way, sharp the other) when you rub the tread."
+      },
+      {
+        "name": "Tie rod ends",
+        "match": [
+          "tie rod"
+        ],
+        "where": "The rods connecting the steering to each front wheel.",
+        "look": "Play when you shake the wheel side to side at 9 and 3 o'clock."
+      },
+      {
+        "name": "Steering wheel",
+        "match": [
+          "steering wheel",
+          "crooked"
+        ],
+        "where": "Driving straight.",
+        "look": "Steering wheel off-center while the truck goes straight."
+      }
+    ],
+    "find": [
+      "Set all tire pressures to the door sticker numbers first. Low pressure on one side causes a pull.",
+      "On a flat, straight road, let go of the wheel briefly. Note if it pulls left or right.",
+      "Look at the front tires for edge wear.",
+      "Jack up the front and shake each tire at 9 and 3 o'clock (tie rods) and 12 and 6 (ball joints). Any play must be fixed before an alignment.",
+      "If it only pulls when braking, it is a brake problem (sticking caliper), not alignment."
+    ],
+    "fix": [
+      "Replace any worn tie rod ends, ball joints or bushings first.",
+      "Get a 4-wheel alignment at a shop. They set camber, caster and toe to spec.",
+      "After a lift kit, get it aligned right away. Many lifted trucks need adjustable parts to get back in spec.",
+      "Rotate the tires after the alignment."
+    ]
+  },
+  "exhaust_leak": {
+    "tools": [
+      "Flashlight",
+      "Gloves",
+      "Socket set",
+      "Penetrating oil",
+      "Mirror"
+    ],
+    "safety": "Exhaust gets very hot; let it cool. An exhaust leak near the cab can let carbon monoxide in. Drive with windows cracked and fix it soon.",
+    "spots": [
+      {
+        "name": "Exhaust manifold bolts",
+        "match": [
+          "manifold",
+          "tick",
+          "bolt"
+        ],
+        "where": "Where the exhaust manifold bolts to each side of the engine. GM trucks commonly break the rear bolts.",
+        "look": "Black soot streaks at the joint, a missing or broken bolt head, or a ticking sound cold that quiets when warm."
+      },
+      {
+        "name": "Flex pipe and joints",
+        "match": [
+          "flex",
+          "joint",
+          "gasket"
+        ],
+        "where": "Under the truck between the manifolds and the catalytic converter.",
+        "look": "Black soot, rusted holes, or a broken flex section."
+      },
+      {
+        "name": "Muffler and tailpipe",
+        "match": [
+          "muffler",
+          "tailpipe",
+          "pipe",
+          "loud"
+        ],
+        "where": "Rear of the truck.",
+        "look": "Holes, rust-through or broken hangers."
+      }
+    ],
+    "find": [
+      "Listen with the engine cold. A tick or puff sound near the engine that quiets as it warms is usually a manifold leak.",
+      "Look for black soot streaks at joints and gaskets.",
+      "With the engine running (cold!), a helper can hold a rag over the tailpipe briefly; leaks will hiss or puff louder. Do not keep it blocked.",
+      "Check hangers and look for rusted holes along the pipe."
+    ],
+    "fix": [
+      "Replace gaskets and rusted clamps at leaking joints. Soak bolts in penetrating oil the day before.",
+      "Broken manifold bolts often need drilling and extracting. Many shops do it; on trucks, sometimes the manifold comes off.",
+      "Replace rotted pipes, mufflers or flex sections. Clamp-on parts are DIY friendly.",
+      "Do not drive long distances with a leak under the cab."
+    ]
+  },
+  "oil_leak_low_oil": {
+    "tools": [
+      "Flashlight",
+      "Degreaser or brake cleaner",
+      "Rags and cardboard",
+      "UV dye kit with a UV flashlight (about $15)",
+      "Jack and jack stands or ramps",
+      "Mirror on a stick"
+    ],
+    "safety": "Let the engine cool before reaching near the exhaust. Use jack stands or ramps, never just a jack. Low oil can ruin the engine; keep it topped up while you find the leak.",
+    "spots": [
+      {
+        "name": "Rear main seal",
+        "match": [
+          "rear main",
+          "main seal",
+          "rear seal",
+          "rms"
+        ],
+        "where": "At the very back of the engine, where it bolts to the transmission (the bell housing). Look up from under the truck at the seam between the engine block and the transmission. Some trucks have a small dust cover or inspection plate at the bottom of the bell housing.",
+        "look": "Oil dripping from the bottom of the bell housing or the seam, and a wet film on the bottom of the transmission bell housing. Red fluid there is the transmission front seal instead. Before blaming it, rule out leaks above it that run down: the oil pan rear gasket, the valve cover gaskets, the oil pressure sensor and the intake gasket at the back of the engine."
+      },
+      {
+        "name": "Valve cover gaskets",
+        "match": [
+          "valve cover"
+        ],
+        "where": "On top of each cylinder head (both sides on a V engine).",
+        "look": "Oil seeping along the edge, running down the side of the head, or burning smell from oil on the exhaust manifold."
+      },
+      {
+        "name": "Oil pan gasket",
+        "match": [
+          "pan",
+          "drain plug"
+        ],
+        "where": "The bottom pan of the engine and its drain plug.",
+        "look": "Wet edges all the way around the pan, or drips from the drain plug (check its washer)."
+      },
+      {
+        "name": "Oil filter",
+        "match": [
+          "filter"
+        ],
+        "where": "Screwed onto the side or bottom of the engine.",
+        "look": "Oil around the filter base: loose filter, or the old gasket stuck on with the new one (double gasket)."
+      },
+      {
+        "name": "Oil pressure sensor",
+        "match": [
+          "sensor",
+          "sender",
+          "pressure"
+        ],
+        "where": "GM Vortec V8s: top back of the engine behind the intake manifold.",
+        "look": "Oil pooling on the back of the engine and running down the bell housing. Very common, and often mistaken for a rear main seal."
+      },
+      {
+        "name": "Front timing cover seal",
+        "match": [
+          "front seal",
+          "timing cover",
+          "crank seal"
+        ],
+        "where": "Behind the big crank pulley at the front of the engine.",
+        "look": "Oil slung around the front of the engine in a ring pattern."
+      },
+      {
+        "name": "Oil cooler lines",
+        "match": [
+          "cooler",
+          "line"
+        ],
+        "where": "Metal and rubber lines from the engine to the radiator (on trucks with an engine oil cooler).",
+        "look": "Wet crimped ends or fittings."
+      }
+    ],
+    "find": [
+      "Check the oil level first: engine off for 5 minutes, truck level. Pull the dipstick, wipe, reinsert fully, pull and read. Top up to the FULL mark if low.",
+      "Put cardboard under the engine overnight. Where the drips land tells you front, middle or back. Engine oil is brown to black. Red = transmission or power steering. Green, orange or pink = coolant.",
+      "Clean the area with degreaser so you start fresh. Leaks are hard to find on an oily engine.",
+      "Look from the top down. Oil runs down and back, so the highest wet spot is the real leak. Start at the valve covers and oil pressure sensor before blaming the oil pan or rear main seal.",
+      "For a tough one, add UV dye to the oil, drive 20 to 30 minutes, then look with the UV flashlight. The leak glows bright yellow-green.",
+      "Rear main seal check: look up at the bell housing seam from under the truck. Wet at the bottom of the bell housing, with dry valve covers, dry oil pan gasket, dry pressure sensor and dry intake above it, points to the rear main seal. On manual transmissions oil can also soak the clutch and cause slipping.",
+      "If oil drops but there are no drips at all, the engine is burning oil. See the oil burning guide."
+    ],
+    "fix": [
+      "Easy first: tighten a loose oil filter or drain plug (new drain plug washer), replace the oil pressure sensor, or replace a cracked PCV hose.",
+      "Valve cover gaskets: a DIY job of 1 to 3 hours. Remove what is in the way, unbolt the cover, clean both surfaces, install the new gasket, and torque the bolts evenly in a crisscross pattern to spec (not too tight).",
+      "Oil pan gasket: on many trucks the front differential or crossmember is in the way. Medium to hard.",
+      "Rear main seal: the transmission (and on manuals, the clutch) must come out to reach it. This is usually a shop job, 6 to 10 hours of labor. If it is only seeping a little, many people just keep the oil topped up and watch it.",
+      "If doing the rear main seal, replace the transmission front pump seal and (on a manual) the clutch at the same time since it is already apart.",
+      "Some people try a high-mileage oil with seal conditioners for small seeps. It can slow a minor leak but will not fix a bad seal.",
+      "After any repair, clean the area again, run the engine, and check that it stays dry."
+    ]
+  },
+  "power_steering_problem": {
+    "tools": [
+      "Flashlight",
+      "Correct power steering fluid (check the cap or manual)",
+      "Turkey baster",
+      "Rags"
+    ],
+    "safety": "Keep hands away from the belt and pulleys with the engine running. If steering gets suddenly very heavy, pull over; you can still steer, just with more effort.",
+    "spots": [
+      {
+        "name": "Reservoir and fluid",
+        "match": [
+          "fluid",
+          "reservoir"
+        ],
+        "where": "Small tank near the front of the engine, often with a steering wheel symbol on the cap.",
+        "look": "Low level, foamy or dark burnt fluid."
+      },
+      {
+        "name": "Hoses",
+        "match": [
+          "hose",
+          "leak"
+        ],
+        "where": "Pressure hose (metal and rubber) from the pump to the steering gear, and the return hose.",
+        "look": "Wet, oily hose ends or crimps. Red or clear fluid drips under the front."
+      },
+      {
+        "name": "Pump",
+        "match": [
+          "pump",
+          "whine"
+        ],
+        "where": "Driven by the belt, near the reservoir.",
+        "look": "Whining that gets louder when turning, or leaks at the shaft seal."
+      },
+      {
+        "name": "Steering gear box or rack",
+        "match": [
+          "gear box",
+          "box",
+          "rack"
+        ],
+        "where": "Low near the front axle, connected to the steering shaft.",
+        "look": "Wet seals and drips on the frame, or loose play in the steering."
+      }
+    ],
+    "find": [
+      "Check the fluid level with the engine off (some are checked hot; read the cap).",
+      "Turn the wheel lock to lock with the engine running and listen. A whine or groan that grows when turning is low fluid or a weak pump.",
+      "Look for wet spots on the hoses, pump and gear box.",
+      "Foamy fluid means air is getting in, often from a loose return hose or low level.",
+      "Heavy steering only on cold mornings can be a worn pump. Heavy steering all the time can be a slipping belt."
+    ],
+    "fix": [
+      "Top up with the right fluid and fix the leak.",
+      "Replace a leaking hose: catch the fluid, swap the hose, refill, then bleed by turning the wheel lock to lock (engine running) several times.",
+      "Old dark fluid: suck most of it out of the reservoir with a turkey baster and refill. Repeat after a few days.",
+      "Replace the pump or gear box if they leak or whine after bleeding. Steering gear box swaps on trucks are a medium DIY job; get an alignment after."
+    ]
+  },
+  "ac_problem": {
+    "tools": [
+      "Flashlight",
+      "Thermometer for the vent",
+      "A/C recharge kit with gauge (only for low charge)",
+      "Safety glasses and gloves"
+    ],
+    "safety": "Refrigerant can freeze skin and eyes. Wear glasses and gloves. Never connect a can to the high side (the smaller port marked H). Overcharging can damage the compressor.",
+    "spots": [
+      {
+        "name": "Compressor clutch",
+        "match": [
+          "compressor",
+          "clutch"
+        ],
+        "where": "Belt-driven pump on the engine with a round plate on the front.",
+        "look": "With A/C on max, the center plate should spin with the pulley. If only the outer pulley spins, the clutch is not engaging."
+      },
+      {
+        "name": "Condenser",
+        "match": [
+          "condenser"
+        ],
+        "where": "In front of the radiator.",
+        "look": "Bent fins, bugs and debris, or oily spots (refrigerant oil = a leak)."
+      },
+      {
+        "name": "Lines and fittings",
+        "match": [
+          "line",
+          "leak"
+        ],
+        "where": "Aluminum lines between the compressor, condenser and firewall.",
+        "look": "Oily, dirty spots at fittings mean a leak."
+      },
+      {
+        "name": "Cabin air filter",
+        "match": [
+          "cabin filter",
+          "weak air",
+          "airflow"
+        ],
+        "where": "Behind the glove box on most newer vehicles.",
+        "look": "A clogged filter makes weak airflow."
+      }
+    ],
+    "find": [
+      "Set A/C to max, fan high, recirculate on. Put a thermometer in a center vent. It should get to about 35 to 45 F on a warm day.",
+      "Look at the compressor. Is the clutch plate spinning? Clicking on and off every few seconds means low refrigerant.",
+      "If the clutch never engages, check the A/C fuse and relay.",
+      "Look for oily spots on the lines, condenser and compressor.",
+      "Cold air that turns warm while driving can be a freezing evaporator or a blend door problem.",
+      "A shop can measure pressures, find the leak with dye or a sniffer, and recharge by weight."
+    ],
+    "fix": [
+      "Replace the cabin filter if airflow is weak.",
+      "Clean the condenser with a gentle water spray.",
+      "If it is just a little low, a recharge kit on the LOW side port, following the gauge for the outside temperature, can help. Add a little at a time.",
+      "If it leaks out again within weeks, the leak has to be fixed and the system vacuumed and recharged. Best done by an A/C shop.",
+      "Compressor replacement means opening the system: a shop job (they must recover the refrigerant by law)."
+    ]
+  },
+  "electrical_ground_problem": {
+    "tools": [
+      "Multimeter",
+      "Wire brush",
+      "Socket set",
+      "Dielectric grease",
+      "Test light"
+    ],
+    "safety": "Disconnect the negative battery cable before removing ground straps or working on wiring.",
+    "spots": [
+      {
+        "name": "Battery to engine ground",
+        "match": [
+          "ground",
+          "cable"
+        ],
+        "where": "Black cable from the battery negative to the engine block.",
+        "look": "Corrosion, a loose bolt, or broken strands."
+      },
+      {
+        "name": "Engine to body/frame straps",
+        "match": [
+          "strap",
+          "frame",
+          "body"
+        ],
+        "where": "Braided or plain straps from the engine or cylinder heads to the firewall and frame.",
+        "look": "Missing, rusted, or broken straps. GM trucks also have a ground on the back of the driver side head."
+      },
+      {
+        "name": "Body grounds",
+        "match": [
+          "light",
+          "flicker",
+          "dash"
+        ],
+        "where": "Bolts with ring terminals under the dash, behind kick panels and on the radiator support.",
+        "look": "Rust under the ring terminal or a loose bolt."
+      }
+    ],
+    "find": [
+      "Symptoms: flickering lights, gauges that jump, slow crank with a good battery, or several unrelated electrical problems at once.",
+      "Voltage drop test: multimeter on DC volts, one lead on the battery negative post, the other on the engine block. Have a helper crank it. More than 0.3 V means a bad ground.",
+      "Do the same from the battery negative to the body and frame.",
+      "Look over every ground point you can find for rust, corrosion, loose bolts or broken straps.",
+      "Wiggle harnesses while watching the problem. If the problem changes, that is your area."
+    ],
+    "fix": [
+      "Disconnect the battery negative.",
+      "Remove each ground, clean the terminal and the metal it bolts to with a wire brush down to bare shiny metal.",
+      "Bolt it back on tight and coat the outside with dielectric grease to keep moisture out.",
+      "Replace any broken strap or corroded cable.",
+      "Many people add an extra ground strap from the engine to the frame on older trucks; it is cheap insurance."
+    ]
+  },
+  "worn_suspension": {
+    "tools": [
+      "Jack and jack stands",
+      "Pry bar",
+      "Flashlight",
+      "Socket set and torque wrench",
+      "Helper"
+    ],
+    "safety": "Coil springs store a lot of energy. Never take apart a strut or coil-over without a proper spring compressor; many people buy complete strut assemblies instead.",
+    "spots": [
+      {
+        "name": "Shocks and struts",
+        "match": [
+          "shock",
+          "strut",
+          "bounce"
+        ],
+        "where": "At each wheel, the tube between the frame and the suspension.",
+        "look": "Oily wet body (leaking), dents, or broken mounts."
+      },
+      {
+        "name": "Ball joints",
+        "match": [
+          "ball joint"
+        ],
+        "where": "Where the control arms connect to the steering knuckle.",
+        "look": "Torn boots, play when rocking the tire top to bottom."
+      },
+      {
+        "name": "Bushings",
+        "match": [
+          "bushing"
+        ],
+        "where": "Rubber pieces where control arms and sway bars mount.",
+        "look": "Cracked, torn or squished-out rubber."
+      },
+      {
+        "name": "Sway bar links",
+        "match": [
+          "sway",
+          "link",
+          "clunk"
+        ],
+        "where": "Short links from the sway bar to the control arms.",
+        "look": "Loose, worn ends that clunk over bumps."
+      }
+    ],
+    "find": [
+      "Bounce test: push hard down on each corner and let go. It should bounce once and settle. More bounces = worn shocks.",
+      "Listen for clunks over bumps and note which corner.",
+      "Look at each shock for oil leaks.",
+      "Jack up the front with jack stands under the lower control arms (so the suspension stays loaded where needed). Pry under the tire to check for ball joint play.",
+      "Look at every rubber bushing for cracks. Have a helper rock the steering wheel while you watch for loose parts."
+    ],
+    "fix": [
+      "Replace shocks in pairs (both front or both rear). Most are 2 or 3 bolts each.",
+      "Sway bar links are a quick DIY job.",
+      "Ball joints and control arm bushings often need a press. Many people buy complete control arms with new joints and bushings.",
+      "Get an alignment after replacing steering or suspension parts."
+    ]
+  },
+  "timing_chain_problem": {
+    "tools": [
+      "Code reader",
+      "Mechanic's stethoscope or long screwdriver",
+      "Flashlight"
+    ],
+    "safety": "If the chain jumps or breaks, the engine can be badly damaged. Avoid hard driving until it is checked.",
+    "spots": [
+      {
+        "name": "Timing cover",
+        "match": [
+          "timing",
+          "chain",
+          "rattle"
+        ],
+        "where": "Front of the engine, behind the crank pulley and water pump.",
+        "look": "A rattle from this area at cold start that lasts a few seconds."
+      }
+    ],
+    "find": [
+      "Listen at a cold start. A rattle from the front of the engine for 2 to 10 seconds is typical of a stretched chain or weak tensioner.",
+      "Use a stethoscope on the timing cover to confirm where the noise is coming from.",
+      "Read the codes. Cam/crank correlation codes (P0016 to P0019) often mean a stretched chain.",
+      "A scan tool can show cam timing deviation on many engines. A shop can measure chain stretch.",
+      "Check the oil level and quality. Low or old oil makes chain tensioners rattle."
+    ],
+    "fix": [
+      "Change the oil with the correct type and keep it full. It sometimes quiets a tensioner.",
+      "Replacing the timing chain, guides and tensioner is a big job (remove the front of the engine). Usually a shop job unless you are experienced.",
+      "Replace the water pump and front seal at the same time since they are in the way anyway."
+    ]
+  },
+  "head_gasket_failure": {
+    "tools": [
+      "Combustion leak test kit (block tester, about $40)",
+      "Cooling system pressure tester (rent free at parts stores)",
+      "Flashlight",
+      "Code reader"
+    ],
+    "safety": "Do not keep driving an engine that overheats or blows white smoke. It can warp or crack the head. Never open a hot radiator cap.",
+    "spots": [
+      {
+        "name": "Oil dipstick and cap",
+        "match": [
+          "milky",
+          "oil cap",
+          "dipstick"
+        ],
+        "where": "The oil dipstick and oil filler cap.",
+        "look": "Milky tan sludge, like a chocolate milkshake, means coolant in the oil."
+      },
+      {
+        "name": "Coolant reservoir",
+        "match": [
+          "bubble",
+          "reservoir",
+          "coolant"
+        ],
+        "where": "Coolant tank or radiator neck.",
+        "look": "Steady bubbles with the engine running, or coolant disappearing with no leak."
+      },
+      {
+        "name": "Tailpipe",
+        "match": [
+          "white smoke",
+          "smoke",
+          "tailpipe"
+        ],
+        "where": "Exhaust.",
+        "look": "Thick white sweet-smelling smoke that keeps coming after the engine is warm."
+      }
+    ],
+    "find": [
+      "Look for the signs: coolant loss with no visible leak, white sweet-smelling smoke, overheating, milky oil, or bubbles in the coolant.",
+      "Check the oil dipstick and filler cap for milky residue.",
+      "Block test: the tester sucks air from the radiator neck through a blue fluid. If it turns yellow or green, combustion gas is in the coolant = head gasket (or cracked head).",
+      "Pressure test the cooling system cold. If it loses pressure with no outside leak, coolant is leaking inside.",
+      "A shop can do a cylinder leak-down test to find which cylinder is affected."
+    ],
+    "fix": [
+      "Stop driving it. Every overheat makes the damage worse.",
+      "Head gasket replacement: take off the intake, exhaust manifolds and heads, have the heads checked flat at a machine shop, then reassemble with new gaskets and head bolts. A big job; usually a shop.",
+      "Sealer products in a bottle sometimes slow a small leak but are not a real fix.",
+      "Change the oil and coolant afterward."
+    ]
+  },
+  "catalytic_converter_problem": {
+    "tools": [
+      "Code reader",
+      "Infrared thermometer",
+      "Flashlight",
+      "Rubber mallet"
+    ],
+    "safety": "The converter runs extremely hot; let it cool completely before touching. A clogged converter can cause the engine to overheat and lose power.",
+    "spots": [
+      {
+        "name": "Catalytic converter",
+        "match": [
+          "cat",
+          "converter"
+        ],
+        "where": "Under the truck in the exhaust after the manifolds; trucks have 1 to 4 of them.",
+        "look": "A rattle when you tap it (broken inside), dents, or a glowing red shell after driving."
+      },
+      {
+        "name": "O2 sensors",
+        "match": [
+          "o2",
+          "oxygen"
+        ],
+        "where": "Screwed into the exhaust before and after the converter.",
+        "look": "Bad sensors can falsely set the converter code."
+      }
+    ],
+    "find": [
+      "Read the codes. P0420 or P0430 mean the converter is not cleaning well. Fix any misfire codes first; misfires kill converters.",
+      "Tap the converter with a rubber mallet (cold). A rattle means the inside is broken up.",
+      "With an infrared thermometer after a drive, the outlet should be hotter than the inlet. Colder outlet = not working.",
+      "Rotten egg smell, loss of power uphill, or a red-hot converter point to a clog.",
+      "A shop can test exhaust back-pressure."
+    ],
+    "fix": [
+      "Fix the cause first: misfires, oil burning or coolant leaks will ruin a new converter.",
+      "Replace the bad O2 sensor if the data shows it is lazy.",
+      "Replace the converter. Bolt-in direct-fit ones are DIY-friendly; welded ones go to an exhaust shop.",
+      "In California and some states you must use an approved (CARB) converter. Check your state's rules."
+    ]
+  },
+  "evap_leak": {
+    "tools": [
+      "Code reader",
+      "Flashlight",
+      "New gas cap (cheap first fix)",
+      "Smoke tester (shop)"
+    ],
+    "safety": "Fuel vapor is flammable. No sparks or flames near the tank or lines.",
+    "spots": [
+      {
+        "name": "Gas cap",
+        "match": [
+          "gas cap",
+          "cap"
+        ],
+        "where": "Fuel filler.",
+        "look": "Cracked or missing seal, or a cap that does not click."
+      },
+      {
+        "name": "Purge valve",
+        "match": [
+          "purge"
+        ],
+        "where": "In the engine bay on a hose from the intake to the charcoal canister (GM trucks: often on the intake manifold).",
+        "look": "Stuck open valve; idles rough after filling up."
+      },
+      {
+        "name": "Vent valve and canister",
+        "match": [
+          "vent",
+          "canister",
+          "charcoal"
+        ],
+        "where": "Near the gas tank or frame rail at the back.",
+        "look": "Cracked hoses, mud packed in the vent, or a broken canister."
+      },
+      {
+        "name": "Filler neck",
+        "match": [
+          "filler",
+          "neck"
+        ],
+        "where": "Pipe from the fuel door to the tank.",
+        "look": "Rust at the top of the neck (rusted necks are common on older trucks)."
+      }
+    ],
+    "find": [
+      "Read the codes: P0442 (small leak), P0455 (large leak), P0446 (vent), P0496 (purge flow).",
+      "Check the gas cap. Tighten until it clicks, or replace it (cheap and fixes many small leak codes).",
+      "Look at the filler neck and the hoses near the tank and canister for cracks or rust.",
+      "If it is hard to fill up or the pump keeps clicking off, the vent valve or canister is the likely problem.",
+      "A smoke test at a shop finds small EVAP leaks quickly."
+    ],
+    "fix": [
+      "Replace the gas cap and clear the code. Drive a few days; it takes several drive cycles to retest.",
+      "Replace a cracked hose, purge valve or vent valve (usually unplug and unclip).",
+      "Replace a rusted filler neck or a broken canister.",
+      "Do not top off past the first click when filling up; it can flood the canister."
+    ]
+  },
+  "sticking_brake_caliper": {
+    "tools": [
+      "Jack and jack stands",
+      "Infrared thermometer",
+      "Socket set",
+      "C-clamp",
+      "Brake grease",
+      "Brake fluid"
+    ],
+    "safety": "A stuck caliper can overheat and fail the brakes. Support the vehicle on jack stands and bleed the brakes after replacing a caliper.",
+    "spots": [
+      {
+        "name": "Caliper and piston",
+        "match": [
+          "caliper",
+          "piston"
+        ],
+        "where": "The clamp over the rotor at each wheel.",
+        "look": "Torn piston boot, rust around the piston, or one pad worn much more than the other."
+      },
+      {
+        "name": "Slide pins",
+        "match": [
+          "slide",
+          "pin"
+        ],
+        "where": "The 2 bolts the caliper slides on.",
+        "look": "Dry, rusty, or stuck pins."
+      },
+      {
+        "name": "Brake hose",
+        "match": [
+          "hose"
+        ],
+        "where": "Rubber hose to the caliper.",
+        "look": "An old hose can collapse inside and hold pressure on one wheel."
+      }
+    ],
+    "find": [
+      "Symptoms: pulls to one side, burning smell, one wheel much hotter or dustier than the others.",
+      "After a drive (without hard braking), check each wheel hub temperature with an infrared thermometer or carefully near (not on) the wheel. One much hotter than the others is the sticky one.",
+      "Jack up that wheel and spin it by hand. It should spin with only light drag.",
+      "Remove the caliper and check that the slide pins move freely and the piston pushes back smoothly with a C-clamp."
+    ],
+    "fix": [
+      "Clean and grease the slide pins with brake grease. Replace them and their boots if rusty.",
+      "If the piston is stuck or the boot is torn, replace the caliper (rebuilt ones are cheap). Replace the brake hose too if it is old.",
+      "Replace the pads (and rotor if damaged from heat).",
+      "Bleed the brakes at that wheel until there are no bubbles. Pump the pedal firm before driving."
+    ]
+  },
+  "bad_motor_mounts": {
+    "tools": [
+      "Flashlight",
+      "Helper",
+      "Jack and a block of wood",
+      "Pry bar",
+      "Socket set"
+    ],
+    "safety": "When testing with the engine running, the helper must hold the brake firmly and you must stand to the side, never in front of the vehicle.",
+    "spots": [
+      {
+        "name": "Engine mounts",
+        "match": [
+          "motor mount",
+          "engine mount",
+          "mount"
+        ],
+        "where": "Low on each side of the engine block, between the engine and the frame.",
+        "look": "Cracked or torn rubber, the metal parts touching, or a mount that has separated."
+      },
+      {
+        "name": "Transmission mount",
+        "match": [
+          "transmission mount",
+          "trans mount"
+        ],
+        "where": "Under the back of the transmission, on the crossmember.",
+        "look": "Cracked rubber or a sagging transmission."
+      }
+    ],
+    "find": [
+      "Symptoms: clunk when shifting into gear or letting off the gas, heavy vibration at idle, or the engine lifting when you rev.",
+      "Open the hood. Have a helper hold the brake hard and shift between Drive and Reverse with light gas. Watch the engine. More than about 1/2 inch of lift or rock means a bad mount.",
+      "Look at the mounts with a flashlight for cracked or separated rubber.",
+      "Put a jack with a wood block under the oil pan (engine off) and lift slightly. If the engine rises off a mount easily, it is broken."
+    ],
+    "fix": [
+      "Support the engine with a jack and a wood block under the oil pan (or an engine support bar).",
+      "Remove the through-bolt and the mount-to-frame bolts on one side.",
+      "Raise the engine just enough to swap the mount. Watch hoses, the fan shroud and wires.",
+      "Install the new mount, lower the engine, and torque the bolts. Do one side at a time."
+    ]
+  },
+  "blower_motor_problem": {
+    "tools": [
+      "Screwdriver and socket set",
+      "Multimeter or test light",
+      "Flashlight"
+    ],
+    "safety": "Disconnect the battery if you are unplugging the resistor or blower. The resistor can be hot after use.",
+    "spots": [
+      {
+        "name": "Blower motor resistor",
+        "match": [
+          "resistor",
+          "high only",
+          "only on high"
+        ],
+        "where": "Usually under the passenger side dash near the blower, held by 2 screws.",
+        "look": "Melted connector or burnt resistor. If the fan only works on HIGH, this is almost always the problem."
+      },
+      {
+        "name": "Blower motor",
+        "match": [
+          "blower",
+          "fan"
+        ],
+        "where": "Under the passenger side dash, a round housing with a squirrel cage fan.",
+        "look": "Leaves or debris in the fan, or a squealing or ticking sound."
+      },
+      {
+        "name": "Fuse",
+        "match": [
+          "fuse"
+        ],
+        "where": "Fuse box (check the owner's manual).",
+        "look": "Blown HVAC or blower fuse."
+      }
+    ],
+    "find": [
+      "Try every fan speed. Only HIGH works = resistor. No speeds work = fuse, motor, or switch.",
+      "Check the blower fuse.",
+      "If no speeds work, check for 12 V at the blower motor connector with the fan on. Power present but no spin = bad motor.",
+      "Noise or rattling: there may be leaves in the fan. Remove the blower and clean it out.",
+      "Tap the blower housing with the fan on. If it starts, the motor is wearing out."
+    ],
+    "fix": [
+      "Replace the resistor (2 screws and a connector). Replace the connector too if it is melted.",
+      "Replace the blower motor: usually 3 screws under the dash and a plug.",
+      "Clean out leaves and replace the cabin air filter.",
+      "If the new resistor burns out again, the blower motor is drawing too much current; replace the motor too."
+    ]
+  },
+  "clutch_problem": {
+    "tools": [
+      "Flashlight",
+      "Brake fluid (for hydraulic clutches)",
+      "Tape measure",
+      "Helper"
+    ],
+    "safety": "Clutch replacement means removing the transmission, which is very heavy. Use a transmission jack or let a shop do it.",
+    "spots": [
+      {
+        "name": "Clutch fluid reservoir",
+        "match": [
+          "fluid",
+          "reservoir",
+          "master"
+        ],
+        "where": "Small reservoir on the firewall above the clutch pedal (shares or looks like the brake reservoir).",
+        "look": "Low or dark fluid."
+      },
+      {
+        "name": "Slave cylinder",
+        "match": [
+          "slave",
+          "hydraulic"
+        ],
+        "where": "On or inside the transmission bell housing.",
+        "look": "Fluid dripping from the bell housing or the line."
+      },
+      {
+        "name": "Clutch pedal",
+        "match": [
+          "pedal",
+          "soft"
+        ],
+        "where": "In the cab.",
+        "look": "Soft or sinking pedal, or the clutch only engaging at the very top."
+      }
+    ],
+    "find": [
+      "Slip test: in a high gear (4th) at low speed, push the gas firmly. If the RPM rises but the truck does not speed up, the clutch is slipping.",
+      "Note where the clutch engages. Engaging at the very top of the pedal travel means it is worn.",
+      "Check the clutch fluid level. Low fluid with a soft pedal = hydraulic leak.",
+      "Grinding when shifting or hard to get into gear means the clutch is not releasing fully, often hydraulics.",
+      "A burning smell after climbing a hill or backing a trailer = slipping clutch."
+    ],
+    "fix": [
+      "Top up and bleed the clutch hydraulics if the pedal is soft. Fix a leaking master or slave cylinder.",
+      "A worn clutch needs replacement: transmission out, new clutch disc, pressure plate and throwout bearing; resurface or replace the flywheel.",
+      "If oil is leaking from the rear main seal onto the clutch, replace the seal at the same time.",
+      "A clutch job on a truck is usually a shop job unless you have a lift and a transmission jack."
+    ]
+  },
+  "low_tire_pressure": {
+    "tools": [
+      "Tire pressure gauge",
+      "Air compressor or gas station air",
+      "Spray bottle of soapy water",
+      "Tire plug kit"
+    ],
+    "safety": "Never drive on a very low or flat tire; it can overheat and blow out. Do not plug sidewall damage.",
+    "spots": [
+      {
+        "name": "Door sticker",
+        "match": [
+          "sticker",
+          "psi"
+        ],
+        "where": "Driver door frame.",
+        "look": "The correct cold pressure for your tires (not the max on the tire sidewall)."
+      },
+      {
+        "name": "Tread",
+        "match": [
+          "nail",
+          "screw",
+          "puncture"
+        ],
+        "where": "The tread surface of each tire.",
+        "look": "A nail or screw head, or a cut."
+      },
+      {
+        "name": "Valve stem",
+        "match": [
+          "valve",
+          "stem"
+        ],
+        "where": "Short stem on the wheel.",
+        "look": "Cracked rubber or a leaking valve core."
+      },
+      {
+        "name": "Bead",
+        "match": [
+          "bead",
+          "rim"
+        ],
+        "where": "Where the tire seals to the rim.",
+        "look": "Bubbles from rust or corrosion on the rim edge."
+      }
+    ],
+    "find": [
+      "Check all 4 tires (and the spare) with a gauge when cold, before driving.",
+      "Compare to the door sticker. The TPMS light usually comes on about 25% below.",
+      "If one tire keeps losing air, inflate it and spray soapy water on the tread, valve stem and rim edge. Bubbles show the leak.",
+      "Cold weather drops pressure about 1 psi for every 10 F, so the light on a cold morning may just mean add air."
+    ],
+    "fix": [
+      "Inflate all tires to the door sticker pressure when cold.",
+      "A nail in the tread can be plugged with a kit or (better) patched from the inside at a tire shop.",
+      "Replace a leaking valve stem or valve core.",
+      "Have a shop clean the rim if the bead leaks.",
+      "If the TPMS light stays on with correct pressures, a sensor battery may be dead."
+    ]
+  },
+  "abs_sensor_problem": {
+    "tools": [
+      "Code reader that reads ABS codes",
+      "Flashlight",
+      "Multimeter",
+      "Socket set",
+      "Wire brush"
+    ],
+    "safety": "With the ABS light on, normal brakes still work but the anti-lock does not. Leave extra stopping distance on wet or icy roads.",
+    "spots": [
+      {
+        "name": "Wheel speed sensors",
+        "match": [
+          "wheel speed",
+          "sensor"
+        ],
+        "where": "At each wheel, a sensor with a wire going into the hub or knuckle. Some trucks have one sensor on the rear differential.",
+        "look": "Damaged or rubbed-through wire, a sensor caked with rust or metal dust, or a loose connector."
+      },
+      {
+        "name": "Tone ring",
+        "match": [
+          "tone ring",
+          "reluctor"
+        ],
+        "where": "Toothed ring on the axle or hub.",
+        "look": "Cracked, rusted or missing teeth."
+      },
+      {
+        "name": "Wheel bearing",
+        "match": [
+          "bearing",
+          "hub"
+        ],
+        "where": "Behind the brake rotor.",
+        "look": "On many trucks the sensor is built into the hub; a bad hub sets the ABS code."
+      }
+    ],
+    "find": [
+      "Read the ABS codes (a basic engine code reader may not read ABS). The code tells you which wheel.",
+      "Follow that wheel's sensor wire from the wheel to the connector. Look for rub-through, cuts and corrosion.",
+      "Unplug the sensor and measure its resistance (passive sensors are often 800 to 2,000 ohms; check your spec). Open or shorted = bad sensor.",
+      "A scan tool showing live wheel speeds while driving slowly shows which wheel reads zero or erratic.",
+      "Note: some trucks with a bad ABS module also have bad brake pedal feel at low speed."
+    ],
+    "fix": [
+      "Repair damaged wiring or replace the sensor (usually 1 bolt and a connector).",
+      "Clean rust off the sensor mounting hole so the new sensor sits right.",
+      "If the sensor is built into the hub, replace the hub assembly.",
+      "Clear the code. It may take a short drive for the light to go off."
+    ]
+  },
+  "key_ignition_problem": {
+    "tools": [
+      "Spare key",
+      "New key fob battery (usually CR2032)",
+      "Small screwdriver",
+      "Flashlight"
+    ],
+    "safety": "If the key gets stuck or the ignition shuts off while driving, have it fixed right away. Some GM ignition switches had a recall.",
+    "spots": [
+      {
+        "name": "Key and fob",
+        "match": [
+          "key",
+          "fob"
+        ],
+        "where": "Your key.",
+        "look": "A worn key blade, a cracked chip, or a weak fob battery."
+      },
+      {
+        "name": "Security light",
+        "match": [
+          "security",
+          "theft",
+          "immobilizer"
+        ],
+        "where": "Dash.",
+        "look": "Flashing security or anti-theft light means the truck is not recognizing the key."
+      },
+      {
+        "name": "Ignition lock cylinder",
+        "match": [
+          "cylinder",
+          "lock",
+          "wont turn"
+        ],
+        "where": "Where you put the key in.",
+        "look": "A key that is hard to turn or will not go in."
+      }
+    ],
+    "find": [
+      "Try the spare key. If it works, the main key is the problem.",
+      "Watch the security light when you try to start. Flashing = key chip not recognized.",
+      "Push-button start: hold the fob right against the start button (there is a backup reader there) to test for a dead fob battery.",
+      "Wiggle the steering wheel while turning the key if it will not turn (the steering lock may be bound).",
+      "Check the vehicle's VIN for ignition switch recalls."
+    ],
+    "fix": [
+      "Replace the fob battery (pry the fob open carefully, swap the coin battery, same side up).",
+      "Get a new key cut and programmed. Dealers and many locksmiths can do it.",
+      "GM theft relearn (many older GMs): turn the key to ON with the security light flashing, wait 10 minutes until it stops, turn off, and repeat 3 times. Check your exact procedure first.",
+      "Replace a worn ignition lock cylinder. On many trucks it is a medium DIY job behind the steering column covers."
+    ]
+  },
+  "heater_core_problem": {
+    "tools": [
+      "Flashlight",
+      "Coolant",
+      "Garden hose and flush adapter",
+      "Hose clamp pliers"
+    ],
+    "safety": "Do not breathe coolant vapor in the cab for long. A leaking heater core can fog windows and make the floor wet and slippery. Never open a hot radiator cap.",
+    "spots": [
+      {
+        "name": "Heater hoses",
+        "match": [
+          "hose"
+        ],
+        "where": "Two hoses running from the engine to the firewall (passenger side).",
+        "look": "One hot and one cold with the heater on high means a clogged core."
+      },
+      {
+        "name": "Passenger floor",
+        "match": [
+          "floor",
+          "carpet",
+          "wet"
+        ],
+        "where": "Under the passenger side dash.",
+        "look": "Damp carpet that smells sweet = leaking heater core."
+      },
+      {
+        "name": "Windshield",
+        "match": [
+          "fog",
+          "windshield"
+        ],
+        "where": "Inside glass.",
+        "look": "Greasy film or fog with a sweet smell."
+      }
+    ],
+    "find": [
+      "First check the coolant level. Low coolant is the most common cause of no heat.",
+      "Warm up the engine, turn the heat to max hot. Carefully feel both heater hoses at the firewall. Both should be hot. One cold = clogged core or a stuck valve.",
+      "Check under the passenger dash for wet carpet and a sweet smell.",
+      "If the hoses are both hot but the air is cold, the blend door is the problem instead."
+    ],
+    "fix": [
+      "Top off the coolant and bleed the air (air pockets often cause no heat).",
+      "Flush a clogged core: disconnect both hoses at the firewall, run water through the core in the opposite direction of normal flow until it runs clear, then reconnect and refill.",
+      "A leaking heater core must be replaced. On most trucks the dash comes out: a long shop job.",
+      "Bypassing the core (looping the hoses) is a temporary fix only."
+    ]
+  },
+  "cvt_problem": {
+    "tools": [
+      "Code reader that reads transmission codes",
+      "Flashlight"
+    ],
+    "safety": "If the CVT goes into limp mode (very slow, high RPM), drive gently to a shop. Do not tow with it.",
+    "spots": [
+      {
+        "name": "CVT fluid",
+        "match": [
+          "fluid"
+        ],
+        "where": "Most CVTs have no dipstick; a check plug on the side of the transmission.",
+        "look": "A shop checks level and condition. Using the wrong fluid damages CVTs."
+      },
+      {
+        "name": "Transmission",
+        "match": [
+          "cvt",
+          "whine",
+          "shudder"
+        ],
+        "where": "Front-wheel drive: next to the engine.",
+        "look": "Leaks at the pan or seals."
+      }
+    ],
+    "find": [
+      "Symptoms: whining that rises with speed, shudder from a stop, slipping, or a sudden loss of power (limp mode).",
+      "Read the transmission codes. P0841, P0746, P0868 and P17xx codes are common on Nissan CVTs.",
+      "Ask about warranty. Nissan and some others extended CVT warranties; check your VIN and age.",
+      "A CVT fluid change at the right interval (often 30,000 to 60,000 miles) helps a lot."
+    ],
+    "fix": [
+      "Have the CVT fluid changed with the exact fluid the maker calls for (Nissan NS-3, Honda HCF-2, etc.).",
+      "Ask the dealer about software updates; some judder problems are fixed with a reprogram.",
+      "Worn CVTs are usually replaced, not rebuilt. Get a quote and check warranty and recalls first."
+    ]
+  },
+  "torque_converter_shudder": {
+    "tools": [
+      "Code reader",
+      "Correct transmission fluid",
+      "Flashlight"
+    ],
+    "safety": "Shudder alone is not dangerous, but it can get worse and wear the converter. Get it checked.",
+    "spots": [
+      {
+        "name": "Torque converter",
+        "match": [
+          "torque converter",
+          "converter",
+          "shudder"
+        ],
+        "where": "Between the engine and the transmission, inside the bell housing.",
+        "look": "Not visible. Diagnosed by the feel: a rumble like driving over rumble strips at 30 to 50 mph under light gas."
+      },
+      {
+        "name": "Transmission fluid",
+        "match": [
+          "fluid"
+        ],
+        "where": "Dipstick or check plug.",
+        "look": "Old, dark or burnt fluid makes the converter clutch shudder."
+      }
+    ],
+    "find": [
+      "Feel for a rumble-strip shudder at a steady 30 to 50 mph with light gas, often as the converter locks up.",
+      "Push the gas a bit more or let off. If the shudder goes away, it is likely converter clutch shudder.",
+      "Read codes. P0741 (converter clutch) is common.",
+      "Rule out misfires: an engine misfire under load can feel the same. Check for misfire codes.",
+      "GM 8-speeds (2015 to 2019) are known for this; GM issued a fluid bulletin."
+    ],
+    "fix": [
+      "A fluid change (or the maker's specific fluid flush) fixes many shudders. GM 8-speeds use a newer Mobil fluid per their bulletin.",
+      "Ask the dealer for software updates.",
+      "If it continues, the torque converter needs replacing (the transmission comes out). A shop job."
+    ]
+  },
+  "water_pump_failure": {
+    "tools": [
+      "Flashlight",
+      "Socket set",
+      "Belt tool",
+      "Drain pan",
+      "Coolant and new gasket",
+      "Scraper"
+    ],
+    "safety": "Work on a cold engine only. Coolant is poisonous to pets; clean spills right away.",
+    "spots": [
+      {
+        "name": "Weep hole",
+        "match": [
+          "weep",
+          "drip",
+          "leak"
+        ],
+        "where": "A small hole on the bottom of the water pump behind the belt pulley.",
+        "look": "Drips, dried crusty coolant trails, or a stain below it."
+      },
+      {
+        "name": "Pump pulley",
+        "match": [
+          "pulley",
+          "bearing",
+          "wobble"
+        ],
+        "where": "The pulley the belt drives at the front center of the engine.",
+        "look": "Wobble when you rock it by hand with the engine off, or a grinding noise."
+      }
+    ],
+    "find": [
+      "Look for coolant drips or crusty residue under the water pump.",
+      "Engine off: grab the pump pulley (or the fan on belt-driven fans) and rock it. Any play or grinding = bad bearing.",
+      "Listen for a squeal or grinding from the front of the engine.",
+      "Check for overheating and low coolant with a sweet smell at the front of the engine."
+    ],
+    "fix": [
+      "Drain the coolant into a pan.",
+      "Remove the belt, the fan and shroud if in the way, and the hoses on the pump.",
+      "Remove the pump bolts (note which bolts go where; lengths differ) and pull the pump.",
+      "Clean the surface completely, install the new pump with a new gasket, and torque the bolts evenly to spec.",
+      "Refill, bleed the air out, and check for leaks. Replace the thermostat at the same time."
+    ]
+  },
+  "oil_burning": {
+    "tools": [
+      "Notebook to log oil added and miles",
+      "Flashlight",
+      "Code reader",
+      "Compression tester (shop or rental)"
+    ],
+    "safety": "Keep the oil level up no matter what; running low ruins the engine. Burning oil also damages the catalytic converter over time.",
+    "spots": [
+      {
+        "name": "Tailpipe",
+        "match": [
+          "smoke",
+          "blue"
+        ],
+        "where": "Exhaust.",
+        "look": "Blue-gray smoke at startup, after idling, or when accelerating."
+      },
+      {
+        "name": "PCV valve",
+        "match": [
+          "pcv"
+        ],
+        "where": "On the valve cover or back of the intake.",
+        "look": "A stuck PCV valve pushes oil into the intake."
+      },
+      {
+        "name": "Spark plugs",
+        "match": [
+          "plug"
+        ],
+        "where": "In the heads.",
+        "look": "Oily, wet black deposits on one or more plugs show which cylinder is burning oil."
+      },
+      {
+        "name": "Intake and throttle body",
+        "match": [
+          "intake",
+          "throttle"
+        ],
+        "where": "Air intake after the throttle.",
+        "look": "A lot of oil pooled inside."
+      }
+    ],
+    "find": [
+      "Track it: write down the miles each time you add oil. Over about 1 quart in 1,500 miles is worth looking into.",
+      "Check for outside leaks first (no drips = burning it).",
+      "Watch the exhaust at a cold start and after idling 5 minutes then revving. Blue smoke at startup = valve seals. Blue smoke when accelerating = piston rings.",
+      "Check or replace the PCV valve; it is cheap.",
+      "Pull the spark plugs and look for oily ones.",
+      "A compression test and leak-down test tell you if the rings are worn.",
+      "GM 5.3L engines with Active Fuel Management are known for oil burning from the AFM system."
+    ],
+    "fix": [
+      "Replace the PCV valve and hose.",
+      "Use the correct oil weight; some people use a high-mileage oil to slow consumption.",
+      "Valve stem seals can sometimes be replaced with the heads on (a shop job).",
+      "Worn rings mean an engine rebuild or replacement; often only worth it if the rest of the truck is good.",
+      "Some GM engines got piston ring fixes or AFM disablers; ask a GM specialist."
+    ]
+  },
+  "throttle_body_problem": {
+    "tools": [
+      "Throttle body cleaner",
+      "Clean rags or old toothbrush",
+      "Screwdriver or socket",
+      "Code reader"
+    ],
+    "safety": "On electronic throttle bodies, do not push the plate open by hand with the key ON. Key off and battery disconnected before cleaning.",
+    "spots": [
+      {
+        "name": "Throttle body",
+        "match": [
+          "throttle"
+        ],
+        "where": "Where the big intake tube meets the intake manifold.",
+        "look": "Black carbon buildup around the edge of the plate and the bore."
+      },
+      {
+        "name": "Connector",
+        "match": [
+          "connector",
+          "wire"
+        ],
+        "where": "Electrical plug on the throttle body.",
+        "look": "Corroded or loose pins."
+      }
+    ],
+    "find": [
+      "Symptoms: rough or surging idle, stalling when coming to a stop, a reduced power light (wrench or 'reduced engine power' on GMs).",
+      "Read the codes. P2135, P2101, P2111 and P0121 point to the throttle body or pedal sensor.",
+      "Remove the intake tube and look inside. Black crud around the plate edge means it needs cleaning.",
+      "Check the connector for corrosion."
+    ],
+    "fix": [
+      "Key off, disconnect the battery negative.",
+      "Remove the intake tube. Spray throttle body cleaner on a rag and wipe the bore and the plate edges. Do not soak electronic throttle bodies.",
+      "Reinstall, reconnect the battery.",
+      "Do an idle relearn: start it and let it idle 2 to 3 minutes with everything off (check your vehicle's procedure).",
+      "If codes come back, replace the throttle body; it is usually 4 bolts and a connector."
+    ]
+  },
+  "collapsed_lifter": {
+    "tools": [
+      "Mechanic's stethoscope or long screwdriver",
+      "Code reader",
+      "Oil and filter"
+    ],
+    "safety": "A lifter that fails can damage the camshaft and cause misfires. Avoid hard driving until it is checked.",
+    "spots": [
+      {
+        "name": "Valve covers",
+        "match": [
+          "tick",
+          "lifter",
+          "valve cover"
+        ],
+        "where": "Top of the engine on each side.",
+        "look": "A ticking noise coming from one spot under the cover, at half engine speed."
+      },
+      {
+        "name": "Exhaust manifold",
+        "match": [
+          "manifold"
+        ],
+        "where": "Side of the engine.",
+        "look": "A tick that goes away when warm is often an exhaust leak instead."
+      }
+    ],
+    "find": [
+      "Listen with a stethoscope on the valve covers and along the lifter valley. A steady tick louder at one spot is a lifter.",
+      "Compare: a lifter tick stays when warm; an exhaust manifold leak tick usually quiets as the engine warms.",
+      "Read codes. A misfire on the same cylinder with a tick points to a collapsed lifter.",
+      "GM 5.3L and 6.2L with AFM/DFM are known for collapsed lifters."
+    ],
+    "fix": [
+      "Change the oil and filter with the right oil. Sometimes a sticky lifter frees up.",
+      "Replacing lifters means removing the heads on most V8s, and often the camshaft if it is damaged. A shop job for most people.",
+      "On GM AFM engines, many people replace lifters with non-AFM parts and use a tuner to disable AFM."
+    ]
+  },
+  "engine_knock": {
+    "tools": [
+      "Mechanic's stethoscope",
+      "Oil pressure gauge",
+      "Code reader"
+    ],
+    "safety": "A deep knock from the bottom of the engine can mean a rod bearing that is about to fail. Stop driving and have it checked; it can destroy the engine.",
+    "spots": [
+      {
+        "name": "Bottom end",
+        "match": [
+          "knock",
+          "rod",
+          "bearing"
+        ],
+        "where": "Lower part of the engine near the oil pan.",
+        "look": "A deep knock that gets faster with RPM and louder under load."
+      },
+      {
+        "name": "Oil",
+        "match": [
+          "oil"
+        ],
+        "where": "Dipstick.",
+        "look": "Low oil, or shiny metal flakes in the oil."
+      },
+      {
+        "name": "Knock sensors",
+        "match": [
+          "knock sensor",
+          "sensor"
+        ],
+        "where": "On the engine block (GM V8s: under the intake manifold).",
+        "look": "Codes P0325 to P0332; a bad sensor sets a code but does not make noise."
+      }
+    ],
+    "find": [
+      "Check the oil level and look for metal flakes in the oil or on the drain plug.",
+      "Listen with a stethoscope low on the block. A deep knock = rod or main bearing. A light tick on top = lifter or exhaust leak.",
+      "Pull one spark plug wire or coil at a time (engine running briefly). If the knock goes quiet, that cylinder's rod bearing is suspect.",
+      "Pinging (light rattling) when accelerating uphill is a different thing: detonation from low-octane fuel or carbon buildup.",
+      "A shop can check oil pressure; low pressure at hot idle is a bad sign."
+    ],
+    "fix": [
+      "Fill the oil to the right level with the right weight right away.",
+      "For pinging: use the octane your owner's manual calls for, and check knock sensor codes.",
+      "A rod knock means the engine needs a rebuild or replacement. Do not keep driving it.",
+      "Get a second opinion from a shop with a stethoscope before buying an engine."
+    ]
+  },
+  "turbo_problem": {
+    "tools": [
+      "Flashlight",
+      "Code reader",
+      "Hose clamp screwdriver",
+      "Spray bottle of soapy water"
+    ],
+    "safety": "Turbos get extremely hot. Let them cool. Never run the engine with the intake off; the turbo can suck in objects and fingers.",
+    "spots": [
+      {
+        "name": "Boost hoses and intercooler",
+        "match": [
+          "boost",
+          "hose",
+          "intercooler",
+          "whistle"
+        ],
+        "where": "Big pipes from the turbo to the intercooler (front) to the engine.",
+        "look": "Oil-wet joints, popped hoses, or loose clamps. A boost leak often whistles or hisses."
+      },
+      {
+        "name": "Turbo",
+        "match": [
+          "turbo"
+        ],
+        "where": "On the exhaust side of the engine.",
+        "look": "Oil in the inlet or outlet, or side-to-side play in the shaft (with the intake off, engine off)."
+      },
+      {
+        "name": "Wastegate",
+        "match": [
+          "wastegate"
+        ],
+        "where": "On the turbo, with an actuator rod.",
+        "look": "A stuck or rattling rod."
+      }
+    ],
+    "find": [
+      "Read the codes. P0299 (underboost) is most common.",
+      "Look over all boost hoses and the intercooler for loose clamps, oil or splits.",
+      "With the engine off and cool, remove the intake hose and gently wiggle the turbo shaft. A tiny bit of play is normal; contact with the housing is not.",
+      "Blue smoke with oil in the intake pipes can mean failing turbo seals.",
+      "A whistle or siren noise that gets louder with boost = leak or bearing wear."
+    ],
+    "fix": [
+      "Tighten or replace leaking hoses and clamps.",
+      "Change the oil with the right type on time; turbos depend on clean oil.",
+      "Turbo replacement is medium to hard depending on the engine. Always replace the oil feed line gaskets and change the oil after."
+    ]
+  },
+  "diesel_emissions_problem": {
+    "tools": [
+      "Code reader that reads diesel codes",
+      "DEF fluid (only real API-certified DEF)",
+      "Flashlight"
+    ],
+    "safety": "Never remove or delete emissions equipment; it is illegal under federal law. A regen makes the exhaust very hot; park away from dry grass.",
+    "spots": [
+      {
+        "name": "DEF tank and fluid",
+        "match": [
+          "def",
+          "urea"
+        ],
+        "where": "Blue cap next to the fuel filler or under the hood.",
+        "look": "Low DEF, crystals on the cap, or a warning on the dash."
+      },
+      {
+        "name": "DPF",
+        "match": [
+          "dpf",
+          "regen",
+          "soot",
+          "particulate"
+        ],
+        "where": "Large canister in the exhaust under the truck.",
+        "look": "A full DPF warning, frequent regens."
+      },
+      {
+        "name": "EGR system",
+        "match": [
+          "egr"
+        ],
+        "where": "On the engine.",
+        "look": "Soot buildup and EGR codes."
+      },
+      {
+        "name": "NOx sensors",
+        "match": [
+          "nox",
+          "sensor"
+        ],
+        "where": "In the exhaust before and after the SCR.",
+        "look": "Codes and a 'speed limited' countdown."
+      }
+    ],
+    "find": [
+      "Read the codes and the dash message. It often tells you DEF level, DEF quality, or DPF full.",
+      "Check the DEF level. Use real DEF only, never water.",
+      "If the DPF is full, drive at highway speed for 20 to 30 minutes so it can regen, or use the dealer's forced regen.",
+      "Lots of short trips and idling cause DPF clogs.",
+      "NOx sensor and DEF heater failures are common on many diesels."
+    ],
+    "fix": [
+      "Fill DEF. Clear the warning (it may take a drive cycle).",
+      "Do a highway drive or forced regen for a full DPF.",
+      "Replace the failed sensor or DEF part. Many are covered by an emissions warranty (often 8 years / 80,000 miles); check yours.",
+      "Have the dealer check for software updates."
+    ]
+  },
+  "hybrid_ev_problem": {
+    "tools": [
+      "Code reader that reads hybrid codes",
+      "12 V battery tester",
+      "Flashlight"
+    ],
+    "safety": "Never touch orange high-voltage cables or the hybrid battery. Hybrid and EV high-voltage work is for trained technicians only.",
+    "spots": [
+      {
+        "name": "12 V battery",
+        "match": [
+          "12v",
+          "12 v",
+          "battery",
+          "wont start"
+        ],
+        "where": "Often in the trunk or under the hood.",
+        "look": "A weak 12 V battery causes lots of warning lights and no start."
+      },
+      {
+        "name": "Hybrid battery cooling fan and filter",
+        "match": [
+          "fan",
+          "filter",
+          "cooling"
+        ],
+        "where": "Toyota hybrids: a vent near the rear seat.",
+        "look": "A vent clogged with dust or pet hair."
+      },
+      {
+        "name": "Charge port",
+        "match": [
+          "charge",
+          "port"
+        ],
+        "where": "EV charge door.",
+        "look": "Damaged pins or debris."
+      }
+    ],
+    "find": [
+      "Test the 12 V battery first; it causes many hybrid and EV problems.",
+      "Read the codes. P0A80 (Toyota) = hybrid battery wear. P0AA6 = high-voltage isolation fault (stop driving).",
+      "Clean the hybrid battery cooling vent and filter.",
+      "Check for recalls and warranty. Hybrid batteries are often covered 8 to 10 years.",
+      "EVs: check charging with a different charger or outlet to rule out the charger."
+    ],
+    "fix": [
+      "Replace a weak 12 V battery.",
+      "Clean the cooling vent and filter.",
+      "Have a hybrid-trained shop or dealer test the high-voltage battery. Rebuilt and new packs are available.",
+      "Do not drive with a high-voltage isolation or high-voltage system warning."
+    ]
+  },
+  "four_wheel_drive_problem": {
+    "tools": [
+      "Code reader",
+      "Flashlight",
+      "Multimeter",
+      "Transfer case fluid (check the type)"
+    ],
+    "safety": "Do not drive in 4WD on dry pavement; it binds the drivetrain. Chock the wheels before getting under.",
+    "spots": [
+      {
+        "name": "Transfer case encoder motor",
+        "match": [
+          "encoder",
+          "motor",
+          "shift motor"
+        ],
+        "where": "On the back side of the transfer case (GM trucks).",
+        "look": "Corroded connector or a motor that does not move when you push the 4WD button."
+      },
+      {
+        "name": "Front axle actuator",
+        "match": [
+          "actuator",
+          "front axle"
+        ],
+        "where": "On the front differential (GM: the passenger side axle tube).",
+        "look": "Unplugged or corroded connector."
+      },
+      {
+        "name": "Transfer case fluid",
+        "match": [
+          "fluid",
+          "transfer case"
+        ],
+        "where": "Fill plug on the side of the transfer case.",
+        "look": "Fluid should be at the bottom of the fill hole. Low or metal-filled fluid is bad."
+      },
+      {
+        "name": "Transfer case pump rub",
+        "match": [
+          "pump rub",
+          "rub"
+        ],
+        "where": "Rear half of the GM NV246/NP263 transfer case.",
+        "look": "A worn spot on the case; leaks fluid. Common GM truck issue."
+      }
+    ],
+    "find": [
+      "Note the symptoms: 4WD light flashing, will not engage, will not disengage, or grinding.",
+      "Read the codes (body or transfer case codes on many trucks).",
+      "Check the 4WD fuses and relays.",
+      "Have a helper press the 4WD button while you listen at the transfer case for the encoder motor.",
+      "Check transfer case fluid level and condition.",
+      "Make sure the front axle actuator engages (front driveshaft should drive the front wheels in 4WD)."
+    ],
+    "fix": [
+      "Clean corroded connectors and replace blown fuses.",
+      "Replace a bad encoder motor (usually 3 or 4 bolts on GM trucks).",
+      "Replace the front axle actuator if bad.",
+      "Fill or change the transfer case fluid with the right type.",
+      "Internal transfer case damage needs a rebuild."
+    ]
+  },
+  "differential_problem": {
+    "tools": [
+      "Jack and jack stands",
+      "Socket and ratchet (often 3/8 in square drive for the plug)",
+      "Gear oil (check the weight, often 75W-90)",
+      "Fluid pump",
+      "Drain pan",
+      "Gasket maker or new gasket"
+    ],
+    "safety": "Chock the wheels and support the vehicle on jack stands. Some differentials need a friction modifier for a limited-slip; check the manual.",
+    "spots": [
+      {
+        "name": "Differential cover",
+        "match": [
+          "cover",
+          "gasket",
+          "leak"
+        ],
+        "where": "Round or oval cover at the back of the axle.",
+        "look": "Wet, oily cover edge or drips."
+      },
+      {
+        "name": "Pinion seal",
+        "match": [
+          "pinion"
+        ],
+        "where": "Front of the differential where the driveshaft connects.",
+        "look": "Oil slung around the front, wet yoke."
+      },
+      {
+        "name": "Axle seals",
+        "match": [
+          "axle seal"
+        ],
+        "where": "Ends of the axle at each wheel.",
+        "look": "Gear oil on the inside of the wheel or brakes."
+      },
+      {
+        "name": "Gear oil",
+        "match": [
+          "fluid",
+          "oil"
+        ],
+        "where": "Fill plug on the cover or front.",
+        "look": "Oil should be at the bottom of the fill hole. Metal flakes or a burnt smell mean wear."
+      }
+    ],
+    "find": [
+      "Note the noise: a whine that changes on and off the gas = ring and pinion gears. A rumble that changes with turning = bearings. A clunk = backlash or U-joint.",
+      "Check the fluid: remove the fill plug. Fluid should come right to the bottom edge of the hole.",
+      "Look for leaks at the cover, pinion seal and axle ends.",
+      "Check the magnet on the drain plug or inside the cover for metal. A little fine fuzz is normal; chunks are not."
+    ],
+    "fix": [
+      "Fill to the bottom of the fill hole with the right gear oil.",
+      "Change the fluid: drain, clean the cover, reseal with a new gasket or gasket maker, refill.",
+      "Replace a leaking pinion seal (mark the nut position; preload matters). Axle seals are medium DIY.",
+      "Whining gears or worn bearings need a differential rebuild by a driveline shop."
+    ]
+  },
+  "death_wobble": {
+    "tools": [
+      "Jack and jack stands",
+      "Flashlight",
+      "Helper",
+      "Torque wrench",
+      "Pry bar"
+    ],
+    "safety": "Death wobble is dangerous. When it starts, slow down firmly without slamming the brakes, and keep a tight grip. Do not drive at highway speed until it is fixed.",
+    "spots": [
+      {
+        "name": "Track bar",
+        "match": [
+          "track bar"
+        ],
+        "where": "A bar from the axle to the frame across the front (solid axle trucks and Jeeps).",
+        "look": "Movement at the ends or bushings when the steering wheel is rocked; loose bolts; cracked bracket."
+      },
+      {
+        "name": "Ball joints",
+        "match": [
+          "ball joint"
+        ],
+        "where": "Steering knuckles.",
+        "look": "Play when rocking the tire top to bottom."
+      },
+      {
+        "name": "Tie rods and drag link",
+        "match": [
+          "tie rod",
+          "drag link"
+        ],
+        "where": "Steering linkage across the front axle.",
+        "look": "Any slop in the ends."
+      },
+      {
+        "name": "Steering box mount",
+        "match": [
+          "steering box",
+          "gear box"
+        ],
+        "where": "Where the steering gear bolts to the frame.",
+        "look": "Cracks or movement at the frame."
+      },
+      {
+        "name": "Steering stabilizer",
+        "match": [
+          "stabilizer"
+        ],
+        "where": "A shock across the steering.",
+        "look": "A worn one hides the problem but does not cause it."
+      }
+    ],
+    "find": [
+      "Have a helper rock the steering wheel side to side quickly (engine running, parked) while you watch every steering joint from under the front. Look for any movement other than turning.",
+      "Track bar first: watch both ends. Any clunk or play there is the most common cause.",
+      "Jack up each front wheel and check ball joints (top/bottom rock) and tie rods (side to side rock).",
+      "Check the torque on the track bar and control arm bolts.",
+      "Check tire balance and caster after a lift."
+    ],
+    "fix": [
+      "Tighten loose bolts to spec. Replace any worn track bar, ends, ball joints or tie rods.",
+      "Lifted trucks: an adjustable track bar and a caster correction may be needed.",
+      "Balance the tires and set the pressure right.",
+      "Replace the steering stabilizer only after the real cause is fixed.",
+      "Check your VIN for recalls (Jeep had a track bar bracket recall)."
+    ]
+  },
+  "air_suspension_problem": {
+    "tools": [
+      "Spray bottle of soapy water",
+      "Flashlight",
+      "Code reader",
+      "Jack and jack stands"
+    ],
+    "safety": "Never get under a vehicle supported only by air suspension. Use jack stands, and put the system in service or jack mode if it has one.",
+    "spots": [
+      {
+        "name": "Air springs (bags)",
+        "match": [
+          "bag",
+          "air spring"
+        ],
+        "where": "At each corner where a coil spring would be.",
+        "look": "Cracks in the rubber, especially at the folds, or a corner sitting low after parking."
+      },
+      {
+        "name": "Compressor",
+        "match": [
+          "compressor"
+        ],
+        "where": "Usually under the front or rear of the vehicle.",
+        "look": "Running a long time or often, very hot, or not running at all."
+      },
+      {
+        "name": "Air lines and fittings",
+        "match": [
+          "line",
+          "fitting"
+        ],
+        "where": "Small plastic tubes to each corner.",
+        "look": "Rubbed or cracked lines, loose fittings."
+      }
+    ],
+    "find": [
+      "Note which corner sags after sitting overnight. That corner has the leak.",
+      "Spray soapy water on that air spring, its fitting and line. Bubbles show the leak.",
+      "Listen for the compressor. Running a long time or often means a leak; never running means a fuse, relay or failed compressor.",
+      "Read the suspension codes with a capable scan tool."
+    ],
+    "fix": [
+      "Replace a leaking air spring (often 2 bolts and a line fitting, with the corner supported).",
+      "Replace or reconnect a leaking line.",
+      "Replace a bad relay or compressor. A failing compressor is often caused by a leak making it overwork; fix the leak too.",
+      "Some owners convert to coil springs; that changes how it rides and turns on a warning on some vehicles."
+    ]
+  },
+  "blend_door_actuator": {
+    "tools": [
+      "Screwdriver and small sockets",
+      "Flashlight",
+      "Trim tool"
+    ],
+    "safety": "Disconnect the battery if you are unplugging connectors behind the dash.",
+    "spots": [
+      {
+        "name": "Blend door actuator",
+        "match": [
+          "actuator",
+          "blend",
+          "click"
+        ],
+        "where": "A small plastic motor on the side of the heater box under the dash (passenger side or center on many trucks).",
+        "look": "Clicking or tapping from behind the dash, especially after starting or changing temperature."
+      },
+      {
+        "name": "Heater hoses",
+        "match": [
+          "hose"
+        ],
+        "where": "Firewall.",
+        "look": "Both hot with the heater on = the core is fine and the door is the problem."
+      }
+    ],
+    "find": [
+      "Symptoms: clicking behind the dash, temperature stuck hot or cold, or one side hot and one cold on dual-zone systems.",
+      "Feel both heater hoses at the firewall with the engine warm. If both are hot and the air is still cold, the blend door is not moving.",
+      "Listen behind the dash while changing the temperature to find which actuator clicks.",
+      "On many GMs, unplugging the battery for 10 minutes then letting it recalibrate (do not touch the controls for 1 minute after starting) fixes a confused actuator."
+    ],
+    "fix": [
+      "Try the recalibration first (battery off, then let it sit after starting).",
+      "Remove the lower dash panel or glove box to reach the actuator.",
+      "Unplug it, remove the 2 or 3 screws, and install the new one. Plug it in before screwing it down so it can find its position.",
+      "Turn the key on and let it calibrate before using the controls."
+    ]
+  },
+  "instrument_cluster_problem": {
+    "tools": [
+      "Trim tools",
+      "Small Torx and sockets",
+      "Code reader"
+    ],
+    "safety": "Disconnect the battery before removing the cluster. Do not drive without a working speedometer.",
+    "spots": [
+      {
+        "name": "Gauge cluster",
+        "match": [
+          "gauge",
+          "speedometer",
+          "cluster",
+          "needle"
+        ],
+        "where": "Behind the dash bezel in front of the driver.",
+        "look": "Gauges stuck, dead or jumping. GM trucks 2003 to 2006 are known for failing gauge stepper motors."
+      },
+      {
+        "name": "Fuses and grounds",
+        "match": [
+          "fuse",
+          "ground"
+        ],
+        "where": "Fuse box and behind the dash.",
+        "look": "A blown cluster fuse or a loose ground causes the whole cluster to act up."
+      }
+    ],
+    "find": [
+      "Note which gauges fail: one gauge stuck = that stepper motor. All dead = fuse, ground, or the cluster itself.",
+      "Many GM clusters have a self-test: with the key off, hold the trip/odometer button and turn the key on. All needles should sweep.",
+      "Check the cluster fuse.",
+      "If the speedometer and the transmission both act up, check the vehicle speed sensor instead."
+    ],
+    "fix": [
+      "Replace a blown fuse or fix a loose ground.",
+      "Remove the dash bezel and the cluster (several screws and a connector).",
+      "Send it to a cluster repair service or replace the stepper motors (requires soldering).",
+      "A replacement cluster may need the mileage programmed; repair services usually keep your mileage."
+    ]
+  },
+  "infotainment_problem": {
+    "tools": [
+      "Owner's manual",
+      "Phone with the latest update",
+      "Fuse puller"
+    ],
+    "safety": "Do not try to fix it while driving.",
+    "spots": [
+      {
+        "name": "Screen and radio",
+        "match": [
+          "screen",
+          "radio",
+          "reboot",
+          "frozen"
+        ],
+        "where": "Center of the dash.",
+        "look": "Freezing, rebooting, black screen, or no sound."
+      },
+      {
+        "name": "Radio fuse",
+        "match": [
+          "fuse"
+        ],
+        "where": "Fuse box.",
+        "look": "Blown or a loose fuse."
+      }
+    ],
+    "find": [
+      "Try a soft reset: on many vehicles hold the power button 10 to 20 seconds until it restarts.",
+      "Forget the vehicle on your phone and pair it again. Update your phone.",
+      "Check for a software update from the maker (many can be installed at home with a USB stick or over the air).",
+      "Try a different USB cable for CarPlay or Android Auto; bad cables cause most disconnects.",
+      "If it is completely dead, check the radio fuse."
+    ],
+    "fix": [
+      "Do the reset, re-pair, and update.",
+      "Pull the radio fuse for 1 minute (radio off) to force a full reset.",
+      "Ask the dealer about software bulletins; many screen problems are fixed by updates.",
+      "A failed head unit can be replaced; aftermarket units may need an adapter to keep steering wheel controls."
+    ]
+  },
+  "window_regulator_problem": {
+    "tools": [
+      "Trim panel tools",
+      "Screwdrivers and sockets",
+      "Multimeter",
+      "Painter's tape"
+    ],
+    "safety": "Tape the glass up so it cannot fall when you unbolt it. Keep fingers away from the regulator; it can snap.",
+    "spots": [
+      {
+        "name": "Window switch",
+        "match": [
+          "switch"
+        ],
+        "where": "Door panel or center console.",
+        "look": "Try the window from both the driver master switch and its own switch."
+      },
+      {
+        "name": "Motor and regulator",
+        "match": [
+          "regulator",
+          "motor",
+          "crunch"
+        ],
+        "where": "Inside the door behind the panel.",
+        "look": "Grinding or crunching, a window that drops, goes crooked, or the motor running with no movement."
+      },
+      {
+        "name": "Door wiring",
+        "match": [
+          "wire",
+          "hinge"
+        ],
+        "where": "The rubber boot between the door and the body.",
+        "look": "Broken wires from opening and closing the door."
+      }
+    ],
+    "find": [
+      "Press the switch and listen. Motor runs but window does not move = broken regulator (cable or gear). No sound = switch, wiring or motor.",
+      "Try the other switch (driver master or the door's own).",
+      "With the panel off, check for power at the motor plug when pressing the switch. Power but no movement = bad motor.",
+      "Check the wiring in the door hinge boot for broken wires."
+    ],
+    "fix": [
+      "Remove the door panel (screws in the armrest and handle, then pop the clips).",
+      "Peel back the plastic weather sheet carefully.",
+      "Tape the window up in the closed position.",
+      "Unbolt the glass from the regulator, unbolt the regulator and motor, and remove through the access hole.",
+      "Install the new assembly, bolt the glass on, test before putting the panel back."
+    ]
+  },
+  "door_lock_problem": {
+    "tools": [
+      "Trim panel tools",
+      "Screwdrivers and sockets",
+      "Spray lubricant (white lithium grease or silicone)",
+      "New key fob battery"
+    ],
+    "safety": "Disconnect the battery if you unplug the airbag or side impact sensors in some doors.",
+    "spots": [
+      {
+        "name": "Key fob",
+        "match": [
+          "fob",
+          "remote"
+        ],
+        "where": "Your key.",
+        "look": "Weak battery, or only one door not working (fob is fine then)."
+      },
+      {
+        "name": "Door lock actuator",
+        "match": [
+          "actuator",
+          "latch"
+        ],
+        "where": "Inside the door at the latch.",
+        "look": "Buzzing or a weak click with no lock movement."
+      },
+      {
+        "name": "Door wiring",
+        "match": [
+          "wire",
+          "hinge"
+        ],
+        "where": "Rubber boot between door and body.",
+        "look": "Broken wires."
+      }
+    ],
+    "find": [
+      "If no doors respond to the fob, replace the fob battery and try the door switch inside.",
+      "If only one door will not lock, that door's actuator or wiring is the likely problem.",
+      "Listen at the door when pressing lock. A buzz or weak click = worn actuator.",
+      "Check the lock fuse if no doors work from any switch."
+    ],
+    "fix": [
+      "Replace the fob battery.",
+      "Spray lubricant into the latch and work it.",
+      "Replace the door lock actuator: remove the door panel, disconnect the rods and plug, unbolt the latch (often 3 Torx screws on the door edge), and swap.",
+      "Repair broken wires in the door hinge boot."
+    ]
+  },
+  "water_leak_inside": {
+    "tools": [
+      "Garden hose",
+      "Helper",
+      "Flashlight",
+      "Towels",
+      "Wet/dry vac",
+      "Compressed air or trimmer line to clear drains"
+    ],
+    "safety": "A wet carpet grows mold and can damage wiring and airbag modules under the seats. Dry it out quickly.",
+    "spots": [
+      {
+        "name": "A/C drain",
+        "match": [
+          "ac drain",
+          "condensation",
+          "passenger floor"
+        ],
+        "where": "A rubber tube through the firewall, usually passenger side, that drips under the truck.",
+        "look": "No drip under the truck with A/C running and a wet passenger floor = plugged drain."
+      },
+      {
+        "name": "Cowl and windshield",
+        "match": [
+          "windshield",
+          "cowl"
+        ],
+        "where": "Base of the windshield.",
+        "look": "Clogged leaves in the cowl, or a bad windshield seal."
+      },
+      {
+        "name": "Door seals",
+        "match": [
+          "door",
+          "seal"
+        ],
+        "where": "Rubber seals around the doors.",
+        "look": "Torn, flattened or loose seals."
+      },
+      {
+        "name": "Third brake light and roof",
+        "match": [
+          "roof",
+          "brake light",
+          "headliner"
+        ],
+        "where": "Top of the cab.",
+        "look": "Water stains on the headliner below it. Very common on pickup trucks."
+      },
+      {
+        "name": "Sunroof drains",
+        "match": [
+          "sunroof"
+        ],
+        "where": "Tubes at the corners of the sunroof.",
+        "look": "Clogged drains overflow into the headliner."
+      }
+    ],
+    "find": [
+      "Find where the water ends up: front floor, rear floor, headliner or trunk.",
+      "Have a helper sit inside with a flashlight while you run a garden hose slowly over one area at a time, starting low and moving up. Give each spot a few minutes.",
+      "With the A/C running on a humid day, look for a drip under the passenger side. No drip and a wet floor = plugged drain.",
+      "Clear leaves from the cowl at the base of the windshield.",
+      "Check the third brake light gasket on pickups if water is in the headliner."
+    ],
+    "fix": [
+      "Unclog the A/C drain by gently pushing a trimmer line into it or a short puff of compressed air.",
+      "Clean the cowl and sunroof drains.",
+      "Reseal the third brake light or roof marker lights with a new gasket.",
+      "Replace torn door seals.",
+      "Pull back the carpet and dry the padding completely with a wet/dry vac and fans."
+    ]
+  },
+  "rust_damage": {
+    "tools": [
+      "Flashlight",
+      "Screwdriver or small hammer to probe rust",
+      "Wire brush",
+      "Rust converter and undercoating",
+      "Safety glasses"
+    ],
+    "safety": "Rusted brake lines, fuel lines or frames are a safety problem. Have frame rust checked by a shop before driving at speed or towing.",
+    "spots": [
+      {
+        "name": "Frame",
+        "match": [
+          "frame"
+        ],
+        "where": "Main rails under the truck, especially above the rear axle and near the spring hangers.",
+        "look": "Flaking layers, holes, or rust that a screwdriver pokes through."
+      },
+      {
+        "name": "Brake and fuel lines",
+        "match": [
+          "line",
+          "brake line",
+          "fuel line"
+        ],
+        "where": "Along the frame rails.",
+        "look": "Swollen or flaking lines. GM trucks of the 2000s commonly rust brake lines."
+      },
+      {
+        "name": "Rocker panels and cab corners",
+        "match": [
+          "rocker",
+          "cab corner"
+        ],
+        "where": "Under the doors and the lower back corners of the cab.",
+        "look": "Bubbling paint or holes. Common on 1999 to 2007 GM trucks."
+      },
+      {
+        "name": "Wheel wells",
+        "match": [
+          "wheel well",
+          "fender"
+        ],
+        "where": "Fender lips.",
+        "look": "Bubbling paint."
+      }
+    ],
+    "find": [
+      "Get under the truck with a good flashlight. Tap suspect areas with a hammer or poke with a screwdriver. Solid metal rings; rotten metal crunches or goes through.",
+      "Follow the brake and fuel lines and look for swollen, flaking spots.",
+      "Look at rocker panels and cab corners. Push on bubbling paint.",
+      "Check where the suspension mounts to the frame. Rust there matters most."
+    ],
+    "fix": [
+      "Surface rust: wire brush it, use a rust converter, then paint or undercoat.",
+      "Replace rusted brake lines right away.",
+      "Rocker and cab corner patch panels are welded in. A body shop job unless you weld.",
+      "Frame rot near suspension mounts may need a frame section or a frame replacement. Get a shop's opinion.",
+      "Wash the underside in winter in salt states."
+    ]
+  },
+  "adas_problem": {
+    "tools": [
+      "Soft cloth",
+      "Owner's manual",
+      "VIN for recall lookup"
+    ],
+    "safety": "Driver assist systems help but do not replace you. If they act up, turn them off in the settings and drive normally until fixed.",
+    "spots": [
+      {
+        "name": "Front radar",
+        "match": [
+          "radar",
+          "grille",
+          "cruise"
+        ],
+        "where": "Behind the grille emblem or lower bumper.",
+        "look": "Mud, snow, ice or bugs covering it, or a bumper that was hit."
+      },
+      {
+        "name": "Windshield camera",
+        "match": [
+          "camera",
+          "windshield",
+          "lane"
+        ],
+        "where": "At the top center of the windshield behind the mirror.",
+        "look": "Dirt, fog, or a crack in front of it. A new windshield needs calibration."
+      },
+      {
+        "name": "Bumper sensors",
+        "match": [
+          "parking",
+          "blind spot",
+          "sensor"
+        ],
+        "where": "Small round sensors on the bumpers, and rear corner radars for blind spot.",
+        "look": "Dirt or damage."
+      }
+    ],
+    "find": [
+      "Read the message on the dash; it often says which sensor is blocked.",
+      "Clean the grille emblem, bumper sensors and the windshield in front of the camera.",
+      "Note if it started after a windshield replacement, a front bumper repair, or an alignment.",
+      "Write down when false braking or lane alerts happen (bridges, shadows) for the dealer.",
+      "Look up your VIN for recalls on automatic emergency braking."
+    ],
+    "fix": [
+      "Keep sensors clean, especially in winter.",
+      "After a windshield or bumper repair, have the camera and radar calibrated (static or dynamic calibration at a dealer or glass shop).",
+      "Get software updates from the dealer.",
+      "Replace damaged sensors."
+    ]
+  }
+}

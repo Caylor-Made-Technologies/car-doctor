@@ -117,6 +117,14 @@ def main():
            or not c.get("plain") or not c.get("drive") or not c.get("todo")]
     check(not bad, f"causes.json entries are complete {bad or ''}")
 
+    # 2b. Every cause has a step-by-step guide.
+    guides = json.loads((APP / "guides.json").read_text(encoding="utf-8"))
+    bad_guides = [k for k in causes
+                  if k not in guides or len(guides[k].get("tools", [])) < 2 or len(guides[k].get("find", [])) < 3
+                  or len(guides[k].get("fix", [])) < 3 or not guides[k].get("spots")
+                  or any(not (s.get("name") and s.get("where") and s.get("look")) for s in guides[k]["spots"])]
+    check(not bad_guides and set(guides) == set(causes), f"guides.json has a complete guide per cause {bad_guides or ''}")
+
     # 3. Codes point at real causes.
     bad_codes = sorted(code for code, info in codes.items() if info.get("related") not in causes)
     check(not bad_codes, f"every code's related cause exists {bad_codes or ''}")
