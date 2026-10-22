@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://vpic.nhtsa.dot.gov; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>Car Doctor</title>
   <meta name="description" content="Diagnose car and truck problems from symptoms and OBD-II trouble codes. Works offline.">
@@ -107,6 +107,15 @@
     <section id="tab-vehicle" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-vehicle" hidden>
       <h1 class="page-title">My vehicle</h1>
       <p class="page-sub">Saved on this phone so answers and log entries fit your vehicle.</p>
+      <form id="vinForm" class="card vin-card" autocomplete="off" novalidate>
+        <label for="vinInput" class="vin-label">Don't know the make or model? Enter the VIN</label>
+        <div class="vin-row">
+          <input id="vinInput" class="input vin-input" maxlength="20" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="17 letters and numbers" aria-describedby="vinHelp">
+          <button class="btn primary" type="submit">Look up</button>
+        </div>
+        <p id="vinHelp" class="hint">Find it at the bottom of the windshield on the driver side, on the sticker in the driver's door frame, or on your insurance card or registration (those cards list the year, make and model too).</p>
+        <p id="vinResult" class="hint vin-result" role="status" aria-live="polite"></p>
+      </form>
       <form id="profileForm" class="card form-grid" autocomplete="off">
         <label>Year <input class="input" name="year" inputmode="numeric" maxlength="4" placeholder="2005"></label>
         <label>Make <input class="input" name="make" maxlength="30" placeholder="Chevrolet" list="makeList" autocomplete="off"></label>
@@ -147,6 +156,7 @@
       <div class="card prose">
         <p><strong>Your data stays on this phone.</strong> Your vehicle, repair log, reminders, and the answers you confirm (so the app can remember them and check in about its last guess) are saved in this browser only. The diagnosis runs on this phone too. Nothing is sent to us or anyone else. No accounts, cookies, ads, analytics or trackers.</p>
         <p>"Find a mechanic" only uses your location if you tap "Use my location". It stays on this phone and is only put into the map link; Apple or Google receives it when you open their map. It's never saved.</p>
+        <p>"Look up" by VIN reads the year (and usually the make) right on this phone. To fill in the model and engine, the VIN is sent to the U.S. government's free vehicle decoder (NHTSA, vpic.nhtsa.dot.gov). Nothing else is sent, and the VIN isn't saved.</p>
         <p>Reminders you add to your calendar go to your phone's Calendar app. If you pick "Google Calendar", the reminder's title and date are sent to Google so it can create the event; nothing else is.</p>
         <p>Delete it any time with the button below, or by clearing this site's data in your browser settings.</p>
         <p><strong>Guidance only.</strong> Car Doctor suggests likely causes from what you type. It can be wrong and is not a professional inspection or repair advice. If something feels unsafe (brakes, steering, overheating, fuel or exhaust smells), don't drive it and have a qualified mechanic check it. Use jack stands, chock the wheels, and let the engine cool before working on it. The app is free, provided as-is, and meant for adults; it isn't directed at children under 13.</p>

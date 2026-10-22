@@ -738,3 +738,11 @@ body.thinking .circuits .traces path { stroke: rgba(61, 139, 255, 0.28); }
   .circuits .pulse { display: none; }
   .typing span { animation: none; opacity: 0.6; }
 }
+
+/* VIN lookup (Vehicle tab) */
+.vin-card { padding: 14px; margin-bottom: 12px; }
+.vin-label { display: block; font-weight: 600; margin-bottom: 8px; }
+.vin-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.vin-input { text-transform: uppercase; letter-spacing: 0.04em; min-width: 0; }
+.vin-card .hint { margin: 8px 0 0; }
+.vin-result:empty { display: none; }

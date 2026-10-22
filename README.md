@@ -4,7 +4,8 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 
 - **Works offline.** Install it on your home screen and it runs with no signal.
 - **No AI service, no costs.** The diagnosis model is a small machine-learning model trained in Python from `data/symptoms.csv`, saved as JSON, and run right in the browser.
-- **Private.** Your vehicle, repair log, reminders and training examples stay on your phone (localStorage). Nothing is sent anywhere: no accounts, cookies, analytics or trackers. "Delete all my data" in My Vehicle wipes it.
+- **VIN lookup.** The year and most makes are read from the VIN on the phone. Model and engine come from NHTSA's free decoder (vpic.nhtsa.dot.gov), only when you tap Look up; that's the only outside request, and the VIN isn't saved.
+- **Private.** Your vehicle, repair log, reminders and training examples stay on your phone (localStorage). Nothing is sent anywhere (except a VIN, if you use VIN lookup): no accounts, cookies, analytics or trackers. "Delete all my data" in My Vehicle wipes it.
 
 ## What's in the app
 
@@ -14,7 +15,7 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 | **Codes** | Type a trouble code (`p0300` becomes `P0300`) for its meaning, causes and fix difficulty (113 codes, including turbo, throttle body, CVT, GM AFM, diesel DEF/DPF and hybrid codes). **What's that light?** explains 9 dashboard warning lights. |
 | **Reminders** | Oil changes, tires, brakes and more, added to your phone's Calendar with alerts. |
 | **Log** | Repair history, newest first. |
-| **Vehicle** | Your vehicle (with make/model suggestions) and its **known problems**, **Look up any vehicle** (handy before buying), "Teach the model", privacy and terms. |
+| **Vehicle** | **Look up by VIN** (fills in year, make, model and engine for people who don't know them), your vehicle (with make/model suggestions) and its **known problems**, **Look up any vehicle** (handy before buying), "Teach the model", privacy and terms. |
 
 **Help** (red button, top right): 911, Texas DPS roadside help **1-800-525-5555** (24/7, on the back of every Texas driver license), NTTA toll roads **#999**, and find a tow truck or mechanic.
 

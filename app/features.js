@@ -167,6 +167,167 @@ function fillEngineList(form, list) {
   update();
 }
 
+// ---------------------------------------------------------------------------
+// Look up by VIN. The year (10th character) and most makes (first 3
+// characters, the "WMI") are read right here, offline. Model and engine come
+// from NHTSA's free decoder, only when the person taps Look up.
+// ---------------------------------------------------------------------------
+
+const VIN_YEARS = "ABCDEFGHJKLMNPRSTVWXY123456789"; // 1980/2010 + index
+const VIN_WEIGHTS = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2];
+const VIN_VALUES = { A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, J: 1, K: 2, L: 3, M: 4, N: 5,
+  P: 7, R: 9, S: 2, T: 3, U: 4, V: 5, W: 6, X: 7, Y: 8, Z: 9 };
+// Common makers' codes. Shared codes (like Chrysler/Dodge/Jeep 1C4) are left out.
+const VIN_MAKERS = {
+  "1G1": "Chevrolet", "1GC": "Chevrolet", "1GN": "Chevrolet", "2G1": "Chevrolet", "3GC": "Chevrolet", "3GN": "Chevrolet", "KL7": "Chevrolet",
+  "1GT": "GMC", "1GK": "GMC", "2GT": "GMC", "3GT": "GMC", "1G6": "Cadillac", "1GY": "Cadillac", "1G4": "Buick", "5GA": "Buick",
+  "1FA": "Ford", "1FB": "Ford", "1FD": "Ford", "1FM": "Ford", "1FT": "Ford", "2FM": "Ford", "3FA": "Ford", "3FT": "Ford", "1LN": "Lincoln", "5LM": "Lincoln",
+  "1C6": "Ram", "3C6": "Ram", "3D7": "Ram", "1J4": "Jeep", "1J8": "Jeep", "2C3": "Chrysler", "2B3": "Dodge",
+  "JTD": "Toyota", "JTE": "Toyota", "JTM": "Toyota", "JTN": "Toyota", "2T1": "Toyota", "2T3": "Toyota", "4T1": "Toyota", "4T3": "Toyota",
+  "5TD": "Toyota", "5TF": "Toyota", "5TE": "Toyota", "JTH": "Lexus", "JTJ": "Lexus", "2T2": "Lexus",
+  "1HG": "Honda", "2HG": "Honda", "2HK": "Honda", "5FN": "Honda", "5J6": "Honda", "JHM": "Honda", "19U": "Acura", "JH4": "Acura",
+  "1N4": "Nissan", "1N6": "Nissan", "3N1": "Nissan", "5N1": "Nissan", "JN1": "Nissan", "JN8": "Nissan", "JNK": "Infiniti",
+  "KMH": "Hyundai", "5NP": "Hyundai", "5NM": "Hyundai", "KNA": "Kia", "KND": "Kia", "5XY": "Kia", "KM8": "Hyundai",
+  "JF1": "Subaru", "JF2": "Subaru", "4S3": "Subaru", "4S4": "Subaru", "JM1": "Mazda", "JM3": "Mazda",
+  "3VW": "Volkswagen", "WVW": "Volkswagen", "WVG": "Volkswagen", "1VW": "Volkswagen", "WAU": "Audi", "WA1": "Audi",
+  "WBA": "BMW", "WBS": "BMW", "5UX": "BMW", "WDD": "Mercedes-Benz", "WDC": "Mercedes-Benz", "4JG": "Mercedes-Benz", "55S": "Mercedes-Benz",
+  "5YJ": "Tesla", "7SA": "Tesla", "YV1": "Volvo", "YV4": "Volvo", "SAL": "Land Rover", "WP0": "Porsche", "WP1": "Porsche",
+  "JA4": "Mitsubishi", "JA3": "Mitsubishi", "WMW": "Mini", "7FA": "Honda",
+};
+
+function cleanVin(text) {
+  // VINs never use I, O or Q, so those are typos for 1 and 0.
+  return String(text || "").toUpperCase().replace(/[^A-Z0-9]/g, "").replace(/I/g, "1").replace(/[OQ]/g, "0");
+}
+
+function vinCheckDigitOk(vin) {
+  let sum = 0;
+  for (let i = 0; i < 17; i++) {
+    const ch = vin[i];
+    sum += (/\d/.test(ch) ? Number(ch) : VIN_VALUES[ch] || 0) * VIN_WEIGHTS[i];
+  }
+  const check = sum % 11 === 10 ? "X" : String(sum % 11);
+  return vin[8] === check;
+}
+
+// What we can tell without the internet: year and (often) make.
+function decodeVinOffline(vin) {
+  const index = VIN_YEARS.indexOf(vin[9]);
+  let year = null;
+  if (index >= 0) {
+    // 7th character a letter = 2010 or newer (North American rule).
+    year = (/[A-Z]/.test(vin[6]) ? 2010 : 1980) + index;
+    if (year > new Date().getFullYear() + 1) year -= 30;
+  }
+  return { year, make: VIN_MAKERS[vin.slice(0, 3)] || null };
+}
+
+// "Silverado" + series "2500 (3/4 Ton)" -> our "Silverado 2500HD".
+function pickModelName(make, model, series) {
+  const names = (VEHICLES && VEHICLES.names[make]) || [];
+  const num = (String(series || "").match(/\b\d{3,4}\b/) || [])[0];
+  const tries = [num ? `${model} ${num}` : null, model].filter(Boolean).map(norm);
+  for (const t of tries) {
+    const exact = names.find((n) => norm(n) === t);
+    if (exact) return exact;
+    const longer = names.filter((n) => norm(n).startsWith(t)).sort((a, b) => a.length - b.length)[0];
+    if (longer) return longer;
+    const shorter = names.filter((n) => t.startsWith(norm(n))).sort((a, b) => b.length - a.length)[0];
+    if (shorter) return shorter;
+  }
+  return model;
+}
+
+// NHTSA's engine fields -> "6.0L V8", "2.0L I4 Turbo", "Electric".
+function vinEngine(r) {
+  if (/BEV/.test(r.ElectrificationLevel || "")) return "Electric";
+  const parts = [];
+  const liters = parseFloat(r.DisplacementL);
+  if (liters) parts.push(`${liters.toFixed(1)}L`);
+  const cyl = parseInt(r.EngineCylinders, 10);
+  const config = r.EngineConfiguration || "";
+  if (cyl) parts.push(/V-Shaped/i.test(config) ? `V${cyl}` : /In-Line/i.test(config) ? `I${cyl}` : /Horizontal/i.test(config) ? `flat-${cyl}`
+    : cyl >= 8 ? `V${cyl}` : cyl <= 4 ? `I${cyl}` : `${cyl} cyl`);
+  if (/yes/i.test(r.Turbo || "")) parts.push("Turbo");
+  if (/diesel/i.test(r.FuelTypePrimary || "")) parts.push("diesel");
+  if (/HEV|hybrid/i.test(r.ElectrificationLevel || "")) parts.push("hybrid");
+  return parts.join(" ");
+}
+
+async function decodeVinOnline(vin) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 12000);
+  try {
+    const res = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/${encodeURIComponent(vin)}?format=json`,
+      { signal: ctrl.signal, credentials: "omit", referrerPolicy: "no-referrer" });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const r = data && Array.isArray(data.Results) ? data.Results[0] : null;
+    if (!r || !r.Make) return null;
+    let make = canonicalMake(String(r.Make).toLowerCase());
+    let model = String(r.Model || "");
+    // Older Ram pickups are listed as Dodge "Ram".
+    if (make === "Dodge" && /^ram/i.test(model)) { make = "Ram"; model = (String(r.Series || "").match(/\d{4}/) || ["1500"])[0]; }
+    return {
+      year: parseInt(r.ModelYear, 10) || null,
+      make,
+      model: model ? pickModelName(make, model, r.Series) : "",
+      engine: vinEngine(r),
+      drive: String(r.DriveType || ""),
+    };
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function setupVinLookup() {
+  const form = document.getElementById("vinForm");
+  const input = document.getElementById("vinInput");
+  const out = document.getElementById("vinResult");
+  const profile = document.getElementById("profileForm");
+  input.addEventListener("input", () => {
+    const cleaned = cleanVin(input.value).slice(0, 17);
+    if (input.value !== cleaned) input.value = cleaned;
+  });
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const vin = cleanVin(input.value);
+    if (vin.length !== 17) {
+      out.textContent = `A VIN has 17 characters. That one has ${vin.length}.`;
+      return;
+    }
+    const button = form.querySelector("button");
+    button.disabled = true;
+    out.textContent = "Looking it up…";
+    const offline = decodeVinOffline(vin);
+    const online = await decodeVinOnline(vin);
+    button.disabled = false;
+    const found = online || offline;
+    if (!found.year && !found.make) {
+      out.textContent = "Couldn't read that VIN. Check each character and try again.";
+      return;
+    }
+    // Clear model and engine too, so an old vehicle's details don't stay mixed in.
+    const fill = (name, value, max) => { profile.elements[name].value = String(value || "").slice(0, max); };
+    fill("year", found.year, 4);
+    fill("make", found.make, 30);
+    fill("model", found.model, 40);
+    fill("engine", found.engine, 30);
+    profile.dispatchEvent(new Event("input"));
+    const label = [found.year, found.make, found.model].filter(Boolean).join(" ");
+    const typo = vinCheckDigitOk(vin) ? "" : " If it looks wrong, one character of the VIN may be off.";
+    if (online && found.model) {
+      profile.requestSubmit();
+      out.textContent = `Found it: ${label}${found.engine ? ", " + found.engine : ""}${found.drive ? ", " + found.drive : ""}. Saved to My vehicle.${typo}`;
+    } else {
+      out.textContent = `From the VIN: ${label}. Fill in the model below${online ? "" : " (connect to the internet to fill it in for you)"}, then tap Save vehicle.${typo}`;
+      profile.elements.model.focus();
+    }
+  });
+}
+
 // Make and model suggestions while typing.
 function fillMakeModelLists(makeInput, makeList, modelList) {
   makeList.replaceChildren(...Object.keys(VEHICLES.names).map((m) => el("option", { value: m })));
@@ -612,6 +773,7 @@ function initFeatures(vehicles) {
   window.addEventListener("resize", moveTabIndicator);
   fillMakeModelLists(document.querySelector("#profileForm [name=make]"), document.getElementById("makeList"), document.getElementById("modelList"));
   fillEngineList(document.getElementById("profileForm"), document.getElementById("engineList"));
+  setupVinLookup();
   setupLookup();
   renderMyIssues();
   renderLights();
