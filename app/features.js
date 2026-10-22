@@ -9,6 +9,7 @@
  *   5. Roadside help + find a mechanic near you
  *   6. Little celebrations (haptics, check pop)
  *   7. Step-by-step repair guides (guides.json)
+ *   8. Advanced tech: service specs (specs.json)
  */
 
 // ===========================================================================
@@ -33,11 +34,30 @@ function vehicleIssues(v) {
   if (!VEHICLES || !v || !v.make || !v.model || !v.year) return [];
   let make = canonicalMake(v.make);
   let model = norm(v.model);
-  const year = Number(v.year);
   // Before 2010 the Ram pickup was sold as a "Dodge Ram".
   if (make === "Dodge" && model.startsWith("ram")) { make = "Ram"; model = model.slice(3) || "1500"; }
   const engine = norm(v.engine);
-  // Score how well each entry's name matches what was typed; keep the best.
+  const seen = new Set();
+  const issues = [];
+  for (const r of vehicleRows(make, model, Number(v.year))) {
+    for (const group of r.groups) {
+      for (const issue of VEHICLES.groups[group] || []) {
+        if (seen.has(issue.t)) continue;
+        // Engine-specific problems only show if the saved engine matches.
+        if (engine && issue.e && !issue.e.some((k) => engine.includes(k))) continue;
+        seen.add(issue.t);
+        issues.push(resolveIssue(issue));
+      }
+    }
+  }
+  return issues;
+}
+
+// The vehicle-list rows for a year, make and model. Scores how well each
+// entry's name matches what was typed and keeps the best, so "Silverado
+// 2500HD" gets the 2500HD rows, not the plain "Silverado" (1500) ones.
+function vehicleRows(make, model, year) {
+  if (!VEHICLES) return [];
   const scored = VEHICLES.models
     .filter((r) => r.make === make && year >= r.from && year <= r.to)
     .map((r) => {
@@ -52,21 +72,7 @@ function vehicleIssues(v) {
     })
     .filter((x) => x.best > 0);
   const top = Math.max(0, ...scored.map((x) => x.best));
-  const seen = new Set();
-  const issues = [];
-  for (const { r, best } of scored) {
-    if (best !== top) continue;
-    for (const group of r.groups) {
-      for (const issue of VEHICLES.groups[group] || []) {
-        if (seen.has(issue.t)) continue;
-        // Engine-specific problems only show if the saved engine matches.
-        if (engine && issue.e && !issue.e.some((k) => engine.includes(k))) continue;
-        seen.add(issue.t);
-        issues.push(resolveIssue(issue));
-      }
-    }
-  }
-  return issues;
+  return scored.filter((x) => x.best === top).map((x) => x.r);
 }
 
 // Problems from the big vehicle list share their signs and fix text by
@@ -132,6 +138,7 @@ function issueList(issues, label) {
 
 // Known problems for the saved vehicle (My Vehicle tab).
 function renderMyIssues() {
+  renderMyTech();
   const box = document.getElementById("myIssues");
   const p = load(KEYS.profile, {});
   const label = [p.year, canonicalMake(p.make), p.model].filter(Boolean).join(" ");
@@ -360,7 +367,7 @@ function setupLookup() {
       return;
     }
     const v = { year: year.value, make: make.value, model: model.value };
-    out.replaceChildren(...[generationNote(v), issueList(vehicleIssues(v), `${v.year} ${v.make} ${v.model}`)].filter(Boolean));
+    out.replaceChildren(...[generationNote(v), issueList(vehicleIssues(v), `${v.year} ${v.make} ${v.model}`), techBlock(v)].filter(Boolean));
   };
   make.addEventListener("change", () => { fillModels(); show(); });
   model.addEventListener("change", show);
@@ -865,6 +872,140 @@ function guideBlock(label, seen) {
       el("p", { class: "fineprint" }, "Guidance only. If a step feels unsafe or needs tools you don't have, let a shop do it.")));
   if (asked.length || HOW_TO.test(said)) box.open = true;
   return box;
+}
+
+// ===========================================================================
+// 8. Advanced tech: service specs
+// ===========================================================================
+
+const SPEC_CATS = {
+  oil: "Oil", ignition: "Ignition", cooling: "Cooling", fuel: "Fuel",
+  drivetrain: "Transmission", wheels: "Wheels", notes: "Service notes",
+};
+
+// Which spec groups matter most for each diagnosis (shown first).
+const CAUSE_SPECS = {
+  oil_leak_low_oil: ["oil", "notes"], oil_burning: ["oil", "notes"], engine_knock: ["oil", "notes"],
+  collapsed_lifter: ["oil", "notes"], timing_chain_problem: ["oil", "notes"], turbo_problem: ["oil", "notes"],
+  engine_misfire: ["ignition", "fuel"], catalytic_converter_problem: ["ignition", "notes"],
+  dirty_maf_sensor: ["fuel"], vacuum_leak: ["fuel"], fuel_delivery_problem: ["fuel"], throttle_body_problem: ["fuel"],
+  overheating: ["cooling", "notes"], thermostat_stuck_open: ["cooling"], water_pump_failure: ["cooling", "notes"],
+  head_gasket_failure: ["cooling", "notes"], heater_core_problem: ["cooling"],
+  transmission_problem: ["drivetrain"], torque_converter_shudder: ["drivetrain"], cvt_problem: ["drivetrain"],
+  worn_brake_pads: ["wheels"], warped_rotors: ["wheels"], sticking_brake_caliper: ["wheels"],
+  bad_wheel_bearing: ["wheels"], tire_balance: ["wheels"], death_wobble: ["wheels"],
+  diesel_emissions_problem: ["notes", "fuel"], hybrid_ev_problem: ["notes", "cooling"],
+};
+
+// gas / turbo / diesel / hybrid / ev from an engine name (same rules as build_specs.py).
+function engineKind(name) {
+  const text = " " + String(name).toLowerCase();
+  for (const kind of ["ev", "hybrid", "diesel", "turbo"]) {
+    if (SPECS.kinds[kind].some((w) => text.includes(w))) return kind;
+  }
+  return "gas";
+}
+
+const displacements = (name) => String(name).match(/\d\.\d/g) || [];
+
+function familyMatches(f, make, model, year, engine) {
+  if (!(f.makes.includes("*") || f.makes.includes(make)) || (f.notMakes || []).includes(make)) return false;
+  if (year < f.years[0] || year > f.years[1]) return false;
+  if (f.models && !f.models.some((m) => model.startsWith(m))) return false;
+  if (Object.entries(f.since || {}).some(([m, y]) => model.startsWith(m) && year < y)) return false;
+  if (Object.entries(f.until || {}).some(([m, y]) => model.startsWith(m) && year > y)) return false;
+  if ((f.skip || []).some((w) => engine.toLowerCase().includes(w))) return false;
+  if (f.kind !== "any" && engineKind(engine) !== f.kind) return false;
+  if (f.kind === "ev") return true;
+  const sizes = displacements(engine);
+  if (f.range) return sizes.length > 0 && sizes.every((d) => d >= f.range[0] && d <= f.range[1]);
+  return sizes.some((d) => f.disp.includes(d));
+}
+
+// Engine and vehicle specs for one vehicle.
+function vehicleSpecs(v) {
+  if (!SPECS || !v || !v.make || !v.year) return null;
+  let make = canonicalMake(v.make);
+  let model = norm(v.model);
+  if (make === "Dodge" && model.startsWith("ram")) { make = "Ram"; model = model.slice(3) || "1500"; }
+  const year = Number(v.year);
+  const rows = vehicleRows(make, model, year);
+  const saved = v.engine && (displacements(v.engine).length || /electric/i.test(v.engine)) ? v.engine : "";
+  const engines = saved ? [saved] : [...new Set(rows.flatMap((r) => r.eng || []))];
+  const engineSpecs = engines.map((engine) => {
+    const hits = SPECS.engines.filter((f) => familyMatches(f, make, model, year, engine));
+    const specific = hits.filter((f) => !f.generic);
+    return { engine, families: specific.length ? specific : hits };
+  });
+  const other = [
+    ...SPECS.vehicles.filter((r) => r.makes.includes(make) && year >= r.years[0] && year <= r.years[1]
+      && r.models.some((m) => model.startsWith(m))).flatMap((r) => r.specs),
+    ...[...new Set(rows.flatMap((r) => r.groups))].flatMap((g) => SPECS.groups[g] || []),
+  ];
+  return { engineSpecs, other, saved: Boolean(saved) };
+}
+
+// Spec rows grouped by category; the ones that matter for `causeKey` first.
+function specTable(specs, causeKey) {
+  const wanted = CAUSE_SPECS[causeKey] || [];
+  const cats = [...new Set(specs.map((s) => s[0]))]
+    .sort((a, b) => (wanted.includes(b) - wanted.includes(a)) || Object.keys(SPEC_CATS).indexOf(a) - Object.keys(SPEC_CATS).indexOf(b));
+  return cats.map((cat) => el("div", { class: "spec-group" + (wanted.includes(cat) ? " wanted" : "") },
+    el("p", { class: "eyebrow" }, SPEC_CATS[cat] || cat, wanted.includes(cat) ? " · for this problem" : ""),
+    el("dl", { class: "spec-list" }, ...specs.filter((s) => s[0] === cat).flatMap((s) => [el("dt", {}, s[1]), el("dd", {}, s[2])]))));
+}
+
+const TECH_BASICS = [
+  ["OBD-II port", "Under the dash on the driver side, near the steering column (every 1996 and newer car and light truck)"],
+  ["Engine code", "On most American brands, the 8th character of the VIN is the engine code"],
+  ["Under-hood label", "The emissions label under the hood lists the engine size and family, sometimes plug gap and valve lash"],
+  ["Oil grade", "Usually printed on the oil filler cap"],
+  ["Tires", "Size and pressures are on the sticker in the driver door frame"],
+  ["Factory manual", "The maker's service website (paid by the day), ALLDATA or Mitchell 1. Many public libraries give free access to repair databases with your library card"],
+];
+
+// The folded "Advanced tech" section for a vehicle (and a diagnosis, if any).
+function techBlock(v, causeKey) {
+  const label = [v && v.year, v && canonicalMake(v.make), v && v.model].filter(Boolean).join(" ");
+  const data = vehicleSpecs(v);
+  const body = el("div", { class: "tech-body" },
+    el("p", { class: "tech-warn" }, "For people who work on their own vehicles. These are typical factory specs: confirm with the service manual, owner's manual or under-hood label before you torque or fill anything."));
+  if (!data) {
+    body.append(el("p", {}, "Add your vehicle's year, make, model and engine on the Vehicle tab to see its specs."),
+      el("button", { class: "btn", type: "button", onclick: () => showTab("vehicle") }, "Add my vehicle"));
+  } else {
+    body.append(el("p", { class: "tech-for" }, label));
+    if (!data.saved && data.engineSpecs.length > 1) {
+      body.append(el("p", { class: "hint" }, "Specs for each engine this vehicle came with. Save your engine on the Vehicle tab to see only yours."));
+    }
+    for (const { engine, families } of data.engineSpecs) {
+      body.append(el("h4", { class: "tech-engine" }, engine));
+      if (!families.length) {
+        body.append(el("p", { class: "hint" }, "No checked specs for this engine yet. See where to look them up below."));
+      }
+      for (const f of families) {
+        if (!f.generic) body.append(el("p", { class: "tech-family" }, f.name));
+        body.append(...specTable(f.specs, causeKey));
+      }
+    }
+    if (!data.engineSpecs.length) body.append(el("p", { class: "hint" }, "Add the engine on the Vehicle tab to see engine specs."));
+    if (data.other.length) body.append(el("h4", { class: "tech-engine" }, "Chassis"), ...specTable(data.other, causeKey));
+  }
+  body.append(el("h4", { class: "tech-engine" }, "Every vehicle"),
+    el("dl", { class: "spec-list" }, ...TECH_BASICS.flatMap(([k, val]) => [el("dt", {}, k), el("dd", {}, val)])));
+  return el("details", { class: "tech" },
+    el("summary", {},
+      el("span", { class: "guide-icon tech-icon", "aria-hidden": "true" }, "🛠"),
+      el("span", { class: "guide-sum" }, el("strong", {}, "Advanced tech"),
+        el("span", {}, "Service specs: oil, firing order, torque, fluids")),
+      icon("chevron")),
+    body);
+}
+
+// Advanced tech for the saved vehicle (Vehicle tab).
+function renderMyTech() {
+  const box = document.getElementById("myTech");
+  if (box) box.replaceChildren(techBlock(load(KEYS.profile, {})));
 }
 
 // Called from app.js once the data files are loaded.

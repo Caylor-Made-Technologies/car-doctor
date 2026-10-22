@@ -226,6 +226,7 @@ function forget(key) {
 let CAUSES = {};
 let CODES = {};
 let GUIDES = {};
+let SPECS = null;
 
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -648,6 +649,7 @@ function showResults(result) {
     el("p", {}, explain(cause.plain || cause.summary, seen)),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
     guideBlock(best.label, seen),
+    techBlock(load(KEYS.profile, {}), best.label),
     CAUSE_SOUND[best.label] ? el("div", { class: "sound-row" }, soundButton(CAUSE_SOUND[best.label]),
       el("span", { class: "fineprint" }, "Hear roughly what it sounds like")) : null,
     seenBefore(best.label),
@@ -1274,8 +1276,8 @@ async function init() {
   const sendBtn = document.getElementById("sendBtn");
   sendBtn.disabled = true;
   try {
-    const [model, causes, codes, glossary, vehicles, guides] = await Promise.all(
-      ["model.json", "causes.json", "codes.json", "glossary.json", "vehicles.json", "guides.json"].map((f) => fetch(f).then((r) => {
+    const [model, causes, codes, glossary, vehicles, guides, specs] = await Promise.all(
+      ["model.json", "causes.json", "codes.json", "glossary.json", "vehicles.json", "guides.json", "specs.json"].map((f) => fetch(f).then((r) => {
         if (!r.ok) throw new Error(f + " " + r.status);
         return r.json();
       })));
@@ -1283,6 +1285,7 @@ async function init() {
     CAUSES = causes;
     CODES = codes;
     GUIDES = guides;
+    SPECS = specs;
     buildGlossary(glossary);
     initFeatures(vehicles);
     setReminderType("oil");

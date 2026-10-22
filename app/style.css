@@ -934,6 +934,37 @@ body[data-tab="vehicle"] .vehicle-card { display: none; }
 .guide-steps label:has(input:checked)::before { content: "✓"; background: var(--safe); }
 .guide .fineprint { margin: 12px 0 0; }
 .alt-body .guide { margin-top: 10px; }
+
+/* ---------- Advanced tech (service specs) ---------- */
+.tech { margin: 0 0 14px; border-radius: var(--radius-sm); overflow: hidden; background: var(--surface-2); border: 1px solid var(--border); }
+.tech > summary { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 10px 14px; cursor: pointer; list-style: none; }
+.tech > summary::-webkit-details-marker { display: none; }
+.tech > summary .icon { width: 18px; height: 18px; color: var(--muted); transition: transform 0.3s var(--spring); }
+.tech[open] > summary .icon { transform: rotate(90deg); }
+.tech[open] .tech-body { animation: rise 0.4s var(--ease) both; }
+.tech-icon { background: var(--surface-3); box-shadow: inset 0 0 0 1px var(--border); }
+.tech-body { padding: 4px 14px 14px; }
+.tech-warn { margin: 6px 0 10px; padding: 10px 12px; border-radius: var(--radius-sm); background: var(--soon-bg); font-size: 0.88rem; }
+.tech-for { margin: 0 0 4px; font-family: var(--font-heading); font-weight: 800; color: var(--text-strong); }
+.tech-engine {
+  margin: 16px 0 6px; padding-top: 10px; border-top: 1px solid var(--border);
+  font-family: var(--font-heading); font-size: 1rem; color: var(--text-strong);
+}
+.tech-family { margin: 0 0 8px; font-size: 0.85rem; font-weight: 700; color: var(--accent-text); }
+.spec-group { margin: 0 0 10px; }
+.spec-group .eyebrow { margin: 0 0 4px; }
+.spec-group.wanted .eyebrow { color: var(--accent-text); }
+.spec-list {
+  display: grid; grid-template-columns: minmax(96px, 36%) 1fr; margin: 0;
+  border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: var(--surface);
+}
+.spec-group.wanted .spec-list { border-color: var(--accent); box-shadow: var(--glow); }
+.spec-list dt, .spec-list dd { margin: 0; padding: 8px 10px; font-size: 0.88rem; border-top: 1px solid var(--border); }
+.spec-list dt { font-weight: 700; color: var(--muted); }
+.spec-list dd { color: var(--text); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.spec-list dt:first-of-type, .spec-list dt:first-of-type + dd { border-top: 0; }
+#myTech .tech { margin-top: 14px; }
+#lookResult .tech { margin-top: 10px; }
 /* ---------- Surprises (extras.js) ---------- */
 :root, [data-theme="dark"] { --love: #ff7aac; }
 [data-theme="light"] { --love: #c41d63; }

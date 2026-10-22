@@ -125,6 +125,14 @@ def main():
                   or any(not (s.get("name") and s.get("where") and s.get("look")) for s in guides[k]["spots"])]
     check(not bad_guides and set(guides) == set(causes), f"guides.json has a complete guide per cause {bad_guides or ''}")
 
+    # 2c. Service specs are well formed.
+    specs = json.loads((APP / "specs.json").read_text(encoding="utf-8"))
+    cats = {"oil", "ignition", "cooling", "fuel", "drivetrain", "wheels", "notes"}
+    rows = [x for f in specs["engines"] for x in f["specs"]] + [x for v in specs["vehicles"] for x in v["specs"]] \
+        + [x for g in specs["groups"].values() for x in g]
+    bad_specs = [x for x in rows if len(x) != 3 or x[0] not in cats or not x[1] or not x[2]]
+    check(not bad_specs and len(specs["engines"]) >= 40, f"specs.json rows are complete ({len(specs['engines'])} engine families) {bad_specs or ''}")
+
     # 3. Codes point at real causes.
     bad_codes = sorted(code for code, info in codes.items() if info.get("related") not in causes)
     check(not bad_codes, f"every code's related cause exists {bad_codes or ''}")

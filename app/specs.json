@@ -1,0 +1,3590 @@
+{
+ "note": "Typical factory specs. Confirm with the service manual, owner's manual or under-hood label before torquing or filling.",
+ "kinds": {
+  "diesel": [
+   "diesel",
+   "duramax",
+   "cummins",
+   "power stroke",
+   "powerstroke",
+   "tdi",
+   "crd",
+   "ecodiesel"
+  ],
+  "hybrid": [
+   "hybrid",
+   "phev",
+   "energi",
+   "eassist",
+   "powerboost",
+   "4xe",
+   "prime",
+   "range-extended",
+   "etorque"
+  ],
+  "ev": [
+   "electric"
+  ],
+  "turbo": [
+   "turbo",
+   "ecoboost",
+   " tt",
+   " sc",
+   "supercharged",
+   "srt-4"
+  ]
+ },
+ "engines": [
+  {
+   "id": "gm_gen3",
+   "name": "GM Vortec V8 (Gen III: 4.8, 5.3, 6.0)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "4.8",
+    "5.3",
+    "6.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1999,
+    2006
+   ],
+   "models": [
+    "silverado",
+    "sierra",
+    "tahoe",
+    "yukon",
+    "suburban",
+    "avalanche",
+    "escalade",
+    "express",
+    "savana",
+    "trailblazer",
+    "envoy",
+    "rainier",
+    "ascender",
+    "isuzuiseries",
+    "iseries",
+    "h2",
+    "h3",
+    "ssr",
+    "colorado",
+    "canyon",
+    "hummer",
+    "bravada"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-7-2-6-5-4-3"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "Odd (1, 3, 5, 7) on the driver side front to back, even (2, 4, 6, 8) on the passenger side"
+    ],
+    [
+     "ignition",
+     "Spark plug gap",
+     "0.060 in"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "cooling",
+     "Thermostat",
+     "At the lower radiator hose, on the water pump"
+    ],
+    [
+     "fuel",
+     "Fuel pressure",
+     "About 55 to 62 psi, key on engine off"
+    ],
+    [
+     "notes",
+     "Oil pressure sensor",
+     "Behind the intake manifold at the top rear of the engine. A common oil leak and the usual cause of a jumping oil gauge"
+    ],
+    [
+     "notes",
+     "Knock sensors",
+     "Under the intake manifold in the valley (codes P0327 / P0332); the intake has to come off"
+    ],
+    [
+     "notes",
+     "Exhaust manifold bolts",
+     "Rear bolts often break, causing a tick at cold start that fades when warm"
+    ]
+   ]
+  },
+  {
+   "id": "gm_gen4",
+   "name": "GM Vortec V8 (Gen IV: 4.8, 5.3, 6.0, 6.2)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "4.8",
+    "5.3",
+    "6.0",
+    "6.2"
+   ],
+   "kind": "gas",
+   "years": [
+    2007,
+    2013
+   ],
+   "models": [
+    "silverado",
+    "sierra",
+    "tahoe",
+    "yukon",
+    "suburban",
+    "avalanche",
+    "escalade",
+    "express",
+    "savana",
+    "trailblazer",
+    "envoy",
+    "rainier",
+    "ascender",
+    "isuzuiseries",
+    "iseries",
+    "h2",
+    "h3",
+    "ssr",
+    "colorado",
+    "canyon",
+    "hummer",
+    "bravada"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30 (dexos1 on 2011 and newer)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-7-2-6-5-4-3"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "Odd (1, 3, 5, 7) on the driver side front to back, even (2, 4, 6, 8) on the passenger side"
+    ],
+    [
+     "ignition",
+     "Spark plug gap",
+     "0.040 in"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "cooling",
+     "Thermostat",
+     "At the lower radiator hose, on the water pump"
+    ],
+    [
+     "fuel",
+     "Fuel pressure",
+     "About 55 to 62 psi, key on engine off"
+    ],
+    [
+     "notes",
+     "Active Fuel Management",
+     "Most 5.3s (and some 6.0/6.2) have AFM. Collapsed lifters and oil burning are common; keep the oil full and changed on time"
+    ],
+    [
+     "notes",
+     "Oil pressure sensor",
+     "Top rear of the engine behind the intake. Leaks and false low readings are common (a screen under the sensor can clog too)"
+    ],
+    [
+     "notes",
+     "Exhaust manifold bolts",
+     "Rear bolts often break, causing a tick at cold start"
+    ]
+   ]
+  },
+  {
+   "id": "gm_gen4_hd",
+   "name": "GM 6.0 V8 (HD trucks and vans)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "6.0"
+   ],
+   "kind": "gas",
+   "years": [
+    2014,
+    2019
+   ],
+   "models": [
+    "silverado",
+    "sierra",
+    "express",
+    "savana"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30 dexos1"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-7-2-6-5-4-3"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "Odd (1, 3, 5, 7) on the driver side front to back, even (2, 4, 6, 8) on the passenger side"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Exhaust manifold bolts",
+     "Rear bolts often break, causing a tick at cold start"
+    ]
+   ]
+  },
+  {
+   "id": "gm_gen5",
+   "name": "GM EcoTec3 V8 (Gen V: 5.3, 6.2)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "5.3",
+    "6.2"
+   ],
+   "kind": "gas",
+   "years": [
+    2014,
+    2026
+   ],
+   "models": [
+    "silverado",
+    "sierra",
+    "tahoe",
+    "yukon",
+    "suburban",
+    "avalanche",
+    "escalade",
+    "express",
+    "savana",
+    "trailblazer",
+    "envoy",
+    "rainier",
+    "ascender",
+    "isuzuiseries",
+    "iseries",
+    "h2",
+    "h3",
+    "ssr",
+    "colorado",
+    "canyon",
+    "hummer",
+    "bravada"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 dexos1"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "8 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-7-2-6-5-4-3"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "Odd (1, 3, 5, 7) on the driver side front to back, even (2, 4, 6, 8) on the passenger side"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "fuel",
+     "Fuel system",
+     "Direct injection: a high-pressure pump on top of the engine is driven by the camshaft. Never open the high-pressure lines with the engine running"
+    ],
+    [
+     "notes",
+     "AFM / DFM lifters",
+     "Lifter failures (ticking, misfire, P0300 range) are common on cylinder-deactivation engines"
+    ],
+    [
+     "notes",
+     "6.2L recall",
+     "2021 to 2024 6.2L (L87) trucks and SUVs were recalled for engine bearing failure. Check the VIN at nhtsa.gov/recalls"
+    ]
+   ]
+  },
+  {
+   "id": "gm_43_vortec",
+   "name": "GM 4.3 Vortec V6",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "4.3"
+   ],
+   "kind": "gas",
+   "years": [
+    1996,
+    2013
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "4.5 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-6-5-4-3-2"
+    ],
+    [
+     "ignition",
+     "Spark plug gap",
+     "0.060 in"
+    ],
+    [
+     "ignition",
+     "Distributor",
+     "Has a distributor cap and rotor; replace them with plugs and wires"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Intake gaskets",
+     "Lower intake gaskets often leak coolant or oil"
+    ]
+   ]
+  },
+  {
+   "id": "gm_43_lv3",
+   "name": "GM 4.3 EcoTec3 V6",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "4.3"
+   ],
+   "kind": "gas",
+   "years": [
+    2014,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 dexos1"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-6-5-4-3-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ]
+   ]
+  },
+  {
+   "id": "gm_3800",
+   "name": "GM 3800 V6 (3.8)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "3.8"
+   ],
+   "kind": "gas",
+   "years": [
+    1996,
+    2011
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "4.5 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-6-5-4-3-2"
+    ],
+    [
+     "ignition",
+     "Spark plug gap",
+     "0.060 in"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Intake gaskets",
+     "Lower intake manifold gaskets leak coolant (often into the oil) and the plastic upper intake can crack. Check coolant level often"
+    ]
+   ]
+  },
+  {
+   "id": "gm_3800_sc",
+   "name": "GM 3800 V6 supercharged",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "3.8"
+   ],
+   "kind": "turbo",
+   "years": [
+    1996,
+    2008
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-6-5-4-3-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Supercharger",
+     "The supercharger has its own oil in a small reservoir at the front of the blower"
+    ],
+    [
+     "notes",
+     "Intake gaskets",
+     "Lower intake manifold gaskets leak coolant. Check coolant level often"
+    ]
+   ]
+  },
+  {
+   "id": "gm_60v6",
+   "name": "GM 60-degree V6 (3.1, 3.4)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "3.1",
+    "3.4"
+   ],
+   "kind": "gas",
+   "years": [
+    1996,
+    2009
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "4.5 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "ignition",
+     "Spark plug gap",
+     "0.060 in"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Lower intake gasket",
+     "Very common coolant leak; look for coolant loss and a sweet smell. Milky oil means it is leaking inside"
+    ]
+   ]
+  },
+  {
+   "id": "gm_36",
+   "name": "GM 3.6 V6",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "3.6"
+   ],
+   "kind": "gas",
+   "years": [
+    2004,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "dexos1 (5W-30 on most; some 2018 and newer use 0W-20, check the cap)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Timing chains",
+     "Stretch is common on 2007 to 2017 (codes P0008, P0017 and P0016 to P0019, rattle). Long oil change intervals make it worse"
+    ]
+   ]
+  },
+  {
+   "id": "gm_24",
+   "name": "GM 2.4 Ecotec I4",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "2.4"
+   ],
+   "kind": "gas",
+   "years": [
+    2006,
+    2017
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30 dexos1"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "5 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Oil burning",
+     "Many 2010 to 2013 engines burn oil (piston rings), then the timing chain wears from low oil. Check the dipstick at every fill-up"
+    ]
+   ]
+  },
+  {
+   "id": "gm_14t",
+   "name": "GM 1.4 Turbo I4",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "1.4"
+   ],
+   "kind": "turbo",
+   "years": [
+    2011,
+    2022
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30 dexos1"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "PCV valve",
+     "Built into the valve cover; when it fails you get a whistle, rough idle or oil leaks (rear main seal pushed out). The fix is a new valve cover"
+    ],
+    [
+     "notes",
+     "Coolant leaks",
+     "Water outlet, thermostat housing and turbo coolant lines leak often"
+    ]
+   ]
+  },
+  {
+   "id": "gm_duramax",
+   "name": "GM 6.6 Duramax V8 diesel",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "6.6"
+   ],
+   "kind": "diesel",
+   "years": [
+    2001,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "15W-40 diesel oil (API CK-4); dexos D on 2017 and newer"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "10 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-7-8-4-5-6-3"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "fuel",
+     "Fuel filter",
+     "On top of the engine (LB7 to LMM, 2001 to 2010); on the frame rail (LML and L5P, 2011 and newer)"
+    ],
+    [
+     "notes",
+     "LB7 (2001 to 2004)",
+     "Injectors fail (fuel in the oil, white smoke, rising oil level). A scan tool shows injector balance rates"
+    ],
+    [
+     "notes",
+     "LMM and newer (2007.5 on)",
+     "Has a DPF; LML (2011 on) and L5P also use DEF. Short trips clog the DPF"
+    ],
+    [
+     "notes",
+     "LML (2011 to 2016)",
+     "CP4.2 high-pressure fuel pump can fail and send metal through the fuel system"
+    ]
+   ]
+  },
+  {
+   "id": "gm_30_duramax",
+   "name": "GM 3.0 Duramax I6 diesel",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "3.0"
+   ],
+   "kind": "diesel",
+   "years": [
+    2019,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 dexos D"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-5-3-6-2-4"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Oil pump belt",
+     "The oil pump is driven by a belt inside the engine; it has a replacement interval in the maintenance schedule"
+    ]
+   ]
+  },
+  {
+   "id": "gm_ls_car",
+   "name": "GM LS V8 (cars)",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "5.7",
+    "6.0",
+    "6.2",
+    "7.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2015
+   ],
+   "models": [
+    "camaro",
+    "corvette",
+    "firebird",
+    "gto",
+    "g8",
+    "cts",
+    "ss"
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-8-7-2-6-5-4-3"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "Odd (1, 3, 5, 7) on the driver side front to back, even (2, 4, 6, 8) on the passenger side"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ]
+   ]
+  },
+  {
+   "id": "gm_northstar",
+   "name": "Cadillac Northstar 4.6 V8",
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "disp": [
+    "4.6"
+   ],
+   "kind": "gas",
+   "years": [
+    1993,
+    2011
+   ],
+   "specs": [
+    [
+     "cooling",
+     "Coolant",
+     "DEX-COOL (orange), 50/50 with distilled water"
+    ],
+    [
+     "notes",
+     "Head bolts",
+     "Head bolt threads pull out of the aluminum block, causing head gasket failure and overheating. Repair needs thread inserts (engine out)"
+    ],
+    [
+     "notes",
+     "Oil leaks",
+     "Lower crankcase (case half) seal leaks oil are common on 2000 and newer"
+    ]
+   ]
+  },
+  {
+   "id": "ford_54_3v",
+   "name": "Ford 5.4 Triton 3V V8",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "5.4"
+   ],
+   "kind": "gas",
+   "years": [
+    2004,
+    2014
+   ],
+   "models": [
+    "f150",
+    "f250",
+    "f350",
+    "superduty",
+    "expedition",
+    "navigator",
+    "marklt",
+    "blackwood"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "7 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-7-2-6-5-4-8"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "1 to 4 on the passenger side front to back, 5 to 8 on the driver side"
+    ],
+    [
+     "ignition",
+     "Spark plugs",
+     "Two-piece plugs (2004 to 2008) often break in the head. Use Ford's removal procedure (warm engine, small turns, penetrating oil) and a broken-plug extractor if one breaks"
+    ],
+    [
+     "notes",
+     "Cam phasers and VCT",
+     "Ticking or knocking at idle, codes P0011 / P0021; also timing chain guides and tensioners. Use the right oil and change it on time"
+    ]
+   ]
+  },
+  {
+   "id": "ford_46",
+   "name": "Ford 4.6 Modular V8",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "4.6"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2014
+   ],
+   "skip": [
+    "dohc"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20 (2001 and newer)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-7-2-6-5-4-8"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "1 to 4 on the passenger side front to back, 5 to 8 on the driver side"
+    ],
+    [
+     "notes",
+     "Intake manifold",
+     "The plastic intake with a coolant crossover cracks at the front on many 1996 to 2001 engines (coolant leak)"
+    ],
+    [
+     "notes",
+     "Spark plugs",
+     "2V heads can blow out a plug (few threads); 3V (2005 on) uses two-piece plugs that break on removal"
+    ]
+   ]
+  },
+  {
+   "id": "ford_50_coyote",
+   "name": "Ford 5.0 Coyote V8",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "5.0"
+   ],
+   "kind": "gas",
+   "years": [
+    2011,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20 or 5W-30 depending on year and model; check the cap"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-5-4-8-6-3-7-2"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "1 to 4 on the passenger side front to back, 5 to 8 on the driver side"
+    ],
+    [
+     "notes",
+     "Oil use",
+     "Some 2018 and newer engines use oil between changes. Check the dipstick regularly"
+    ]
+   ]
+  },
+  {
+   "id": "ford_35_ecoboost",
+   "name": "Ford 3.5 EcoBoost V6",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "3.5"
+   ],
+   "kind": "turbo",
+   "years": [
+    2010,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ],
+    [
+     "notes",
+     "Timing chain (2011 to 2016)",
+     "Chain stretch: rattle at startup and codes P0016 to P0019"
+    ],
+    [
+     "notes",
+     "Cam phasers (2017 to 2020)",
+     "Loud rattle for a second or two at cold start; Ford issued service bulletins"
+    ],
+    [
+     "notes",
+     "Intercooler condensation",
+     "Stumble or misfire under hard acceleration in humid weather (early F-150s); fixed with a deflector and software"
+    ]
+   ]
+  },
+  {
+   "id": "ford_27_ecoboost",
+   "name": "Ford 2.7 EcoBoost V6",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "2.7"
+   ],
+   "kind": "turbo",
+   "years": [
+    2015,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ],
+    [
+     "notes",
+     "Oil pan",
+     "2015 to 2017 two-piece composite oil pans leak at the seam"
+    ]
+   ]
+  },
+  {
+   "id": "ford_duratec_35",
+   "name": "Ford 3.5 / 3.7 Duratec V6",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury",
+    "Mazda"
+   ],
+   "disp": [
+    "3.5",
+    "3.7"
+   ],
+   "kind": "gas",
+   "years": [
+    2007,
+    2019
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ],
+    [
+     "notes",
+     "Internal water pump",
+     "In front-wheel-drive models (Edge, Flex, Explorer 2011 on, Taurus, MKX, MKZ, MKS, MKT) the water pump sits inside the engine, driven by the timing chain. A leak sends coolant into the oil: low coolant with no outside leak or milky oil means stop driving"
+    ]
+   ]
+  },
+  {
+   "id": "ford_40_sohc",
+   "name": "Ford 4.0 SOHC V6",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury",
+    "Mazda"
+   ],
+   "disp": [
+    "4.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2011
+   ],
+   "skip": [
+    "ohv"
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "5 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ],
+    [
+     "notes",
+     "Timing chains",
+     "Rattle at startup from worn chain guides and tensioners (cassettes). The rear cassette usually means the engine comes out"
+    ]
+   ]
+  },
+  {
+   "id": "ford_68_v10",
+   "name": "Ford 6.8 Triton V10",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "6.8"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2021
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "7 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-6-5-10-2-7-3-8-4-9"
+    ],
+    [
+     "notes",
+     "Spark plugs",
+     "Early 2V heads can blow out a plug; 3V (2005 on) uses two-piece plugs that break on removal"
+    ],
+    [
+     "notes",
+     "Exhaust manifold studs",
+     "Break often, causing a tick and exhaust smell"
+    ]
+   ]
+  },
+  {
+   "id": "ford_73_ps",
+   "name": "Ford 7.3 Power Stroke V8 diesel",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "7.3"
+   ],
+   "kind": "diesel",
+   "years": [
+    1994,
+    2003
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "15W-40 diesel oil (API CK-4)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "15 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-7-3-4-5-6-8"
+    ],
+    [
+     "notes",
+     "Stalling / no start",
+     "Cam position sensor (CPS) failure stalls it with no warning. Also check the IDM, glow plug relay and the under-valve-cover harness"
+    ]
+   ]
+  },
+  {
+   "id": "ford_60_ps",
+   "name": "Ford 6.0 Power Stroke V8 diesel",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "6.0"
+   ],
+   "kind": "diesel",
+   "years": [
+    2003,
+    2007
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "15W-40 diesel oil (API CK-4)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "15 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-7-3-4-5-6-8"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Motorcraft Gold (yellow)"
+    ],
+    [
+     "notes",
+     "Oil cooler test",
+     "With a scan tool at full warm-up, engine oil temp should be within about 15 F of coolant temp. More than that means a clogged oil cooler, which then kills the EGR cooler"
+    ],
+    [
+     "notes",
+     "FICM",
+     "Injector control module should read about 48 V, and stay up while cranking. Low voltage causes hard starts and misfires"
+    ],
+    [
+     "notes",
+     "Head gaskets",
+     "Coolant pushed out of the degas bottle under load points to head gaskets / stretched head bolts"
+    ]
+   ]
+  },
+  {
+   "id": "ford_64_ps",
+   "name": "Ford 6.4 Power Stroke V8 diesel",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "6.4"
+   ],
+   "kind": "diesel",
+   "years": [
+    2008,
+    2010
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "15W-40 diesel oil (API CK-4)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "15 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-7-3-4-5-6-8"
+    ],
+    [
+     "notes",
+     "Common problems",
+     "Radiator leaks, up-pipe leaks, and fuel in the oil from DPF regens. Change oil on time and watch the oil level"
+    ]
+   ]
+  },
+  {
+   "id": "ford_67_ps",
+   "name": "Ford 6.7 Power Stroke V8 diesel",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "6.7"
+   ],
+   "kind": "diesel",
+   "years": [
+    2011,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "10W-30 or 15W-40 meeting Ford spec (check the manual)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "13 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-7-2-6-5-4-8"
+    ],
+    [
+     "notes",
+     "Fuel pump",
+     "2011 to 2019 use the CP4.2 high-pressure pump, which can fail and contaminate the fuel system. Change fuel filters on schedule and use good fuel"
+    ],
+    [
+     "notes",
+     "Emissions",
+     "DPF and DEF systems; short trips and idling clog the DPF"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_hemi_57",
+   "name": "Chrysler 5.7 Hemi V8",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "5.7"
+   ],
+   "kind": "gas",
+   "years": [
+    2003,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "7 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-4-3-6-5-7-2"
+    ],
+    [
+     "ignition",
+     "Spark plugs",
+     "16 plugs: two per cylinder"
+    ],
+    [
+     "ignition",
+     "Spark plug gap",
+     "0.043 in"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Mopar HOAT (2012 and older) or Mopar OAT (2013 and newer); don't mix"
+    ],
+    [
+     "notes",
+     "Hemi tick",
+     "Ticking can be broken exhaust manifold bolts (most common, worse cold) or a failing lifter/camshaft on MDS engines (misfire, ticking that stays when warm)"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_hemi_64",
+   "name": "Chrysler 6.4 Hemi V8",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "6.4"
+   ],
+   "kind": "gas",
+   "years": [
+    2011,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-8-4-3-6-5-7-2"
+    ],
+    [
+     "ignition",
+     "Spark plugs",
+     "16 plugs: two per cylinder"
+    ],
+    [
+     "notes",
+     "Lifters",
+     "Lifter and camshaft wear can cause ticking and misfires, like the 5.7"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_pentastar",
+   "name": "Chrysler 3.6 Pentastar V6",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "3.6"
+   ],
+   "kind": "gas",
+   "years": [
+    2011,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20 (0W-20 on many 2016 and newer; check the cap)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Mopar OAT"
+    ],
+    [
+     "notes",
+     "Oil filter housing",
+     "The plastic oil cooler / filter housing between the heads cracks and leaks oil (and sometimes coolant) down the back of the engine"
+    ],
+    [
+     "notes",
+     "Left cylinder head (2011 to 2013)",
+     "Valve seat wear caused ticking and misfires on one bank; Chrysler extended the warranty on many"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_47",
+   "name": "Chrysler 4.7 PowerTech V8",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "4.7"
+   ],
+   "kind": "gas",
+   "years": [
+    1999,
+    2013
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-4-3-6-5-7-2"
+    ],
+    [
+     "notes",
+     "Overheating",
+     "Overheating can drop a valve seat. Sludge builds up when oil changes are skipped"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_37",
+   "name": "Chrysler 3.7 PowerTech V6",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "3.7"
+   ],
+   "kind": "gas",
+   "years": [
+    2002,
+    2012
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-6-5-4-3-2"
+    ],
+    [
+     "notes",
+     "Overheating",
+     "Overheating can drop a valve seat. Keep the cooling system in good shape"
+    ]
+   ]
+  },
+  {
+   "id": "cummins_59",
+   "name": "Cummins 5.9 I6 diesel",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "5.9"
+   ],
+   "kind": "diesel",
+   "years": [
+    1994,
+    2007
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "15W-40 diesel oil (API CK-4)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "12 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-5-3-6-2-4"
+    ],
+    [
+     "notes",
+     "Killer dowel pin",
+     "On 1989 to 2002 engines a dowel pin behind the timing cover can back out and wreck the gears. A tab kit prevents it"
+    ],
+    [
+     "notes",
+     "VP44 pump (1998.5 to 2002)",
+     "A weak lift pump starves the VP44 injection pump. Check lift pump pressure if it is hard starting or losing power"
+    ]
+   ]
+  },
+  {
+   "id": "cummins_67",
+   "name": "Cummins 6.7 I6 diesel",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "6.7"
+   ],
+   "kind": "diesel",
+   "years": [
+    2007,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "15W-40 diesel oil (API CK-4)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "12 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-5-3-6-2-4"
+    ],
+    [
+     "notes",
+     "Emissions",
+     "DPF and EGR from 2007.5; DEF from 2013. Short trips and idling clog the DPF"
+    ],
+    [
+     "notes",
+     "Grid heater",
+     "Hard cold starts can be the intake grid heater or its relay"
+    ]
+   ]
+  },
+  {
+   "id": "jeep_40",
+   "name": "Jeep 4.0 I6",
+   "makes": [
+    "Jeep"
+   ],
+   "disp": [
+    "4.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1987,
+    2006
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "10W-30 (5W-30 in cold climates)"
+    ],
+    [
+     "oil",
+     "Oil capacity",
+     "6 qt with filter"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-5-3-6-2-4"
+    ],
+    [
+     "notes",
+     "Oil leaks",
+     "Rear main seal and the oil filter adapter O-rings leak often. Clean and check the adapter first; it is the cheap fix"
+    ],
+    [
+     "notes",
+     "Stalling",
+     "A failing crankshaft position sensor causes stalling when hot and no-starts"
+    ],
+    [
+     "notes",
+     "Exhaust manifold",
+     "1999 to 2004 manifolds crack (ticking, exhaust smell)"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_2gr",
+   "name": "Toyota 3.5 V6 (2GR)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "3.5"
+   ],
+   "kind": "gas",
+   "years": [
+    2005,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "VVT oil line",
+     "2005 to 2010: a rubber section of the VVT oil cooler line can burst and dump the oil. Toyota replaces it with an all-metal line"
+    ],
+    [
+     "notes",
+     "Water pump",
+     "Leaks from the weep hole are common; look for pink crust behind the belt"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_1gr",
+   "name": "Toyota 4.0 V6 (1GR)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "4.0"
+   ],
+   "kind": "gas",
+   "years": [
+    2003,
+    2024
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30 (2003 to 2009) or 0W-20 (2010 and newer)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_3ur",
+   "name": "Toyota 5.7 V8 (3UR)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "5.7"
+   ],
+   "kind": "gas",
+   "years": [
+    2007,
+    2022
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-4-3-6-5-7-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Secondary air pump",
+     "Air injection pump or valves fail (P2440, P2442, P2444), often putting it in limp mode after a cold start"
+    ],
+    [
+     "notes",
+     "Cam tower",
+     "Oil seep where the cam towers meet the heads is common"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_2uz",
+   "name": "Toyota 4.7 V8 (2UZ)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "4.7"
+   ],
+   "kind": "gas",
+   "years": [
+    1998,
+    2009
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-8-4-3-6-5-7-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt: replace about every 90,000 miles, with the water pump and tensioner"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_mz",
+   "name": "Toyota 3.0 / 3.3 V6 (1MZ / 3MZ)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "3.0",
+    "3.3"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2010
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt: replace about every 90,000 miles, with the water pump"
+    ],
+    [
+     "notes",
+     "Sludge",
+     "1997 to 2002 3.0s can sludge if oil changes are skipped"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_25",
+   "name": "Toyota 2.5 I4 (2AR / A25A)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "2.5"
+   ],
+   "kind": "gas",
+   "years": [
+    2009,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 (some 2018 and newer use 0W-16; check the cap)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_2az",
+   "name": "Toyota 2.4 I4 (2AZ)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "2.4"
+   ],
+   "kind": "gas",
+   "years": [
+    2002,
+    2011
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Oil burning",
+     "Many 2006 to 2011 engines burn oil (piston rings). Check the dipstick at every fill-up"
+    ],
+    [
+     "notes",
+     "Head bolt threads",
+     "Head bolt threads can pull out of the block, causing coolant loss and overheating"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_18",
+   "name": "Toyota 1.8 I4 (1ZZ / 2ZR)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "1.8"
+   ],
+   "kind": "gas",
+   "years": [
+    1998,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Oil use",
+     "1998 to 2002 1ZZ engines often burn oil. Check the dipstick regularly"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_hybrid",
+   "name": "Toyota hybrid (1.8 / 2.0 / 2.5)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "1.8",
+    "2.0",
+    "2.5"
+   ],
+   "kind": "hybrid",
+   "years": [
+    2010,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 (some newer use 0W-16; check the cap)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Two systems: engine and inverter, each with its own reservoir. Both use Toyota Super Long Life (pink)"
+    ],
+    [
+     "notes",
+     "Hybrid battery",
+     "Keep the battery cooling vent (by the rear seat) clear of dust and pet hair"
+    ],
+    [
+     "notes",
+     "Prius 2010 to 2015",
+     "A clogged EGR cooler and intake can lead to head gasket failure. Cleaning the EGR system is preventive maintenance"
+    ],
+    [
+     "notes",
+     "High voltage",
+     "Orange cables are high voltage. Only trained techs should service them"
+    ]
+   ]
+  },
+  {
+   "id": "honda_j35",
+   "name": "Honda 3.5 V6 (J-series)",
+   "makes": [
+    "Honda",
+    "Acura"
+   ],
+   "disp": [
+    "3.5",
+    "3.7",
+    "3.2",
+    "3.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1999,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 (5W-20 on older models)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Honda Type 2 (blue), premixed"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt: replace about every 105,000 miles or when the Maintenance Minder shows it (code 4), with the water pump and tensioner"
+    ],
+    [
+     "notes",
+     "VCM",
+     "Cylinder deactivation (2008 and newer) can cause oil burning, fouled plugs on the rear bank and broken engine mounts"
+    ]
+   ]
+  },
+  {
+   "id": "honda_k24",
+   "name": "Honda 2.4 I4 (K24)",
+   "makes": [
+    "Honda",
+    "Acura"
+   ],
+   "disp": [
+    "2.4"
+   ],
+   "kind": "gas",
+   "years": [
+    2002,
+    2022
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20 (5W-20 on older models)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Honda Type 2 (blue), premixed"
+    ],
+    [
+     "notes",
+     "VTC actuator",
+     "A grinding rattle for a second at cold start (2008 to 2014) is the VTC actuator on the intake cam"
+    ],
+    [
+     "notes",
+     "Valve lash",
+     "Screw-type adjusters: check valve clearance if it ticks or around 100,000 miles"
+    ]
+   ]
+  },
+  {
+   "id": "honda_18",
+   "name": "Honda 1.8 I4 (R18)",
+   "makes": [
+    "Honda",
+    "Acura"
+   ],
+   "disp": [
+    "1.8"
+   ],
+   "kind": "gas",
+   "years": [
+    2006,
+    2015
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Honda Type 2 (blue), premixed"
+    ],
+    [
+     "notes",
+     "Engine block",
+     "Some 2006 to 2009 Civic blocks crack and leak coolant (Honda extended the warranty)"
+    ]
+   ]
+  },
+  {
+   "id": "honda_15t",
+   "name": "Honda 1.5 Turbo I4",
+   "makes": [
+    "Honda",
+    "Acura"
+   ],
+   "disp": [
+    "1.5"
+   ],
+   "kind": "turbo",
+   "years": [
+    2016,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Oil dilution",
+     "Fuel can mix into the oil in cold weather (oil level rises, smells like gas). Honda released software updates"
+    ]
+   ]
+  },
+  {
+   "id": "nissan_vq",
+   "name": "Nissan V6 (VQ: 3.0, 3.5, 3.7, 4.0)",
+   "makes": [
+    "Nissan",
+    "Infiniti"
+   ],
+   "disp": [
+    "3.0",
+    "3.5",
+    "3.7",
+    "4.0"
+   ],
+   "kind": "gas",
+   "years": [
+    2000,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ],
+    [
+     "notes",
+     "Stalling (2002 to 2006)",
+     "Crank and cam position sensors were recalled on many Altimas and Maximas for stalling"
+    ],
+    [
+     "notes",
+     "Oil use",
+     "Some 2003 to 2008 engines burn oil. Check the dipstick regularly"
+    ]
+   ]
+  },
+  {
+   "id": "nissan_qr25",
+   "name": "Nissan 2.5 I4 (QR25)",
+   "makes": [
+    "Nissan",
+    "Infiniti"
+   ],
+   "disp": [
+    "2.5"
+   ],
+   "kind": "gas",
+   "years": [
+    2002,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Pre-catalytic converter (2002 to 2006)",
+     "The pre-cat can break up and get pulled into the engine, causing oil burning and engine damage"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain; rattle at startup means worn guides or tensioner"
+    ]
+   ]
+  },
+  {
+   "id": "hk_theta",
+   "name": "Hyundai/Kia 2.4 I4 (Theta II)",
+   "makes": [
+    "Hyundai",
+    "Kia",
+    "Genesis"
+   ],
+   "disp": [
+    "2.4"
+   ],
+   "kind": "gas",
+   "years": [
+    2011,
+    2019
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Engine bearings",
+     "Connecting rod bearing failure (knocking, stalling, low oil) led to recalls, a knock-sensor software update and extended warranties. Check the VIN at nhtsa.gov/recalls"
+    ]
+   ]
+  },
+  {
+   "id": "hk_theta_t",
+   "name": "Hyundai/Kia 2.0 Turbo (Theta II)",
+   "makes": [
+    "Hyundai",
+    "Kia",
+    "Genesis"
+   ],
+   "disp": [
+    "2.0"
+   ],
+   "kind": "turbo",
+   "years": [
+    2011,
+    2019
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Engine bearings",
+     "Connecting rod bearing failure (knocking, stalling, low oil) led to recalls, a knock-sensor software update and extended warranties. Check the VIN at nhtsa.gov/recalls"
+    ]
+   ]
+  },
+  {
+   "id": "hk_lambda",
+   "name": "Hyundai/Kia 3.3 / 3.5 / 3.8 V6 (Lambda)",
+   "makes": [
+    "Hyundai",
+    "Kia",
+    "Genesis"
+   ],
+   "disp": [
+    "3.3",
+    "3.5",
+    "3.8"
+   ],
+   "kind": "gas",
+   "years": [
+    2007,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ]
+   ]
+  },
+  {
+   "id": "subaru_ej25",
+   "name": "Subaru 2.5 flat-4 (EJ25)",
+   "makes": [
+    "Subaru"
+   ],
+   "disp": [
+    "2.5"
+   ],
+   "kind": "gas",
+   "years": [
+    1998,
+    2012
+   ],
+   "until": {
+    "forester": 2010,
+    "impreza": 2011
+   },
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-2-4"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt: replace about every 105,000 miles, with the idlers, tensioner and water pump"
+    ],
+    [
+     "notes",
+     "Head gaskets",
+     "External oil and coolant seeps from the head gaskets are very common (1999 to 2011)"
+    ]
+   ]
+  },
+  {
+   "id": "subaru_ej_turbo",
+   "name": "Subaru 2.5 Turbo flat-4 (EJ255 / EJ257)",
+   "makes": [
+    "Subaru"
+   ],
+   "disp": [
+    "2.5"
+   ],
+   "kind": "turbo",
+   "years": [
+    2004,
+    2021
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-30"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-2-4"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt: replace about every 105,000 miles"
+    ],
+    [
+     "notes",
+     "Oil level",
+     "Rod bearing and ringland failures happen; keep the oil full and avoid lugging the engine"
+    ]
+   ]
+  },
+  {
+   "id": "subaru_fb",
+   "name": "Subaru 2.0 / 2.5 flat-4 (FB)",
+   "makes": [
+    "Subaru"
+   ],
+   "disp": [
+    "2.0",
+    "2.5"
+   ],
+   "kind": "gas",
+   "years": [
+    2011,
+    2026
+   ],
+   "since": {
+    "legacy": 2013,
+    "outback": 2013,
+    "impreza": 2012
+   },
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "0W-20"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-2-4"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ],
+    [
+     "notes",
+     "Oil burning",
+     "Many 2011 to 2015 engines burn oil (Subaru extended the warranty on some). Check the dipstick at every fill-up"
+    ]
+   ]
+  },
+  {
+   "id": "vw_ea888",
+   "name": "VW/Audi 2.0 Turbo I4 (EA888)",
+   "makes": [
+    "Volkswagen",
+    "Audi"
+   ],
+   "disp": [
+    "2.0"
+   ],
+   "kind": "turbo",
+   "years": [
+    2009,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "Use oil with the VW approval in your manual (502 00 on older, 508 00 on newer)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Timing chain tensioner",
+     "2008 to 2012 engines: the original tensioner can fail and let the chain jump, wrecking the engine. Check which tensioner it has"
+    ],
+    [
+     "notes",
+     "PCV valve",
+     "A torn PCV diaphragm causes a whistle, rough idle and lean codes"
+    ],
+    [
+     "notes",
+     "Water pump",
+     "The plastic water pump / thermostat housing leaks often (pink crust on the passenger side)"
+    ],
+    [
+     "notes",
+     "Carbon buildup",
+     "Direct injection: intake valves build carbon; walnut blasting cleans them"
+    ]
+   ]
+  },
+  {
+   "id": "vw_18t",
+   "name": "VW/Audi 1.8 Turbo I4 (1999 to 2006)",
+   "makes": [
+    "Volkswagen",
+    "Audi"
+   ],
+   "disp": [
+    "1.8"
+   ],
+   "kind": "turbo",
+   "years": [
+    1998,
+    2006
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "Synthetic meeting VW 502 00 (the engine can sludge on conventional oil)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Interference engine with a timing belt; follow the interval in the manual and replace the tensioner too"
+    ],
+    [
+     "notes",
+     "Ignition coils",
+     "Coil packs fail (misfire); many were replaced under a recall"
+    ]
+   ]
+  },
+  {
+   "id": "vw_25_i5",
+   "name": "VW 2.5 I5",
+   "makes": [
+    "Volkswagen",
+    "Audi"
+   ],
+   "disp": [
+    "2.5"
+   ],
+   "kind": "gas",
+   "years": [
+    2005,
+    2019
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-2-4-5-3"
+    ],
+    [
+     "notes",
+     "Timing chain",
+     "The timing chain is at the back of the engine (transmission side); replacing it is a big job"
+    ]
+   ]
+  },
+  {
+   "id": "vw_tdi",
+   "name": "VW/Audi TDI diesel (1.9 / 2.0)",
+   "makes": [
+    "Volkswagen",
+    "Audi"
+   ],
+   "disp": [
+    "1.9",
+    "2.0"
+   ],
+   "kind": "diesel",
+   "years": [
+    1999,
+    2015
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Interference engine with a timing belt; follow the interval in the manual"
+    ],
+    [
+     "notes",
+     "Fuel pump (2009 to 2015)",
+     "The high-pressure fuel pump can fail and send metal through the fuel system. Use only diesel; one tank of gas can destroy it"
+    ]
+   ]
+  },
+  {
+   "id": "bmw_i6",
+   "name": "BMW inline-6",
+   "makes": [
+    "BMW"
+   ],
+   "disp": [
+    "2.5",
+    "2.8",
+    "3.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-5-3-6-2-4"
+    ],
+    [
+     "oil",
+     "Oil",
+     "BMW Longlife approved oil (see the manual)"
+    ],
+    [
+     "notes",
+     "Oil leaks",
+     "Valve cover and oil filter housing gaskets leak (oil on the belt or burning smell)"
+    ],
+    [
+     "notes",
+     "Cooling",
+     "Water pump and thermostat fail without warning on many; use BMW coolant (blue)"
+    ]
+   ]
+  },
+  {
+   "id": "bmw_i6_turbo",
+   "name": "BMW 3.0 Turbo inline-6 (N54 / N55 / B58)",
+   "makes": [
+    "BMW"
+   ],
+   "disp": [
+    "3.0"
+   ],
+   "kind": "turbo",
+   "years": [
+    2006,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-5-3-6-2-4"
+    ],
+    [
+     "oil",
+     "Oil",
+     "BMW Longlife approved oil (see the manual)"
+    ],
+    [
+     "notes",
+     "N54 (2007 to 2010)",
+     "High-pressure fuel pump, injectors and wastegate rattle are common"
+    ],
+    [
+     "notes",
+     "Oil leaks",
+     "Valve cover and oil filter housing gaskets leak (oil on the belt or burning smell)"
+    ],
+    [
+     "notes",
+     "Cooling",
+     "Electric water pump and thermostat fail without warning on N54/N55"
+    ]
+   ]
+  },
+  {
+   "id": "bmw_n20",
+   "name": "BMW 2.0 Turbo I4 (N20 / B46)",
+   "makes": [
+    "BMW"
+   ],
+   "disp": [
+    "2.0"
+   ],
+   "kind": "turbo",
+   "years": [
+    2012,
+    2026
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "notes",
+     "Timing chain (N20, 2012 to 2015)",
+     "Timing chain guides wear and break (whine or rattle). Have it checked; failure ruins the engine"
+    ]
+   ]
+  },
+  {
+   "id": "ford_54_2v",
+   "name": "Ford 5.4 Triton 2V V8",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "5.4"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2014
+   ],
+   "skip": [
+    "3v"
+   ],
+   "models": [
+    "eseries",
+    "econoline",
+    "e150",
+    "e250",
+    "e350",
+    "f150",
+    "f250",
+    "f350",
+    "superduty",
+    "expedition",
+    "navigator",
+    "excursion"
+   ],
+   "until": {
+    "f150": 2003,
+    "expedition": 2004,
+    "navigator": 2004,
+    "f250": 2004,
+    "f350": 2004,
+    "superduty": 2004
+   },
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-7-2-6-5-4-8"
+    ],
+    [
+     "ignition",
+     "Cylinder numbers",
+     "1 to 4 on the passenger side front to back, 5 to 8 on the driver side"
+    ],
+    [
+     "notes",
+     "Spark plugs",
+     "The 2V heads have few threads; a plug can blow out. Torque plugs to spec and don't over-tighten"
+    ]
+   ]
+  },
+  {
+   "id": "ford_30_v6",
+   "name": "Ford 3.0 V6 (Vulcan / Duratec 30)",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury",
+    "Mazda"
+   ],
+   "disp": [
+    "3.0"
+   ],
+   "kind": "gas",
+   "years": [
+    1998,
+    2012
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "5W-20 (2001 and newer)"
+    ],
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ]
+   ]
+  },
+  {
+   "id": "ford_42_v6",
+   "name": "Ford 4.2 V6 (Essex)",
+   "makes": [
+    "Ford",
+    "Lincoln",
+    "Mercury"
+   ],
+   "disp": [
+    "4.2"
+   ],
+   "kind": "gas",
+   "years": [
+    1997,
+    2008
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-4-2-5-3-6"
+    ],
+    [
+     "notes",
+     "Gaskets",
+     "Intake and front cover gaskets can leak coolant, sometimes into the oil. Check for milky oil and coolant loss"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_27",
+   "name": "Chrysler 2.7 V6",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "2.7"
+   ],
+   "kind": "gas",
+   "years": [
+    1998,
+    2010
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "notes",
+     "Oil sludge",
+     "Very prone to sludge; change oil on time with the right grade"
+    ],
+    [
+     "notes",
+     "Internal water pump",
+     "The water pump is inside the engine, driven by the timing chain. A failure puts coolant in the oil: milky oil or coolant loss means stop driving"
+    ]
+   ]
+  },
+  {
+   "id": "mopar_35",
+   "name": "Chrysler 3.5 V6",
+   "makes": [
+    "Dodge",
+    "Ram",
+    "Chrysler",
+    "Jeep",
+    "Plymouth"
+   ],
+   "disp": [
+    "3.5"
+   ],
+   "kind": "gas",
+   "years": [
+    1998,
+    2010
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt; follow the interval in the manual and replace the water pump with it"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_5vz",
+   "name": "Toyota 3.4 V6 (5VZ)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "3.4"
+   ],
+   "kind": "gas",
+   "years": [
+    1995,
+    2004
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-2-3-4-5-6"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Timing belt",
+     "Uses a timing belt: replace about every 90,000 miles, with the water pump"
+    ]
+   ]
+  },
+  {
+   "id": "toyota_27",
+   "name": "Toyota 2.7 I4 (3RZ / 2TR)",
+   "makes": [
+    "Toyota",
+    "Lexus",
+    "Scion"
+   ],
+   "disp": [
+    "2.7"
+   ],
+   "kind": "gas",
+   "years": [
+    1995,
+    2024
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "Toyota Super Long Life (pink), premixed"
+    ],
+    [
+     "notes",
+     "Timing",
+     "Timing chain, no scheduled replacement"
+    ]
+   ]
+  },
+  {
+   "id": "generic_i4",
+   "name": "Inline 4-cylinder",
+   "generic": true,
+   "makes": [
+    "*"
+   ],
+   "disp": [],
+   "range": [
+    1.4,
+    2.5
+   ],
+   "kind": "any",
+   "years": [
+    1990,
+    2026
+   ],
+   "notMakes": [
+    "Subaru",
+    "Porsche",
+    "Mini"
+   ],
+   "skip": [
+    "v6",
+    "v8",
+    "flat",
+    "i3",
+    "i5",
+    "i6",
+    "rotary",
+    "vr6",
+    "w8",
+    "diesel",
+    "electric",
+    "tdi",
+    "crd"
+   ],
+   "specs": [
+    [
+     "ignition",
+     "Firing order",
+     "1-3-4-2 on almost every inline 4-cylinder (cylinder 1 is at the timing belt or chain end)"
+    ]
+   ]
+  },
+  {
+   "id": "ev",
+   "name": "Electric vehicle",
+   "makes": [
+    "*"
+   ],
+   "disp": [],
+   "kind": "ev",
+   "years": [
+    2010,
+    2026
+   ],
+   "specs": [
+    [
+     "oil",
+     "Oil",
+     "None. No oil changes, spark plugs or timing belts"
+    ],
+    [
+     "cooling",
+     "Coolant",
+     "The battery and motor have their own coolant loop; use only the maker's coolant"
+    ],
+    [
+     "notes",
+     "12 V battery",
+     "A weak 12 V battery can stop an EV from turning on, even with a full main battery"
+    ],
+    [
+     "notes",
+     "Brakes",
+     "Regenerative braking means pads last long, but calipers can rust from lack of use. Brake fluid still needs changing"
+    ],
+    [
+     "notes",
+     "High voltage",
+     "Orange cables are high voltage. Only trained techs should service them"
+    ]
+   ]
+  }
+ ],
+ "vehicles": [
+  {
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "models": [
+    "silverado1500",
+    "sierra1500",
+    "tahoe",
+    "yukon",
+    "suburban",
+    "avalanche",
+    "escalade"
+   ],
+   "years": [
+    1999,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "140 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Chevrolet",
+    "GMC",
+    "Cadillac",
+    "Buick",
+    "Pontiac",
+    "Oldsmobile",
+    "Saturn",
+    "Hummer",
+    "Isuzu"
+   ],
+   "models": [
+    "silverado2500",
+    "silverado3500",
+    "sierra2500",
+    "sierra3500"
+   ],
+   "years": [
+    2001,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "140 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Ford"
+   ],
+   "models": [
+    "f150"
+   ],
+   "years": [
+    2004,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "150 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Ford"
+   ],
+   "models": [
+    "f250",
+    "f350",
+    "superduty"
+   ],
+   "years": [
+    2005,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "165 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Ram",
+    "Dodge"
+   ],
+   "models": [
+    "1500",
+    "ram1500"
+   ],
+   "years": [
+    2002,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "130 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Toyota"
+   ],
+   "models": [
+    "tacoma",
+    "4runner"
+   ],
+   "years": [
+    2003,
+    2023
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "83 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Toyota"
+   ],
+   "models": [
+    "tundra"
+   ],
+   "years": [
+    2007,
+    2021
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "97 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Toyota"
+   ],
+   "models": [
+    "camry",
+    "corolla",
+    "rav4",
+    "highlander",
+    "avalon",
+    "prius",
+    "sienna",
+    "venza"
+   ],
+   "years": [
+    2000,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "76 ft-lb"
+    ]
+   ]
+  },
+  {
+   "makes": [
+    "Honda"
+   ],
+   "models": [
+    "civic",
+    "accord",
+    "crv",
+    "odyssey",
+    "pilot",
+    "hrv",
+    "fit",
+    "ridgeline",
+    "element",
+    "insight",
+    "passport"
+   ],
+   "years": [
+    2000,
+    2026
+   ],
+   "specs": [
+    [
+     "wheels",
+     "Lug nut torque",
+     "80 ft-lb"
+    ]
+   ]
+  }
+ ],
+ "groups": {
+  "gm_4l60e": [
+   [
+    "drivetrain",
+    "Transmission",
+    "1500 models with an automatic: 4L60-E / 4L65-E. Fluid: Dexron VI (replaces Dexron III). About 5 qt for a pan drop and filter; check hot, in Park, engine running"
+   ]
+  ],
+  "ford_10r80": [
+   [
+    "drivetrain",
+    "Transmission",
+    "If it has the 10-speed automatic (2017 and newer): Mercon ULV fluid only. No dipstick; the level is checked at a plug at operating temperature (shop job)"
+   ]
+  ],
+  "honda_9speed": [
+   [
+    "drivetrain",
+    "Transmission",
+    "If it has the 9-speed automatic (push-button shifter): rough shifts were improved with dealer software updates"
+   ]
+  ],
+  "nissan_cvt": [
+   [
+    "drivetrain",
+    "Transmission",
+    "If it has a CVT: Nissan NS-2 or NS-3 fluid only (depends on year); the wrong fluid damages it"
+   ]
+  ],
+  "subaru_cvt": [
+   [
+    "drivetrain",
+    "Transmission",
+    "If it has the Lineartronic CVT: use only Subaru CVT fluid"
+   ]
+  ],
+  "fca_9speed": [
+   [
+    "drivetrain",
+    "Transmission",
+    "If it has the 9-speed automatic: rough shifts were improved with dealer software updates"
+   ]
+  ],
+  "vw_dsg": [
+   [
+    "drivetrain",
+    "Transmission",
+    "If it has a 6-speed DSG automatic: fluid and filter change about every 40,000 miles"
+   ]
+  ]
+ }
+}
