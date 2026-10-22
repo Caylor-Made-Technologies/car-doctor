@@ -309,7 +309,7 @@ function scrollChat(node) {
   const main = document.getElementById("main");
   requestAnimationFrame(() => {
     const top = node
-      ? main.scrollTop + node.getBoundingClientRect().top - main.getBoundingClientRect().top - 8
+      ? main.scrollTop + node.getBoundingClientRect().top - main.getBoundingClientRect().top - 12
       : main.scrollHeight;
     main.scrollTo({ top, behavior: REDUCED_MOTION.matches ? "auto" : "smooth" });
   });
@@ -338,11 +338,12 @@ function welcome() {
   session.resultNode = null;
   session.done = false;
   const name = vehicleName();
-  addMsg("bot",
+  const hello = addMsg("bot",
     el("p", { class: "lead" }, name ? `What's going on with your ${name}?` : "What's going on with your vehicle?"),
     el("p", {}, "Tell me what you hear, feel or smell, and when it happens. You can also type a trouble code like P0300."),
     chipRow(STARTERS, sendMessage),
     el("p", { class: "fineprint" }, "Guidance only, not a professional diagnosis. If it feels unsafe, don't drive it."));
+  scrollChat(hello); // start at the top of the greeting, not the bottom
 }
 
 // Shows the "thinking" dots, then removes them.
