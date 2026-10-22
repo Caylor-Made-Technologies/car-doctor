@@ -16,6 +16,7 @@ The big idea (more in README.md):
 import csv
 import json
 import re
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -29,6 +30,7 @@ MODEL_FILE = ROOT / "app" / "model.json"
 
 ALPHAS = [0.05, 0.1, 0.3, 0.5, 1.0]  # smoothing values to try
 FOLDS = 5
+MIN_TOP1 = 0.95  # deploy stops if cross-validated top-1 accuracy drops below this
 
 # ---------------------------------------------------------------------------
 # Text cleaning
@@ -181,11 +183,12 @@ def cross_validate(texts, labels, alpha):
     return top1 / len(labels), top3 / len(labels)
 
 
-def export(model, vec, path):
+def export(model, vec, path, accuracy):
     """Save everything the browser needs to repeat the math."""
     vocab = {token: int(index) for token, index in vec.vocabulary_.items()}
     data = {
         "classes": model.classes_.tolist(),
+        "accuracy": accuracy,  # cross-validated scores, for reference
         "class_log_prior": [round(float(v), 4) for v in model.class_log_prior_],
         "feature_log_prob": [[round(float(v), 4) for v in row]
                              for row in model.feature_log_prob_],
@@ -208,15 +211,12 @@ def main():
 
     top1, top3 = best_score
     print(f"\nBest alpha: {best_alpha}  (top-1 {top1:.1%}, top-3 {top3:.1%})")
-    if top1 < 0.60 or top3 < 0.80:
-        print("WARNING: below target (60% top-1, 80% top-3). "
-              "Add more varied examples to data/symptoms.csv.")
 
     # Final model uses ALL the data.
     vec = make_vectorizer()
     x_all = vec.fit_transform(texts)
     model = MultinomialNB(alpha=best_alpha).fit(x_all, labels)
-    export(model, vec, MODEL_FILE)
+    export(model, vec, MODEL_FILE, {"top1": round(top1, 3), "top3": round(top3, 3), "examples": len(texts)})
     size_kb = MODEL_FILE.stat().st_size / 1024
     print(f"Wrote {MODEL_FILE.relative_to(ROOT)} "
           f"({len(vec.vocabulary_)} features, {size_kb:.0f} KB)\n")
@@ -235,6 +235,15 @@ def main():
         best = np.argsort(probs)[::-1][:3]
         guesses = ", ".join(f"{model.classes_[i]} {probs[i]:.0%}" for i in best)
         print(f"  {text!r}\n    -> {guesses}")
+
+    # Accuracy gate: GitHub Actions stops here (and keeps the old app live)
+    # if new training data made the model worse than the target.
+    if top1 < MIN_TOP1:
+        print(f"\nFAIL: top-1 accuracy {top1:.1%} is below the {MIN_TOP1:.0%} target. "
+              "Run this locally to see which problems get mixed up, then add clearer "
+              "examples for them to data/symptoms.csv.")
+        sys.exit(1)
+    print(f"\nAccuracy target met: {top1:.1%} top-1 (target {MIN_TOP1:.0%}).")
 
 
 if __name__ == "__main__":

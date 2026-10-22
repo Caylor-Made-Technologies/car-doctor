@@ -373,5 +373,65 @@
       "GM 2500HD idler arm and pitman arm wear out often and cause loose steering; a lift makes it worse.",
       "Check torsion bar adjusters and sway bar links and bushings for clunks over bumps."
     ]
+  },
+  "timing_chain_problem": {
+    "name": "Stretched timing chain",
+    "severity": "high",
+    "diy": "Shop",
+    "plain": "A chain inside the engine keeps the parts moving in step, like a bike chain. When it stretches, it rattles and the engine runs poorly.",
+    "drive": "Short trips only. If the chain jumps or breaks, the engine can be badly damaged.",
+    "todo": "Get it to a shop soon. Tell them it rattles for a few seconds at startup and give them any codes (like P0016 or P0008).",
+    "summary": "The timing chain or its guides and tensioner are worn, so cam timing drifts. Common on some GM 3.6L V6, Ford 3.5L/5.4L, VW/Audi 2.0T, BMW and Nissan engines.",
+    "checks": [
+      "Listen at cold start: a rattle or chain slap for 2 to 10 seconds that quiets down is the classic sign.",
+      "Read codes: P0008, P0009, P0016, P0017 (cam/crank correlation) point to stretch.",
+      "Check oil level and condition; low or old oil makes chains and tensioners wear faster.",
+      "A shop can check cam timing with a scan tool (cam/crank correlation values) before opening the engine."
+    ]
+  },
+  "head_gasket_failure": {
+    "name": "Blown head gasket",
+    "severity": "critical",
+    "diy": "Shop",
+    "plain": "A seal inside the engine has failed, so coolant and oil can mix or leak into the cylinders. The engine overheats and can be ruined.",
+    "drive": "No. Driving with a blown head gasket can destroy the engine. Park it and get it checked.",
+    "todo": "Have a shop do a coolant pressure test and a 'block test' (checks for exhaust in the coolant). Tell them about white smoke or milky oil.",
+    "summary": "The gasket between the cylinder head and block is leaking. Often caused by overheating. Known on Subaru 2.5L, Chrysler 2.7L, some Ford, Northstar V8 and Mini engines.",
+    "checks": [
+      "Look for thick white exhaust smoke that smells sweet, especially at startup.",
+      "Pull the dipstick and check under the oil cap: milky, light brown sludge means coolant in the oil.",
+      "Coolant level keeps dropping with no outside leak, or bubbles in the coolant tank while running.",
+      "A shop can do a cooling system pressure test, a combustion leak (block) test, and a compression or leak-down test."
+    ]
+  },
+  "catalytic_converter_problem": {
+    "name": "Clogged or failing catalytic converter",
+    "severity": "medium",
+    "diy": "Shop",
+    "plain": "The catalytic converter cleans the exhaust. When it clogs or wears out, you may smell rotten eggs, lose power, or get a check engine light.",
+    "drive": "Yes for short trips if it still runs well. If it's badly clogged and has no power, get it checked; it can overheat.",
+    "todo": "Get the code read (P0420/P0430 is common). Fix any misfire first, because misfires ruin converters.",
+    "summary": "The converter is worn out or clogged, often after a long misfire or burning oil. Also a common theft target on trucks and hybrids.",
+    "checks": [
+      "Read codes: P0420 or P0430 means it isn't cleaning well; misfire codes mean fix those first.",
+      "Rotten egg (sulfur) smell from the exhaust, or a rattle under the vehicle from the converter's insides breaking up.",
+      "Loss of power going uphill and a glowing red-hot converter mean it's clogged.",
+      "A shop can test exhaust back pressure or temperature before and after the converter."
+    ]
+  },
+  "evap_leak": {
+    "name": "Gas cap or EVAP leak",
+    "severity": "low",
+    "diy": "Easy",
+    "plain": "The fuel tank's vapor system has a small leak. Very often it's just a loose or worn gas cap. It turns on the check engine light but rarely affects driving.",
+    "drive": "Yes. It's safe to drive. You may smell a little gas near the tank.",
+    "todo": "Tighten the gas cap until it clicks. If the light stays on after a few days of driving, replace the cap ($15 to $25), then get the code read.",
+    "summary": "The EVAP system traps fuel vapor. A loose cap, cracked hose, or stuck purge or vent valve trips codes like P0455, P0442 and P0456.",
+    "checks": [
+      "Check the gas cap: tighten until it clicks, look for a cracked seal.",
+      "Read codes: P0455 (large leak), P0442/P0456 (small), P0446 (vent), P0496 (purge valve).",
+      "Smell for raw gas near the tank or filler neck after filling up.",
+      "A shop can smoke-test the EVAP system to find small hose leaks."
+    ]
   }
 }

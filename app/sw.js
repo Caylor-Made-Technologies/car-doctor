@@ -1,7 +1,7 @@
 // Car Doctor service worker: network first, cache fallback, so you get
 // updates when online and the app still works offline.
 // Bump VERSION whenever app files change so old caches get cleared.
-const VERSION = "v4";
+const VERSION = "v5";
 const CACHE = "car-doctor-" + VERSION;
 const FILES = [
   "./",
@@ -19,6 +19,8 @@ const FILES = [
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",
+  "icons/apple-touch-icon.png",
+  "icons/favicon-32.png",
 ];
 
 self.addEventListener("install", (event) => {

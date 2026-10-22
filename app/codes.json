@@ -1,4 +1,75 @@
 {
+ "P0008": {
+  "title": "Engine position system performance (bank 1)",
+  "causes": [
+   "Stretched timing chain or worn guides",
+   "Worn chain tensioner",
+   "Low or dirty oil (affects cam timing parts)",
+   "Failing cam phaser or timing solenoid"
+  ],
+  "related": "timing_chain_problem"
+ },
+ "P0009": {
+  "title": "Engine position system performance (bank 2)",
+  "causes": [
+   "Stretched timing chain or worn guides",
+   "Worn chain tensioner",
+   "Low or dirty oil (affects cam timing parts)",
+   "Failing cam phaser or timing solenoid"
+  ],
+  "related": "timing_chain_problem"
+ },
+ "P0011": {
+  "title": "Camshaft timing over-advanced (bank 1)",
+  "causes": [
+   "Low or dirty oil",
+   "Sticking cam timing (VVT) solenoid",
+   "Worn cam phaser or timing chain"
+  ],
+  "related": "timing_chain_problem"
+ },
+ "P0014": {
+  "title": "Camshaft timing over-advanced, exhaust (bank 1)",
+  "causes": [
+   "Low or dirty oil",
+   "Sticking cam timing (VVT) solenoid",
+   "Worn cam phaser or timing chain"
+  ],
+  "related": "timing_chain_problem"
+ },
+ "P0016": {
+  "title": "Crankshaft/camshaft position correlation (bank 1 sensor A)",
+  "causes": [
+   "Stretched timing chain or worn guides",
+   "Worn chain tensioner",
+   "Low or dirty oil (affects cam timing parts)",
+   "Failing cam phaser or timing solenoid",
+   "Bad cam or crank sensor"
+  ],
+  "related": "timing_chain_problem"
+ },
+ "P0017": {
+  "title": "Crankshaft/camshaft position correlation (bank 1 sensor B)",
+  "causes": [
+   "Stretched timing chain or worn guides",
+   "Worn chain tensioner",
+   "Low or dirty oil (affects cam timing parts)",
+   "Failing cam phaser or timing solenoid",
+   "Bad cam or crank sensor"
+  ],
+  "related": "timing_chain_problem"
+ },
+ "P0018": {
+  "title": "Crankshaft/camshaft position correlation (bank 2 sensor A)",
+  "causes": [
+   "Stretched timing chain or worn guides",
+   "Worn chain tensioner",
+   "Low or dirty oil (affects cam timing parts)",
+   "Failing cam phaser or timing solenoid",
+   "Bad cam or crank sensor"
+  ],
+  "related": "timing_chain_problem"
+ },
  "P0100": {
   "title": "Mass air flow (MAF) circuit malfunction",
   "causes": [
@@ -237,6 +308,15 @@
   ],
   "related": "fuel_delivery_problem"
  },
+ "P0217": {
+  "title": "Engine over-temperature",
+  "causes": [
+   "Low coolant",
+   "Failed thermostat or water pump",
+   "Cooling fan not working"
+  ],
+  "related": "overheating"
+ },
  "P0230": {
   "title": "Fuel pump primary circuit",
   "causes": [
@@ -245,6 +325,15 @@
    "Wiring problem to the pump"
   ],
   "related": "fuel_delivery_problem"
+ },
+ "P0299": {
+  "title": "Turbo/supercharger underboost",
+  "causes": [
+   "Boost leak (loose or cracked intake hose)",
+   "Failing turbo or wastegate",
+   "Clogged air filter"
+  ],
+  "related": "vacuum_leak"
  },
  "P0300": {
   "title": "Random/multiple cylinder misfire",
@@ -417,7 +506,7 @@
    "Exhaust leak",
    "Failed downstream O2 sensor"
   ],
-  "related": "exhaust_leak"
+  "related": "catalytic_converter_problem"
  },
  "P0430": {
   "title": "Catalyst efficiency below threshold (bank 2)",
@@ -427,7 +516,7 @@
    "Exhaust leak",
    "Failed downstream O2 sensor"
   ],
-  "related": "exhaust_leak"
+  "related": "catalytic_converter_problem"
  },
  "P0440": {
   "title": "EVAP system malfunction",
@@ -437,7 +526,7 @@
    "Failed purge or vent valve",
    "Leaking charcoal canister"
   ],
-  "related": "vacuum_leak"
+  "related": "evap_leak"
  },
  "P0442": {
   "title": "EVAP system small leak detected",
@@ -447,7 +536,7 @@
    "Failed purge or vent valve",
    "Leaking charcoal canister"
   ],
-  "related": "vacuum_leak"
+  "related": "evap_leak"
  },
  "P0446": {
   "title": "EVAP vent control circuit",
@@ -456,7 +545,7 @@
    "Clogged vent filter or canister (dirt roads, lifted trucks)",
    "Wiring problem"
   ],
-  "related": "vacuum_leak"
+  "related": "evap_leak"
  },
  "P0449": {
   "title": "EVAP vent valve/solenoid circuit",
@@ -465,7 +554,7 @@
    "Corroded connector near the tank",
    "Damaged wiring"
   ],
-  "related": "vacuum_leak"
+  "related": "evap_leak"
  },
  "P0455": {
   "title": "EVAP system large leak detected",
@@ -474,7 +563,24 @@
    "Disconnected or cracked EVAP hose",
    "Failed purge valve"
   ],
-  "related": "vacuum_leak"
+  "related": "evap_leak"
+ },
+ "P0456": {
+  "title": "EVAP system very small leak",
+  "causes": [
+   "Gas cap seal worn",
+   "Tiny crack in an EVAP hose",
+   "Leaking vent or purge valve"
+  ],
+  "related": "evap_leak"
+ },
+ "P0457": {
+  "title": "EVAP leak detected (fuel cap loose or off)",
+  "causes": [
+   "Gas cap loose or missing: tighten until it clicks",
+   "Worn gas cap seal"
+  ],
+  "related": "evap_leak"
  },
  "P0496": {
   "title": "EVAP flow during non-purge condition",
@@ -482,7 +588,7 @@
    "Purge solenoid stuck open",
    "Wiring problem to purge solenoid"
   ],
-  "related": "vacuum_leak"
+  "related": "evap_leak"
  },
  "P0500": {
   "title": "Vehicle speed sensor malfunction",
@@ -554,6 +660,14 @@
    "Computer (PCM) failure",
    "Failed reprogramming",
    "Bad PCM ground or power"
+  ],
+  "related": "electrical_ground_problem"
+ },
+ "P0606": {
+  "title": "Control module processor fault",
+  "causes": [
+   "Engine computer (PCM) failure",
+   "Bad PCM power or ground"
   ],
   "related": "electrical_ground_problem"
  },
