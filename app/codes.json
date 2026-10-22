@@ -1,0 +1,692 @@
+{
+ "P0100": {
+  "title": "Mass air flow (MAF) circuit malfunction",
+  "causes": [
+   "Dirty or failed MAF sensor",
+   "Air leak between the MAF and throttle body",
+   "Clogged air filter",
+   "Damaged MAF wiring or connector"
+  ],
+  "related": "dirty_maf_sensor"
+ },
+ "P0101": {
+  "title": "MAF sensor range/performance",
+  "causes": [
+   "Dirty or failed MAF sensor",
+   "Air leak between the MAF and throttle body",
+   "Clogged air filter",
+   "Damaged MAF wiring or connector"
+  ],
+  "related": "dirty_maf_sensor"
+ },
+ "P0102": {
+  "title": "MAF sensor circuit low input",
+  "causes": [
+   "Unplugged or damaged MAF connector",
+   "Failed MAF sensor",
+   "Open or shorted wiring"
+  ],
+  "related": "dirty_maf_sensor"
+ },
+ "P0103": {
+  "title": "MAF sensor circuit high input",
+  "causes": [
+   "Failed MAF sensor",
+   "Shorted wiring",
+   "Bad sensor ground"
+  ],
+  "related": "dirty_maf_sensor"
+ },
+ "P0106": {
+  "title": "MAP sensor range/performance",
+  "causes": [
+   "Cracked or loose MAP sensor vacuum source",
+   "Failed MAP sensor",
+   "Vacuum leak",
+   "Low engine vacuum from a mechanical problem"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0113": {
+  "title": "Intake air temperature (IAT) sensor high input",
+  "causes": [
+   "Unplugged IAT sensor (often built into the MAF on GM)",
+   "Open wiring",
+   "Failed sensor"
+  ],
+  "related": "dirty_maf_sensor"
+ },
+ "P0116": {
+  "title": "Engine coolant temp sensor range/performance",
+  "causes": [
+   "Thermostat stuck open",
+   "Failed coolant temp sensor",
+   "Low coolant / air pocket"
+  ],
+  "related": "thermostat_stuck_open"
+ },
+ "P0117": {
+  "title": "Engine coolant temp sensor low input",
+  "causes": [
+   "Shorted coolant temp sensor",
+   "Shorted wiring",
+   "Engine actually overheating"
+  ],
+  "related": "overheating"
+ },
+ "P0118": {
+  "title": "Engine coolant temp sensor high input",
+  "causes": [
+   "Unplugged or failed coolant temp sensor",
+   "Open wiring",
+   "Corroded connector"
+  ],
+  "related": "thermostat_stuck_open"
+ },
+ "P0121": {
+  "title": "Throttle position sensor range/performance",
+  "causes": [
+   "Worn throttle position sensor",
+   "Dirty throttle body",
+   "Wiring or connector problem"
+  ],
+  "related": "dirty_maf_sensor"
+ },
+ "P0128": {
+  "title": "Coolant temperature below thermostat regulating temperature",
+  "causes": [
+   "Thermostat stuck open",
+   "Failed coolant temp sensor",
+   "Low coolant"
+  ],
+  "related": "thermostat_stuck_open"
+ },
+ "P0130": {
+  "title": "O2 sensor circuit (bank 1 sensor 1)",
+  "causes": [
+   "Failed oxygen sensor",
+   "Exhaust leak near the sensor",
+   "Wiring damage from heat",
+   "Engine running too rich or lean"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0131": {
+  "title": "O2 sensor low voltage (bank 1 sensor 1)",
+  "causes": [
+   "Failed oxygen sensor",
+   "Exhaust leak near the sensor",
+   "Wiring damage from heat",
+   "Engine running too rich or lean"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0133": {
+  "title": "O2 sensor slow response (bank 1 sensor 1)",
+  "causes": [
+   "Failed oxygen sensor",
+   "Exhaust leak near the sensor",
+   "Wiring damage from heat",
+   "Engine running too rich or lean"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0135": {
+  "title": "O2 sensor heater circuit (bank 1 sensor 1)",
+  "causes": [
+   "Failed O2 sensor heater (replace the sensor)",
+   "Blown O2 heater fuse",
+   "Damaged wiring or connector"
+  ],
+  "related": "electrical_ground_problem"
+ },
+ "P0137": {
+  "title": "O2 sensor low voltage (bank 1 sensor 2)",
+  "causes": [
+   "Failed oxygen sensor",
+   "Exhaust leak near the sensor",
+   "Wiring damage from heat",
+   "Engine running too rich or lean"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0141": {
+  "title": "O2 sensor heater circuit (bank 1 sensor 2)",
+  "causes": [
+   "Failed O2 sensor heater (replace the sensor)",
+   "Blown O2 heater fuse",
+   "Damaged wiring or connector"
+  ],
+  "related": "electrical_ground_problem"
+ },
+ "P0150": {
+  "title": "O2 sensor circuit (bank 2 sensor 1)",
+  "causes": [
+   "Failed oxygen sensor",
+   "Exhaust leak near the sensor",
+   "Wiring damage from heat",
+   "Engine running too rich or lean"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0154": {
+  "title": "O2 sensor no activity (bank 2 sensor 1)",
+  "causes": [
+   "Failed oxygen sensor",
+   "Exhaust leak near the sensor",
+   "Wiring damage from heat",
+   "Engine running too rich or lean"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0155": {
+  "title": "O2 sensor heater circuit (bank 2 sensor 1)",
+  "causes": [
+   "Failed O2 sensor heater (replace the sensor)",
+   "Blown O2 heater fuse",
+   "Damaged wiring or connector"
+  ],
+  "related": "electrical_ground_problem"
+ },
+ "P0161": {
+  "title": "O2 sensor heater circuit (bank 2 sensor 2)",
+  "causes": [
+   "Failed O2 sensor heater (replace the sensor)",
+   "Blown O2 heater fuse",
+   "Damaged wiring or connector"
+  ],
+  "related": "electrical_ground_problem"
+ },
+ "P0171": {
+  "title": "System too lean (bank 1)",
+  "causes": [
+   "Vacuum leak (intake gasket, PCV hose, brake booster)",
+   "Dirty MAF sensor",
+   "Low fuel pressure (weak pump or clogged filter)",
+   "Exhaust leak before the O2 sensor"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0172": {
+  "title": "System too rich (bank 1)",
+  "causes": [
+   "Leaking fuel injector",
+   "Fuel pressure too high (bad regulator)",
+   "Dirty MAF sensor reading wrong",
+   "Failed coolant temp sensor"
+  ],
+  "related": "fuel_delivery_problem"
+ },
+ "P0174": {
+  "title": "System too lean (bank 2)",
+  "causes": [
+   "Vacuum leak (intake gasket, PCV hose, brake booster)",
+   "Dirty MAF sensor",
+   "Low fuel pressure (weak pump or clogged filter)",
+   "Exhaust leak before the O2 sensor"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0175": {
+  "title": "System too rich (bank 2)",
+  "causes": [
+   "Leaking fuel injector",
+   "Fuel pressure too high (bad regulator)",
+   "Dirty MAF sensor reading wrong",
+   "Failed coolant temp sensor"
+  ],
+  "related": "fuel_delivery_problem"
+ },
+ "P0230": {
+  "title": "Fuel pump primary circuit",
+  "causes": [
+   "Failed fuel pump relay",
+   "Blown fuel pump fuse",
+   "Wiring problem to the pump"
+  ],
+  "related": "fuel_delivery_problem"
+ },
+ "P0300": {
+  "title": "Random/multiple cylinder misfire",
+  "causes": [
+   "Worn spark plugs or plug wires",
+   "Failed ignition coil",
+   "Vacuum leak",
+   "Low fuel pressure",
+   "Low compression"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0301": {
+  "title": "Cylinder 1 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 1",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 1",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0302": {
+  "title": "Cylinder 2 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 2",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 2",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0303": {
+  "title": "Cylinder 3 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 3",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 3",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0304": {
+  "title": "Cylinder 4 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 4",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 4",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0305": {
+  "title": "Cylinder 5 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 5",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 5",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0306": {
+  "title": "Cylinder 6 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 6",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 6",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0307": {
+  "title": "Cylinder 7 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 7",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 7",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0308": {
+  "title": "Cylinder 8 misfire",
+  "causes": [
+   "Bad spark plug or plug wire on cylinder 8",
+   "Failed ignition coil (swap it to another cylinder to test)",
+   "Clogged or leaking injector on cylinder 8",
+   "Low compression on that cylinder"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0325": {
+  "title": "Knock sensor 1 circuit (bank 1)",
+  "causes": [
+   "Corroded knock sensor or wiring harness. On the GM 6.0L/5.3L the sensors sit under the intake manifold in the valley, and water gets in and corrodes them",
+   "Failed knock sensor",
+   "Real engine knock (low octane fuel, carbon build-up)"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0327": {
+  "title": "Knock sensor 1 circuit low input (bank 1)",
+  "causes": [
+   "Corroded knock sensor or wiring harness. On the GM 6.0L/5.3L the sensors sit under the intake manifold in the valley, and water gets in and corrodes them",
+   "Failed knock sensor",
+   "Real engine knock (low octane fuel, carbon build-up)"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0332": {
+  "title": "Knock sensor 2 circuit low input (bank 2)",
+  "causes": [
+   "Corroded knock sensor or wiring harness. On the GM 6.0L/5.3L the sensors sit under the intake manifold in the valley, and water gets in and corrodes them",
+   "Failed knock sensor",
+   "Real engine knock (low octane fuel, carbon build-up)"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0335": {
+  "title": "Crankshaft position sensor circuit",
+  "causes": [
+   "Failed crank sensor",
+   "Damaged wiring or connector",
+   "Damaged reluctor wheel"
+  ],
+  "related": "fuel_delivery_problem"
+ },
+ "P0340": {
+  "title": "Camshaft position sensor circuit",
+  "causes": [
+   "Failed cam sensor",
+   "Damaged wiring",
+   "Timing chain stretch"
+  ],
+  "related": "engine_misfire"
+ },
+ "P0400": {
+  "title": "EGR flow malfunction",
+  "causes": [
+   "Clogged EGR passages with carbon",
+   "Failed EGR valve",
+   "Vacuum or wiring issue to the valve"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0401": {
+  "title": "EGR flow insufficient",
+  "causes": [
+   "Carbon-clogged EGR valve or passages",
+   "Failed EGR valve",
+   "Bad EGR position sensor"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0404": {
+  "title": "EGR circuit range/performance",
+  "causes": [
+   "Sticking EGR valve",
+   "Failed EGR valve",
+   "Wiring problem"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0420": {
+  "title": "Catalyst efficiency below threshold (bank 1)",
+  "causes": [
+   "Worn catalytic converter",
+   "Misfire that damaged the converter (fix misfires first)",
+   "Exhaust leak",
+   "Failed downstream O2 sensor"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0430": {
+  "title": "Catalyst efficiency below threshold (bank 2)",
+  "causes": [
+   "Worn catalytic converter",
+   "Misfire that damaged the converter (fix misfires first)",
+   "Exhaust leak",
+   "Failed downstream O2 sensor"
+  ],
+  "related": "exhaust_leak"
+ },
+ "P0440": {
+  "title": "EVAP system malfunction",
+  "causes": [
+   "Loose, cracked, or worn gas cap",
+   "Cracked EVAP hose",
+   "Failed purge or vent valve",
+   "Leaking charcoal canister"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0442": {
+  "title": "EVAP system small leak detected",
+  "causes": [
+   "Loose, cracked, or worn gas cap",
+   "Cracked EVAP hose",
+   "Failed purge or vent valve",
+   "Leaking charcoal canister"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0446": {
+  "title": "EVAP vent control circuit",
+  "causes": [
+   "Failed vent solenoid",
+   "Clogged vent filter or canister (dirt roads, lifted trucks)",
+   "Wiring problem"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0449": {
+  "title": "EVAP vent valve/solenoid circuit",
+  "causes": [
+   "Failed vent solenoid",
+   "Corroded connector near the tank",
+   "Damaged wiring"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0455": {
+  "title": "EVAP system large leak detected",
+  "causes": [
+   "Gas cap missing or not tight",
+   "Disconnected or cracked EVAP hose",
+   "Failed purge valve"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0496": {
+  "title": "EVAP flow during non-purge condition",
+  "causes": [
+   "Purge solenoid stuck open",
+   "Wiring problem to purge solenoid"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0500": {
+  "title": "Vehicle speed sensor malfunction",
+  "causes": [
+   "Failed speed sensor in the transmission or rear diff",
+   "Damaged wiring",
+   "Tire size change not programmed"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0505": {
+  "title": "Idle air control system malfunction",
+  "causes": [
+   "Dirty throttle body",
+   "Failed idle air control valve",
+   "Vacuum leak"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0506": {
+  "title": "Idle RPM lower than expected",
+  "causes": [
+   "Dirty throttle body",
+   "Failed idle air control valve",
+   "Restricted intake"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0507": {
+  "title": "Idle RPM higher than expected",
+  "causes": [
+   "Vacuum leak",
+   "Dirty or sticking throttle body",
+   "Failed idle air control valve"
+  ],
+  "related": "vacuum_leak"
+ },
+ "P0521": {
+  "title": "Engine oil pressure sensor range/performance",
+  "causes": [
+   "Failed oil pressure sensor (GM 6.0L: behind the intake, leaks often)",
+   "Low oil level",
+   "Worn oil pump"
+  ],
+  "related": "oil_leak_low_oil"
+ },
+ "P0562": {
+  "title": "System voltage low",
+  "causes": [
+   "Weak alternator",
+   "Loose or corroded battery cables",
+   "Bad ground strap",
+   "Worn serpentine belt slipping"
+  ],
+  "related": "bad_alternator"
+ },
+ "P0563": {
+  "title": "System voltage high",
+  "causes": [
+   "Failed alternator voltage regulator",
+   "Bad battery sensing wire",
+   "Bad ground"
+  ],
+  "related": "bad_alternator"
+ },
+ "P0601": {
+  "title": "Internal control module memory checksum error",
+  "causes": [
+   "Computer (PCM) failure",
+   "Failed reprogramming",
+   "Bad PCM ground or power"
+  ],
+  "related": "electrical_ground_problem"
+ },
+ "P0700": {
+  "title": "Transmission control system malfunction",
+  "causes": [
+   "The transmission computer has its own code: scan it",
+   "Low or burnt fluid",
+   "Wiring or solenoid problem"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0706": {
+  "title": "Transmission range sensor range/performance",
+  "causes": [
+   "Misadjusted or failed range sensor",
+   "Shift linkage out of adjustment"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0711": {
+  "title": "Transmission fluid temperature sensor range/performance",
+  "causes": [
+   "Failed fluid temp sensor",
+   "Low fluid",
+   "Wiring problem"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0715": {
+  "title": "Input/turbine speed sensor circuit",
+  "causes": [
+   "Failed input speed sensor",
+   "Damaged wiring",
+   "Internal transmission problem"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0720": {
+  "title": "Output speed sensor circuit",
+  "causes": [
+   "Failed output speed sensor",
+   "Damaged wiring or connector"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0730": {
+  "title": "Incorrect gear ratio",
+  "causes": [
+   "Low fluid",
+   "Worn clutches or bands (slipping)",
+   "Failed shift solenoid"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0740": {
+  "title": "Torque converter clutch circuit",
+  "causes": [
+   "Failed TCC solenoid",
+   "Wiring problem",
+   "Worn torque converter"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0741": {
+  "title": "Torque converter clutch stuck off",
+  "causes": [
+   "Worn torque converter clutch",
+   "Failed TCC solenoid",
+   "Low or burnt fluid"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0748": {
+  "title": "Pressure control solenoid electrical",
+  "causes": [
+   "Failed pressure control solenoid",
+   "Wiring problem"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0750": {
+  "title": "Shift solenoid A malfunction",
+  "causes": [
+   "Failed shift solenoid A",
+   "Wiring or connector problem",
+   "Low fluid"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0751": {
+  "title": "Shift solenoid A performance or stuck off",
+  "causes": [
+   "Sticking shift solenoid A",
+   "Dirty fluid",
+   "Valve body problem"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0753": {
+  "title": "Shift solenoid A electrical",
+  "causes": [
+   "Failed shift solenoid A",
+   "Open or shorted wiring"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0755": {
+  "title": "Shift solenoid B malfunction",
+  "causes": [
+   "Failed shift solenoid B",
+   "Wiring or connector problem",
+   "Low fluid"
+  ],
+  "related": "transmission_problem"
+ },
+ "P0894": {
+  "title": "Transmission component slipping",
+  "causes": [
+   "Low fluid level",
+   "Worn clutches",
+   "Failed torque converter",
+   "Bigger tires without speedometer recalibration"
+  ],
+  "related": "transmission_problem"
+ },
+ "P1101": {
+  "title": "MAF sensor out of self-test range (GM)",
+  "causes": [
+   "Dirty MAF sensor",
+   "Air leak in the intake tube",
+   "Clogged air filter"
+  ],
+  "related": "dirty_maf_sensor"
+ }
+}

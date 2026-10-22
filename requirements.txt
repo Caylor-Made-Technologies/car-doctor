@@ -1,0 +1,5 @@
+# Exact versions so training gives the same result everywhere.
+scikit-learn==1.9.1
+numpy==2.5.3
+# Only needed for model/make_icons.py
+pillow==12.3.0

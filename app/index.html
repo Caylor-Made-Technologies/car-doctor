@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Car Doctor</title>
+  <meta name="description" content="Diagnose car and truck problems from symptoms and OBD-II codes. Works offline.">
+  <meta name="theme-color" content="#121418">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Car Doctor">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand"><span class="brand-mark" aria-hidden="true">♥</span> Car Doctor</h1>
+    <p class="vehicle-line" id="vehicleLine">Add your vehicle in My Vehicle</p>
+  </header>
+
+  <main id="main">
+    <!-- Diagnose tab -->
+    <section id="tab-diagnose" class="tab-panel" aria-labelledby="tabbtn-diagnose">
+      <div id="chat" class="chat" aria-live="polite"></div>
+    </section>
+
+    <!-- Codes tab -->
+    <section id="tab-codes" class="tab-panel" aria-labelledby="tabbtn-codes" hidden>
+      <h2>Trouble code lookup</h2>
+      <form id="codeForm" class="row" autocomplete="off">
+        <label class="sr-only" for="codeInput">Trouble code</label>
+        <input id="codeInput" class="input" placeholder="e.g. P0300" maxlength="5" autocapitalize="characters" spellcheck="false">
+        <button class="btn primary" type="submit">Look up</button>
+      </form>
+      <div id="codeResult"></div>
+      <p class="muted small">Get codes with a cheap OBD-II scanner or free at most parts stores. On a 2005 GM truck the port is under the dash, left of the steering column.</p>
+    </section>
+
+    <!-- My Vehicle tab -->
+    <section id="tab-vehicle" class="tab-panel" aria-labelledby="tabbtn-vehicle" hidden>
+      <h2>Vehicle profile</h2>
+      <form id="profileForm" class="card form-grid" autocomplete="off">
+        <label>Year <input class="input" name="year" inputmode="numeric" maxlength="4" placeholder="2005"></label>
+        <label>Make <input class="input" name="make" maxlength="30" placeholder="Chevy"></label>
+        <label>Model <input class="input" name="model" maxlength="40" placeholder="Silverado 2500HD"></label>
+        <label>Engine <input class="input" name="engine" maxlength="30" placeholder="6.0L V8"></label>
+        <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7" placeholder="185000"></label>
+        <button class="btn primary" type="submit">Save vehicle</button>
+        <p id="profileSaved" class="muted small" hidden>Saved.</p>
+      </form>
+
+      <h2>Repair log</h2>
+      <form id="logForm" class="card form-grid" autocomplete="off">
+        <label>Date <input class="input" type="date" name="date" required></label>
+        <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7"></label>
+        <label class="full">Note <textarea class="input" name="note" rows="2" maxlength="500" required placeholder="Replaced front pads and rotors"></textarea></label>
+        <button class="btn primary" type="submit">Add entry</button>
+      </form>
+      <ul id="logList" class="log-list"></ul>
+
+      <h2>Teach the model</h2>
+      <div class="card">
+        <p><strong id="trainCount">0</strong> saved training examples.</p>
+        <p class="muted small">Each "That was it" or "Something else" answer is saved here. Copy them, paste them at the end of <code>data/symptoms.csv</code> on GitHub, and the app retrains itself.</p>
+        <div class="row">
+          <button id="copyTraining" class="btn primary" type="button">Copy as CSV</button>
+          <button id="clearTraining" class="btn" type="button">Clear</button>
+        </div>
+        <p id="copyStatus" class="muted small" hidden></p>
+      </div>
+
+      <p class="muted small">Everything here stays on this phone. Nothing is sent anywhere.</p>
+    </section>
+  </main>
+
+  <form id="composer" class="composer" autocomplete="off">
+    <label class="sr-only" for="msgInput">Describe the problem</label>
+    <input id="msgInput" class="input" placeholder="Describe the problem…" maxlength="400" enterkeyhint="send">
+    <button class="btn primary" type="submit" id="sendBtn">Send</button>
+  </form>
+
+  <nav class="tabbar" role="tablist" aria-label="Sections">
+    <button role="tab" id="tabbtn-diagnose" data-tab="diagnose" aria-selected="true"><span aria-hidden="true">🩺</span>Diagnose</button>
+    <button role="tab" id="tabbtn-codes" data-tab="codes" aria-selected="false"><span aria-hidden="true">🔎</span>Codes</button>
+    <button role="tab" id="tabbtn-vehicle" data-tab="vehicle" aria-selected="false"><span aria-hidden="true">🛻</span>My Vehicle</button>
+  </nav>
+</body>
+</html>

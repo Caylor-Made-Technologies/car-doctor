@@ -1,0 +1,302 @@
+{
+  "dead_battery": {
+    "name": "Weak or dead battery",
+    "severity": "medium",
+    "diy": "Easy",
+    "summary": "The battery doesn't have enough charge to spin the starter. Fast clicking, dim lights, or a slow crank are the classic signs, especially on cold mornings.",
+    "checks": [
+      "Measure battery voltage with the truck off for an hour: 12.6V is full, 12.2V is about half, under 12.0V is flat.",
+      "Clean and tighten both terminals; white or green crust adds resistance. GM side-post bolts loosen and corrode often.",
+      "Have it load tested free at a parts store; most batteries last 3 to 5 years.",
+      "If it keeps dying, check for parasitic draw: under 50 mA with everything off (wait 30+ minutes for modules to sleep)."
+    ]
+  },
+  "bad_starter": {
+    "name": "Bad starter or solenoid",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "The battery is fine but the starter won't spin the engine. Usually one loud click, a grinding whir, or nothing at all when you turn the key.",
+    "checks": [
+      "Confirm the battery reads 12.4V+ and the headlights stay bright while you try to start.",
+      "Single loud click with bright lights points to the starter solenoid or worn starter motor.",
+      "Check the small trigger wire at the starter gets 12V while someone holds the key in START.",
+      "GM trucks: the starter sits near the exhaust; heat soak can cause no-crank when hot. Check the main cable and ground strap to the block."
+    ]
+  },
+  "bad_alternator": {
+    "name": "Bad alternator / charging problem",
+    "severity": "high",
+    "diy": "Medium",
+    "summary": "The alternator isn't recharging the battery, so the truck runs off the battery until it dies. Battery light, dimming lights, and a whine that rises with RPM are common.",
+    "checks": [
+      "With the engine running, battery voltage should be 13.8 to 14.7V. Under 13.2V means it isn't charging.",
+      "Turn on headlights, blower and rear defrost: voltage should stay above 13.2V at idle.",
+      "Check the serpentine belt is tight and not slipping on the alternator pulley.",
+      "Inspect the big output wire and fusible link at the alternator for corrosion or a loose nut."
+    ]
+  },
+  "worn_brake_pads": {
+    "name": "Worn brake pads",
+    "severity": "high",
+    "diy": "Medium",
+    "summary": "The pad friction material is worn thin. A high squeal means the wear indicator is touching; grinding means metal on metal and the rotors are getting damaged.",
+    "checks": [
+      "Look through the wheel at the pad: replace at 3 mm (about 1/8 in.) of material or less.",
+      "Grinding means the backing plate is on the rotor; replace pads and check rotors right away.",
+      "Check rotor thickness against the minimum stamped on the rotor.",
+      "Heavy 2500HD trucks and big tires wear pads faster; use a severe-duty or ceramic HD pad."
+    ]
+  },
+  "warped_rotors": {
+    "name": "Warped or uneven brake rotors",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "The rotors have uneven thickness, so the pads grab and release as the wheel turns. You feel it as a pulsing brake pedal or steering wheel shake only while braking.",
+    "checks": [
+      "Feel for a pulsing pedal or wheel shake that happens only when braking, worst from highway speed.",
+      "Measure rotor runout with a dial indicator: over about 0.002 in. (0.05 mm) causes pulsing.",
+      "Check for blue heat spots or hard glazed patches on the rotor face.",
+      "Torque lug nuts in a star pattern to spec (GM 2500HD: 140 ft-lb); uneven impact-gun torque warps rotors."
+    ]
+  },
+  "brake_fluid_leak": {
+    "name": "Brake fluid leak / hydraulic failure",
+    "severity": "critical",
+    "diy": "Shop",
+    "summary": "Brake fluid is leaking or the hydraulic system is failing, so the brakes may stop working. A soft or sinking pedal is an emergency.",
+    "checks": [
+      "Check the master cylinder level; it should be between MIN and MAX. Fluid is clear to amber and slippery.",
+      "Look for wet spots inside each wheel, at the calipers, and along the steel lines. GM steel brake lines rust through, especially above the fuel tank and frame rail.",
+      "Pedal that slowly sinks to the floor while held at a stop points to a leak or a bad master cylinder.",
+      "Do not drive. Have it towed or repaired in place."
+    ]
+  },
+  "bad_wheel_bearing": {
+    "name": "Bad wheel bearing / hub",
+    "severity": "high",
+    "diy": "Medium",
+    "summary": "A worn wheel bearing makes a hum or growl that gets louder with speed and often changes when you swerve left or right.",
+    "checks": [
+      "On a gentle curve, the noise usually gets louder when weight shifts onto the bad side.",
+      "Jack the wheel up, grab at 12 and 6 o'clock and rock it: any play or clunk means a worn bearing.",
+      "Spin the wheel by hand and feel the coil spring or strut for roughness.",
+      "GM 4WD hubs are a bolt-in unit; an ABS light can come on when the hub's sensor fails too. Lifts and big tires wear them faster."
+    ]
+  },
+  "worn_serpentine_belt": {
+    "name": "Worn serpentine belt or tensioner",
+    "severity": "medium",
+    "diy": "Easy",
+    "summary": "The belt that drives the alternator, power steering and water pump is slipping or worn. It squeals at startup, in the cold, or when the A/C or steering loads it.",
+    "checks": [
+      "Look for cracks across the ribs, glazing, chunks missing, or fraying edges.",
+      "Watch the tensioner arm with the engine running; it shouldn't bounce or flutter.",
+      "Spin each pulley by hand with the belt off: any wobble or rough noise is a bad idler or tensioner.",
+      "6.0L Vortec: check the routing sticker under the hood before removing it. Belt life is about 60,000 to 100,000 miles."
+    ]
+  },
+  "engine_misfire": {
+    "name": "Engine misfire (plugs, wires, coils)",
+    "severity": "high",
+    "diy": "Medium",
+    "summary": "One or more cylinders isn't firing properly, so the engine shakes, runs rough, and loses power. A flashing check engine light means a severe misfire that can damage the converter.",
+    "checks": [
+      "Read the code: P0300 is random, P0301 to P0308 names the cylinder.",
+      "Swap the coil from the misfiring cylinder to another one; if the misfire follows the coil, replace the coil.",
+      "Pull plugs and check gap and condition. 6.0L Vortec spec is 0.040 in. Replace plug wires if they're burnt on the exhaust manifold.",
+      "If plugs and coils are fine, do a compression test (healthy cylinders within about 10% of each other)."
+    ]
+  },
+  "dirty_maf_sensor": {
+    "name": "Dirty or failing MAF sensor",
+    "severity": "medium",
+    "diy": "Easy",
+    "summary": "The mass air flow sensor measures air going into the engine. When it's dirty the computer adds the wrong amount of fuel, causing hesitation, surging, stalling, or bad mileage.",
+    "checks": [
+      "Read codes: P0101 to P0103 point straight at the MAF; P0171/P0174 lean codes can too.",
+      "Clean the sensor wire with MAF cleaner only (no touching, no other sprays) and let it dry fully.",
+      "Check the air filter and that the intake tube clamps are tight with no cracks after the sensor.",
+      "With a scan tool, MAF reading at warm idle on a 6.0L is roughly 5 to 8 g/s and should climb smoothly with RPM."
+    ]
+  },
+  "vacuum_leak": {
+    "name": "Vacuum leak",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "Air is sneaking into the engine past the MAF sensor, so it runs lean. Expect a high or rough idle, a hissing sound, and lean codes P0171/P0174.",
+    "checks": [
+      "Listen for a hiss around the intake manifold, PCV hoses and brake booster hose with the engine idling.",
+      "Spray carb cleaner or use a smoke test around gaskets; an idle change shows the leak.",
+      "Check long term fuel trims: over +10% at idle that drops at higher RPM points to a vacuum leak.",
+      "6.0L Vortec: check the PCV hoses, intake manifold gaskets, and the brake booster check valve grommet."
+    ]
+  },
+  "fuel_delivery_problem": {
+    "name": "Fuel delivery problem (pump, filter, pressure)",
+    "severity": "high",
+    "diy": "Hard",
+    "summary": "The engine isn't getting enough fuel pressure. It may crank but not start, lose power going uphill or under load, or sputter at highway speed.",
+    "checks": [
+      "Turn the key to ON and listen for the pump to hum for about 2 seconds from the tank.",
+      "Test fuel pressure at the rail Schrader valve: GM Vortec trucks want about 55 to 62 psi, holding steady under load.",
+      "Replace the inline fuel filter on the frame rail if it's old; it's a cheap first step on these trucks.",
+      "Check the fuel pump relay and fuse. A tap on the tank while cranking that makes it start points to a dying pump."
+    ]
+  },
+  "overheating": {
+    "name": "Engine overheating",
+    "severity": "critical",
+    "diy": "Shop",
+    "summary": "The engine is running too hot. Driving an overheating engine can warp the heads or blow the head gasket in minutes.",
+    "checks": [
+      "Pull over and shut it off. Never open the radiator cap hot; wait until the hose is soft and cool.",
+      "Check coolant level in the reservoir and radiator, and look for leaks at hoses, water pump weep hole and radiator.",
+      "Make sure the cooling fan clutch engages: a hot engine should make the fan roar and be hard to spin (engine OFF).",
+      "Look for bubbles in the coolant or milky oil, which points to a head gasket. Normal 6.0L temp is about 195 to 220°F."
+    ]
+  },
+  "thermostat_stuck_open": {
+    "name": "Thermostat stuck open",
+    "severity": "low",
+    "diy": "Easy",
+    "summary": "The thermostat isn't closing, so the engine never warms up fully. Weak heat, a temp gauge that stays low, worse mileage, and code P0128 are typical.",
+    "checks": [
+      "Watch the temp gauge: it should reach about 195 to 210°F within 10 to 15 minutes of driving.",
+      "Look for code P0128 (coolant temp below thermostat temp).",
+      "Feel the upper radiator hose early in warm-up: if it warms right away with the engine cold, the thermostat is open.",
+      "A thermostat is a cheap part; replace the gasket with it and bleed air from the system after."
+    ]
+  },
+  "transmission_problem": {
+    "name": "Transmission problem",
+    "severity": "high",
+    "diy": "Shop",
+    "summary": "The transmission is slipping, shifting late or hard, or not engaging gears. Catching it early with a fluid and code check can save a rebuild.",
+    "checks": [
+      "Check fluid level hot with the engine running in park. It should be red and not smell burnt.",
+      "Read codes: P0700 range and P0894 (slipping) are common. Low fluid often causes the slipping.",
+      "4L80E/4L60E: a slip between 1st and 2nd or flare on the 2-3 shift is common; a fluid and filter service is the first step.",
+      "Bigger tires on a lifted truck add load; check the speedometer is recalibrated so the shift points are right."
+    ]
+  },
+  "worn_cv_axle": {
+    "name": "Worn CV axle",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "The constant velocity joint on a front axle is worn. It clicks or pops when turning sharply, usually after the rubber boot tears and the grease leaks out.",
+    "checks": [
+      "Turn the wheel fully one way and drive slowly in a circle: clicking that gets faster with speed is a worn outer CV joint.",
+      "Look at the rubber boots for tears and grease slung on the inside of the wheel and frame.",
+      "Lifted 4WD trucks run the CV axles at a steeper angle, which wears boots and joints faster.",
+      "A clunk on acceleration can be a worn inner joint; check for in-and-out play."
+    ]
+  },
+  "worn_u_joint": {
+    "name": "Worn U-joint (driveshaft)",
+    "severity": "high",
+    "diy": "Medium",
+    "summary": "A universal joint in the driveshaft is worn. It clunks when shifting into gear, squeaks at low speed, and causes a vibration that gets worse with speed.",
+    "checks": [
+      "Under the truck (parked, wheels chocked) grab the driveshaft near each U-joint and twist and lift: any play means it's worn.",
+      "Look for rust dust around the bearing caps, a sign the needle bearings are dry.",
+      "Lifted trucks change the driveshaft angles, so U-joints wear much faster. Grease the zerk fittings if yours have them.",
+      "Don't wait: a failed U-joint can drop the driveshaft at speed."
+    ]
+  },
+  "tire_balance": {
+    "name": "Tires out of balance or damaged",
+    "severity": "low",
+    "diy": "Shop",
+    "summary": "A wheel weight fell off or a tire is damaged, so the wheel wobbles at speed. You feel a shake in the steering wheel or seat, usually between 55 and 75 mph.",
+    "checks": [
+      "Note the speed the shake starts. Balance problems usually show up at 55 to 70 mph and may smooth out above.",
+      "Look for a missing wheel weight, a bulge in the sidewall, or a mud-packed inner rim.",
+      "Big off-road tires on a lifted truck often need a road-force balance to ride smooth.",
+      "Check for a separated belt: run your hand over the tread for lumps or a wavy spot."
+    ]
+  },
+  "alignment_problem": {
+    "name": "Wheel alignment off",
+    "severity": "low",
+    "diy": "Shop",
+    "summary": "The wheels aren't pointed straight, so the truck pulls to one side, the steering wheel sits crooked, and the tires wear unevenly.",
+    "checks": [
+      "Check tire pressures first; one low tire can cause a pull.",
+      "Look at tire wear: the inside or outside edge worn faster means camber or toe is off.",
+      "After a lift, aligning is a must. Lifts change toe and camber, and worn tie rods or idler arms on GM trucks can't hold it.",
+      "Check for a crooked steering wheel when driving straight on a flat road."
+    ]
+  },
+  "exhaust_leak": {
+    "name": "Exhaust leak",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "Exhaust gas is escaping before the muffler. It sounds like a tick at cold start or a loud rumble, and exhaust fumes in the cab are dangerous.",
+    "checks": [
+      "GM trucks: a tick at cold start that fades as it warms up is the classic broken exhaust manifold bolt. Look for black soot streaks at the manifold.",
+      "Listen under the truck for a puff or tick at each joint and the flex pipe; the leak often gets louder under load.",
+      "A leak before the O2 sensor can cause false lean codes.",
+      "If you smell exhaust in the cab, drive with windows open and get it fixed fast: carbon monoxide is deadly."
+    ]
+  },
+  "oil_leak_low_oil": {
+    "name": "Oil leak or low oil",
+    "severity": "high",
+    "diy": "Medium",
+    "summary": "Oil is leaking or running low. Low oil can ruin the engine, so check it right away if you see drips, smell burning oil, or the oil light comes on.",
+    "checks": [
+      "Check the dipstick on level ground with the engine off for a few minutes; top up if it's below ADD.",
+      "Find the leak: clean the area and check common spots like the valve covers, oil pan gasket, rear main seal and oil filter.",
+      "6.0L Vortec: the oil pressure sensor behind the intake and the oil cooler lines leak often. Oil pressure about 40 to 60 psi at highway speed.",
+      "A burning oil smell after driving usually means oil dripping onto the exhaust manifold."
+    ]
+  },
+  "power_steering_problem": {
+    "name": "Power steering problem",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "The power steering pump, fluid or hoses are causing a whine, groan, or hard steering, often worse at low speed or when parking.",
+    "checks": [
+      "Check the fluid level and color in the reservoir; dark or foamy fluid needs a flush.",
+      "A whine that rises as you turn the wheel points to the pump or low fluid.",
+      "Look for leaks at the hose fittings and the steering gear box on the frame.",
+      "Big tires on a lifted truck strain the pump and the steering box; check the box mounting bolts and frame for cracks."
+    ]
+  },
+  "ac_problem": {
+    "name": "A/C not cooling",
+    "severity": "low",
+    "diy": "Shop",
+    "summary": "The air conditioning blows warm or weak. It's usually low refrigerant from a leak, a compressor clutch that won't engage, or a blend door issue.",
+    "checks": [
+      "With A/C on, see if the compressor clutch in the front of the compressor is spinning.",
+      "Check the A/C fuse and relay; the clutch needs 12V to engage.",
+      "Low side pressure about 25 to 45 psi and high side 150 to 250 psi on a warm day is normal; low readings mean a leak.",
+      "GM trucks: a clicking behind the dash is a blend door actuator; it can cause warm air on one side."
+    ]
+  },
+  "electrical_ground_problem": {
+    "name": "Bad electrical ground or wiring",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "A corroded or loose ground strap or wire causes strange electrical problems: flickering lights, gauges that jump, random no-starts, and odd warning lights.",
+    "checks": [
+      "Check the engine-to-frame and battery-to-body ground straps for corrosion; clean to bare metal and tighten.",
+      "Do a voltage drop test: under 0.2V between the battery negative and the engine block while cranking.",
+      "GM trucks of this era have known instrument cluster stepper motor failures that make gauges stick or jump.",
+      "Look for chafed wires where the harness rubs on the frame, especially after a lift."
+    ]
+  },
+  "worn_suspension": {
+    "name": "Worn suspension or steering parts",
+    "severity": "medium",
+    "diy": "Medium",
+    "summary": "Worn ball joints, tie rods, idler arm, shocks or bushings cause clunks over bumps, loose steering, and a bouncy or wandering ride.",
+    "checks": [
+      "Push down hard on each corner: it should bounce once and settle. More bounces mean worn shocks.",
+      "Jack up the front and rock each wheel at 9 and 3 o'clock to check tie rods, and at 12 and 6 for ball joints.",
+      "GM 2500HD idler arm and pitman arm wear out often and cause loose steering; a lift makes it worse.",
+      "Check torsion bar adjusters and sway bar links and bushings for clunks over bumps."
+    ]
+  }
+}

@@ -1,0 +1,468 @@
+label,text
+dead_battery,clicks fast when i turn the key and wont start
+dead_battery,rapid clicking noise and the dash lights flicker when i try to start it
+dead_battery,cranks really slow in the morning then finally starts
+dead_battery,nothing happens when i turn the key and the dome light is dim
+dead_battery,had to jump it this morning and it started right up
+dead_battery,left my headlights on overnight and now its dead
+dead_battery,wont start when its cold out just a slow crank
+dead_battery,battery terminals are all corroded and green and it barely starts
+dead_battery,needed a jump start twice this week
+dead_battery,dash lights come on but very dim and it just clicks
+dead_battery,engine turns over slow like its struggling then stops
+dead_battery,battery is 6 years old and starting is getting weak
+dead_battery,radio and lights work but go out when i try to crank it
+dead_battery,sat for two weeks and now completely dead no lights at all
+dead_battery,jumper cables got it going but it died again the next day
+bad_starter,one loud click and nothing else when i turn the key
+bad_starter,battery is new and lights are bright but engine wont crank
+bad_starter,grinding whirring noise when starting but engine doesnt turn
+bad_starter,starter just spins and makes a whirring noise
+bad_starter,sometimes it starts sometimes just a single click
+bad_starter,tapping the starter with a hammer got it to start
+bad_starter,no crank no start but the radio and headlights work fine
+bad_starter,when the engine is hot it wont crank but starts fine cold
+bad_starter,high pitched whine after it starts like the starter stays engaged
+bad_starter,turn the key and hear a clunk but engine doesnt turn over
+bad_starter,jumping it doesnt help still just one click
+bad_starter,grinding sound when i turn the key to start
+bad_alternator,battery light came on while driving
+bad_alternator,headlights get dim at idle and brighter when i rev it
+bad_alternator,new battery keeps dying after a few days of driving
+bad_alternator,whining noise that goes up with engine rpm and battery light flickers
+bad_alternator,voltage gauge reads low around 12 volts while driving
+bad_alternator,died while driving and everything electrical went out first
+bad_alternator,burning electrical smell from the front of the engine and battery light on
+bad_alternator,radio cuts out and dash lights dim while driving at night
+bad_alternator,jumped it and it ran then died again a few minutes later
+bad_alternator,multimeter shows 12.2 volts with the engine running
+bad_alternator,charge light on and gauges going crazy
+bad_alternator,lights flicker and pulse with the engine running
+worn_brake_pads,grinding when i brake
+worn_brake_pads,high pitched squeal when i press the brakes
+worn_brake_pads,metal on metal grinding sound every time i stop
+worn_brake_pads,squeaking noise from the front wheels when braking that stops when i let off
+worn_brake_pads,takes longer to stop than it used to
+worn_brake_pads,brake pedal goes lower than normal and squeals
+worn_brake_pads,screeching noise when slowing down
+worn_brake_pads,brake warning light and squealing from the wheels
+worn_brake_pads,scraping noise from the front when i hit the brakes
+worn_brake_pads,brakes squeal at low speed coming to a stop
+worn_brake_pads,lots of black brake dust on the front rims and grinding
+worn_brake_pads,can see the pads are really thin through the wheel
+worn_brake_pads,grinding growl from the back wheels when stopping
+warped_rotors,steering wheel shakes only when braking
+warped_rotors,brake pedal pulsates when i stop
+warped_rotors,vibration in the pedal when braking from highway speed
+warped_rotors,whole truck shudders when i brake going downhill
+warped_rotors,steering wheel wobbles when i slow down from 60
+warped_rotors,brakes feel bumpy and pulse under my foot
+warped_rotors,shaking when braking but smooth when driving
+warped_rotors,brake pedal pulsing worse after towing a trailer
+warped_rotors,rotors have blue spots and the brakes shimmy
+warped_rotors,vibrates when i brake hard
+warped_rotors,just did pads and still get a pulsing pedal
+warped_rotors,shimmy in the wheel only when i press the brake at freeway speed
+brake_fluid_leak,brake pedal goes all the way to the floor
+brake_fluid_leak,brake pedal feels soft and spongy
+brake_fluid_leak,clear slippery fluid leaking near the back tire
+brake_fluid_leak,brake fluid reservoir is low and keeps dropping
+brake_fluid_leak,pedal slowly sinks when i hold it at a stop light
+brake_fluid_leak,have to pump the brakes to get them to work
+brake_fluid_leak,red brake warning light on and pedal feels mushy
+brake_fluid_leak,brakes barely work and the pedal is soft
+brake_fluid_leak,wet spot on the inside of the wheel and brake fluid low
+brake_fluid_leak,brake line rusted and leaking fluid under the truck
+brake_fluid_leak,lost brakes almost completely pedal hits the floor
+brake_fluid_leak,spongy brakes that get worse every day
+bad_wheel_bearing,humming noise that gets louder with speed
+bad_wheel_bearing,growling sound from the front wheel that gets louder when i go faster
+bad_wheel_bearing,roaring noise at highway speed that changes when i turn
+bad_wheel_bearing,hum gets louder when turning left and quieter turning right
+bad_wheel_bearing,droning noise like airplane sound from a wheel
+bad_wheel_bearing,wheel has play when i shake it and abs light came on
+bad_wheel_bearing,grinding hum from one corner that gets worse with speed
+bad_wheel_bearing,loud road noise that keeps getting louder over weeks
+bad_wheel_bearing,wub wub noise that goes with speed not engine rpm
+bad_wheel_bearing,front end growls at 40 and up
+bad_wheel_bearing,humming from the rear when swerving
+bad_wheel_bearing,noise goes away when i lean the weight to the other side in a curve
+worn_serpentine_belt,squealing noise when i start it in the morning
+worn_serpentine_belt,belt squeal when i turn on the ac
+worn_serpentine_belt,loud squeal under the hood when i turn the steering wheel all the way
+worn_serpentine_belt,chirping noise from the front of the engine at idle
+worn_serpentine_belt,belt looks cracked and squeaks when its cold
+worn_serpentine_belt,high squeal that goes away after warming up
+worn_serpentine_belt,squeaking from the engine when i rev it
+worn_serpentine_belt,belt is shiny and glazed and slips
+worn_serpentine_belt,tensioner bounces around and there is a squeal
+worn_serpentine_belt,screech when i start it on wet rainy days
+worn_serpentine_belt,squealing from the pulleys at startup
+worn_serpentine_belt,chirp chirp noise at idle from the belt area
+engine_misfire,engine shakes at idle and check engine light is flashing
+engine_misfire,misfire code p0300 rough running
+engine_misfire,runs rough and feels like its missing
+engine_misfire,code p0304 cylinder 4 misfire
+engine_misfire,engine stumbles and jerks when i accelerate hard
+engine_misfire,rough idle and loss of power going up hills
+engine_misfire,shaking at stop lights and the engine sounds uneven
+engine_misfire,check engine light blinking and it bucks under load
+engine_misfire,feels like its skipping when accelerating
+engine_misfire,engine putters and sputters at idle
+engine_misfire,p0302 misfire and it runs choppy
+engine_misfire,plug wire was burnt and now its missing
+engine_misfire,rough running when wet outside and the light flashes
+engine_misfire,engine knocking and shaking under load with a misfire
+dirty_maf_sensor,hesitates when i step on the gas
+dirty_maf_sensor,engine bogs down when accelerating from a stop
+dirty_maf_sensor,code p0101 mass air flow
+dirty_maf_sensor,stalls right after starting then restarts fine
+dirty_maf_sensor,gas mileage dropped a lot and it hesitates
+dirty_maf_sensor,surging at idle rpm goes up and down
+dirty_maf_sensor,jerks and hesitates at low speed
+dirty_maf_sensor,after i put in an oiled air filter it runs bad
+dirty_maf_sensor,stumbles when i take off and the idle is weird
+dirty_maf_sensor,check engine light with maf sensor code and poor power
+dirty_maf_sensor,lean codes p0171 and p0174 and hesitation
+dirty_maf_sensor,sluggish acceleration and black smoke sometimes
+vacuum_leak,hissing noise from the engine at idle
+vacuum_leak,idle is high and wont come down
+vacuum_leak,codes p0171 and p0174 system too lean both banks
+vacuum_leak,rough idle and a whistling sound under the hood
+vacuum_leak,rpm jumps around at idle and hisses
+vacuum_leak,brake pedal feels hard and theres a hiss when i press it
+vacuum_leak,found a cracked vacuum hose and it idles weird
+vacuum_leak,idle surges and the engine sounds like its sucking air
+vacuum_leak,lean code and high idle after i replaced the intake gasket
+vacuum_leak,whistle from the intake area that changes with rpm
+vacuum_leak,idles at 1500 rpm when warm should be lower
+vacuum_leak,engine stumbles at idle and you can hear air hissing
+fuel_delivery_problem,cranks but wont start
+fuel_delivery_problem,loses power going uphill or when towing
+fuel_delivery_problem,sputters and dies at highway speed
+fuel_delivery_problem,dont hear the fuel pump hum when i turn the key
+fuel_delivery_problem,engine turns over fine but never fires
+fuel_delivery_problem,bogs down at high speed like its starving for fuel
+fuel_delivery_problem,hard to start after it sits overnight and long crank
+fuel_delivery_problem,ran out of power on the freeway and then started again later
+fuel_delivery_problem,fuel pressure is low only 40 psi
+fuel_delivery_problem,whining from the gas tank and it hesitates under load
+fuel_delivery_problem,dies when the gas tank gets below a quarter
+fuel_delivery_problem,surges and cuts out at 70 mph
+fuel_delivery_problem,long crank before it starts every morning
+overheating,temperature gauge goes into the red
+overheating,steam coming from under the hood
+overheating,overheating in traffic but fine on the highway
+overheating,coolant boiling over from the reservoir
+overheating,temp gauge climbing when i tow
+overheating,sweet smell from the engine and its running hot
+overheating,overheated and i saw green fluid on the ground
+overheating,heater blows cold and engine is overheating
+overheating,fan doesnt come on and it gets hot at idle
+overheating,white smoke from exhaust and losing coolant and overheats
+overheating,engine temp light came on and its smoking
+overheating,overheats going up hills in the summer
+overheating,radiator hose busted and it got really hot
+thermostat_stuck_open,heater only blows lukewarm air
+thermostat_stuck_open,temp gauge never gets up to normal
+thermostat_stuck_open,takes forever to warm up in the winter
+thermostat_stuck_open,code p0128 coolant thermostat
+thermostat_stuck_open,engine runs cold on the highway and gauge drops
+thermostat_stuck_open,temperature stays low and gas mileage got worse
+thermostat_stuck_open,no heat in the cab even after 20 minutes of driving
+thermostat_stuck_open,temp needle stays on the bottom when driving
+thermostat_stuck_open,gauge goes up at idle then drops when i drive
+thermostat_stuck_open,heat is weak and the engine never fully warms up
+thermostat_stuck_open,defroster barely blows warm air on cold mornings
+transmission_problem,slips when shifting into second gear
+transmission_problem,rpm goes up but the truck doesnt move faster
+transmission_problem,hard shift into third and a jerk
+transmission_problem,delay when i put it in drive then it slams in
+transmission_problem,transmission fluid smells burnt and is dark
+transmission_problem,wont shift out of first gear
+transmission_problem,shifts late and harsh when its warm
+transmission_problem,red fluid leaking under the middle of the truck
+transmission_problem,code p0700 and the transmission is acting weird
+transmission_problem,no reverse but drive works
+transmission_problem,flares between shifts and the engine revs
+transmission_problem,stuck in limp mode and wont shift
+transmission_problem,code p0894 transmission slipping
+transmission_problem,shudders like driving over rumble strips at 45 mph
+worn_cv_axle,clicking noise when turning
+worn_cv_axle,popping sound when i make a sharp turn
+worn_cv_axle,clicking from the front wheel when turning in a parking lot
+worn_cv_axle,grease all over the inside of the wheel and a torn boot
+worn_cv_axle,clicks faster as i speed up while turning
+worn_cv_axle,clunk when accelerating in 4wd
+worn_cv_axle,knocking from the front end on tight turns
+worn_cv_axle,front axle boot is ripped and clicking when turning
+worn_cv_axle,ticking noise from the front when turning left
+worn_cv_axle,clicking when turning in four wheel drive
+worn_cv_axle,front end pops when backing out and turning
+worn_u_joint,clunk when shifting from park to drive
+worn_u_joint,squeaking noise from under the truck at low speed
+worn_u_joint,vibration that gets worse with speed from the middle of the truck
+worn_u_joint,clunk when i let off the gas and get back on it
+worn_u_joint,driveshaft has play and clinks
+worn_u_joint,chirping squeak that matches tire speed
+worn_u_joint,bang from underneath when i shift into reverse
+worn_u_joint,shake under the seat when accelerating after the lift
+worn_u_joint,rust dust around the driveshaft joint
+worn_u_joint,clunk from under the truck when i shift into drive
+worn_u_joint,driveline vibration at 45 mph
+worn_u_joint,squeak squeak from the rear driveshaft when rolling slow
+worn_u_joint,thud underneath when i take off from a stop
+tire_balance,shakes at highway speed
+tire_balance,steering wheel vibrates at 65 mph
+tire_balance,vibration between 55 and 70 then smooths out
+tire_balance,lost a wheel weight and now it wobbles
+tire_balance,new tires and now it shakes on the freeway
+tire_balance,whole truck shimmies at 60 mph
+tire_balance,seat vibrates on the interstate
+tire_balance,bulge on the side of my tire and it shakes
+tire_balance,mud in the wheels and now it vibrates at speed
+tire_balance,wobble at highway speed on the big tires
+tire_balance,steering wheel shimmy around 70
+tire_balance,shake that comes and goes at certain speeds
+alignment_problem,pulls to the right
+alignment_problem,steering wheel is crooked when going straight
+alignment_problem,drifts to the left when i let go of the wheel
+alignment_problem,tires wearing on the inside edge
+alignment_problem,after the lift it pulls to one side
+alignment_problem,hit a pothole and now the steering wheel is off center
+alignment_problem,truck wanders on the highway
+alignment_problem,outside edge of the front tires worn bald
+alignment_problem,have to hold the wheel to the left to go straight
+alignment_problem,tires squeal on turns and wear fast
+alignment_problem,pulling right on flat roads
+alignment_problem,feathered tire wear on the front
+exhaust_leak,ticking noise at cold start that goes away when warm
+exhaust_leak,tapping noise from the engine when cold
+exhaust_leak,loud rumble from under the truck
+exhaust_leak,exhaust smell in the cab
+exhaust_leak,ticking from the passenger side of the engine when cold
+exhaust_leak,sounds like a lifter tick but goes away when it warms up
+exhaust_leak,louder than normal exhaust and a puffing noise
+exhaust_leak,broken exhaust manifold bolt and a tick
+exhaust_leak,black soot at the manifold and ticking
+exhaust_leak,rattling from the exhaust pipes over bumps
+exhaust_leak,sounds like a motorcycle when i accelerate
+exhaust_leak,ticking that gets faster with rpm on cold mornings
+exhaust_leak,fumes and noise from under the cab
+oil_leak_low_oil,oil puddle under the engine
+oil_leak_low_oil,burning oil smell after driving
+oil_leak_low_oil,oil light flickers at idle
+oil_leak_low_oil,dipstick shows low oil
+oil_leak_low_oil,smoke from the engine bay and a burning smell
+oil_leak_low_oil,brown spot on the driveway in the morning
+oil_leak_low_oil,have to add a quart of oil every week
+oil_leak_low_oil,oil pressure gauge drops to zero at idle
+oil_leak_low_oil,blue smoke and oil leaking from the valve cover
+oil_leak_low_oil,oil dripping from the back of the engine
+oil_leak_low_oil,engine knocking and the oil is really low
+oil_leak_low_oil,oil all over the bottom of the engine
+oil_leak_low_oil,low oil pressure warning came on
+power_steering_problem,whining when i turn the steering wheel
+power_steering_problem,steering is really hard at low speed
+power_steering_problem,groaning noise when i turn while parking
+power_steering_problem,power steering fluid leaking
+power_steering_problem,whine that gets louder when i turn
+power_steering_problem,steering feels heavy and stiff
+power_steering_problem,steering wheel jerks and is hard to turn sometimes
+power_steering_problem,foamy power steering fluid and a whine
+power_steering_problem,moaning sound at full lock
+power_steering_problem,steering gets hard when its cold
+power_steering_problem,red fluid dripping near the steering box
+power_steering_problem,loose sloppy steering and the steering box leaks
+ac_problem,ac blows warm air
+ac_problem,air conditioning not cold anymore
+ac_problem,ac compressor clutch not engaging
+ac_problem,ac works on the highway but warm at idle
+ac_problem,ac only blows cold on one side
+ac_problem,clicking behind the dash when i change the temperature
+ac_problem,musty smell from the vents when the ac is on
+ac_problem,ac blows cold then turns warm after a while
+ac_problem,weak airflow from the ac vents
+ac_problem,water dripping inside the cab under the dash from the ac
+ac_problem,ac makes a loud noise when it kicks on
+ac_problem,recharged the freon and it was warm again a week later
+electrical_ground_problem,lights flicker and gauges jump around
+electrical_ground_problem,random electrical problems and warning lights
+electrical_ground_problem,gauges stick or go dead randomly
+electrical_ground_problem,headlights dim when i use the turn signal
+electrical_ground_problem,random no start but sometimes it fires right up
+electrical_ground_problem,dash goes black for a second over bumps
+electrical_ground_problem,ground strap is corroded and things act weird
+electrical_ground_problem,radio resets and lights flicker
+electrical_ground_problem,speedometer needle stuck and wont move
+electrical_ground_problem,all the warning lights come on at once then go off
+electrical_ground_problem,fuel gauge jumps from full to empty
+electrical_ground_problem,power windows and locks work sometimes and not others
+electrical_ground_problem,turn signal blinks really fast and the bulb is fine
+worn_suspension,clunk over bumps
+worn_suspension,bounces a lot after hitting a dip
+worn_suspension,front end clunks on rough roads
+worn_suspension,steering feels loose and sloppy
+worn_suspension,knocking from the front when going over speed bumps
+worn_suspension,creaking noise when going over bumps
+worn_suspension,nose dives hard when braking
+worn_suspension,rattle from the front end on dirt roads
+worn_suspension,death wobble after hitting a bump
+worn_suspension,squeaky noise over bumps and leaning in turns
+worn_suspension,clunking when i turn the wheel at a stop
+worn_suspension,sways a lot on the highway and floats
+worn_suspension,ball joint has play and it clunks
+worn_suspension,cupped tires and a bouncy ride
+dead_battery,clicking and no crank on a cold morning
+dead_battery,battery keeps going dead if it sits a few days
+dead_battery,starts fine after a jump but dead again the next morning
+dead_battery,slow cranking and the battery is old
+dead_battery,click click click and dim lights wont start
+dead_battery,everything is dead when i open the door no dome light
+dead_battery,voltage at the battery is 11.8 and it wont start
+bad_starter,click but no crank with a fully charged battery
+bad_starter,starter grinds and makes a whir but engine wont turn
+bad_starter,new battery and still just a single loud click
+bad_starter,wont crank when hot after a drive but starts after it cools down
+bad_starter,starter makes a loud whine and doesnt engage
+bad_starter,key to start and nothing just a thunk from under the truck
+bad_starter,starter cranks slow even with a jump and good battery
+bad_alternator,battery light on and the voltage keeps dropping
+bad_alternator,alternator whine and the lights are dim
+bad_alternator,battery dies while driving even after a new battery
+bad_alternator,charging system warning light and the truck died
+bad_alternator,lights dim and brighten with engine speed
+bad_alternator,voltage reads 12 volts running should be 14
+bad_alternator,alternator making a grinding noise and battery light flickers
+worn_brake_pads,squealing brakes every time i stop
+worn_brake_pads,grinding noise from the brakes when stopping
+worn_brake_pads,brakes squeak and the pads look worn
+worn_brake_pads,metal grinding from the wheel when i brake
+worn_brake_pads,brakes are squealing and dont stop as well
+worn_brake_pads,rear brakes grind at low speed stops
+warped_rotors,pulsing brake pedal when stopping
+warped_rotors,steering wheel shakes when i brake on the highway
+warped_rotors,vibration through the brake pedal and steering wheel when stopping
+warped_rotors,brakes shudder when slowing down
+warped_rotors,pedal pulses when braking downhill
+warped_rotors,shaking while braking from high speed
+brake_fluid_leak,brake pedal soft and sinking to the floor
+brake_fluid_leak,leaking brake fluid at the wheel
+brake_fluid_leak,spongy pedal and brake fluid level dropping
+brake_fluid_leak,brakes feel soft and the warning light is on
+brake_fluid_leak,pedal goes to the floor and fluid leaking from the line
+brake_fluid_leak,have to pump the pedal and its soft
+bad_wheel_bearing,hum that gets louder the faster i go
+bad_wheel_bearing,growling noise from a wheel at speed
+bad_wheel_bearing,roaring hum that changes when turning
+bad_wheel_bearing,humming from the front wheel at highway speed
+bad_wheel_bearing,noise gets louder with speed and when turning one way
+bad_wheel_bearing,wheel bearing hum and play in the wheel
+bad_wheel_bearing,droning hum gets louder at speed
+worn_serpentine_belt,belt squeals on startup
+worn_serpentine_belt,squeal from the belt with the ac on
+worn_serpentine_belt,squealing when cold that stops when warm
+worn_serpentine_belt,serpentine belt squeal at idle
+worn_serpentine_belt,squeal under the hood when turning the wheel at a stop
+worn_serpentine_belt,belt chirp and the belt is cracked
+engine_misfire,rough idle and the engine shakes
+engine_misfire,engine misfiring and check engine light flashing
+engine_misfire,runs rough and loses power with a misfire code
+engine_misfire,engine shaking and stuttering at idle
+engine_misfire,misfire under load going up a hill
+engine_misfire,cylinder misfire code p0308
+dirty_maf_sensor,hesitation when accelerating and poor gas mileage
+dirty_maf_sensor,bogs when i step on it and then catches up
+dirty_maf_sensor,stalls at idle and hesitates when i take off
+dirty_maf_sensor,maf sensor code and the engine hesitates
+dirty_maf_sensor,hesitates and surges at low speed
+dirty_maf_sensor,cleaned the maf sensor and the hesitation went away
+vacuum_leak,hissing at idle and a lean code
+vacuum_leak,high idle and hissing noise under the hood
+vacuum_leak,vacuum hose cracked and rough idle
+vacuum_leak,hiss sound and idle rpm too high
+vacuum_leak,idle is surging with a whistle
+vacuum_leak,system too lean code and a hiss at idle
+fuel_delivery_problem,cranks and cranks but wont start
+fuel_delivery_problem,loses power under load and sputters
+fuel_delivery_problem,fuel pump not priming when i turn the key
+fuel_delivery_problem,sputters going up hills and loses power
+fuel_delivery_problem,cranks fine but wont fire no fuel
+fuel_delivery_problem,dies on the highway and wont restart right away
+overheating,engine overheating and temp gauge high
+overheating,running hot and coolant leaking
+overheating,overheats at idle in traffic
+overheating,temp gauge goes high and steam from the radiator
+overheating,coolant leaking and engine getting hot
+overheating,overheating when towing up hills
+thermostat_stuck_open,heater blows cold air and the engine runs cold
+thermostat_stuck_open,temp gauge stays low and no heat
+thermostat_stuck_open,engine never warms up to normal temperature
+thermostat_stuck_open,heater lukewarm and gauge low on the highway
+thermostat_stuck_open,engine takes a long time to warm up and heat is weak
+transmission_problem,transmission slipping and rpm flares
+transmission_problem,harsh shifting and slipping gears
+transmission_problem,transmission wont shift and burnt fluid
+transmission_problem,slips out of gear when accelerating
+transmission_problem,delayed engagement into drive and reverse
+transmission_problem,shifts hard and the check engine light is on
+worn_cv_axle,clicking when turning sharp
+worn_cv_axle,clicking noise from the front when turning
+worn_cv_axle,popping clicking noise while turning at low speed
+worn_cv_axle,torn cv boot and clicking on turns
+worn_cv_axle,clicks when turning and accelerating
+worn_cv_axle,front wheel clicking in tight turns
+worn_u_joint,clunk when shifting into drive or reverse
+worn_u_joint,squeak from the driveshaft at low speed
+worn_u_joint,vibration from the driveshaft that gets worse with speed
+worn_u_joint,u joint clunk and squeak under the truck
+worn_u_joint,clunk from the driveshaft when i take off
+worn_u_joint,driveshaft vibration after lifting the truck
+tire_balance,shakes at highway speed but fine slow
+tire_balance,steering wheel shakes at highway speed
+tire_balance,vibration at 60 to 70 mph from the tires
+tire_balance,tire shake at highway speed after new tires
+tire_balance,wheel wobble at highway speed
+tire_balance,vibrates on the highway only
+alignment_problem,pulls to the left
+alignment_problem,pulls to one side when driving straight
+alignment_problem,steering wheel off center and pulls
+alignment_problem,tires wearing uneven on the edges
+alignment_problem,drifts right on the highway
+alignment_problem,needs an alignment pulls and wanders
+exhaust_leak,tick when cold that goes away after warm up
+exhaust_leak,ticking at startup that goes away
+exhaust_leak,exhaust leak ticking from the manifold
+exhaust_leak,loud exhaust and exhaust fumes
+exhaust_leak,ticking noise when cold only
+exhaust_leak,puffing ticking from the exhaust manifold area
+oil_leak_low_oil,oil leak under the engine
+oil_leak_low_oil,oil leaking and burning smell
+oil_leak_low_oil,low oil and the oil light comes on
+oil_leak_low_oil,oil drips on the driveway
+oil_leak_low_oil,oil pressure low at idle and low oil
+oil_leak_low_oil,smell burning oil and see smoke from the engine
+power_steering_problem,steering hard to turn
+power_steering_problem,whine when turning the steering wheel
+power_steering_problem,power steering whine and leaking fluid
+power_steering_problem,groan when turning at low speed
+power_steering_problem,stiff steering when parking
+power_steering_problem,power steering pump whining
+ac_problem,ac not blowing cold
+ac_problem,ac blowing hot air
+ac_problem,air conditioner warm and compressor not kicking on
+ac_problem,ac cold sometimes and warm other times
+ac_problem,ac weak and not cooling
+ac_problem,ac stopped working
+electrical_ground_problem,flickering lights and gauges acting weird
+electrical_ground_problem,electrical problems lights flicker
+electrical_ground_problem,gauges go crazy and lights flicker
+electrical_ground_problem,random warning lights and gauges stop working
+electrical_ground_problem,bad ground lights dim and flicker
+electrical_ground_problem,gauges stuck and dash flickering
+worn_suspension,clunking over bumps
+worn_suspension,front end clunk over bumps
+worn_suspension,bouncy ride and clunks over bumps
+worn_suspension,loose steering and clunking over bumps
+worn_suspension,rattles and clunks over rough roads
+worn_suspension,worn shocks bouncy ride
