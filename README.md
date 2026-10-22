@@ -19,6 +19,11 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 
 **Help** (red button, top right): 911, Texas DPS roadside help **1-800-525-5555** (24/7, on the back of every Texas driver license), NTTA toll roads **#999**, and find a tow truck or mechanic.
 
+### Easy for anyone
+- **Asks before guessing.** "It makes a weird noise" gets "What does it sound like?" with tappable choices, the way a mechanic would ask, instead of a shaky guess.
+- **"Can I drive it?" comes first** on every answer, color-coded by how serious it is. The match never shows more than 99%.
+- **Works with no signal.** A note appears when the phone is offline, and a one-time tip shows how to add the app to the home screen.
+
 ### Personal touches
 - **Check-in:** next time you open the app (after 30+ minutes) it asks "Last time you said “it won't start” and I guessed a bad starter. Did I get it right?" 👍 / 👎 / 🤷. Answers are saved as training examples and to the repair log automatically. It asks at most twice per guess, and "Don't ask about this one" turns it off.
 - **Memory:** if a new problem sounds like one you confirmed before, it leans toward it and says "This sounds like the bad starter you had on Oct 22."
@@ -30,7 +35,9 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 - **Hand-checked list** (`ISSUES` / `MODELS` in the script): 179 problems with hand-written text.
 - **US vehicle list** (`data/us_vehicles.json`): 674 generations of US vehicles sold since 2000 (44 makes, with years, generation and engines) and their commonly reported problems. `model/problem_rules.py` gives each of its 849 problem titles plain-English **signs** and **what to do**, and links it to a diagnosis. A build fails if a title has no rule.
 
-Together: 44 makes, 453 models in the pickers, 1,739 known problems on 965 year ranges (387 models have lists). When both sources cover the same vehicle, the hand-checked text wins and duplicates are dropped. Problems tied to an engine (like "5.4L 3-valve" or "2.5T") say **Only on: ...** and only show if your saved engine matches; the Vehicle tab suggests engines for your year, make and model and shows its generation. Your vehicle's known problems also get a small extra score in the diagnosis. These are widely reported problems, not a promise your vehicle has them; recall items point to nhtsa.gov/recalls.
+Together: 44 makes, 453 models in the pickers, 1,736 known problems on 965 year ranges (387 models have lists). When both sources cover the same vehicle, the hand-checked text wins and duplicates are dropped. Problems tied to an engine (like "5.4L 3-valve" or "2.5T") say **Only on: ...** and only show if your saved engine matches; the Vehicle tab suggests engines for your year, make and model and shows its generation. Your vehicle's known problems also get a small extra score in the diagnosis. These are widely reported problems, not a promise your vehicle has them; recall items point to nhtsa.gov/recalls.
+
+**Checked against NHTSA (2026-10-22):** 20,876 recalls and about 500,000 owner complaints were pulled for every generation. 1,648 of the list's 2,013 problems match 10+ owner complaints or a recall. NHTSA complaints are about safety, so wear items (timing belts, water pumps, oil leaks, paint) rarely appear there; those were kept. Recall claims NHTSA doesn't show were reworded, and 3 unsupported problems were removed.
 
 ### Made for people who don't know cars
 - Every answer starts with everyday words before any specs.

@@ -181,6 +181,7 @@ const KEYS = {
   theme: "cardoctor.theme",
   reminders: "cardoctor.reminders",
   pending: "cardoctor.lastGuess",
+  installHint: "cardoctor.installHint",
 };
 
 // Reads saved data. If it's missing, damaged, or the wrong shape (say, from
@@ -367,6 +368,7 @@ function showTab(name, { focus = false } = {}) {
     }
   }
   currentTab = name;
+  document.body.dataset.tab = name; // the Vehicle tab hides the vehicle card (it's right there)
   if (typeof moveTabIndicator === "function") moveTabIndicator();
   document.getElementById("composer").hidden = name !== "chat";
   const main = document.getElementById("main");
@@ -398,14 +400,43 @@ function sessionText() {
 
 // Scrolls to the newest message, or to the top of `node` (used for result
 // cards so the diagnosis title is what you see first).
+function offsetWithin(node, ancestor) {
+  let y = 0;
+  for (let n = node; n && n !== ancestor; n = n.offsetParent) y += n.offsetTop;
+  return y;
+}
+
 function scrollChat(node) {
   const main = document.getElementById("main");
   requestAnimationFrame(() => {
-    const top = node
-      ? main.scrollTop + node.getBoundingClientRect().top - main.getBoundingClientRect().top - 12
-      : main.scrollHeight;
+    // offsetTop ignores the pop-in animation's transform, so the card's top
+    // line never ends up hidden under the header.
+    const top = node ? offsetWithin(node, main) - 12 : main.scrollHeight;
     main.scrollTo({ top, behavior: REDUCED_MOTION.matches ? "auto" : "smooth" });
   });
+}
+
+// Works with no signal: say so when the phone goes offline, so nobody thinks it broke.
+function watchConnection() {
+  const note = document.getElementById("offlineNote");
+  const update = () => { note.hidden = navigator.onLine; };
+  window.addEventListener("online", update);
+  window.addEventListener("offline", update);
+  update();
+}
+
+// One-time tip: add the app to the home screen so it opens like an app, even offline.
+function installHint() {
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  if (standalone || load(KEYS.installHint, false) === true) return;
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const steps = ios
+    ? "In Safari, tap the Share button (square with an arrow), then \u201cAdd to Home Screen\u201d."
+    : "In Chrome, tap the \u22ee menu, then \u201cAdd to Home screen\u201d or \u201cInstall app\u201d.";
+  const node = addMsg("bot", el("p", {}, el("strong", {}, "Tip: keep Car Doctor on your home screen. "),
+    "It opens like an app and works with no signal, like a mechanic in your glovebox."),
+  el("p", { class: "fineprint" }, steps),
+  chipRow(["Got it"], () => { save(KEYS.installHint, true); node.remove(); }));
 }
 
 function addMsg(who, ...children) {
@@ -433,6 +464,7 @@ function welcome() {
   session.done = false;
   session.asked = new Set();
   session.last = null;
+  session.askedMore = false;
   stopSound();
   // "Welcome back! Last time I guessed ... Did I get it right?"
   const checkIn = checkInBubble();
@@ -440,8 +472,7 @@ function welcome() {
   const name = vehicleName();
   const hello = addMsg("bot",
     el("p", { class: "lead" }, name ? `What's going on with your ${name}?` : "What's going on with your vehicle?"),
-    el("p", {}, "No car know-how needed. Just tell me in your own words what you hear, feel or smell, and when it happens."),
-    el("p", { class: "picker-intro" }, "Tap what you notice:"),
+    el("p", {}, "Tap what you notice, or type it in your own words. No car know-how needed, and it works with no signal."),
     pickerTiles(),
     el("p", { class: "fineprint" }, "Or type it, like \"it grinds when I stop\". Quick picks:"),
     chipRow(STARTERS, sendMessage),
@@ -452,7 +483,9 @@ function welcome() {
     addMsg("bot", el("p", {}, el("strong", {}, "Heads up: "), `${r.title} is ${reminderStatus(r).text.toLowerCase()}.`),
       chipRow(["Open reminders"], () => showTab("reminders")));
   }
-  scrollChat(checkIn ? checkIn.parentElement : hello); // start at the top, not the bottom
+  installHint();
+  // Start at the very top so the greeting isn't cut off under the header.
+  requestAnimationFrame(() => { document.getElementById("main").scrollTop = 0; });
 }
 
 // Shows the "thinking" dots, then removes them.
@@ -509,13 +542,30 @@ async function sendMessage(text, shown) {
   if (!understood) {
     session.messages.pop(); // don't keep text the model can't use
     session.shown.pop();
-    addMsg("bot", el("p", {}, "I didn't catch any symptoms there. What do you hear, feel or smell, and when does it happen?"),
+    const node = addMsg("bot", el("p", {}, "I didn't catch any symptoms there. What do you notice? Tap one, or describe what you hear, feel or smell."),
+      pickerTiles(),
       el("p", { class: "fineprint" }, "For example: \"squeal when I start it on cold mornings\"."));
+    scrollChat(node);
+    session.busy = false;
+    return;
+  }
+  // Too little to go on ("a weird noise")? A good mechanic asks before
+  // guessing, so ask once with tappable choices instead of showing a guess.
+  if (!session.askedMore && specificWords(sessionText()) === 0 && !findCodes(sessionText()).some((code) => CODES[code])) {
+    session.askedMore = true;
+    askForMore(tokenize(sessionText()));
     session.busy = false;
     return;
   }
   showResults(predict(sessionText(), computeBoosts()));
   session.busy = false;
+}
+
+// Words that say what kind of problem, but not which one ("noise", "shake").
+const BROAD_WORDS = new Set(["noise", "smell", "light", "shake", "leak", "make", "drive", "run", "come", "happen", "doing",
+  "sometime", "start", "car", "vehicle", "engine", "ther", "seem", "keep", "new", "old", "today", "lately"]);
+function specificWords(text) {
+  return new Set(tokenize(text).filter((t) => !t.includes("_") && MODEL.vocab[t] !== undefined && !BROAD_WORDS.has(t))).size;
 }
 
 // A quick-question answer. "No / not sure" answers add no words; we just
@@ -530,8 +580,11 @@ async function answerQuestion(label, words) {
   session.busy = false;
 }
 
+// A guess is never certain, so the most we show is 99%.
+const percent = (prob) => Math.min(99, Math.max(1, Math.round(prob * 100)));
+
 function gauge(prob) {
-  const pct = Math.round(prob * 100);
+  const pct = percent(prob);
   const fill = el("span", { class: "gauge-fill" });
   // Animate from 0 to the value (CSSOM style is allowed by the CSP).
   requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.width = Math.max(2, pct) + "%"; }));
@@ -585,13 +638,17 @@ function showResults(result) {
     el("p", { class: "eyebrow" }, "Most likely"),
     el("h2", { class: "result-title" }, cause.name),
     el("div", { class: "badges" }, severityBadge(cause.severity), el("span", { class: "pill" }, DIY[cause.diy] || cause.diy)),
+    // The first thing anyone wants to know: can I keep driving?
+    cause.drive ? el("div", { class: "drive-now sev-" + cause.severity },
+      el("h3", { class: "q" }, "Can I drive it?"), el("p", {}, explain(cause.drive, seen))) : null,
     dial(best.prob),
+    el("h3", { class: "q" }, "What's going on"),
+    el("p", {}, explain(cause.plain || cause.summary, seen)),
+    cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
     CAUSE_SOUND[best.label] ? el("div", { class: "sound-row" }, soundButton(CAUSE_SOUND[best.label]),
       el("span", { class: "fineprint" }, "Hear roughly what it sounds like")) : null,
     seenBefore(best.label),
     knownOnVehicle(best.label),
-    plainBlock(cause, seen),
-    cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
     cause.signs ? el("details", { class: "more-checks signs" },
       el("summary", {}, "Other signs of this"),
       el("ul", { class: "checks" }, ...cause.signs.map((x) => el("li", {}, explain(x, seen))))) : null,
@@ -1197,6 +1254,7 @@ async function init() {
   applyTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
   buildCircuits();
   wireUp();
+  watchConnection();
   renderProfile();
   renderLog();
   renderTraining();

@@ -53,7 +53,8 @@
    "Ranked by approximate cumulative US sales of the model line since 2000; popularity_score is relative (100 = Ford F-Series), not a unit count.",
    "Each entry is one generation; engines lists the US powertrain variations.",
    "common_problems are widely reported patterns, not guarantees. Cross-check with NHTSA recalls/complaints (api.nhtsa.gov) before presenting as a diagnosis.",
-   "Some generations start before 2000 because they were still sold new in 2000+."
+   "Some generations start before 2000 because they were still sold new in 2000+.",
+   "2026-10-22: spot-checked against NHTSA (20,876 recalls, ~500,000 owner complaints). 1,648 of 2,013 problems match 10+ complaints or a recall; recall claims NHTSA doesn't show were reworded; 3 unsupported problems removed."
   ],
   "tiers": {
    "1": "80-100 very common",
@@ -1193,8 +1194,7 @@
    "common_problems": [
     "4.0 SOHC timing chain rattle",
     "5R55E transmission failure",
-    "Intake gasket leak",
-    "Rear main seal leak"
+    "Intake gasket leak"
    ],
    "popularity_score": 85,
    "tier": 1
@@ -1584,7 +1584,7 @@
     "1.5L Turbo"
    ],
    "common_problems": [
-    "Early build recalls",
+    "Early build issues",
     "Infotainment glitches"
    ],
    "popularity_score": 83,
@@ -2192,7 +2192,6 @@
    ],
    "common_problems": [
     "Infotainment glitches",
-    "Timing chain stretch (3.6)",
     "Transmission shift issues"
    ],
    "popularity_score": 77,
@@ -2826,7 +2825,7 @@
    "common_problems": [
     "8-speed shift complaints",
     "Infotainment glitches",
-    "Turbo 2.4 early recalls"
+    "2.4 turbo early build issues"
    ],
    "popularity_score": 74,
    "tier": 2
@@ -4445,7 +4444,7 @@
     "2.5L Turbo"
    ],
    "common_problems": [
-    "Early build recalls",
+    "Early build issues",
     "Infotainment glitches"
    ],
    "popularity_score": 60,
@@ -11818,7 +11817,6 @@
    ],
    "common_problems": [
     "Steering column lock failure",
-    "Harmonic balancer wobble",
     "Oil consumption"
    ],
    "popularity_score": 20,
@@ -11931,7 +11929,7 @@
    ],
    "common_problems": [
     "Software glitches",
-    "Early build recalls"
+    "Early build issues"
    ],
    "popularity_score": 20,
    "tier": 4

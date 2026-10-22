@@ -445,6 +445,28 @@ const PICKER = [
     ["Diesel lost power", "diesel reduced power derate"], ["Turbo whistle, no power", "turbo whistle no boost"]] },
 ];
 
+// When a description is too vague to guess from, open the matching picker
+// ("a weird noise" -> "What does it sound like?"), or all the tiles.
+const CATEGORY_WORDS = {
+  noise: "noise", squeal: "noise", grind: "noise", click: "noise", tick: "noise", clunk: "noise", hum: "noise",
+  whine: "noise", rattl: "noise", hiss: "noise", knock: "noise", shake: "shake", smell: "smell", light: "light",
+  leak: "leak", start: "nostart", crank: "nostart", hot: "hot", brake: "brakes", tire: "tires", steer: "steer",
+  steering: "steer", ac: "air", heat: "air", heater: "air", idle: "rough", stall: "rough", misfire: "rough",
+  screen: "inside", radio: "inside", window: "inside", "4wd": "drive", hybrid: "power", diesel: "power",
+};
+
+function askForMore(tokens) {
+  const id = tokens.map((t) => CATEGORY_WORDS[t]).find(Boolean);
+  const cat = PICKER.find((c) => c.id === id);
+  if (cat) {
+    addMsg("bot", el("p", {}, `Let's narrow that down so I don't guess wrong. A couple of taps:`));
+    openPicker(cat);
+    return;
+  }
+  const node = addMsg("bot", el("p", {}, "Tell me a little more so I don't guess wrong. What do you notice?"), pickerTiles());
+  scrollChat(node);
+}
+
 // "Where is it coming from?" Tap a spot on the vehicle.
 const ZONES = [
   ["fl", "Front left wheel", "from the front wheel"], ["engine", "Engine / hood", "from the engine"], ["fr", "Front right wheel", "from the front wheel"],
@@ -546,7 +568,7 @@ function openPicker(cat) {
 // ===========================================================================
 
 function dial(prob) {
-  const pct = Math.round(prob * 100);
+  const pct = percent(prob);
   const NS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("viewBox", "0 0 160 92");
