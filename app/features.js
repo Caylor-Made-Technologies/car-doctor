@@ -579,8 +579,8 @@ function openPicker(cat) {
 // 3. Match dial: a gauge needle that sweeps to the match %
 // ===========================================================================
 
-function dial(prob) {
-  const pct = percent(prob);
+function dial(prob, known) {
+  const pct = percent(prob, known);
   const NS = "http://www.w3.org/2000/svg";
   const svg = document.createElementNS(NS, "svg");
   svg.setAttribute("viewBox", "0 0 160 92");

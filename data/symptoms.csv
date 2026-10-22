@@ -4079,3 +4079,113 @@ electrical_ground_problem,wiring problem things cut out
 throttle_body_problem,high idle after starting throttle body
 throttle_body_problem,idle 2000 rpm throttle
 throttle_body_problem,gas pedal not working right throttle body
+transmission_problem,there is a delay before it goes into gear when i shift to drive
+transmission_problem,i put it in drive and it waits a second or two then thunks into gear
+transmission_problem,slow to engage reverse in the morning
+transmission_problem,delayed engagement when shifting from park to drive
+transmission_problem,engine revs up but the truck barely speeds up on the highway
+transmission_problem,rpm flares between gears and it feels like it slips
+transmission_problem,it slips out of overdrive going up hills
+transmission_problem,the transmission fluid smells burnt and it shifts late
+transmission_problem,hard clunky shifts from second to third
+transmission_problem,acts like it is in neutral for a moment then catches
+bad_motor_mounts,vibration at a stop in drive that goes away in neutral
+bad_motor_mounts,steering wheel buzzes at red lights but smooth in park
+bad_motor_mounts,engine rocks a lot when i put it in gear
+bad_motor_mounts,big thump from the engine bay when i let off the gas
+bad_motor_mounts,engine jumps when i rev it with the hood open
+bad_motor_mounts,more shaking at idle with the ac on and in drive
+diesel_emissions_problem,the dpf keeps regenerating over and over and power is down
+diesel_emissions_problem,regen every few miles and the truck feels weak
+diesel_emissions_problem,exhaust filter full message and it went into derate
+diesel_emissions_problem,diesel exhaust fluid warning and speed limited countdown
+diesel_emissions_problem,the diesel keeps trying to burn off soot and wont finish
+engine_knock,the oil pressure light comes on and there is a knock from the bottom of the engine
+engine_knock,low oil pressure warning and a deep knocking
+engine_knock,oil light flickers at idle with a heavy knock that follows rpm
+engine_knock,it ran out of oil and now it knocks
+engine_knock,loud knock from deep inside the motor when warm
+death_wobble,the front end shakes violently after hitting a bump on the highway
+death_wobble,hit a pothole and the steering wheel started shaking side to side hard
+death_wobble,lifted truck front end goes crazy over expansion joints
+death_wobble,steering shakes so hard i have to slow way down to stop it
+death_wobble,violent front end shimmy that only stops when i brake hard
+oil_leak_low_oil,oil drips on the driveway under the engine
+oil_leak_low_oil,the valve cover is wet with oil
+oil_leak_low_oil,oil puddle under the front of the engine
+oil_leak_low_oil,dipstick low and there are oil spots where i park
+oil_leak_low_oil,rear main seal is leaking oil
+oil_leak_low_oil,oil running down the back of the engine
+oil_burning,uses a quart of oil between changes with no leaks anywhere
+oil_burning,blue smoke on startup and it needs oil often
+oil_burning,oil level keeps dropping but the ground stays dry
+oil_burning,spark plugs are oily and it smokes a little
+oil_burning,puff of bluish smoke when i start it in the morning
+overheating,the temperature needle climbs to hot in traffic
+overheating,steam from under the hood and the gauge is pegged
+overheating,coolant boiling over out of the reservoir
+overheating,radiator fan does not come on and it gets hot sitting still
+overheating,running hot and the coolant level was low
+head_gasket_failure,milky sludge under the oil cap and white smoke
+head_gasket_failure,bubbles in the coolant tank with the engine running
+head_gasket_failure,coolant keeps disappearing with no leak and sweet white exhaust
+head_gasket_failure,overheated badly and now it runs rough with white smoke
+thermostat_stuck_open,needle stays at cold the whole drive
+thermostat_stuck_open,takes forever to warm up and the heater is weak in winter
+thermostat_stuck_open,temp gauge drops on the highway
+worn_u_joint,squeak from under the truck that speeds up with the wheels
+worn_u_joint,clunk from the driveshaft when i let off the gas
+worn_u_joint,vibration from under the middle of the truck that gets worse with speed
+worn_u_joint,red rust dust around the driveshaft joint
+differential_problem,howl from the back that changes when i let off the gas
+differential_problem,gear oil leaking from the rear axle cover
+differential_problem,whine from the rear end only when accelerating
+sticking_brake_caliper,one wheel smells hot after driving and pulls that way
+sticking_brake_caliper,brake drags on one side and the wheel is very hot
+sticking_brake_caliper,smoke from one front wheel after a drive
+brake_fluid_leak,brake pedal goes almost to the floor
+brake_fluid_leak,wet fluid inside the tire near the brake
+brake_fluid_leak,brake fluid tank keeps getting low and the pedal is soft
+ac_problem,ac blows warm air on hot days
+ac_problem,ac compressor clutch does not engage
+ac_problem,ac cold at first then turns warm
+water_leak_inside,carpet soaked after heavy rain
+water_leak_inside,water drips from the headliner when it rains
+water_leak_inside,door seal lets water in during a car wash
+exhaust_leak,ticking at cold start that goes away after it warms up
+exhaust_leak,puffing sound near the exhaust manifold
+exhaust_leak,exhaust smell in the cab and louder exhaust
+collapsed_lifter,ticking that stays even when the engine is fully warm
+collapsed_lifter,tick on one side with a misfire on that cylinder
+collapsed_lifter,lifter tick and a misfire code
+dirty_maf_sensor,hesitation and lean codes p0171 and p0174
+dirty_maf_sensor,stumbles when i accelerate after changing the air filter
+throttle_body_problem,idle hunts up and down and stalls at stops
+throttle_body_problem,reduced engine power light came on and it barely moves
+fuel_delivery_problem,cranks for a long time before it starts
+fuel_delivery_problem,dies under load going up a hill and then restarts
+fuel_delivery_problem,no hum from the fuel tank when i turn the key
+dead_battery,needed a jump start this morning
+dead_battery,battery dead after sitting a few days
+bad_starter,lights stay bright but only one click when i turn the key
+bad_starter,starter grinds and sometimes does not engage
+instrument_cluster_problem,speedometer needle stuck at zero
+instrument_cluster_problem,fuel and temp gauges jump around
+infotainment_problem,touchscreen keeps rebooting
+infotainment_problem,phone keeps disconnecting from the radio
+cvt_problem,smooth transmission with no shifts now whines and slips
+cvt_problem,rubber band feeling and the rpm flares
+torque_converter_shudder,shudder at forty mph like rumble strips on light throttle
+torque_converter_shudder,feels like driving over a cattle guard at a steady speed
+engine_misfire,engine stumbles and shakes and the check engine light blinks
+engine_misfire,misfire on cylinder three and rough idle
+worn_suspension,bounces too much after bumps
+worn_suspension,clunk from the front over every bump
+power_steering_problem,whine when i turn the steering wheel and it feels heavy
+power_steering_problem,steering got hard to turn when parking
+blend_door_actuator,temperature stuck on hot no matter where i set it
+blend_door_actuator,air comes out the wrong vents and clicks behind the dash
+catalytic_converter_problem,rotten egg smell and code p0420
+catalytic_converter_problem,no power uphill and a rattle under the truck
+turbo_problem,whistle like a siren when the turbo spools and low boost code
+turbo_problem,boost hose popped off and it has no power

@@ -35,6 +35,11 @@ const STOPWORDS = new Set([
   // Vague words that say nothing about the cause ("weird noise").
   "weird", "strange", "funny", "odd", "something", "wrong", "problem",
   "problems", "issue", "issues", "acting",
+  // Filler that says nothing about the cause ("can you tell me what").
+  "can", "cant", "could", "hear", "try", "trying", "tried", "make", "makes",
+  "making", "seem", "seems", "theres", "lately", "today", "please", "help",
+  "tell", "know", "think", "what", "why", "how", "do", "did", "would",
+  "should", "want", "if",
 ]);
 
 const SYNONYM_GROUPS = {
@@ -139,11 +144,13 @@ let MODEL = null; // filled from model.json
 function predict(text, boosts = {}) {
   const counts = new Map();
   let recognized = 0;
+  let known = 0; // single words recognized (not word pairs), for howSure
   for (const token of tokenize(text)) {
     const index = MODEL.vocab[token];
     if (index === undefined) continue;
     counts.set(index, (counts.get(index) || 0) + 1);
     recognized++;
+    if (!token.includes("_")) known++;
   }
 
   const scores = MODEL.classes.map((label, c) => {
@@ -162,7 +169,23 @@ function predict(text, boosts = {}) {
   const ranked = MODEL.classes
     .map((label, c) => ({ label, prob: exps[c] / total }))
     .sort((a, b) => b.prob - a.prob);
-  return { ranked, recognized };
+  return { ranked, recognized, known };
+}
+
+// How sure we really are. Naive Bayes scores run high, so train.py measures
+// how often a top guess with each score was really right (on sentences the
+// model never saw, whole and cut short) and saves that curve in model.json.
+// Descriptions with 1-2, 3-4 and 5+ known words each get their own curve.
+// Never shown above 97%: a guess from symptoms is never certain.
+const MAX_SURE = 0.97;
+function howSure(prob, known) {
+  const table = MODEL.calibration[known <= 2 ? "two" : known <= 4 ? "few" : "many"];
+  for (let i = 1; i < table.length; i++) {
+    const [x1, y1] = table[i];
+    const [x0, y0] = table[i - 1];
+    if (prob <= x1) return Math.min(MAX_SURE, y0 + ((prob - x0) / (x1 - x0)) * (y1 - y0));
+  }
+  return MAX_SURE;
 }
 
 // Finds trouble codes like P0300 in a message.
@@ -587,24 +610,11 @@ async function answerQuestion(label, words) {
   session.busy = false;
 }
 
-// How sure we really are. The model's own score runs high: on the held-out
-// sentences a "75%" top guess was right only about 4 times in 10, while 97%+
-// was right about 95 times in 100 (tests/questions.js prints this table).
-// So scores are mapped to how often guesses like it turned out right, and
-// never shown above 95%.
-const CALIBRATION = [[0, 0.1], [0.5, 0.2], [0.75, 0.3], [0.9, 0.5], [0.97, 0.85], [1, 0.95]];
-function howSure(prob) {
-  for (let i = 1; i < CALIBRATION.length; i++) {
-    const [x1, y1] = CALIBRATION[i];
-    const [x0, y0] = CALIBRATION[i - 1];
-    if (prob <= x1) return y0 + ((prob - x0) / (x1 - x0)) * (y1 - y0);
-  }
-  return CALIBRATION[CALIBRATION.length - 1][1];
-}
-const percent = (prob) => Math.max(1, Math.round(howSure(prob) * 100));
+// Shown as a whole percent. `known` = recognized words (see howSure).
+const percent = (prob, known) => Math.max(1, Math.round(howSure(prob, known) * 100));
 
-function gauge(prob) {
-  const pct = percent(prob);
+function gauge(prob, known) {
+  const pct = percent(prob, known);
   const fill = el("span", { class: "gauge-fill" });
   // Animate from 0 to the value (CSSOM style is allowed by the CSP).
   requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.width = Math.max(2, pct) + "%"; }));
@@ -645,7 +655,7 @@ function showResults(result) {
 
   const top = result.ranked.filter((g, i) => i === 0 || g.prob >= 0.05).slice(0, 3);
   const best = top[0];
-  const sure = howSure(best.prob);
+  const sure = howSure(best.prob, result.known);
 
   // Don't jump to conclusions: when unsure and a question can tell the
   // guesses apart, ask it first instead of showing a guess we may take back.
@@ -689,7 +699,7 @@ function showResults(result) {
     // The first thing anyone wants to know: can I keep driving?
     cause.drive ? el("div", { class: "drive-now sev-" + cause.severity },
       el("h3", { class: "q" }, "Can I drive it?"), el("p", {}, explain(cause.drive, seen))) : null,
-    dial(best.prob),
+    dial(best.prob, result.known),
     el("h3", { class: "q" }, "What's going on"),
     el("p", {}, explain(cause.plain || cause.summary, seen)),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
@@ -720,7 +730,7 @@ function showResults(result) {
     card.append(el("details", sure < 0.6 ? { class: "alt", open: "" } : { class: "alt" },
       el("summary", {},
         el("span", { class: "alt-head" }, el("span", {}, c.name), icon("chevron")),
-        gauge(g.prob)),
+        gauge(g.prob, result.known)),
       el("div", { class: "alt-body" },
         el("div", { class: "badges" }, severityBadge(c.severity), el("span", { class: "pill" }, DIY[c.diy] || c.diy)),
         plainBlock(c, altSeen),

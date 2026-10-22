@@ -29,6 +29,7 @@ DATA_FILE = ROOT / "data" / "symptoms.csv"
 # Never trained on. Written separately, in everyday "how a parent would say
 # it" wording, to estimate real-world accuracy more honestly.
 HOLDOUT_FILE = ROOT / "data" / "holdout.csv"
+HOLDOUT2_FILE = ROOT / "data" / "holdout2.csv"
 MODEL_FILE = ROOT / "app" / "model.json"
 
 ALPHAS = [0.05, 0.1, 0.3, 0.5, 1.0]  # smoothing values to try
@@ -56,6 +57,11 @@ STOPWORDS = {
     # Vague words that say nothing about the cause ("weird noise").
     "weird", "strange", "funny", "odd", "something", "wrong", "problem",
     "problems", "issue", "issues", "acting",
+    # Filler that says nothing about the cause ("can you tell me what").
+    "can", "cant", "could", "hear", "try", "trying", "tried", "make", "makes",
+    "making", "seem", "seems", "theres", "lately", "today", "please", "help",
+    "tell", "know", "think", "what", "why", "how", "do", "did", "would",
+    "should", "want", "if",
 }
 
 # Different words people use for the same thing. The key is the "canonical"
@@ -210,7 +216,74 @@ def cross_validate(texts, labels, alpha):
     return top1 / len(labels), top3 / len(labels)
 
 
-def export(model, vec, path, accuracy):
+def content_words(text):
+    """Words in a sentence that the tokenizer keeps (drops "the", "my"...)."""
+    return [w for w in text.split() if any("_" not in t for t in tokenize(w))]
+
+
+def known_words(text, vocab):
+    """How many single words the model recognizes. Same count as app.js."""
+    return sum(1 for t in tokenize(text) if "_" not in t and t in vocab)
+
+
+# Real descriptions are messier than training sentences cut short: on
+# data/holdout.csv, guesses scored under about 0.9 were right less often than
+# cross-validation says. So the curve is never allowed above this ceiling.
+# It can only lower what the app shows, never raise it.
+REAL_WORLD_CEILING = [[0, 0.1], [0.5, 0.2], [0.8, 0.35], [0.9, 0.55], [0.95, 0.8], [0.97, 0.9], [0.99, 0.97], [1, 0.97]]
+
+
+def ceiling(score):
+    for (x0, y0), (x1, y1) in zip(REAL_WORLD_CEILING, REAL_WORLD_CEILING[1:]):
+        if score <= x1:
+            return y0 + (score - x0) / (x1 - x0) * (y1 - y0)
+    return REAL_WORLD_CEILING[-1][1]
+
+
+# Calibration groups by how many words the model knows in the description.
+def word_group(known):
+    return "two" if known <= 2 else "few" if known <= 4 else "many"
+
+
+def calibrate(texts, labels, alpha):
+    """How often a top guess with a given score is really right.
+
+    Naive Bayes scores run high, so the app doesn't show them raw. Every
+    sentence is scored by a model that never saw it (5-fold), both whole and
+    cut down to its first 2, 3, 4 and 6 words (people often type little).
+    For 1-2, 3-4 and 5+ known words separately, a rising curve (isotonic
+    regression) maps score -> share right. The app
+    shows that share, and tests/check.py checks it against data/holdout.csv.
+    """
+    from sklearn.isotonic import IsotonicRegression
+    texts = np.array(texts, dtype=object)
+    labels = np.array(labels)
+    points = {"two": ([], []), "few": ([], []), "many": ([], [])}
+    for train_idx, test_idx in StratifiedKFold(n_splits=FOLDS, shuffle=True, random_state=7).split(texts, labels):
+        vec = make_vectorizer()
+        model = MultinomialNB(alpha=alpha).fit(vec.fit_transform(texts[train_idx]), labels[train_idx])
+        for cut in (None, 2, 3, 4, 6):
+            batch = [t if cut is None else " ".join(content_words(t)[:cut]) for t in texts[test_idx]]
+            probs = model.predict_proba(vec.transform(batch))
+            for text, row, truth in zip(batch, probs, labels[test_idx]):
+                known = known_words(text, vec.vocabulary_)
+                if not known:
+                    continue
+                best = row.argmax()
+                xs, ys = points[word_group(known)]
+                xs.append(row[best])
+                ys.append(float(model.classes_[best] == truth))
+    knots = [0, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95, 0.97, 0.99, 0.995, 0.999, 1]
+    table = {}
+    for name, (xs, ys) in points.items():
+        fit = IsotonicRegression(y_min=0, y_max=1, out_of_bounds="clip").fit(xs, ys)
+        table[name] = [[k, round(min(float(fit.predict([k])[0]), ceiling(k)), 3)] for k in knots]
+        print(f"Calibration ({name}, {len(xs)} scored sentences): "
+              + ", ".join(f"{k:g}->{v:.0%}" for k, v in table[name]))
+    return table
+
+
+def export(model, vec, path, accuracy, calibration):
     """Save everything the browser needs to repeat the math.
 
     Most words never appear in a given problem's examples, and smoothing
@@ -232,6 +305,7 @@ def export(model, vec, path, accuracy):
         "unseen_log_prob": unseen,
         "feature_log_prob": seen_rows,  # {word index: score}, words this problem has seen
         "vocab": dict(sorted(vocab.items(), key=lambda kv: kv[1])),
+        "calibration": calibration,  # score -> share really right (see calibrate)
     }
     path.write_text(json.dumps(data, separators=(",", ":")), encoding="utf-8")
 
@@ -255,18 +329,24 @@ def main():
     vec = make_vectorizer()
     x_all = vec.fit_transform(texts)
     model = MultinomialNB(alpha=best_alpha).fit(x_all, labels)
-    export(model, vec, MODEL_FILE, {"top1": round(top1, 3), "top3": round(top3, 3), "examples": len(texts)})
+    calibration = calibrate(texts, labels, best_alpha)
+    export(model, vec, MODEL_FILE, {"top1": round(top1, 3), "top3": round(top3, 3), "examples": len(texts)}, calibration)
     size_kb = MODEL_FILE.stat().st_size / 1024
     print(f"Wrote {MODEL_FILE.relative_to(ROOT)} "
           f"({len(vec.vocabulary_)} features, {size_kb:.0f} KB)\n")
 
     # Held-out check: sentences the model has never seen in any form.
-    if HOLDOUT_FILE.exists():
-        h_texts, h_labels = load_data(HOLDOUT_FILE)
+    # holdout2.csv was written 2026-10-22 after holdout.csv had been used to
+    # tune things, so it is the cleaner test of the two.
+    for name, path in [("Held-out everyday sentences", HOLDOUT_FILE), ("Fresh held-out set (holdout2)", HOLDOUT2_FILE)]:
+        if not path.exists():
+            continue
+        h_texts, h_labels = load_data(path)
         probs = model.predict_proba(vec.transform(h_texts))
         h1 = top_k_correct(probs, model.classes_, h_labels, 1) / len(h_labels)
         h3 = top_k_correct(probs, model.classes_, h_labels, 3) / len(h_labels)
-        print(f"Held-out everyday sentences ({len(h_labels)}): top-1 {h1:.1%}, top-3 {h3:.1%}\n")
+        print(f"{name} ({len(h_labels)}): top-1 {h1:.1%}, top-3 {h3:.1%}")
+    print()
 
     samples = [
         "clicks when i turn the key and nothing happens",

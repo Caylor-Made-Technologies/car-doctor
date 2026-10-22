@@ -185,7 +185,10 @@ def main():
             full, vague = q["full"], q["vague"]
             print(f"      quick questions: full sentences {full['before']}% -> {full['after']}% "
                   f"(avg {full['avgQuestions']} asked); vague {vague['before']}% -> {vague['after']}% "
-                  f"(avg {vague['avgQuestions']} asked)")
+                  f"(avg {vague['avgQuestions']} asked; {vague['askedForMore']} too vague, app asks for more)")
+            fresh = q["fresh"]
+            print(f"      fresh held-out set (holdout2): {fresh['before']}% -> {fresh['after']}% (avg {fresh['avgQuestions']} asked)")
+            check(fresh["after"] >= 90, f"fresh held-out top-1 after questions is 90%+ ({fresh['after']}%)")
             check(max(full["maxQuestions"], vague["maxQuestions"]) <= q["maxAllowed"],
                   f"never more than {q['maxAllowed']} quick questions")
             check(full["after"] >= full["before"] and vague["after"] >= vague["before"],
