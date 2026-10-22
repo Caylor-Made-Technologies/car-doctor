@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
   <meta name="referrer" content="no-referrer">
   <title>Car Doctor</title>
-  <meta name="description" content="Diagnose car and truck problems from symptoms and OBD-II codes. Works offline.">
-  <meta name="theme-color" content="#121418">
+  <meta name="description" content="Diagnose car and truck problems from symptoms and OBD-II trouble codes. Works offline.">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark light">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -15,80 +16,145 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Car Doctor">
+  <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Icon sprite: drawn once, reused with <use>. All icons are decorative. -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.4c-.5.4-1.3 0-1.3-.6V16A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8.5h8M8 11.5h5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 15.5V8a1 1 0 0 1 1-1h10v8.5M13.5 10h4l3 3.2v2.3"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6M2.5 15.5H5M19 17h1.5"/></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3.5V2.5M15 3.5v-1M8.5 9h7M8.5 12.5h7M8.5 16h4"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M2.5 13h4l2-4 3.5 9 3-11 2 6h4.5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-2.5-6.5z"/><path d="M11.5 13.5 20 4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 7h15M10 7V5h4v2M6.5 7l1 13h9l1-13"/></symbol>
+  </svg>
+
   <header class="topbar">
-    <h1 class="brand"><span class="brand-mark" aria-hidden="true">♥</span> Car Doctor</h1>
-    <p class="vehicle-line" id="vehicleLine">Add your vehicle in My Vehicle</p>
+    <div class="topbar-row">
+      <p class="brand"><svg class="icon brand-icon" aria-hidden="true"><use href="#i-pulse"/></svg><span>Car Doctor</span></p>
+      <button id="themeToggle" class="icon-btn" type="button" aria-label="Switch to light mode">
+        <svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+    <button id="vehicleCard" class="vehicle-card" type="button">
+      <svg class="icon vehicle-icon" aria-hidden="true"><use href="#i-truck"/></svg>
+      <span class="vehicle-text">
+        <span id="vehicleTitle" class="vehicle-title">Add your vehicle</span>
+        <span id="vehicleSub" class="vehicle-sub">For answers that fit your truck or car</span>
+      </span>
+      <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+    </button>
   </header>
 
-  <main id="main">
-    <!-- Diagnose tab -->
-    <section id="tab-diagnose" class="tab-panel" aria-labelledby="tabbtn-diagnose">
-      <div id="chat" class="chat" aria-live="polite"></div>
+  <main id="main" tabindex="-1">
+    <!-- Chat -->
+    <section id="tab-chat" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-chat">
+      <h1 class="sr-only">Diagnose a problem</h1>
+      <div id="chat" class="chat" aria-live="polite" aria-relevant="additions">
+        <!-- Skeleton shown while the model loads -->
+        <div class="skeleton-msg" aria-hidden="true"><span class="sk sk-line w80"></span><span class="sk sk-line w60"></span><span class="sk sk-line w40"></span></div>
+        <div class="skeleton-chips" aria-hidden="true"><span class="sk sk-chip"></span><span class="sk sk-chip"></span><span class="sk sk-chip"></span></div>
+        <p class="sr-only" id="loadingNote">Loading the diagnosis model…</p>
+      </div>
     </section>
 
-    <!-- Codes tab -->
-    <section id="tab-codes" class="tab-panel" aria-labelledby="tabbtn-codes" hidden>
-      <h2>Trouble code lookup</h2>
-      <form id="codeForm" class="row" autocomplete="off">
+    <!-- Codes -->
+    <section id="tab-codes" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-codes" hidden>
+      <h1 class="page-title">Trouble codes</h1>
+      <p class="page-sub">Type the code from your scanner. We'll format it for you.</p>
+      <form id="codeForm" class="search" autocomplete="off" role="search">
         <label class="sr-only" for="codeInput">Trouble code</label>
-        <input id="codeInput" class="input" placeholder="e.g. P0300" maxlength="5" autocapitalize="characters" spellcheck="false">
-        <button class="btn primary" type="submit">Look up</button>
+        <svg class="icon search-icon" aria-hidden="true"><use href="#i-code"/></svg>
+        <input id="codeInput" class="input search-input" placeholder="P0300" maxlength="6" autocapitalize="characters" autocorrect="off" spellcheck="false" enterkeyhint="search" aria-describedby="codeHint">
       </form>
-      <div id="codeResult"></div>
-      <p class="muted small">Get codes with a cheap OBD-II scanner or free at most parts stores. On a 2005 GM truck the port is under the dash, left of the steering column.</p>
+      <p id="codeHint" class="hint">A letter (P, B, C or U) and 4 characters.</p>
+      <div id="codeResult" aria-live="polite">
+        <div class="skeleton-card" aria-hidden="true"><span class="sk sk-line w40"></span><span class="sk sk-line w80"></span><span class="sk sk-line w60"></span></div>
+      </div>
     </section>
 
-    <!-- My Vehicle tab -->
-    <section id="tab-vehicle" class="tab-panel" aria-labelledby="tabbtn-vehicle" hidden>
-      <h2>Vehicle profile</h2>
+    <!-- My Vehicle -->
+    <section id="tab-vehicle" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-vehicle" hidden>
+      <h1 class="page-title">My vehicle</h1>
+      <p class="page-sub">Saved on this phone so answers and log entries fit your vehicle.</p>
       <form id="profileForm" class="card form-grid" autocomplete="off">
         <label>Year <input class="input" name="year" inputmode="numeric" maxlength="4" placeholder="2005"></label>
         <label>Make <input class="input" name="make" maxlength="30" placeholder="Chevy"></label>
-        <label>Model <input class="input" name="model" maxlength="40" placeholder="Silverado 2500HD"></label>
+        <label class="full">Model <input class="input" name="model" maxlength="40" placeholder="Silverado 2500HD"></label>
         <label>Engine <input class="input" name="engine" maxlength="30" placeholder="6.0L V8"></label>
         <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7" placeholder="185000"></label>
-        <button class="btn primary" type="submit">Save vehicle</button>
-        <p id="profileSaved" class="muted small" hidden>Saved.</p>
+        <button class="btn primary full" type="submit">Save vehicle</button>
+        <p id="profileSaved" class="hint full" role="status"></p>
       </form>
 
-      <h2>Repair log</h2>
-      <form id="logForm" class="card form-grid" autocomplete="off">
-        <label>Date <input class="input" type="date" name="date" required></label>
-        <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7"></label>
-        <label class="full">Note <textarea class="input" name="note" rows="2" maxlength="500" required placeholder="Replaced front pads and rotors"></textarea></label>
-        <button class="btn primary" type="submit">Add entry</button>
-      </form>
-      <ul id="logList" class="log-list"></ul>
-
-      <h2>Teach the model</h2>
+      <h2 class="section-title">Teach the model</h2>
       <div class="card">
-        <p><strong id="trainCount">0</strong> saved training examples.</p>
-        <p class="muted small">Each "That was it" or "Something else" answer is saved here. Copy them, paste them at the end of <code>data/symptoms.csv</code> on GitHub, and the app retrains itself.</p>
-        <div class="row">
+        <p class="stat"><strong id="trainCount">0</strong> <span>saved examples</span></p>
+        <p class="hint">Each "That was it" or "Something else" answer is saved here. Copy them, paste at the end of <code>data/symptoms.csv</code> on GitHub, and the app retrains itself.</p>
+        <div class="btn-row">
           <button id="copyTraining" class="btn primary" type="button">Copy as CSV</button>
           <button id="clearTraining" class="btn" type="button">Clear</button>
         </div>
-        <p id="copyStatus" class="muted small" hidden></p>
+        <p id="copyStatus" class="hint" role="status"></p>
       </div>
 
-      <p class="muted small">Everything here stays on this phone. Nothing is sent anywhere.</p>
+      <h2 class="section-title">Privacy &amp; terms</h2>
+      <div class="card prose">
+        <p><strong>Your data stays on this phone.</strong> Your vehicle, repair log and training examples are saved in this browser only. Nothing is sent to us or anyone else. No accounts, cookies, ads, analytics or trackers.</p>
+        <p>Delete it any time with the button below, or by clearing this site's data in your browser settings.</p>
+        <p><strong>Guidance only.</strong> Car Doctor suggests likely causes from what you type. It can be wrong and is not a professional inspection or repair advice. If something feels unsafe (brakes, steering, overheating, fuel or exhaust smells), don't drive it and have a qualified mechanic check it. Use jack stands, chock the wheels, and let the engine cool before working on it. The app is free, provided as-is, and meant for adults; it isn't directed at children under 13.</p>
+        <p class="hint">Made by Caylor Made Technologies · Hereford, TX 79045 · <a href="mailto:jonathoncaylor2@gmail.com">jonathoncaylor2@gmail.com</a> · <a href="https://caylor-made-technologies.pages.dev" rel="noopener">caylor-made-technologies.pages.dev</a></p>
+        <button id="deleteAll" class="btn danger full-width" type="button">Delete all my data</button>
+      </div>
+    </section>
+
+    <!-- Log -->
+    <section id="tab-log" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-log" hidden>
+      <h1 class="page-title">Repair log</h1>
+      <p class="page-sub">Keep track of what you fixed and when.</p>
+      <form id="logForm" class="card form-grid" autocomplete="off">
+        <label>Date <input class="input" type="date" name="date" required></label>
+        <label>Mileage <input class="input" name="mileage" inputmode="numeric" maxlength="7"></label>
+        <label class="full">What was done <textarea class="input" name="note" rows="2" maxlength="500" required placeholder="Replaced front pads and rotors"></textarea></label>
+        <button class="btn primary full" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add entry</button>
+      </form>
+      <ul id="logList" class="log-list" aria-label="Repair log entries"></ul>
     </section>
   </main>
 
-  <form id="composer" class="composer" autocomplete="off">
+  <form id="composer" class="composer" autocomplete="off" aria-label="Send a message">
     <label class="sr-only" for="msgInput">Describe the problem</label>
-    <input id="msgInput" class="input" placeholder="Describe the problem…" maxlength="400" enterkeyhint="send">
-    <button class="btn primary" type="submit" id="sendBtn">Send</button>
+    <input id="msgInput" class="input composer-input" placeholder="Describe the problem…" maxlength="400" enterkeyhint="send">
+    <button class="send-btn" type="submit" id="sendBtn" aria-label="Send">
+      <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>
+    </button>
   </form>
 
-  <nav class="tabbar" role="tablist" aria-label="Sections">
-    <button role="tab" id="tabbtn-diagnose" data-tab="diagnose" aria-selected="true"><span aria-hidden="true">🩺</span>Diagnose</button>
-    <button role="tab" id="tabbtn-codes" data-tab="codes" aria-selected="false"><span aria-hidden="true">🔎</span>Codes</button>
-    <button role="tab" id="tabbtn-vehicle" data-tab="vehicle" aria-selected="false"><span aria-hidden="true">🛻</span>My Vehicle</button>
+  <nav aria-label="Sections">
+  <div class="tabbar" role="tablist" aria-label="Sections">
+    <button role="tab" id="tabbtn-chat" data-tab="chat" aria-controls="tab-chat" aria-selected="true">
+      <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg><span>Chat</span>
+    </button>
+    <button role="tab" id="tabbtn-codes" data-tab="codes" aria-controls="tab-codes" aria-selected="false" tabindex="-1">
+      <svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Codes</span>
+    </button>
+    <button role="tab" id="tabbtn-vehicle" data-tab="vehicle" aria-controls="tab-vehicle" aria-selected="false" tabindex="-1">
+      <svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span>My Vehicle</span>
+    </button>
+    <button role="tab" id="tabbtn-log" data-tab="log" aria-controls="tab-log" aria-selected="false" tabindex="-1">
+      <svg class="icon" aria-hidden="true"><use href="#i-log"/></svg><span>Log</span>
+    </button>
+  </div>
   </nav>
 </body>
 </html>
