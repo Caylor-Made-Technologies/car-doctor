@@ -3,6 +3,9 @@
     "name": "Weak or dead battery",
     "severity": "medium",
     "diy": "Easy",
+    "plain": "Your battery doesn't have enough power left to start the engine. Think of it like a phone at 1%.",
+    "drive": "Yes, once it starts. If it needed a jump, drive 30+ minutes so it can recharge.",
+    "todo": "Get a jump start, then have the battery tested. Most parts stores test it free in about 5 minutes.",
     "summary": "The battery doesn't have enough charge to spin the starter. Fast clicking, dim lights, or a slow crank are the classic signs, especially on cold mornings.",
     "checks": [
       "Measure battery voltage with the truck off for an hour: 12.6V is full, 12.2V is about half, under 12.0V is flat.",
@@ -15,6 +18,9 @@
     "name": "Bad starter or solenoid",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "The starter is the small motor that spins the engine to get it going. The battery is fine, but the starter isn't doing its job.",
+    "drive": "If it starts, yes, but it may leave you stranded next time. Don't shut it off somewhere you can't get help.",
+    "todo": "Ask a shop or parts store to test the starter. Tell them: \"one click, lights stay bright, engine doesn't turn.\"",
     "summary": "The battery is fine but the starter won't spin the engine. Usually one loud click, a grinding whir, or nothing at all when you turn the key.",
     "checks": [
       "Confirm the battery reads 12.4V+ and the headlights stay bright while you try to start.",
@@ -27,6 +33,9 @@
     "name": "Bad alternator / charging problem",
     "severity": "high",
     "diy": "Medium",
+    "plain": "The alternator recharges the battery while you drive. When it fails, the vehicle runs on the battery until it goes dead.",
+    "drive": "Only a short distance. It can die while driving, so head straight to a shop or home.",
+    "todo": "Have the charging system tested (free at most parts stores). Replacing a battery alone won't fix this.",
     "summary": "The alternator isn't recharging the battery, so the truck runs off the battery until it dies. Battery light, dimming lights, and a whine that rises with RPM are common.",
     "checks": [
       "With the engine running, battery voltage should be 13.8 to 14.7V. Under 13.2V means it isn't charging.",
@@ -39,6 +48,9 @@
     "name": "Worn brake pads",
     "severity": "high",
     "diy": "Medium",
+    "plain": "Brake pads are what squeeze to stop the wheels. They wear down over time, like an eraser.",
+    "drive": "Squealing: yes, but get it done soon. Grinding: only to a shop; it's metal on metal and gets worse fast.",
+    "todo": "Get a brake inspection. Fixing it early (pads only) costs much less than waiting until the rotors are ruined too.",
     "summary": "The pad friction material is worn thin. A high squeal means the wear indicator is touching; grinding means metal on metal and the rotors are getting damaged.",
     "checks": [
       "Look through the wheel at the pad: replace at 3 mm (about 1/8 in.) of material or less.",
@@ -51,6 +63,9 @@
     "name": "Warped or uneven brake rotors",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "The rotors are the metal discs the brake pads squeeze. When they wear unevenly, you feel a pulse or shake while braking.",
+    "drive": "Yes, carefully. Brakes still work, just not as smoothly. Leave extra stopping room.",
+    "todo": "Ask a shop to check the rotors. They're often replaced together with the brake pads.",
     "summary": "The rotors have uneven thickness, so the pads grab and release as the wheel turns. You feel it as a pulsing brake pedal or steering wheel shake only while braking.",
     "checks": [
       "Feel for a pulsing pedal or wheel shake that happens only when braking, worst from highway speed.",
@@ -63,6 +78,9 @@
     "name": "Brake fluid leak / hydraulic failure",
     "severity": "critical",
     "diy": "Shop",
+    "plain": "The brakes work by pushing fluid through lines. If fluid leaks out, the brakes can stop working.",
+    "drive": "No. Don't drive it. Have it towed or fixed where it is.",
+    "todo": "Call a tow or a mobile mechanic. Tell them the pedal feels soft or goes to the floor.",
     "summary": "Brake fluid is leaking or the hydraulic system is failing, so the brakes may stop working. A soft or sinking pedal is an emergency.",
     "checks": [
       "Check the master cylinder level; it should be between MIN and MAX. Fluid is clear to amber and slippery.",
@@ -75,6 +93,9 @@
     "name": "Bad wheel bearing / hub",
     "severity": "high",
     "diy": "Medium",
+    "plain": "Wheel bearings let each wheel spin smoothly. A worn one hums or growls, louder as you go faster.",
+    "drive": "Short trips at normal speed, yes, but get it fixed soon. A bad bearing can eventually let the wheel wobble or lock up.",
+    "todo": "Ask a shop to check the wheel bearings. Tell them which side the noise seems to come from and if it changes when you turn.",
     "summary": "A worn wheel bearing makes a hum or growl that gets louder with speed and often changes when you swerve left or right.",
     "checks": [
       "On a gentle curve, the noise usually gets louder when weight shifts onto the bad side.",
@@ -87,6 +108,9 @@
     "name": "Worn serpentine belt or tensioner",
     "severity": "medium",
     "diy": "Easy",
+    "plain": "A rubber belt on the front of the engine runs the charging, steering and cooling parts. When it's worn or loose, it squeals.",
+    "drive": "Yes for now. If it breaks, you'll lose power steering and charging and the engine can overheat, so don't wait long.",
+    "todo": "A belt is cheap and quick to replace. Ask for a belt and tensioner check.",
     "summary": "The belt that drives the alternator, power steering and water pump is slipping or worn. It squeals at startup, in the cold, or when the A/C or steering loads it.",
     "checks": [
       "Look for cracks across the ribs, glazing, chunks missing, or fraying edges.",
@@ -99,6 +123,9 @@
     "name": "Engine misfire (plugs, wires, coils)",
     "severity": "high",
     "diy": "Medium",
+    "plain": "One of the engine's cylinders isn't firing right, usually from worn spark plugs or a bad ignition coil. The engine shakes and loses power.",
+    "drive": "Short distances if it's mild. If the check engine light is flashing, park it. Driving can damage expensive exhaust parts.",
+    "todo": "Get the code read (free at most parts stores). Spark plugs and coils are common, fairly cheap fixes.",
     "summary": "One or more cylinders isn't firing properly, so the engine shakes, runs rough, and loses power. A flashing check engine light means a severe misfire that can damage the converter.",
     "checks": [
       "Read the code: P0300 is random, P0301 to P0308 names the cylinder.",
@@ -111,6 +138,9 @@
     "name": "Dirty or failing MAF sensor",
     "severity": "medium",
     "diy": "Easy",
+    "plain": "A sensor measures the air going into the engine. When it's dirty, the engine gets the wrong fuel mix and stumbles or hesitates.",
+    "drive": "Yes. It's annoying, not dangerous. Be careful pulling into traffic if it hesitates.",
+    "todo": "Cleaning the sensor with a $10 spray can fix it. Get the code read first to confirm.",
     "summary": "The mass air flow sensor measures air going into the engine. When it's dirty the computer adds the wrong amount of fuel, causing hesitation, surging, stalling, or bad mileage.",
     "checks": [
       "Read codes: P0101 to P0103 point straight at the MAF; P0171/P0174 lean codes can too.",
@@ -123,6 +153,9 @@
     "name": "Vacuum leak",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "Air is sneaking into the engine through a cracked hose or gasket. The engine idles high or rough and may hiss.",
+    "drive": "Yes. Get it checked so it doesn't cause bigger problems over time.",
+    "todo": "Ask a shop for a \"smoke test\". It finds the leak fast. Often it's just a cheap cracked hose.",
     "summary": "Air is sneaking into the engine past the MAF sensor, so it runs lean. Expect a high or rough idle, a hissing sound, and lean codes P0171/P0174.",
     "checks": [
       "Listen for a hiss around the intake manifold, PCV hoses and brake booster hose with the engine idling.",
@@ -135,6 +168,9 @@
     "name": "Fuel delivery problem (pump, filter, pressure)",
     "severity": "high",
     "diy": "Hard",
+    "plain": "The engine isn't getting enough fuel, often from a weak fuel pump or clogged fuel filter.",
+    "drive": "Risky. It can stall while driving, including on the highway. Avoid long trips until it's checked.",
+    "todo": "Ask a shop to test fuel pressure. Mention if it cranks normally but won't start, or loses power going uphill.",
     "summary": "The engine isn't getting enough fuel pressure. It may crank but not start, lose power going uphill or under load, or sputter at highway speed.",
     "checks": [
       "Turn the key to ON and listen for the pump to hum for about 2 seconds from the tank.",
@@ -147,6 +183,9 @@
     "name": "Engine overheating",
     "severity": "critical",
     "diy": "Shop",
+    "plain": "The engine is too hot. Coolant is low, leaking, or not flowing. Heat can wreck an engine in minutes.",
+    "drive": "No. Pull over safely and turn it off. Don't open the radiator cap while hot.",
+    "todo": "Let it cool at least 30 minutes. Check the coolant level, then get it towed or checked before driving far.",
     "summary": "The engine is running too hot. Driving an overheating engine can warp the heads or blow the head gasket in minutes.",
     "checks": [
       "Pull over and shut it off. Never open the radiator cap hot; wait until the hose is soft and cool.",
@@ -159,6 +198,9 @@
     "name": "Thermostat stuck open",
     "severity": "low",
     "diy": "Easy",
+    "plain": "A part called the thermostat controls engine temperature. Stuck open, the engine never fully warms up, so heat is weak.",
+    "drive": "Yes. It's not urgent, but you'll get weak heat and worse gas mileage.",
+    "todo": "A thermostat is a fairly cheap part. Ask a shop to replace it.",
     "summary": "The thermostat isn't closing, so the engine never warms up fully. Weak heat, a temp gauge that stays low, worse mileage, and code P0128 are typical.",
     "checks": [
       "Watch the temp gauge: it should reach about 195 to 210°F within 10 to 15 minutes of driving.",
@@ -171,6 +213,9 @@
     "name": "Transmission problem",
     "severity": "high",
     "diy": "Shop",
+    "plain": "The transmission changes gears. Slipping, late, or hard shifts mean it's struggling, often from low or old fluid.",
+    "drive": "Gently and only if needed. Avoid towing or hard acceleration. Driving it slipping makes it worse fast.",
+    "todo": "Have the fluid checked first; it's often the cheapest fix. Then get the codes read at a transmission shop.",
     "summary": "The transmission is slipping, shifting late or hard, or not engaging gears. Catching it early with a fluid and code check can save a rebuild.",
     "checks": [
       "Check fluid level hot with the engine running in park. It should be red and not smell burnt.",
@@ -183,6 +228,9 @@
     "name": "Worn CV axle",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "A CV axle connects a front wheel to the engine. When its joint wears out, it clicks when you turn.",
+    "drive": "Yes for now. If it breaks, the wheel stops getting power, so don't wait months.",
+    "todo": "Ask a shop to replace the CV axle. It's a common, moderate repair.",
     "summary": "The constant velocity joint on a front axle is worn. It clicks or pops when turning sharply, usually after the rubber boot tears and the grease leaks out.",
     "checks": [
       "Turn the wheel fully one way and drive slowly in a circle: clicking that gets faster with speed is a worn outer CV joint.",
@@ -195,6 +243,9 @@
     "name": "Worn U-joint (driveshaft)",
     "severity": "high",
     "diy": "Medium",
+    "plain": "U-joints are the flexible joints in the driveshaft under the truck. Worn ones clunk and squeak.",
+    "drive": "Short trips. A broken U-joint can drop the driveshaft while moving, so get it fixed soon.",
+    "todo": "U-joints are cheap parts. Ask a shop to check the driveshaft joints, especially on a lifted truck.",
     "summary": "A universal joint in the driveshaft is worn. It clunks when shifting into gear, squeaks at low speed, and causes a vibration that gets worse with speed.",
     "checks": [
       "Under the truck (parked, wheels chocked) grab the driveshaft near each U-joint and twist and lift: any play means it's worn.",
@@ -207,6 +258,9 @@
     "name": "Tires out of balance or damaged",
     "severity": "low",
     "diy": "Shop",
+    "plain": "A tire is out of balance or damaged, so it wobbles at speed and you feel a shake.",
+    "drive": "Yes. But check the tires for bulges first. A bulge can blow out.",
+    "todo": "Ask a tire shop to balance the tires. It's quick and cheap.",
     "summary": "A wheel weight fell off or a tire is damaged, so the wheel wobbles at speed. You feel a shake in the steering wheel or seat, usually between 55 and 75 mph.",
     "checks": [
       "Note the speed the shake starts. Balance problems usually show up at 55 to 70 mph and may smooth out above.",
@@ -219,6 +273,9 @@
     "name": "Wheel alignment off",
     "severity": "low",
     "diy": "Shop",
+    "plain": "Your wheels aren't pointed perfectly straight, so it pulls to one side and wears tires faster.",
+    "drive": "Yes. It's not urgent, but it wears out tires, which are expensive.",
+    "todo": "Ask for a wheel alignment. Check tire pressure first; one low tire can cause a pull.",
     "summary": "The wheels aren't pointed straight, so the truck pulls to one side, the steering wheel sits crooked, and the tires wear unevenly.",
     "checks": [
       "Check tire pressures first; one low tire can cause a pull.",
@@ -231,6 +288,9 @@
     "name": "Exhaust leak",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "Exhaust gas is escaping before it should, causing a ticking or loud rumble.",
+    "drive": "Yes, with windows cracked. If you smell exhaust inside, fix it fast; the fumes are dangerous.",
+    "todo": "Ask a shop to find the exhaust leak. On GM trucks it's often a broken exhaust manifold bolt.",
     "summary": "Exhaust gas is escaping before the muffler. It sounds like a tick at cold start or a loud rumble, and exhaust fumes in the cab are dangerous.",
     "checks": [
       "GM trucks: a tick at cold start that fades as it warms up is the classic broken exhaust manifold bolt. Look for black soot streaks at the manifold.",
@@ -243,6 +303,9 @@
     "name": "Oil leak or low oil",
     "severity": "high",
     "diy": "Medium",
+    "plain": "The engine is losing oil or running low. Oil keeps the engine from grinding itself apart.",
+    "drive": "Only after you add oil to the right level. If the oil light is on, stop driving.",
+    "todo": "Check the oil (see the dipstick) and top it up. Then have the leak found before it gets worse.",
     "summary": "Oil is leaking or running low. Low oil can ruin the engine, so check it right away if you see drips, smell burning oil, or the oil light comes on.",
     "checks": [
       "Check the dipstick on level ground with the engine off for a few minutes; top up if it's below ADD.",
@@ -255,6 +318,9 @@
     "name": "Power steering problem",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "The power steering helps you turn the wheel easily. Low fluid or a weak pump makes it whine or feel heavy.",
+    "drive": "Yes, but steering takes more effort, especially when parking. Get it checked soon.",
+    "todo": "Check the power steering fluid level. If it's low, there's likely a leak to fix.",
     "summary": "The power steering pump, fluid or hoses are causing a whine, groan, or hard steering, often worse at low speed or when parking.",
     "checks": [
       "Check the fluid level and color in the reservoir; dark or foamy fluid needs a flush.",
@@ -267,6 +333,9 @@
     "name": "A/C not cooling",
     "severity": "low",
     "diy": "Shop",
+    "plain": "The air conditioning is low on refrigerant (the stuff that makes cold air) or a part isn't switching on.",
+    "drive": "Yes, it's only comfort. Just stay cool in the heat.",
+    "todo": "Ask a shop for an A/C check. Topping it off without fixing the leak only works for a while.",
     "summary": "The air conditioning blows warm or weak. It's usually low refrigerant from a leak, a compressor clutch that won't engage, or a blend door issue.",
     "checks": [
       "With A/C on, see if the compressor clutch in the front of the compressor is spinning.",
@@ -279,6 +348,9 @@
     "name": "Bad electrical ground or wiring",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "A loose or corroded wire connection is causing weird electrical problems that come and go.",
+    "drive": "Usually yes. But if it causes random no-starts, don't rely on it far from home.",
+    "todo": "Ask a shop to check the ground connections. Cleaning and tightening them is often a cheap fix.",
     "summary": "A corroded or loose ground strap or wire causes strange electrical problems: flickering lights, gauges that jump, random no-starts, and odd warning lights.",
     "checks": [
       "Check the engine-to-frame and battery-to-body ground straps for corrosion; clean to bare metal and tighten.",
@@ -291,6 +363,9 @@
     "name": "Worn suspension or steering parts",
     "severity": "medium",
     "diy": "Medium",
+    "plain": "Parts that hold the wheels and smooth out bumps are worn. You get clunks, bouncing, or loose steering.",
+    "drive": "Yes, carefully. Loose steering or a big wobble means slow down and get it checked soon.",
+    "todo": "Ask a shop for a front-end and suspension inspection. Lifted trucks wear these parts faster.",
     "summary": "Worn ball joints, tie rods, idler arm, shocks or bushings cause clunks over bumps, loose steering, and a bouncy or wandering ride.",
     "checks": [
       "Push down hard on each corner: it should bounce once and settle. More bounces mean worn shocks.",

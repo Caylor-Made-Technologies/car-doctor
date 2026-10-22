@@ -7,7 +7,7 @@
   <meta name="referrer" content="no-referrer">
   <title>Car Doctor</title>
   <meta name="description" content="Diagnose car and truck problems from symptoms and OBD-II trouble codes. Works offline.">
-  <meta name="theme-color" content="#0b0d12">
+  <meta name="theme-color" content="#0b0f14">
   <meta name="color-scheme" content="dark light">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -17,6 +17,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Car Doctor">
   <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
@@ -36,12 +37,15 @@
     <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-6 16-2.5-6.5z"/><path d="M11.5 13.5 20 4"/></symbol>
     <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4.5 1.8 6 1.8 6H4.2S6 14.5 6 10z"/><path d="M10 19.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
     <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4.5 7h15M10 7V5h4v2M6.5 7l1 13h9l1-13"/></symbol>
   </svg>
 
   <header class="topbar">
     <div class="topbar-row">
-      <p class="brand"><svg class="icon brand-icon" aria-hidden="true"><use href="#i-pulse"/></svg><span>Car Doctor</span></p>
+      <p class="brand"><svg class="icon brand-icon" aria-hidden="true"><use href="#i-pulse"/></svg><span class="brand-text"><span class="brand-name">Car Doctor</span><span class="brand-by">by Caylor Made Technologies</span></span></p>
       <button id="themeToggle" class="icon-btn" type="button" aria-label="Switch to light mode">
         <svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg>
       </button>
@@ -71,7 +75,7 @@
     <!-- Codes -->
     <section id="tab-codes" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-codes" hidden>
       <h1 class="page-title">Trouble codes</h1>
-      <p class="page-sub">Type the code from your scanner. We'll format it for you.</p>
+      <p class="page-sub">When the check engine light comes on, the vehicle saves a code. Type it here to see what it means.</p>
       <form id="codeForm" class="search" autocomplete="off" role="search">
         <label class="sr-only" for="codeInput">Trouble code</label>
         <svg class="icon search-icon" aria-hidden="true"><use href="#i-code"/></svg>
@@ -111,11 +115,44 @@
       <h2 class="section-title">Privacy &amp; terms</h2>
       <div class="card prose">
         <p><strong>Your data stays on this phone.</strong> Your vehicle, repair log and training examples are saved in this browser only. Nothing is sent to us or anyone else. No accounts, cookies, ads, analytics or trackers.</p>
+        <p>Reminders you add to your calendar go to your phone's Calendar app. If you pick "Google Calendar", the reminder's title and date are sent to Google so it can create the event; nothing else is.</p>
         <p>Delete it any time with the button below, or by clearing this site's data in your browser settings.</p>
         <p><strong>Guidance only.</strong> Car Doctor suggests likely causes from what you type. It can be wrong and is not a professional inspection or repair advice. If something feels unsafe (brakes, steering, overheating, fuel or exhaust smells), don't drive it and have a qualified mechanic check it. Use jack stands, chock the wheels, and let the engine cool before working on it. The app is free, provided as-is, and meant for adults; it isn't directed at children under 13.</p>
         <p class="hint">Made by Caylor Made Technologies · Hereford, TX 79045 · <a href="mailto:jonathoncaylor2@gmail.com">jonathoncaylor2@gmail.com</a> · <a href="https://caylor-made-technologies.pages.dev" rel="noopener">caylor-made-technologies.pages.dev</a></p>
         <button id="deleteAll" class="btn danger full-width" type="button">Delete all my data</button>
       </div>
+    </section>
+
+    <!-- Reminders -->
+    <section id="tab-reminders" class="tab-panel" role="tabpanel" aria-labelledby="tabbtn-reminders" hidden>
+      <h1 class="page-title">Reminders</h1>
+      <p class="page-sub">Never forget an oil change. Add a reminder, then put it in your phone's calendar so it alerts you.</p>
+      <h2 class="section-title first">Your reminders</h2>
+      <div id="dueList" class="reminder-list" aria-live="polite"></div>
+
+      <h2 class="section-title">Add a reminder</h2>
+      <form id="reminderForm" class="card form-grid" autocomplete="off">
+        <label class="full">What needs doing?
+          <select class="input" name="type" id="reminderType"></select>
+        </label>
+        <p id="reminderWhy" class="why full"></p>
+        <label class="full" id="customTitleWrap" hidden>Name it <input class="input" name="title" maxlength="60" placeholder="e.g. Replace wiper blades"></label>
+        <label>Date <input class="input" type="date" name="date" required></label>
+        <label>Time <input class="input" type="time" name="time" value="09:00" required></label>
+        <label class="full">Repeat
+          <select class="input" name="repeat">
+            <option value="0">Just once</option>
+            <option value="1">Every month</option>
+            <option value="3">Every 3 months</option>
+            <option value="6">Every 6 months</option>
+            <option value="12">Every year</option>
+          </select>
+        </label>
+        <label class="full">Or due at mileage (optional) <input class="input" name="mileage" inputmode="numeric" maxlength="7" placeholder="190000"></label>
+        <button class="btn primary full" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Save reminder</button>
+        <p id="reminderSaved" class="hint full" role="status"></p>
+      </form>
+      <p class="hint">Your phone's Calendar app does the alerting (the day before and at the time you pick), even when Car Doctor is closed.</p>
     </section>
 
     <!-- Log -->
@@ -148,11 +185,14 @@
     <button role="tab" id="tabbtn-codes" data-tab="codes" aria-controls="tab-codes" aria-selected="false" tabindex="-1">
       <svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>Codes</span>
     </button>
-    <button role="tab" id="tabbtn-vehicle" data-tab="vehicle" aria-controls="tab-vehicle" aria-selected="false" tabindex="-1">
-      <svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span>My Vehicle</span>
+    <button role="tab" id="tabbtn-reminders" data-tab="reminders" aria-controls="tab-reminders" aria-selected="false" tabindex="-1">
+      <svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span>Reminders</span><span class="badge" id="dueBadge" hidden></span>
     </button>
     <button role="tab" id="tabbtn-log" data-tab="log" aria-controls="tab-log" aria-selected="false" tabindex="-1">
       <svg class="icon" aria-hidden="true"><use href="#i-log"/></svg><span>Log</span>
+    </button>
+    <button role="tab" id="tabbtn-vehicle" data-tab="vehicle" aria-controls="tab-vehicle" aria-selected="false" tabindex="-1">
+      <svg class="icon" aria-hidden="true"><use href="#i-truck"/></svg><span>Vehicle</span>
     </button>
   </div>
   </nav>

@@ -105,13 +105,20 @@ def main():
     bad = [k for k, c in causes.items()
            if c.get("severity") not in {"low", "medium", "high", "critical"}
            or c.get("diy") not in {"Easy", "Medium", "Hard", "Shop"}
-           or not c.get("name") or not c.get("summary") or not 3 <= len(c.get("checks", [])) <= 4]
+           or not c.get("name") or not c.get("summary") or not 3 <= len(c.get("checks", [])) <= 4
+           or not c.get("plain") or not c.get("drive") or not c.get("todo")]
     check(not bad, f"causes.json entries are complete {bad or ''}")
 
     # 3. Codes point at real causes.
     bad_codes = sorted(code for code, info in codes.items() if info.get("related") not in causes)
     check(not bad_codes, f"every code's related cause exists {bad_codes or ''}")
     check(len(codes) >= 60, f"codes.json has 60+ codes ({len(codes)})")
+
+    # 3b. Glossary entries are usable.
+    glossary = json.loads((APP / "glossary.json").read_text(encoding="utf-8"))
+    bad_terms = [g.get("term") for g in glossary
+                 if not g.get("term") or not g.get("text") or not (g.get("match") or g.get("regex"))]
+    check(not bad_terms, f"glossary.json entries are complete {bad_terms or ''}")
 
     # 4. Model matches the data.
     check(sorted(model["classes"]) == sorted(labels), "model.json classes match the CSV labels")

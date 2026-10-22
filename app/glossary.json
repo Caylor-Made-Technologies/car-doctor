@@ -1,0 +1,602 @@
+[
+ {
+  "term": "Volts (V)",
+  "text": "How much electrical push the battery has. A healthy battery reads about 12.6V with the engine off, and 13.8 to 14.7V running. You check it with a cheap multimeter (about $15) or free at a parts store.",
+  "regex": "\\d+(?:\\.\\d+)?(?:\\s?to\\s?\\d+(?:\\.\\d+)?)?\\s?V\\b"
+ },
+ {
+  "term": "psi",
+  "text": "Pounds per square inch: a measure of pressure, the same unit as tire pressure. A shop uses a gauge to measure it.",
+  "match": [
+   "psi"
+  ]
+ },
+ {
+  "term": "mm",
+  "text": "Millimeters. 3 mm is about the thickness of two stacked coins.",
+  "regex": "\\d+(?:\\.\\d+)?\\s?mm\\b"
+ },
+ {
+  "term": "mA",
+  "text": "Milliamps: a tiny amount of electricity. Used to check if something drains the battery while parked.",
+  "regex": "\\d+\\s?mA\\b"
+ },
+ {
+  "term": "ft-lb",
+  "text": "Foot-pounds: how tight a bolt should be. Set with a torque wrench, which clicks when it's right.",
+  "match": [
+   "ft-lb"
+  ]
+ },
+ {
+  "term": "°F",
+  "text": "Engine temperature in Fahrenheit. Normal is the middle of your temperature gauge.",
+  "regex": "\\d+(?:\\s?to\\s?\\d+)?°F"
+ },
+ {
+  "term": "g/s",
+  "text": "Grams per second: how much air goes into the engine. Only shown on a scan tool.",
+  "match": [
+   "g/s"
+  ]
+ },
+ {
+  "term": "in.",
+  "text": "Inches. 1/8 inch is about the thickness of a coin; 1/32 inch is about a paper clip wire.",
+  "regex": "\\d+/\\d+\\s?in\\."
+ },
+ {
+  "term": "Multimeter",
+  "text": "A cheap handheld tool (about $15) that measures volts. Touch the red probe to + and black to - on the battery.",
+  "match": [
+   "multimeter"
+  ]
+ },
+ {
+  "term": "Rotor",
+  "text": "The shiny metal disc behind each wheel. The brake pads squeeze it to stop the vehicle.",
+  "match": [
+   "rotor",
+   "rotors"
+  ]
+ },
+ {
+  "term": "Brake pads",
+  "text": "The parts that press on the rotors to stop the wheels. They wear down like an eraser and get replaced.",
+  "match": [
+   "pad",
+   "pads",
+   "brake pads"
+  ]
+ },
+ {
+  "term": "Caliper",
+  "text": "The clamp at each wheel that squeezes the brake pads onto the rotor.",
+  "match": [
+   "caliper",
+   "calipers"
+  ]
+ },
+ {
+  "term": "Master cylinder",
+  "text": "The brake fluid tank under the hood, usually on the driver's side near the windshield. It has MIN and MAX lines.",
+  "match": [
+   "master cylinder"
+  ]
+ },
+ {
+  "term": "Brake lines",
+  "text": "Thin metal tubes that carry brake fluid to each wheel. Rust can eat through them.",
+  "match": [
+   "brake lines",
+   "steel lines",
+   "brake line"
+  ]
+ },
+ {
+  "term": "ABS",
+  "text": "Anti-lock brakes: keeps wheels from locking up in hard stops. Its light on the dash means that system has a problem.",
+  "match": [
+   "abs"
+  ]
+ },
+ {
+  "term": "Wheel bearing",
+  "text": "Parts inside each wheel that let it spin smoothly. Worn ones hum or growl.",
+  "match": [
+   "bearing",
+   "bearings",
+   "hub",
+   "hubs"
+  ]
+ },
+ {
+  "term": "Serpentine belt",
+  "text": "The long rubber belt on the front of the engine that turns the alternator, power steering pump and water pump.",
+  "match": [
+   "serpentine belt",
+   "belt"
+  ]
+ },
+ {
+  "term": "Tensioner",
+  "text": "A spring-loaded pulley that keeps the belt tight.",
+  "match": [
+   "tensioner"
+  ]
+ },
+ {
+  "term": "Pulley",
+  "text": "A wheel the belt rides on.",
+  "match": [
+   "pulley",
+   "pulleys",
+   "idler"
+  ]
+ },
+ {
+  "term": "Alternator",
+  "text": "Recharges the battery and powers the electrics while the engine runs.",
+  "match": [
+   "alternator"
+  ]
+ },
+ {
+  "term": "Starter",
+  "text": "The small motor that spins the engine when you turn the key. The solenoid is the switch on it that clicks.",
+  "match": [
+   "starter",
+   "solenoid"
+  ]
+ },
+ {
+  "term": "Parasitic draw",
+  "text": "Something that keeps using power with everything off and drains the battery overnight.",
+  "match": [
+   "parasitic draw"
+  ]
+ },
+ {
+  "term": "Spark plug",
+  "text": "Makes the spark that lights the fuel in each cylinder. Wears out and gets replaced.",
+  "match": [
+   "plug",
+   "plugs",
+   "spark plugs"
+  ]
+ },
+ {
+  "term": "Ignition coil",
+  "text": "Turns battery power into the big spark for the spark plug. One per cylinder on most trucks.",
+  "match": [
+   "coil",
+   "coils"
+  ]
+ },
+ {
+  "term": "Cylinder",
+  "text": "Where the fuel burns to make power. A V8 has 8 of them, numbered.",
+  "match": [
+   "cylinder",
+   "cylinders"
+  ]
+ },
+ {
+  "term": "Misfire",
+  "text": "When a cylinder doesn't fire properly. The engine shakes and runs rough.",
+  "match": [
+   "misfire",
+   "misfiring"
+  ]
+ },
+ {
+  "term": "Compression test",
+  "text": "A shop test that checks each cylinder seals well. Big differences mean internal engine wear.",
+  "match": [
+   "compression"
+  ]
+ },
+ {
+  "term": "MAF sensor",
+  "text": "A sensor in the air intake tube that measures air going into the engine.",
+  "match": [
+   "maf",
+   "mass air flow"
+  ]
+ },
+ {
+  "term": "Vacuum leak",
+  "text": "Air getting into the engine through a crack instead of through the air filter.",
+  "match": [
+   "vacuum"
+  ]
+ },
+ {
+  "term": "Fuel trims",
+  "text": "How much the engine computer is adding or removing fuel to correct the mix. Shown on a scan tool.",
+  "match": [
+   "fuel trims"
+  ]
+ },
+ {
+  "term": "Fuel pump",
+  "text": "Pushes gas from the tank to the engine. You can often hear it hum for 2 seconds when you turn the key on.",
+  "match": [
+   "fuel pump",
+   "pump"
+  ]
+ },
+ {
+  "term": "Fuel filter",
+  "text": "Catches dirt in the gas. On older GM trucks it's on the frame under the driver's side.",
+  "match": [
+   "fuel filter"
+  ]
+ },
+ {
+  "term": "Schrader valve",
+  "text": "A test port like a tire valve on the fuel rail. A shop hooks a pressure gauge to it.",
+  "match": [
+   "schrader valve"
+  ]
+ },
+ {
+  "term": "Thermostat",
+  "text": "A valve that keeps the engine at the right temperature by controlling coolant flow.",
+  "match": [
+   "thermostat"
+  ]
+ },
+ {
+  "term": "Coolant",
+  "text": "The colored liquid (often green or orange) that carries heat away from the engine. Check it only when the engine is cold.",
+  "match": [
+   "coolant",
+   "antifreeze"
+  ]
+ },
+ {
+  "term": "Radiator",
+  "text": "The big finned part at the very front that cools the coolant.",
+  "match": [
+   "radiator"
+  ]
+ },
+ {
+  "term": "Head gasket",
+  "text": "A seal inside the engine. When it fails, coolant and oil can mix. An expensive repair.",
+  "match": [
+   "head gasket"
+  ]
+ },
+ {
+  "term": "Fan clutch",
+  "text": "Makes the engine fan spin harder when the engine is hot. On trucks it's behind the radiator.",
+  "match": [
+   "fan clutch"
+  ]
+ },
+ {
+  "term": "Fluids",
+  "text": "Liquids your vehicle uses: brake, transmission, power steering, coolant, oil. Each has its own dipstick or tank.",
+  "match": [
+   "fluid",
+   "fluids"
+  ]
+ },
+ {
+  "term": "Torque converter",
+  "text": "Connects the engine to an automatic transmission, like a clutch.",
+  "match": [
+   "torque converter"
+  ]
+ },
+ {
+  "term": "CV axle",
+  "text": "The shaft that drives a front wheel. The rubber boot keeps grease in; once it tears, the joint wears out.",
+  "match": [
+   "cv axle",
+   "cv axles",
+   "cv joint",
+   "boot",
+   "boots"
+  ]
+ },
+ {
+  "term": "U-joint",
+  "text": "Flexible joints at the ends of the driveshaft (the long tube under the truck).",
+  "match": [
+   "u-joint",
+   "u-joints",
+   "u joint",
+   "u joints"
+  ]
+ },
+ {
+  "term": "Driveshaft",
+  "text": "The long spinning tube under the truck that sends power to the wheels.",
+  "match": [
+   "driveshaft"
+  ]
+ },
+ {
+  "term": "Zerk fitting",
+  "text": "A tiny nipple where you pump in grease with a grease gun.",
+  "match": [
+   "zerk fittings",
+   "zerk"
+  ]
+ },
+ {
+  "term": "Wheel balance",
+  "text": "Small weights on the rim that make the wheel spin evenly so it doesn't shake.",
+  "match": [
+   "balance",
+   "road-force"
+  ]
+ },
+ {
+  "term": "Alignment",
+  "text": "The angles of your wheels. A shop adjusts them so the vehicle drives straight and tires wear evenly.",
+  "match": [
+   "alignment",
+   "toe",
+   "camber"
+  ]
+ },
+ {
+  "term": "Tie rod",
+  "text": "Steering arms that connect the steering to the front wheels.",
+  "match": [
+   "tie rod",
+   "tie rods"
+  ]
+ },
+ {
+  "term": "Ball joint",
+  "text": "Pivot joints that let the front wheels turn and move up and down.",
+  "match": [
+   "ball joint",
+   "ball joints"
+  ]
+ },
+ {
+  "term": "Idler / pitman arm",
+  "text": "Steering linkage parts on GM trucks that wear out and cause loose steering.",
+  "match": [
+   "idler arm",
+   "pitman arm"
+  ]
+ },
+ {
+  "term": "Shocks",
+  "text": "They stop the vehicle from bouncing after bumps.",
+  "match": [
+   "shocks",
+   "shock",
+   "struts"
+  ]
+ },
+ {
+  "term": "Torsion bar",
+  "text": "The front spring on many 4WD GM trucks: a steel bar that twists.",
+  "match": [
+   "torsion bar"
+  ]
+ },
+ {
+  "term": "Exhaust manifold",
+  "text": "The pipe that bolts to the side of the engine and collects exhaust. Its bolts can break and cause a tick.",
+  "match": [
+   "exhaust manifold",
+   "manifold"
+  ]
+ },
+ {
+  "term": "O2 sensor",
+  "text": "Measures oxygen in the exhaust so the engine can fine-tune the fuel mix.",
+  "match": [
+   "o2 sensor",
+   "oxygen sensor"
+  ]
+ },
+ {
+  "term": "Catalytic converter",
+  "text": "Cleans the exhaust. Expensive; a misfire left too long can ruin it.",
+  "match": [
+   "catalytic converter",
+   "converter",
+   "catalyst"
+  ]
+ },
+ {
+  "term": "EGR",
+  "text": "A valve that sends a little exhaust back into the engine to cut pollution. Can clog with carbon.",
+  "match": [
+   "egr"
+  ]
+ },
+ {
+  "term": "EVAP",
+  "text": "The system that traps gas fumes from the tank. A loose gas cap is the most common cause of its codes.",
+  "match": [
+   "evap"
+  ]
+ },
+ {
+  "term": "Knock sensor",
+  "text": "Listens for engine knock. On GM V8s they sit under the intake manifold and corrode when water gets in.",
+  "match": [
+   "knock sensor",
+   "knock sensors"
+  ]
+ },
+ {
+  "term": "Check engine light",
+  "text": "The engine-shaped light on the dash. It means the computer saved a trouble code; a scanner reads it.",
+  "match": [
+   "check engine light"
+  ]
+ },
+ {
+  "term": "OBD-II scanner",
+  "text": "A small tool that plugs in under the dash and reads trouble codes. Most parts stores scan for free.",
+  "match": [
+   "obd-ii",
+   "scanner",
+   "scan tool"
+  ]
+ },
+ {
+  "term": "Trouble code",
+  "text": "A letter plus 4 characters (like P0300) that the computer saves when it notices a problem.",
+  "match": [
+   "code",
+   "codes"
+  ]
+ },
+ {
+  "term": "Jack stands",
+  "text": "Metal stands that hold the vehicle up safely. Never get under a vehicle held up only by a jack.",
+  "match": [
+   "jack stands"
+  ]
+ },
+ {
+  "term": "Dipstick",
+  "text": "A long stick under the hood (usually yellow handle) that shows the oil level.",
+  "match": [
+   "dipstick"
+  ]
+ },
+ {
+  "term": "Refrigerant",
+  "text": "The gas inside the A/C that makes the air cold.",
+  "match": [
+   "refrigerant",
+   "freon"
+  ]
+ },
+ {
+  "term": "Compressor clutch",
+  "text": "The front of the A/C pump. When the A/C is on, its center should spin.",
+  "match": [
+   "compressor clutch",
+   "compressor"
+  ]
+ },
+ {
+  "term": "Blend door",
+  "text": "A flap behind the dash that mixes hot and cold air.",
+  "match": [
+   "blend door"
+  ]
+ },
+ {
+  "term": "Ground strap",
+  "text": "A thick wire or braided strap connecting the engine and body back to the battery's negative side.",
+  "match": [
+   "ground strap",
+   "ground straps",
+   "ground connections",
+   "grounds"
+  ]
+ },
+ {
+  "term": "Voltage drop test",
+  "text": "A shop test that finds bad connections by measuring lost voltage across a wire.",
+  "match": [
+   "voltage drop"
+  ]
+ },
+ {
+  "term": "Runout",
+  "text": "How much a rotor wobbles as it spins. Measured with a dial gauge.",
+  "match": [
+   "runout",
+   "dial indicator"
+  ]
+ },
+ {
+  "term": "RPM",
+  "text": "Engine speed, shown on the tachometer gauge.",
+  "match": [
+   "rpm"
+  ]
+ },
+ {
+  "term": "4WD",
+  "text": "Four-wheel drive: the front wheels also get power when it's engaged.",
+  "match": [
+   "4wd",
+   "4x4"
+  ]
+ },
+ {
+  "term": "Lift",
+  "text": "Raising the truck with a kit. It changes angles on the steering and driveline, so those parts wear faster.",
+  "match": [
+   "lift",
+   "lifted"
+  ]
+ },
+ {
+  "term": "Intake manifold",
+  "text": "The part on top of the engine that feeds air to each cylinder.",
+  "match": [
+   "intake manifold",
+   "intake"
+  ]
+ },
+ {
+  "term": "PCV",
+  "text": "A small valve and hoses that vent fumes from inside the engine. Cracked hoses cause vacuum leaks.",
+  "match": [
+   "pcv"
+  ]
+ },
+ {
+  "term": "Brake booster",
+  "text": "The big round can behind the brake fluid tank that makes the brake pedal easy to push.",
+  "match": [
+   "brake booster",
+   "booster"
+  ]
+ },
+ {
+  "term": "Water pump",
+  "text": "Pumps coolant through the engine. A leak from its small 'weep hole' means it's failing.",
+  "match": [
+   "water pump"
+  ]
+ },
+ {
+  "term": "Heater core",
+  "text": "A small radiator behind the dash that heats the cab.",
+  "match": [
+   "heater core"
+  ]
+ },
+ {
+  "term": "Transmission",
+  "text": "Changes gears so the engine can drive the wheels at different speeds.",
+  "match": [
+   "transmission"
+  ]
+ },
+ {
+  "term": "Lean / rich",
+  "text": "Lean = too much air for the fuel. Rich = too much fuel for the air.",
+  "match": [
+   "lean",
+   "rich"
+  ]
+ },
+ {
+  "term": "PCM",
+  "text": "The engine computer.",
+  "match": [
+   "pcm"
+  ]
+ }
+]

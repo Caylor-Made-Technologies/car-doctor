@@ -4,20 +4,26 @@ A phone app that helps figure out what's wrong with a car or truck. Type what yo
 
 - **Works offline.** Install it on your home screen and it runs with no signal.
 - **No AI service, no costs.** The diagnosis model is a small machine-learning model trained in Python from `data/symptoms.csv`, saved as JSON, and run right in the browser.
-- **Private.** Your vehicle, repair log and training examples stay on your phone (localStorage). Nothing is sent anywhere: no accounts, cookies, analytics or trackers. "Delete all my data" in My Vehicle wipes it.
+- **Private.** Your vehicle, repair log, reminders and training examples stay on your phone (localStorage). Nothing is sent anywhere: no accounts, cookies, analytics or trackers. "Delete all my data" in My Vehicle wipes it.
 
 ## What's in the app
 
 | Tab | What it does |
 |---|---|
-| **Chat** | Describe the problem or tap a quick reply ("Grinding noise", "Check engine light", "Won't start"). It re-scores the whole conversation each time and shows the most likely cause with a severity badge (**Safe to drive / Get checked soon / Stop driving**), match %, DIY level, and the next thing to check. Two other possibilities sit underneath. Critical problems get a "Don't drive" banner. |
-| **Codes** | One search box. Type `p0300` and it becomes `P0300`. Shows the meaning, likely causes and how hard it is to fix for 74 common OBD-II codes; unknown codes are decoded by their structure. "Diagnose with this code" sends it to the chat. |
-| **My Vehicle** | Year, make, model, engine and mileage (shown on a card at the top of every screen), "Teach the model", privacy and terms, and a "Delete all my data" button. |
-| **Log** | Repair log with date, mileage and notes, newest first. "That was it" in the chat adds an entry automatically. |
+| **Chat** | Describe the problem in your own words or tap a quick reply ("Grinding noise", "Check engine light", "Won't start"). Answers come in plain English: **What's going on**, **Can I drive it?** and **What to do**, plus a severity badge (**Safe to drive / Get checked soon / Stop driving**), match % and how hard the fix is. Technical checks with real specs sit under "For DIYers". |
+| **Codes** | One search box. Type `p0300` and it becomes `P0300`. Shows the meaning in plain English, whether you can drive, likely causes and how hard it is to fix (74 common codes). Unknown codes are decoded by their structure. |
+| **Reminders** | Oil changes, tire rotations, brake checks and more, each with a one-line "why it matters". Pick a date, time and repeat, then **Add to Calendar**: your phone's Calendar alerts you the day before and at that time, even with the app closed. Shows overdue / due soon, a badge on the tab, and a heads-up in Chat. "Done" logs it and schedules the next one. |
+| **Log** | Repair log with date, mileage and notes, newest first. "That was it" in Chat and "Done" on a reminder add entries automatically. |
+| **Vehicle** | Year, make, model, engine and mileage (shown on a card at the top of every screen), "Teach the model", privacy and terms, and "Delete all my data". |
+
+### Made for people who don't know cars
+- Every answer starts with everyday words before any specs.
+- **Tap any underlined word** (rotor, alternator, 12.6V, psi, mm...) for a one-line explanation. 79 terms and measurements live in `app/glossary.json`.
+- Difficulty is said plainly: "Easy DIY fix", "DIY if you're handy", "Needs a shop".
 
 ### Look and feel
-- Dark "instrument cluster" theme with an amber accent; light mode toggle (top right), remembered on the phone.
-- One font (Inter, stored in the app so it works offline; license in `app/fonts/Inter-OFL.txt`).
+- Caylor Made Technologies theme (matches caylor-made-technologies.pages.dev): deep navy, brand blue glow, faint circuit traces, Montserrat headings and Inter text. Light mode toggle (top right), remembered on the phone.
+- Fonts are stored in the app so it works offline (licenses in `app/fonts/`).
 - Built for one hand: bottom tab bar, 44px+ tap targets, 16px+ inputs so iPhone doesn't zoom, iPhone safe areas respected.
 - Smooth but subtle: tabs slide and fade, messages animate in after a "thinking" indicator, buttons press in, cards lift, skeleton loaders while the model loads. All motion turns off when the phone's **Reduce Motion** setting is on.
 - Accessibility: screen reader labels, keyboard focus rings and arrow-key tabs, skip link, AA color contrast. Automated accessibility scan (axe) is clean on every tab in both themes.
@@ -64,7 +70,9 @@ model/make_icons.py            draws the app icons (Pillow)
 tests/check.py                 consistency checks (Python vs browser, data files)
 app/                           the app (this folder is what gets published)
   index.html, style.css, app.js
+  glossary.json                plain-English meanings for tappable words
   theme.js                     applies light/dark before the page draws
+  circuit.svg                  header decoration
   fonts/                       Inter font + its open font license
   causes.json                  info for each problem
   codes.json                   OBD-II code database
@@ -107,6 +115,12 @@ You can also just type new lines yourself: `label,how a person would describe it
 2. Add an entry to `app/causes.json` with `name`, `severity` (low/medium/high/critical), `diy` (Easy/Medium/Hard/Shop), `summary` and 3–4 `checks`.
 3. Add **at least 10** varied sentences for it to `data/symptoms.csv`.
 4. Push. `tests/check.py` fails the deploy if the label and cause don't match.
+
+### Explain a new word
+Add to `app/glossary.json`: `{ "term": "Rotor", "match": ["rotor", "rotors"], "text": "The metal disc..." }`. For measurements use `"regex"` instead of `"match"`.
+
+### How reminders reach the calendar
+The app builds a standard calendar file (.ics) with two alerts. The service worker serves it as `event.ics`, so iPhone shows "Add to Calendar" and Android opens it in its calendar app. Web apps can't schedule iPhone notifications on their own, so the phone's Calendar does the alerting. "Google Calendar" opens Google's add-event page instead (that sends the title and date to Google).
 
 ### Add a trouble code
 Add to `app/codes.json`:

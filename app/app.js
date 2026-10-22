@@ -151,6 +151,7 @@ const KEYS = {
   log: "cardoctor.log",
   training: "cardoctor.training",
   theme: "cardoctor.theme",
+  reminders: "cardoctor.reminders",
 };
 
 function load(key, fallback) {
@@ -231,11 +232,72 @@ const SEVERITY = {
   high: { cls: "soon", text: "Get checked soon" },
   critical: { cls: "stop", text: "Stop driving" },
 };
-const DIY = { Easy: "Easy DIY fix", Medium: "Medium DIY", Hard: "Hard DIY", Shop: "Shop job" };
+// How hard the fix is, in words a beginner understands.
+const DIY = { Easy: "Easy DIY fix", Medium: "DIY if you're handy", Hard: "Hard: shop recommended", Shop: "Needs a shop" };
 
 function severityBadge(severity) {
   const s = SEVERITY[severity] || SEVERITY.medium;
   return el("span", { class: "sev " + s.cls }, s.text);
+}
+
+// ---------- Plain-English glossary ----------
+// Car words and measurements (rotor, 12.6V, psi...) become tappable buttons.
+// Tapping one shows a simple explanation right below. Words come from
+// glossary.json: "match" lists plain words, "regex" handles measurements.
+let GLOSSARY = [];
+let GLOSSARY_RE = null;
+
+function buildGlossary(entries) {
+  GLOSSARY = entries;
+  const escape = (w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const parts = [];
+  const owners = []; // which glossary entry each regex group belongs to
+  entries.forEach((e, i) => {
+    if (e.regex) { parts.push(e.regex); owners.push(i); }
+  });
+  // Longest words first so "brake pads" wins over "pads".
+  const words = [];
+  entries.forEach((e, i) => (e.match || []).forEach((w) => words.push([w, i])));
+  words.sort((a, b) => b[0].length - a[0].length);
+  for (const [w, i] of words) { parts.push(`\\b${escape(w)}\\b`); owners.push(i); }
+  GLOSSARY_RE = { re: new RegExp(parts.map((part) => `(${part})`).join("|"), "gi"), owners };
+}
+
+// Returns the text with known terms turned into tappable buttons. `seen`
+// makes each term tappable only the first time it appears in a card.
+function explain(text, seen = new Set()) {
+  const frag = document.createDocumentFragment();
+  if (!text) return frag;
+  if (!GLOSSARY_RE) { frag.append(text); return frag; }
+  let last = 0;
+  for (const m of text.matchAll(GLOSSARY_RE.re)) {
+    const group = m.findIndex((g, k) => k > 0 && g !== undefined);
+    const entry = GLOSSARY[GLOSSARY_RE.owners[group - 1]];
+    if (!entry || seen.has(entry.term)) continue;
+    seen.add(entry.term);
+    frag.append(text.slice(last, m.index),
+      el("button", { class: "term", type: "button", "data-term": entry.term, "aria-expanded": "false" }, m[0]));
+    last = m.index + m[0].length;
+  }
+  frag.append(text.slice(last));
+  return frag;
+}
+
+// Opens or closes the explanation under a tapped term.
+function toggleTerm(btn) {
+  const host = btn.closest("li, p") || btn.parentElement;
+  const open = host.querySelector(":scope > .tip");
+  const sameTerm = open && open.dataset.term === btn.dataset.term;
+  if (open) {
+    open.remove();
+    host.querySelectorAll('.term[aria-expanded="true"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
+  }
+  if (sameTerm) return;
+  const entry = GLOSSARY.find((g) => g.term === btn.dataset.term);
+  if (!entry) return;
+  host.append(el("span", { class: "tip", role: "note", "data-term": entry.term },
+    el("strong", {}, entry.term + ": "), entry.text));
+  btn.setAttribute("aria-expanded", "true");
 }
 
 // ---------- Theme ----------
@@ -245,11 +307,11 @@ function applyTheme(theme) {
   const next = theme === "dark" ? "light" : "dark";
   btn.setAttribute("aria-label", `Switch to ${next} mode`);
   btn.replaceChildren(icon(theme === "dark" ? "sun" : "moon"));
-  document.querySelector('meta[name="theme-color"]').setAttribute("content", theme === "dark" ? "#0b0d12" : "#f3f4f7");
+  document.querySelector('meta[name="theme-color"]').setAttribute("content", theme === "dark" ? "#0b0f14" : "#f2f5fa");
 }
 
 // ---------- Tabs ----------
-const TAB_ORDER = ["chat", "codes", "vehicle", "log"];
+const TAB_ORDER = ["chat", "codes", "reminders", "log", "vehicle"];
 let currentTab = "chat";
 
 function showTab(name, { focus = false } = {}) {
@@ -340,9 +402,16 @@ function welcome() {
   const name = vehicleName();
   const hello = addMsg("bot",
     el("p", { class: "lead" }, name ? `What's going on with your ${name}?` : "What's going on with your vehicle?"),
-    el("p", {}, "Tell me what you hear, feel or smell, and when it happens. You can also type a trouble code like P0300."),
+    el("p", {}, "No car know-how needed. Just tell me in your own words what you hear, feel or smell, and when it happens."),
+    el("p", { class: "fineprint" }, "Like: \"it grinds when I stop\" or \"it shakes on the highway\". Or tap one:"),
     chipRow(STARTERS, sendMessage),
     el("p", { class: "fineprint" }, "Guidance only, not a professional diagnosis. If it feels unsafe, don't drive it."));
+  const due = dueReminders();
+  if (due.length) {
+    const r = due[0];
+    addMsg("bot", el("p", {}, el("strong", {}, "Heads up: "), `${r.title} is ${reminderStatus(r).text.toLowerCase()}.`),
+      chipRow(["Open reminders"], () => showTab("reminders")));
+  }
   scrollChat(hello); // start at the top of the greeting, not the bottom
 }
 
@@ -408,6 +477,15 @@ function lookupCause(label) {
   return CAUSES[label] || { name: label, severity: "medium", diy: "Shop", summary: "", checks: [] };
 }
 
+// "What's going on" and "Can I drive it?" in everyday words.
+function plainBlock(cause, seen) {
+  return el("div", { class: "plain" },
+    el("h3", { class: "q" }, "What's going on"),
+    el("p", {}, explain(cause.plain || cause.summary, seen)),
+    cause.drive ? el("h3", { class: "q" }, "Can I drive it?") : null,
+    cause.drive ? el("p", {}, explain(cause.drive, seen)) : null);
+}
+
 function showResults(result) {
   // Older result cards stay in the chat but lose their buttons.
   if (session.resultNode) {
@@ -424,29 +502,34 @@ function showResults(result) {
     card.append(el("div", { class: "stop-banner", role: "alert" }, "⚠️ Don't drive until it's checked."));
   }
 
-  const [firstCheck, ...otherChecks] = cause.checks;
+  // Plain English first; the technical checks are tucked away for DIYers.
+  const seen = new Set();
   card.append(el("div", { class: "result-main" },
     el("p", { class: "eyebrow" }, "Most likely"),
     el("h2", { class: "result-title" }, cause.name),
     el("div", { class: "badges" }, severityBadge(cause.severity), el("span", { class: "pill" }, DIY[cause.diy] || cause.diy)),
     gauge(best.prob),
-    el("p", { class: "summary" }, cause.summary),
-    firstCheck ? el("div", { class: "next-step" }, el("p", { class: "eyebrow" }, "Next step"), el("span", {}, firstCheck)) : null,
-    otherChecks.length ? el("details", { class: "more-checks" },
-      el("summary", { class: "hint" }, `${otherChecks.length} more checks`),
-      el("ol", { class: "checks", start: "2" }, ...otherChecks.map((c) => el("li", {}, c)))) : null));
+    plainBlock(cause, seen),
+    cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
+    el("details", { class: "more-checks" },
+      el("summary", {}, `For DIYers: ${cause.checks.length} things to check`),
+      el("p", { class: "summary" }, explain(cause.summary, seen)),
+      el("ol", { class: "checks" }, ...cause.checks.map((c) => el("li", {}, explain(c, seen))))),
+    el("p", { class: "fineprint" }, "Tap any underlined word for a simple explanation.")));
 
   // Other possibilities, collapsed.
   for (const g of top.slice(1)) {
     const c = lookupCause(g.label);
+    const altSeen = new Set();
     card.append(el("details", { class: "alt" },
       el("summary", {},
         el("span", { class: "alt-head" }, el("span", {}, c.name), icon("chevron")),
         gauge(g.prob)),
       el("div", { class: "alt-body" },
         el("div", { class: "badges" }, severityBadge(c.severity), el("span", { class: "pill" }, DIY[c.diy] || c.diy)),
-        el("p", {}, c.summary),
-        el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, x))))));
+        plainBlock(c, altSeen),
+        c.todo ? el("p", {}, el("strong", {}, "What to do: "), explain(c.todo, altSeen)) : null,
+        el("ol", { class: "checks" }, ...c.checks.map((x) => el("li", {}, explain(x, altSeen)))))));
   }
 
   // Unsure? Ask for more detail with chips the user hasn't already covered.
@@ -545,7 +628,7 @@ function codesEmptyState() {
   return el("div", { class: "empty" },
     icon("code"),
     el("strong", {}, "Look up a check engine code"),
-    el("p", {}, "Plug in a scanner (most parts stores scan free), then type the code above. Common ones:"),
+    el("p", {}, explain("When the check engine light comes on, the vehicle saves a trouble code. Most auto parts stores will read it for free with an OBD-II scanner. Type it above. Common ones:")),
     chipRow(POPULAR_CODES, (code) => {
       const input = document.getElementById("codeInput");
       input.value = code;
@@ -571,15 +654,19 @@ function lookupCode(raw) {
     el("p", { class: "code-big" }, code));
   if (info) {
     const cause = lookupCause(info.related);
+    const seen = new Set();
     card.append(
       el("h2", { class: "code-title" }, info.title),
       el("div", { class: "badges" }, severityBadge(cause.severity), el("span", { class: "pill" }, "Fix: " + (DIY[cause.diy] || cause.diy))),
+      el("h3", {}, "In plain English"),
+      el("p", {}, explain(`The computer noticed a problem related to: ${cause.name.toLowerCase()}. ${cause.plain || ""}`, seen)),
+      cause.drive ? el("p", {}, el("strong", {}, "Can I drive it? "), explain(cause.drive, seen)) : null,
       el("h3", {}, "Likely causes"),
-      el("ol", { class: "checks" }, ...info.causes.map((c) => el("li", {}, c))),
-      el("h3", {}, "Related problem"),
-      el("p", {}, cause.name));
+      el("ol", { class: "checks" }, ...info.causes.map((c) => el("li", {}, explain(c, seen)))),
+      el("p", { class: "fineprint" }, "Tap any underlined word for a simple explanation."));
   } else {
-    card.append(el("h2", { class: "code-title" }, "Unknown code"), el("p", {}, decodeCode(code)));
+    card.append(el("h2", { class: "code-title" }, "Unknown code"), el("p", {}, decodeCode(code)),
+      el("p", { class: "hint" }, "Search the code with your make and model, or ask a parts store to look it up."));
   }
   card.append(el("div", { class: "btn-row" },
     el("button", { class: "btn primary", type: "button", onclick: () => {
@@ -641,6 +728,206 @@ function renderLog() {
     } }, icon("trash")))));
 }
 
+// ---------- Reminders ----------
+// Common upkeep jobs, with a beginner-friendly reason and a usual interval.
+const MAINTENANCE = {
+  oil: { title: "Oil change", months: 6, why: "Oil keeps the engine's metal parts from grinding together. Most vehicles need it every 3,000 to 7,500 miles or about every 6 months (your owner's manual or oil sticker says exactly)." },
+  tires: { title: "Tire rotation", months: 6, why: "Moving the tires to different corners makes them wear evenly so they last longer. Usually every 5,000 to 7,500 miles; many shops do it with an oil change." },
+  pressure: { title: "Check tire pressure", months: 1, why: "Low tires wear out fast and waste gas. The right number is on a sticker inside the driver's door. Gas stations have free air." },
+  brakes: { title: "Brake check", months: 12, why: "A quick look at how much brake pad is left. Cheap to check, expensive if you wait until it grinds." },
+  battery: { title: "Battery test", months: 12, why: "Batteries usually last 3 to 5 years and tend to die on the first cold morning. Parts stores test them free." },
+  airfilter: { title: "Engine air filter", months: 12, why: "A clean filter helps the engine breathe and saves gas. Usually every 12,000 to 15,000 miles; often a 5-minute, no-tools job." },
+  wipers: { title: "Wiper blades", months: 12, why: "Streaky or chattering wipers make rain driving dangerous. Cheap and easy to replace at a parts store." },
+  coolant: { title: "Check coolant level", months: 6, why: "Coolant keeps the engine from overheating. Check the see-through tank only when the engine is cold." },
+  inspection: { title: "Inspection & registration", months: 12, why: "Most states require it yearly. Your registration sticker shows the month it's due." },
+  custom: { title: "", months: 0, why: "Name it yourself below." },
+};
+
+function addMonths(iso, n) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const next = new Date(y, m - 1 + n, d);
+  if (next.getDate() !== d) next.setDate(0); // e.g. Jan 31 + 1 month = Feb 28
+  const pad = (x) => String(x).padStart(2, "0");
+  return `${next.getFullYear()}-${pad(next.getMonth() + 1)}-${pad(next.getDate())}`;
+}
+
+function reminderDate(r) {
+  return new Date(`${r.date}T${r.time || "09:00"}`); // local time
+}
+
+// Overdue / due soon / upcoming, by date or by mileage.
+function reminderStatus(r) {
+  // Count calendar days (today = 0), not 24-hour blocks.
+  const [y, m, d] = r.date.split("-").map(Number);
+  const today = new Date();
+  const days = Math.round((new Date(y, m - 1, d) - new Date(today.getFullYear(), today.getMonth(), today.getDate())) / 86400000);
+  const miles = Number(load(KEYS.profile, {}).mileage || 0);
+  if ((r.mileage && miles && miles >= Number(r.mileage)) || reminderDate(r) < new Date()) {
+    return { cls: "stop", text: "Overdue", rank: 0 };
+  }
+  if (days <= 0) return { cls: "soon", text: "Due today", rank: 1 };
+  if (days <= 14) return { cls: "soon", text: days === 1 ? "Due tomorrow" : `Due in ${days} days`, rank: 1 };
+  return { cls: "safe", text: `In ${days} days`, rank: 2 };
+}
+
+function dueReminders() {
+  return load(KEYS.reminders, []).filter((r) => reminderStatus(r).rank < 2)
+    .sort((a, b) => reminderDate(a) - reminderDate(b));
+}
+
+function repeatText(n) {
+  return n ? (n === 1 ? "Repeats monthly" : n === 12 ? "Repeats yearly" : `Repeats every ${n} months`) : "One time";
+}
+
+// --- Calendar (.ics) ---
+// The phone's own Calendar app does the alerting: the day before and at the
+// chosen time, even when Car Doctor is closed.
+function icsEscape(text) {
+  return String(text).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+}
+
+function icsFold(line) {
+  const out = [];
+  while (line.length > 60) { out.push(line.slice(0, 60)); line = " " + line.slice(60); }
+  out.push(line);
+  return out.join("\r\n");
+}
+
+function stamp(date) {
+  const pad = (x) => String(x).padStart(2, "0");
+  return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}00`;
+}
+
+function reminderTitle(r) {
+  const vehicle = vehicleName();
+  return vehicle ? `${r.title} - ${vehicle}` : r.title;
+}
+
+function reminderDetails(r) {
+  const why = MAINTENANCE[r.type] && MAINTENANCE[r.type].why;
+  return [r.mileage ? `Due at ${Number(r.mileage).toLocaleString()} miles.` : "", why || "", "From Car Doctor."].filter(Boolean).join(" ");
+}
+
+function buildIcs(r) {
+  const start = reminderDate(r);
+  const end = new Date(start.getTime() + 30 * 60000);
+  const utc = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const lines = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Caylor Made Technologies//Car Doctor//EN",
+    "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "BEGIN:VEVENT",
+    `UID:${r.id}@car-doctor`, `DTSTAMP:${utc}`,
+    `DTSTART:${stamp(start)}`, `DTEND:${stamp(end)}`, // no time zone = phone's local time
+    `SUMMARY:${icsEscape(reminderTitle(r))}`,
+    `DESCRIPTION:${icsEscape(reminderDetails(r))}`,
+  ];
+  if (r.repeat > 0) lines.push(`RRULE:FREQ=MONTHLY;INTERVAL=${r.repeat}`);
+  for (const trigger of ["-P1D", "PT0M"]) {
+    lines.push("BEGIN:VALARM", "ACTION:DISPLAY", `DESCRIPTION:${icsEscape(reminderTitle(r))}`, `TRIGGER:${trigger}`, "END:VALARM");
+  }
+  lines.push("END:VEVENT", "END:VCALENDAR");
+  return lines.map(icsFold).join("\r\n") + "\r\n";
+}
+
+function addToCalendar(r) {
+  const ics = buildIcs(r);
+  if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+    // sw.js answers event.ics with a real calendar file, which iPhone and
+    // Android both open in the Calendar app ("Add" / "Add All").
+    window.open("event.ics?d=" + encodeURIComponent(ics), "_blank", "noopener");
+  } else {
+    // First visit (no service worker yet): download the file instead.
+    const url = URL.createObjectURL(new Blob([ics], { type: "text/calendar;charset=utf-8" }));
+    const a = el("a", { href: url, download: (r.title || "reminder").toLowerCase().replace(/[^a-z0-9]+/g, "-") + ".ics" });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  }
+  const list = load(KEYS.reminders, []);
+  const saved = list.find((x) => x.id === r.id);
+  if (saved) { saved.inCalendar = true; save(KEYS.reminders, list); }
+  renderReminders();
+}
+
+function googleCalendarUrl(r) {
+  const start = reminderDate(r);
+  const end = new Date(start.getTime() + 30 * 60000);
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: reminderTitle(r),
+    dates: `${stamp(start)}/${stamp(end)}`,
+    details: reminderDetails(r),
+  });
+  if (r.repeat > 0) params.set("recur", `RRULE:FREQ=MONTHLY;INTERVAL=${r.repeat}`);
+  return "https://calendar.google.com/calendar/render?" + params.toString();
+}
+
+function completeReminder(r) {
+  const profile = load(KEYS.profile, {});
+  addLogEntry({ date: localDate(), mileage: profile.mileage || "", note: `${r.title} (done from reminder)` });
+  let list = load(KEYS.reminders, []);
+  const status = document.getElementById("reminderSaved");
+  if (r.repeat > 0) {
+    const saved = list.find((x) => x.id === r.id);
+    saved.date = addMonths(localDate(), r.repeat);
+    saved.mileage = "";
+    status.textContent = `Logged ✓ Next ${r.title.toLowerCase()}: ${prettyDate(saved.date)}.` +
+      (saved.inCalendar ? " Your calendar event repeats, so the old one may need moving." : "");
+  } else {
+    list = list.filter((x) => x.id !== r.id);
+    status.textContent = "Logged ✓ and removed from reminders.";
+  }
+  save(KEYS.reminders, list);
+  renderReminders();
+}
+
+function renderReminders() {
+  const list = load(KEYS.reminders, []).slice().sort((a, b) => reminderDate(a) - reminderDate(b));
+  const box = document.getElementById("dueList");
+  const due = dueReminders().length;
+  const badge = document.getElementById("dueBadge");
+  badge.hidden = !due;
+  badge.textContent = due;
+  document.getElementById("tabbtn-reminders").setAttribute("aria-label", due ? `Reminders, ${due} due` : "Reminders");
+
+  if (!list.length) {
+    box.replaceChildren(el("div", { class: "empty" },
+      icon("bell"),
+      el("strong", {}, "No reminders yet"),
+      el("p", {}, "Start with an oil change: it's already picked below. Choose a date, save, then tap Add to Calendar.")));
+    return;
+  }
+  box.replaceChildren(...list.map((r) => {
+    const st = reminderStatus(r);
+    const when = reminderDate(r).toLocaleString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" });
+    return el("article", { class: "card reminder", "aria-label": `${r.title}, ${st.text}` },
+      el("div", { class: "reminder-head" },
+        el("h3", { class: "reminder-title" }, r.title),
+        el("span", { class: "sev " + st.cls }, st.text)),
+      el("p", { class: "reminder-when" }, icon("calendar"), when),
+      el("p", { class: "hint" }, [repeatText(r.repeat), r.mileage ? `or at ${Number(r.mileage).toLocaleString()} mi` : "", r.inCalendar ? "In your calendar ✓" : ""].filter(Boolean).join(" · ")),
+      el("div", { class: "reminder-actions" },
+        el("button", { class: "btn primary", type: "button", onclick: () => addToCalendar(r) }, icon("calendar"), r.inCalendar ? "Add again" : "Add to Calendar"),
+        el("button", { class: "btn", type: "button", onclick: () => completeReminder(r) }, icon("check"), "Done"),
+        el("a", { class: "btn", href: googleCalendarUrl(r), target: "_blank", rel: "noopener noreferrer" }, "Google Calendar"),
+        el("button", { class: "icon-btn bare", type: "button", "aria-label": "Delete " + r.title + " reminder", onclick: () => {
+          if (!confirm(`Delete the "${r.title}" reminder? (Anything already in your calendar stays there.)`)) return;
+          save(KEYS.reminders, load(KEYS.reminders, []).filter((x) => x.id !== r.id));
+          renderReminders();
+        } }, icon("trash"))));
+  }));
+}
+
+// Fills in the form defaults for the chosen job.
+function setReminderType(type) {
+  const job = MAINTENANCE[type];
+  const form = document.getElementById("reminderForm");
+  document.getElementById("reminderWhy").replaceChildren(explain(job.why));
+  document.getElementById("customTitleWrap").hidden = type !== "custom";
+  form.elements.repeat.value = String(job.months);
+  form.elements.date.value = addMonths(localDate(), job.months || 1);
+}
+
 // ---------- Teach the model ----------
 function trainingCsv() {
   return load(KEYS.training, [])
@@ -677,10 +964,45 @@ function wireUp() {
     // Arrow keys move between tabs (standard tab pattern for keyboards).
     btn.addEventListener("keydown", (e) => {
       const i = TAB_ORDER.indexOf(btn.dataset.tab);
-      if (e.key === "ArrowRight") showTab(TAB_ORDER[(i + 1) % 4], { focus: true });
-      if (e.key === "ArrowLeft") showTab(TAB_ORDER[(i + 3) % 4], { focus: true });
+      const n = TAB_ORDER.length;
+      if (e.key === "ArrowRight") showTab(TAB_ORDER[(i + 1) % n], { focus: true });
+      if (e.key === "ArrowLeft") showTab(TAB_ORDER[(i + n - 1) % n], { focus: true });
     });
   }
+
+  // Tap an underlined word for its plain-English meaning.
+  document.addEventListener("click", (e) => {
+    const term = e.target.closest(".term");
+    if (term) toggleTerm(term);
+  });
+
+  const reminderForm = document.getElementById("reminderForm");
+  const typeSelect = document.getElementById("reminderType");
+  typeSelect.replaceChildren(...Object.entries(MAINTENANCE).map(([key, job]) =>
+    el("option", { value: key }, job.title || "Something else…")));
+  typeSelect.addEventListener("change", () => setReminderType(typeSelect.value));
+  reminderForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const f = reminderForm.elements;
+    const type = f.type.value;
+    const title = type === "custom" ? f.title.value.trim() : MAINTENANCE[type].title;
+    if (!title) { f.title.focus(); return; }
+    const list = load(KEYS.reminders, []);
+    list.push({
+      id: Date.now() + "-" + Math.random().toString(36).slice(2, 7),
+      type, title,
+      date: f.date.value || localDate(),
+      time: f.time.value || "09:00",
+      repeat: Number(f.repeat.value) || 0,
+      mileage: f.mileage.value.replace(/\D/g, ""),
+    });
+    save(KEYS.reminders, list);
+    renderReminders();
+    f.title.value = "";
+    f.mileage.value = "";
+    document.getElementById("reminderSaved").textContent = "Saved ✓ Now tap \"Add to Calendar\" on it so your phone reminds you.";
+    document.getElementById("main").scrollTo({ top: 0, behavior: REDUCED_MOTION.matches ? "auto" : "smooth" });
+  });
 
   document.getElementById("themeToggle").addEventListener("click", () => {
     const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
@@ -761,6 +1083,7 @@ function wireUp() {
     renderProfile();
     renderLog();
     renderTraining();
+    renderReminders();
     welcome();
     status.textContent = "";
     alert("All Car Doctor data on this phone was deleted.");
@@ -778,14 +1101,17 @@ async function init() {
   const sendBtn = document.getElementById("sendBtn");
   sendBtn.disabled = true;
   try {
-    const [model, causes, codes] = await Promise.all(
-      ["model.json", "causes.json", "codes.json"].map((f) => fetch(f).then((r) => {
+    const [model, causes, codes, glossary] = await Promise.all(
+      ["model.json", "causes.json", "codes.json", "glossary.json"].map((f) => fetch(f).then((r) => {
         if (!r.ok) throw new Error(f + " " + r.status);
         return r.json();
       })));
     MODEL = model;
     CAUSES = causes;
     CODES = codes;
+    buildGlossary(glossary);
+    setReminderType("oil");
+    renderReminders();
     sendBtn.disabled = false;
     welcome();
     lookupCode(document.getElementById("codeInput").value);
