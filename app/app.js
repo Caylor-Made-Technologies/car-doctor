@@ -699,7 +699,8 @@ function showResults(result) {
     // The first thing anyone wants to know: can I keep driving?
     cause.drive ? el("div", { class: "drive-now sev-" + cause.severity },
       el("h3", { class: "q" }, "Can I drive it?"), el("p", {}, explain(cause.drive, seen))) : null,
-    dial(best.prob, result.known),
+    // Where to look: the engine bay with this part lit (3D on capable phones, a drawing otherwise).
+    window.CarDoctorBay ? window.CarDoctorBay.createBay(best.label, dial(best.prob, result.known)) : dial(best.prob, result.known),
     el("h3", { class: "q" }, "What's going on"),
     el("p", {}, explain(cause.plain || cause.summary, seen)),
     cause.todo ? el("div", { class: "next-step" }, el("h3", { class: "eyebrow" }, "What to do"), el("p", {}, explain(cause.todo, seen))) : null,
@@ -926,7 +927,7 @@ function renderProfile() {
   card.classList.toggle("is-empty", empty);
   document.getElementById("vehicleTitle").textContent = empty ? "Add your vehicle" : title || "My vehicle";
   document.getElementById("vehicleSub").textContent = empty ? "For answers that fit your truck or car" : sub || "Tap to add engine and mileage";
-  card.setAttribute("aria-label", empty ? "Add your vehicle" : `Vehicle: ${title} ${sub}. Edit vehicle`);
+  card.removeAttribute("aria-label"); // the visible text is the name (WCAG 2.5.3 label in name)
   if (VEHICLES) renderMyIssues();
 }
 
@@ -1325,6 +1326,8 @@ function wireUp() {
   document.getElementById("deleteAll").addEventListener("click", () => {
     if (!confirm("Delete your vehicle, repair log and training examples from this phone? This can't be undone.")) return;
     for (const key of Object.values(KEYS)) forget(key);
+    forget("cardoctor.backup.v1"); // the copy kept when saved data was upgraded
+    if (window.CarDoctorBay) window.CarDoctorBay.disposeBay();
     applyTheme("dark");
     renderProfile();
     renderLog();

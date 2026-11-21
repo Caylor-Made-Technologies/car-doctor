@@ -1,12 +1,19 @@
 // Car Doctor service worker: network first, cache fallback, so you get
 // updates when online and the app still works offline.
 // Bump VERSION whenever app files change so old caches get cleared.
-const VERSION = "v19";
+const VERSION = "v20";
 const CACHE = "car-doctor-" + VERSION;
+// The 3D engine bay (3d/engine-bay.js) is not precached: weak phones never use it, and it is cached
+// the first time it loads. Offline before that, the flat drawing is shown instead.
 const FILES = [
   "./",
   "index.html",
+  "ui/caylor-ui.css",
+  "ui/support.js",
   "style.css",
+  "migrate.js",
+  "parts.js",
+  "bay.js",
   "app.js",
   "features.js",
   "roadside.js",
