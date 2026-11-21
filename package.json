@@ -1,0 +1,18 @@
+{
+  "name": "car-doctor",
+  "private": true,
+  "type": "commonjs",
+  "description": "Car Doctor build helpers. The app itself is plain files in app/ (published as-is).",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/js/*.test.js",
+    "check": "npm run build && npm test && python model/train.py && python tests/check.py",
+    "shots": "node scripts/shots.mjs",
+    "e2e": "node tests/e2e/smoke.cjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.3",
+    "esbuild": "0.25.10",
+    "three": "0.182.0"
+  }
+}
