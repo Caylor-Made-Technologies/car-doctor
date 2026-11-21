@@ -1,0 +1,9 @@
+{
+  "cardoctor.state": "\"TX\"",
+  "cardoctor.lastGuess": "{\"label\":\"worn_brake_pads\",\"text\":\"my brakes make a loud grinding noise when I stop\",\"said\":\"my brakes make a loud grinding noise when I stop\",\"at\":1795232073234,\"asks\":0}",
+  "cardoctor.theme": "dark",
+  "cardoctor.profile": "{\"year\":\"2005\",\"make\":\"Chevrolet\",\"model\":\"Silverado 2500HD\",\"engine\":\"6.0L V8\",\"mileage\":\"185000\"}",
+  "cardoctor.log": "[{\"id\":\"1795232077568-m1k1b\",\"date\":\"2026-11-01\",\"mileage\":\"184800\",\"note\":\"Replaced front pads and rotors\"}]",
+  "cardoctor.reminders": "[{\"id\":\"1795232078969-jthca\",\"type\":\"oil\",\"title\":\"Oil change\",\"date\":\"2026-12-15\",\"time\":\"09:00\",\"repeat\":6,\"mileage\":\"\"}]",
+  "cardoctor.training": "[{\"label\":\"worn_brake_pads\",\"text\":\"my brakes make a loud grinding noise when I stop\",\"date\":\"2026-11-21\"}]"
+}
