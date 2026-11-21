@@ -1,0 +1,113 @@
+/* caylor-ui 1.0.0 — design tokens. Copied from controls-academy/src/styles/tokens.css and
+   critical-facilities-sim/src/styles.css (the two reference apps). Do not edit per app: an app sets
+   only its accent in its own accent file (see README). Dark is the default and the hero theme. */
+
+:root, .theme-dark {
+  color-scheme: dark;
+  /* Surfaces: near-black navy, four depths */
+  --bg: #0b0f14;
+  --bg-2: #080b10;
+  --surface: #121821;
+  --surface-raised: #1a2230;
+  --surface-sunk: #0e131a;
+  --border: #253043;
+  --border-strong: #34425a;
+
+  /* Brand (Caylor Made Technologies) */
+  --brand: #1e6fff;
+  --brand-glow: #3d8bff;
+  --brand-button: #1b63eb;
+
+  /* Accent: overridden per app (car-doctor amber, leak-trace cyan, dust-log green, website CM blue). */
+  --accent: #3d8bff;          /* graphics, focus rings, active tab */
+  --accent-strong: #1b63eb;   /* primary button fill */
+  --on-accent: #ffffff;       /* text on the primary button (AA on --accent-strong) */
+  --accent-text: #6ea6ff;     /* accent-colored text on --bg/--surface (AA) */
+  --accent-soft: rgba(61, 139, 255, 0.14);
+  --rgb-accent: 61 139 255;
+
+  /* Text */
+  --text-heading: #ffffff;
+  --text-body: #c9d3e0;
+  --text-muted: #9aa7b8;     /* 7.0:1 on --bg, 6.2:1 on --surface-raised */
+
+  /* Status: each color means one thing */
+  --ok: #3ddc97;
+  --ok-soft: rgba(61, 220, 151, 0.14);
+  --warn: #ffb547;
+  --warn-soft: rgba(255, 181, 71, 0.14);
+  --alarm: #ff6b6b;
+  --alarm-soft: rgba(255, 107, 107, 0.12);
+
+  /* Type */
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-head: 'Montserrat', 'Inter', system-ui, Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.625rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.75rem;
+
+  /* Space: 4 px grid */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --tap: 44px;
+  --content-max: 560px;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius: 16px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Depth: sunk, raised, glow (the one recommended thing), overlay */
+  --elev-sunk: inset 0 2px 6px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+  --elev-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --elev-2: 0 0 0 1px rgb(var(--rgb-accent) / 0.35), 0 2px 4px rgba(0, 0, 0, 0.4), 0 14px 36px rgb(var(--rgb-accent) / 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --elev-3: 0 4px 10px rgba(0, 0, 0, 0.45), 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --scrim: rgba(3, 6, 10, 0.6);
+
+  /* Motion: 3 durations, 2 curves. Everything turns off under prefers-reduced-motion (base.css). */
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 420ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: linear(0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849 31.5%, 0.937 38.1%, 0.968 41.8%, 0.991 45.7%, 1.006 50.1%, 1.015 55%, 1.017 63.9%, 1.001 85.9%, 1);
+  --press-scale: 0.97;
+
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+/* Light theme: opt-in via data-theme="light" on <html>. */
+:root[data-theme='light'], .theme-light {
+  color-scheme: light;
+  --bg: #f4f6fa;
+  --bg-2: #eaeef5;
+  --surface: #ffffff;
+  --surface-raised: #f7f9fc;
+  --surface-sunk: #eef2f7;
+  --border: #d5dce6;
+  --border-strong: #b7c2d2;
+  --text-heading: #0b0f14;
+  --text-body: #263243;
+  --text-muted: #556274;
+  --elev-1: 0 1px 2px rgba(16, 24, 40, 0.08), 0 8px 24px rgba(16, 24, 40, 0.08);
+  --elev-3: 0 8px 20px rgba(16, 24, 40, 0.14), 0 24px 60px rgba(16, 24, 40, 0.18);
+  --scrim: rgba(11, 15, 20, 0.4);
+}

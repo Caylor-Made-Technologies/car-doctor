@@ -1,6 +1,15 @@
 # Car Doctor
 
-A phone app that helps figure out what's wrong with a car or truck. Type what you hear, feel or smell (or a trouble code like `P0300`) and it gives its top 3 guesses with what to check.
+A phone app that helps figure out what's wrong with a car or truck. Type what you hear, feel or smell (or a trouble code like `P0300`) and it gives its top 3 guesses with what to check, and shows **where to look** on an engine bay.
+
+Live: https://caylor-made-technologies.github.io/car-doctor/
+
+<p>
+  <img src="docs/screenshots/after-chat.png" alt="Chat: six common problems to tap, or type it" width="200">
+  <img src="docs/screenshots/after-result-3d.png" alt="A result: worn brake pads, can I drive it, and the engine bay in 3D with the front brakes lit in amber" width="200">
+  <img src="docs/screenshots/after-result-2d.png" alt="The same result on a phone with Reduce Motion: a flat drawing of the engine bay with the brakes lit" width="200">
+  <img src="docs/screenshots/after-codes.png" alt="Codes and lights tab" width="200">
+</p>
 
 - **Works offline.** Install it on your home screen and it runs with no signal.
 - **No AI service, no costs.** The diagnosis model is a small machine-learning model trained in Python from `data/symptoms.csv`, saved as JSON, and run right in the browser.
@@ -44,9 +53,15 @@ Together: 44 makes, 453 models in the pickers, 1,736 known problems on 965 year 
 - **Tap any underlined word** (rotor, alternator, 12.6V, psi, mm...) for a one-line explanation. 107 terms and measurements live in `app/glossary.json` (CVT, lifter, DEF, transfer case, track bar...).
 - Difficulty is said plainly: "Easy DIY fix", "DIY if you're handy", "Needs a shop".
 
+### Where to look (engine bay)
+- Every answer shows an engine bay with the likely part lit in amber, and the camera glides to it. 59 problems map to 24 parts (`app/parts.js`); problems that aren't tied to one part (like hybrid systems) show the whole bay and say so.
+- On capable phones it's 3D (three.js, loaded only after the page has drawn, ~131 KB gzip, cached after first use). It draws only while moving, then stops (0 frames when idle).
+- Without WebGL, with **Reduce Motion** on, or on phones with 4 GB memory or 4 cores or fewer, it's a flat drawing of the same bay from the same angle (no download).
+
 ### Look and feel
-- Glowing circuit traces with little lights running along them; they speed up while it "thinks" and flash when an answer appears. Springy, bouncy buttons, tiles and messages, a sliding tab highlight. Everything turns off with **Reduce Motion**.
-- Caylor Made Technologies theme (matches caylor-made-technologies.pages.dev): deep navy, brand blue glow, faint circuit traces, Montserrat headings and Inter text. Light mode toggle (top right), remembered on the phone.
+- Faint circuit traces in the background; the little lights run only while it "thinks". Buttons, tiles and messages pop in. Everything turns off with **Reduce Motion**.
+- Caylor Made Technologies family look (`caylor-ui/`, shared with Controls Academy and the simulator): deep navy, **amber accent** for Car Doctor, Montserrat headings and Inter text. Light mode toggle (top right), remembered on the phone.
+- The first screen shows the six most common problems; "More problems" shows the other nine.
 - Fonts are stored in the app so it works offline (licenses in `app/fonts/`).
 - Built for one hand: bottom tab bar, 44px+ tap targets, 16px+ inputs so iPhone doesn't zoom, iPhone safe areas respected.
 - Smooth but subtle: tabs slide and fade, messages animate in after a "thinking" indicator, buttons press in, cards lift, skeleton loaders while the model loads. All motion turns off when the phone's **Reduce Motion** setting is on.
@@ -103,7 +118,17 @@ model/build_vehicles.py        known problems by vehicle -> app/vehicles.json
 model/problem_rules.py         plain-English signs + fixes for each problem title in us_vehicles.json
 model/make_icons.py            draws the app icons (Pillow)
 tests/check.py                 consistency checks (Python vs browser, data files)
+tests/js/                      unit tests: part lookup, saved-data upgrade (node --test)
+tests/e2e/smoke.cjs            browser checks: every tab, 3D + flat, axe, 320 px, offline, upgrade
+tests/fixtures/                saved data written by the v1 app (for the upgrade test)
+caylor-ui/                     shared tokens + components (copied, version in caylor-ui/VERSION)
+src3d/engine-bay.js            the 3D scene source (built into app/3d/)
 app/                           the app (this folder is what gets published)
+  migrate.js                   saved-data versions (v1 -> v2), runs before anything reads
+  parts.js                     engine bay parts + diagnosis -> part table
+  bay.js                       "Where to look": flat drawing, 3D after first paint
+  3d/engine-bay.js             generated: the 3D scene with three.js (npm run build)
+  ui/                          generated: caylor-ui styles + the 3D gate (npm run build)
   index.html, style.css, app.js
   features.js                  symptom picker, quick questions, check-in, dial, dash lights,
                                vehicle problems, help, glowing circuits
@@ -189,6 +214,18 @@ python tests/check.py        # needs Node.js installed
 python -m http.server 8000 -d app
 ```
 Open http://localhost:8000.
+
+The 3D scene and the shared styles are generated into `app/` and committed (GitHub Pages publishes `app/` as-is, no build step there). After changing `src3d/` or `caylor-ui/`:
+```bash
+npm ci
+npm run build      # app/3d/engine-bay.js + app/ui/
+npm test           # part lookup + saved-data upgrade
+npm run e2e        # browser checks (uses Playwright's Chromium), saves docs/screenshots/after-*.png
+```
+Add `?3d=1` or `?3d=0` to the URL to force the 3D view or the flat drawing.
+
+### Saved data versions
+v1 is everything up to November 2026 (no version key). v2 adds `cardoctor.schema`, a one-time copy of the v1 values in `cardoctor.backup.v1` (removed by "Delete all my data"), and tidies records (every list entry an object with an id, mileage as digits). Nothing is dropped; unreadable values are left as they were. `tests/js/migrate.test.js` runs the upgrade on data written by the real v1 app.
 
 ## Privacy and terms
 

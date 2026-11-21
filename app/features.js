@@ -494,11 +494,20 @@ const FRIENDLY = {
   __washer: "Blue fluid is almost always windshield washer fluid. A cracked washer tank or hose; cheap and easy to fix.",
 };
 
+// The six most common problems first; the rest one tap away, so the first screen stays calm.
+const FIRST_TILES = 6;
 function pickerTiles() {
-  return el("div", { class: "tiles", role: "group", "aria-label": "What kind of problem?" },
-    ...PICKER.map((cat) => el("button", { class: "tile", type: "button", onclick: (e) => openPicker(cat, e.currentTarget) },
-      el("span", { class: "tile-emoji", "aria-hidden": "true" }, cat.emoji),
-      el("span", {}, cat.label))));
+  const tile = (cat) => el("button", { class: "tile", type: "button", onclick: (e) => openPicker(cat, e.currentTarget) },
+    el("span", { class: "tile-emoji", "aria-hidden": "true" }, cat.emoji),
+    el("span", {}, cat.label));
+  const grid = el("div", { class: "tiles", role: "group", "aria-label": "What kind of problem?" }, ...PICKER.slice(0, FIRST_TILES).map(tile));
+  if (PICKER.length <= FIRST_TILES) return grid;
+  const more = el("button", { class: "btn more-tiles", type: "button", onclick: () => {
+    grid.append(...PICKER.slice(FIRST_TILES).map(tile));
+    more.remove();
+    grid.children[FIRST_TILES].focus();
+  } }, `More problems (${PICKER.length - FIRST_TILES})`);
+  return el("div", { class: "tile-wrap" }, grid, more);
 }
 
 // Runs the picker steps inside one chat bubble.
