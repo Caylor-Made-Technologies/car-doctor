@@ -213,6 +213,8 @@ input, select, textarea { font-size: max(16px, 1rem); } /* no iOS zoom on focus 
 .stage3d > svg, .stage3d > .stage3d-poster { position: absolute; inset: 0; width: 100%; height: 100%; }
 .stage3d > canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity var(--dur-slow) var(--ease); touch-action: pan-y; }
 .stage3d[data-live='true'] > canvas { opacity: 1; }
+.stage3d > svg { transition: opacity var(--dur-slow) var(--ease); }
+.stage3d[data-live='true'] > svg { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
