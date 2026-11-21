@@ -99,7 +99,7 @@ async function start3D(figure, stage, partId) {
       onLost: () => { view.dispose(); canvas.remove(); figure.dataset.mode = "2d:context-lost"; live = null; },
     });
     live = { view, figure, canvas };
-    requestAnimationFrame(() => { stage.dataset.live = "true"; });
+    view.firstFrame.then(() => { stage.dataset.live = "true"; });
     figure.dataset.mode = "3d";
     if (location.search.includes("debug3d")) window.__bay3d = view;
   } catch (err) {

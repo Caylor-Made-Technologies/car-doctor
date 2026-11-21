@@ -152,6 +152,7 @@ export function mount(canvas, { parts, partId = 'unknown', onLost }) {
       return !done;
     });
   }
+  stage.warm();
   show(partId);
-  return { show, dispose: () => stage.dispose(), stats: stage.stats, frames: stage.frames, workStats: stage.workStats };
+  return { show, dispose: () => stage.dispose(), stats: stage.stats, frames: stage.frames, workStats: stage.workStats, firstFrame: stage.firstFrame };
 }

@@ -42,10 +42,13 @@ export function createStage(canvas, o) {
   scene.add(hemi, key);
 
   const animators = new Set();   // fn(dt, t) => boolean (true = keep going)
+  let held = false; // true while shaders compile in the background (see warm())
   let raf = 0, last = 0, t = 0, dirty = true, visible = true, disposed = false, frames = 0;
   const work = []; // main-thread ms per drawn frame (animation + render submit), newest 240
 
-  const render = () => { renderer.render(scene, camera); frames++; dirty = false; };
+  let firstDone;
+  const firstFrame = new Promise((r) => { firstDone = r; });
+  const render = () => { renderer.render(scene, camera); frames++; dirty = false; if (frames === 1) firstDone(); };
   const loop = (now) => {
     raf = 0;
     if (disposed) return;
@@ -53,6 +56,7 @@ export function createStage(canvas, o) {
     last = now; t += dt;
     const t0 = performance.now();
     for (const fn of [...animators]) if (!fn(dt, t)) animators.delete(fn);
+    if (held) { raf = requestAnimationFrame(loop); return; }
     if (visible && !document.hidden && (dirty || animators.size)) {
       render();
       work.push(performance.now() - t0);
@@ -96,8 +100,21 @@ export function createStage(canvas, o) {
   }
   function animate(fn) { animators.add(fn); kick(); }
 
+  /**
+   * Compile every shader before the first frame, in parallel where the browser supports it
+   * (KHR_parallel_shader_compile), so the first frame doesn't stall the page. Call once after building
+   * the scene; rendering (and animation time) waits until it's done.
+   */
+  function warm() {
+    if (typeof renderer.compileAsync !== 'function') return Promise.resolve();
+    held = true;
+    return renderer.compileAsync(scene, camera).catch(() => {}).then(() => { held = false; last = 0; invalidate(); });
+  }
+
   return {
-    scene, camera, renderer, target, invalidate, animate, flyTo,
+    scene, camera, renderer, target, invalidate, animate, flyTo, warm,
+    /** Resolves after the first frame is on screen: fade the canvas in then, not before. */
+    firstFrame,
     frames: () => frames,
     /** Main-thread cost per drawn frame (ms): the part of a frame this code controls. */
     workStats: () => {
